@@ -171,7 +171,7 @@ class Users extends Controller{
                 $_SESSION['user_id'] = $user->B_Id;
                 $_SESSION['user_email'] = $user->B_Email;
                 $_SESSION['user_name'] = $user->B_Name;
-                redirect('request_ben');
+                redirect('request_bens');
               }
               public function logout(){
                 unset($_SESSION['user_id']);

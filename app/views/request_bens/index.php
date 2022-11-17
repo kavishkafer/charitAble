@@ -61,16 +61,17 @@
                         <span class="title">Settings</span>
                     </a>
                 </li>
+                <?php if(isset($_SESSION['user_id'])) : ?>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT;?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
                         <span class="title">Logout</span>
                     </a>
                 </li>
-
+                <?php endif; ?>
                 
             </ul>
         </div>
@@ -140,27 +141,33 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
                     </div>
 
                     <table>
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
+                                <td>Request_Id</td>
+                                <td>Description</td>
+                                <td>Type</td>
+                                <td>Quantity</td>
+                                <td>Priority</td>
+                                
                             </tr>
                         </thead>
 
                         <tbody>
+                            
                             <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
+                            <?php foreach($data['requests'] as $requests): ?>
+                                <td> <?php echo $requests->Donation_ID; ?></td> 
+                                <td><?php echo $requests->Donation_Description; ?></td>
+                                <td><?php echo $requests->Donation_Type; ?></td>
+                                <td><?php echo $requests->Donation_Quantity; ?></td>
+                                <td><?php echo $requests->Donation_Priority; ?></td>
+                                
                             </tr>
-
+                            <?php endforeach; ?>
                             <tr>
                                 <td>Dell Laptop</td>
                                 <td>$110</td>
