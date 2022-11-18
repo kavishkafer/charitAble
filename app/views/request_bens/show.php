@@ -159,18 +159,30 @@
                         <tbody>
                             
                             <tr>
-                              
-                            <?php foreach($data['requests'] as $requests): ?>
-                                <td> <?php echo $requests->Donation_ID; ?></td> 
-                                <td><?php echo $requests->Donation_Description; ?></td>
-                                <td><?php echo $requests->Donation_Type; ?></td>
-                                <td><?php echo $requests->Donation_Quantity; ?></td>
-                                <td><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
+                               
+                           
                             </tr>
-                            <?php endforeach; ?>
+                            <tr>
+                           
+                            <h1><?php echo $data['request']->Donation_ID; ?></h1>
+                               <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
+                               <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
+                                <!-- // <?php echo $data['user']->B_Name?> use this when database is corrected -->
+                             
+                            </tr>
+                
+                            <tr>
+                        
+                            </tr>
                             
-                          
+                                <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID ?>" method="post">
+                                <input type="submit" value="Edit" >
+                                
+                                <br>
+                                <form action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>" method="post">
+                                <input type="submit" value="Delete" >
+                                </form>
+                           
                         </tbody>
                     </table>
                 </div>

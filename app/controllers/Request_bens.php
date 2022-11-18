@@ -5,6 +5,7 @@ class Request_bens extends Controller{
             redirect('users/login_ben');
         }
         $this->requestModel = $this->model('Request_ben');
+        $this->userModel = $this->model('User');
     }
     public function index(){
         $requests = $this->requestModel->getRequests();
@@ -24,6 +25,7 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => trim($_POST['Donation_Quantity']),
                 'Donation_Type' => trim($_POST['Donation_Type']),
                 'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Donation_Status' => trim($_POST['Donation_Status']),
                 'user_id' => $_SESSION['user_id'],
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
@@ -71,5 +73,96 @@ class Request_bens extends Controller{
         }
       
     }
+    public function show($id){
+        $id='3';
+        $request = $this->requestModel->getRequestById($id);
+        $user = $this->userModel->getUserById($request->Donation_ID);
+        $data = [
+            'request' => $request,
+            'user' => $user
+        ];
+        $this->view('request_bens/show', $data);
 
-} 
+    }
+
+    public function edit($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Sanitize POST array
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'Donation_ID' => $id,
+                'Donation_Description' => trim($_POST['Donation_Description']),
+                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
+                'Donation_Type' => trim($_POST['Donation_Type']),
+                'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'user_id' => $_SESSION['user_id'],
+                'Donation_Description_err' => '',
+                'Donation_Quantity_err' => '',
+                'Donation_Type_err' => '',
+                'Donation_Priority_err' => ''
+            ];
+            // Validate data
+            if(empty($data['Donation_Description'])){
+                $data['Donation_Description_err'] = 'Please enter description';
+            }
+            if(empty($data['Donation_Quantity'])){
+                $data['Donation_Quantity_err'] = 'Please enter Quantity';
+            }
+            if(empty($data['Donation_Type'])){
+                $data['Donation_Type_err'] = 'Please enter Donation type';
+            }
+            if(empty($data['Donation_Priority'])){
+                $data['Donation_Priority_err'] = 'Please enter Donation priority';
+            }
+            // Make sure no errors
+            if(empty($data['Donation_Description_err']) && empty($data['Donation_Quantity_err']) && empty($data['Donation_Type_err']) && empty($data['Donation_Priority_err'])){
+                // Validated
+                if($this->requestModel->updateRequest($data)){
+                    flash('request_message', 'Request Updated');
+                    redirect('request_bens');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('request_bens/edit', $data);
+            }
+        } else {
+           
+            
+            $request = $this->requestModel->getRequestById($id);
+            // Check for owner
+            if($request->B_Id != $_SESSION['user_id']){
+                redirect('request_bens');
+            }
+            $data = [
+                'Donation_ID' => $id,
+                'Donation_Description' => $request->Donation_Description,
+                'Donation_Quantity' => $request->Donation_Quantity,
+                'Donation_Type' => $request->Donation_Type,
+                'Donation_Priority' => $request->Donation_Priority,
+
+            ];
+            $this->view('request_bens/edit', $data);
+    }
+
+    }
+    public function delete($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Get existing post from model
+            $request = $this->requestModel->getRequestById($id);
+            // Check for owner
+            if($request->B_Id != $_SESSION['user_id']){
+                redirect('request_bens');
+            }
+            if($this->requestModel->deleteRequest($id)){
+                flash('request_message', 'Request Removed');
+                redirect('request_bens');
+            } else {
+                die('Something went wrong');
+            }
+        } else {
+            redirect('request_bens');
+        }
+    }
+}

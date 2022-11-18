@@ -44,9 +44,10 @@ class User {
         }
     }
     public function getUserById($id){
-        $this->db->query('SELECT * FROM beneficiary_details WHERE id = :id');
-        $this->db->bind(':id', $id);
+        $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
+        $this->db->bind(':B_id', $id);
         $row = $this->db->single();
         return $row;
     }
+
 }
