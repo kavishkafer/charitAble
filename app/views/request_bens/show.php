@@ -167,7 +167,7 @@
                             <h1><?php echo $data['request']->Donation_ID; ?></h1>
                                <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
                                <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                <!-- // <?php echo $data['user']->B_Name?> use this when database is corrected -->
+                                <?php echo $data['user']->B_Name?> 
                              
                             </tr>
                 

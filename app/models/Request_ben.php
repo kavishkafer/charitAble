@@ -5,7 +5,9 @@ class Request_ben{
         $this->db = new Database;
     }
     public function getRequests(){
-        $this->db->query('SELECT * FROM donation_table');
+        $this->db->query('SELECT * FROM donation_table
+                          INNER JOIN beneficiary_details
+                          ON `donation_table`.`B_Id` = `beneficiary_details`.`B_Id`');
         $results = $this->db->resultSet();
         return $results;
     }
