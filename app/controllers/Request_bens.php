@@ -21,11 +21,11 @@ class Request_bens extends Controller{
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                'Donation_Description' => trim($_POST['Donation_Description']),
-                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
-                'Donation_Type' => trim($_POST['Donation_Type']),
-                'Donation_Priority' => trim($_POST['Donation_Priority']),
-                'Donation_Status' => trim($_POST['Donation_Status']),
+                // 'Donation_Description' => trim($_POST['Donation_Description']),
+                // 'Donation_Quantity' => trim($_POST['Donation_Quantity']),
+                // 'Donation_Type' => trim($_POST['Donation_Type']),
+                // 'Donation_Priority' => trim($_POST['Donation_Priority']),
+                // 'Donation_Status' => trim($_POST['Donation_Status']),
                 'user_id' => $_SESSION['user_id'],
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
@@ -35,15 +35,29 @@ class Request_bens extends Controller{
             // Validate data
             if(empty($data['Donation_Description'])){
                 $data['Donation_Description_err'] = 'Please enter description';
+              
+            }
+            else{
+                
+                $data[ 'Donation_Description' ]= trim($_POST['Donation_Description']);
             }
             if(empty($data['Donation_Quantity'])){
                 $data['Donation_Quantity_err'] = 'Please enter Quantity';
             }
+            else{
+                $data[ 'Donation_Quantity' ]= trim($_POST['Donation_Quantity']);
+            }
             if(empty($data['Donation_Type'])){
                 $data['Donation_Type_err'] = 'Please enter Donation type';
             }
+            else{
+                $data[ 'Donation_Type' ]= trim($_POST['Donation_Type']);
+            }
             if(empty($data['Donation_Priority'])){
                 $data['Donation_Priority_err'] = 'Please enter Donation priority';
+            }
+            else{
+                $data[ 'Donation_Priority' ]= trim($_POST['Donation_Priority']);
             }
             // Make sure no errors
             if(empty($data['Donation_Description_err']) && empty($data['Donation_Quantity_err']) && empty($data['Donation_Type_err']) && empty($data['Donation_Priority_err'])){
@@ -74,7 +88,7 @@ class Request_bens extends Controller{
       
     }
     public function show($id){
-        $id='3';
+        
         $request = $this->requestModel->getRequestById($id);
         $user = $this->userModel->getUserById($request->Donation_ID);
         $data = [
@@ -86,21 +100,25 @@ class Request_bens extends Controller{
     }
 
     public function edit($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+           
+
             $data = [
                 'Donation_ID' => $id,
-                'Donation_Description' => trim($_POST['Donation_Description']),
-                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
-                'Donation_Type' => trim($_POST['Donation_Type']),
-                'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Donation_Description' => trim($_GET['Donation_Description']),
+                'Donation_Quantity' => trim($_GET['Donation_Quantity']),
+                'Donation_Type' => trim($_GET['Donation_Type']),
+                'Donation_Priority' => trim($_GET['Donation_Priority']),
                 'user_id' => $_SESSION['user_id'],
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
                 'Donation_Priority_err' => ''
+
             ];
+        
             // Validate data
             if(empty($data['Donation_Description'])){
                 $data['Donation_Description_err'] = 'Please enter description';

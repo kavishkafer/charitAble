@@ -12,12 +12,13 @@ class Request_ben{
         return $results;
     }
     public function addRequests($data){
-        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority)');
+        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority,B_Id) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority,:B_Id)');
         // Bind values
         $this->db->bind(':Donation_Description', $data['Donation_Description']);
         $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
         $this->db->bind(':Donation_Type', $data['Donation_Type']);
         $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
+        $this->db->bind(':B_Id', $data['user_id']);
         
         // Execute
         if($this->db->execute()){
@@ -36,12 +37,17 @@ class Request_ben{
         public function UpdateRequest($data){
             $this->db->query('UPDATE donation_table SET Donation_Description = :Donation_Description, Donation_Quantity = :Donation_Quantity, Donation_Type = :Donation_Type, Donation_Priority = :Donation_Priority WHERE Donation_ID = :Donation_ID');
             // Bind values
-            $this->db->bind(':Donation_Description', $data['Donation_Description']);
-            $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
-            $this->db->bind(':Donation_Type', $data['Donation_Type']);
-            $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
-            $this->db->bind(':Donation_ID', $data['Donation_ID']);
-            
+if(isset ($data['Donation_Description'])){
+    
+    $this->db->bind(':Donation_Description', $data['Donation_Description']);
+    $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
+    $this->db->bind(':Donation_Type', $data['Donation_Type']);
+    $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
+    $this->db->bind(':Donation_ID', $data['Donation_ID']);
+    
+           
+}
+         
             // Execute
             if($this->db->execute()){
                 return true;

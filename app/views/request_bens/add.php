@@ -33,7 +33,7 @@
                     </div>
                     <div class="div">
                         <h5>Donation quantity</h5>
-                        <input type="text" name="Donation_Quantity" class="input <?php echo (!empty($data['Donation_Quantity'])) ? 'is-invalid' : ''; ?>""  value="<?php echo $data['Donation_Quantity']; ?>">
+                        <input type="text" name="Donation_Quantity" class="input "  value="<?php echo $data['Donation_Quantity']; ?>">
                         
                         <div class=warn><?php echo $data['Donation_Quantity_err']; ?></div> 
                     </div>

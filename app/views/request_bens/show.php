@@ -163,12 +163,13 @@
                            
                             </tr>
                             <tr>
+                                <?php if($data['request']->B_Id == $_SESSION['user_id']) : ?>
                            
                             <h1><?php echo $data['request']->Donation_ID; ?></h1>
                                <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
                                <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                <?php echo $data['user']->B_Name?> 
-                             
+                                <!-- <?php echo $data['user']->B_Name?>  -->
+                             <?php endif; ?>
                             </tr>
                 
                             <tr>
