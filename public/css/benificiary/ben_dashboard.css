@@ -12,6 +12,7 @@
   --gray: #395b642d;
   --black1: #222;
   --black2: rgb(107, 105, 105);
+  --light: #D6E4E5;
 }
 
 body {
@@ -48,7 +49,9 @@ display: none;
   left: 0;
   width: 100%;
 }
-
+#on{
+  display: none;
+}
 .navigation ul li {
   position: relative;
   width: 100%;
@@ -493,3 +496,4 @@ display: none;
     padding-bottom: 30px;
   }
 }
+

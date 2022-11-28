@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -17,7 +17,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li id="on" >
                     <a href="#">
                         <span class="icon">
                             <i class="fas fa-home"></i>
@@ -168,22 +168,21 @@
                             <h1><?php echo $data['request']->Donation_ID; ?></h1>
                                <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
                                <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                <!-- <?php echo $data['user']->B_Name?>  -->
+                                 <!-- <?php echo $data['user']->B_Name?>   -->
                              <?php endif; ?>
                             </tr>
                 
                             <tr>
                         
                             </tr>
-                            
+                            <div>
                                 <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID ?>" method="post">
                                 <input type="submit" value="Edit" >
-                                
-                                <br>
+                                </form>
                                 <form action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>" method="post">
                                 <input type="submit" value="Delete" >
                                 </form>
-                           
+                           </div>
                         </tbody>
                     </table>
                 </div>

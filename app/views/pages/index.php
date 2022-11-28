@@ -50,7 +50,7 @@
                                 <a href="#">sign up</a>
                             </li>
                             <li>
-                                <a href="#">Log in</a>
+                                <a href="#">login</a>
                             </li>
                         </ul>
 

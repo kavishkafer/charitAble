@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
