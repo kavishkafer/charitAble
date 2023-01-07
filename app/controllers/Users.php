@@ -1,9 +1,16 @@
 <?php 
+use helpers\email;
 class Users extends Controller{
     public function __construct(){
    $this->userModel = $this->model('User');
+   $this->Verify_model = $this->model('Verify_model');
    
     }
+
+    public function index(){
+
+    }
+    
     public function signup_ben(){
         // Check for POST
         
@@ -12,6 +19,9 @@ class Users extends Controller{
 
             //sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            $otp_code = rand(100000,999999);
+            
          
             // Init data
             $data = [
@@ -21,6 +31,8 @@ class Users extends Controller{
                 'address' => trim($_POST['address']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
+                'status' => false,
+                'otp'=>$otp_code,
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -64,9 +76,12 @@ class Users extends Controller{
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 //Register User
+                
                 if($this->userModel->register($data)){
                     flash('register_success', 'You are registered and can log in');
-                    redirect('users/login_ben');
+                    $email = new Email($data['email']);
+                    $email->sendVerificationEmail($data['email'], $otp_code);
+                    redirect('Users/verify');
                 } else {
                     die('Something went wrong');
                 }
@@ -89,6 +104,8 @@ class Users extends Controller{
                 'telephone_number' => '',
                 'address' => '',
                 'password' => '',
+                'status' => '',
+                'otp'=>'',
                 'confirm_password' => '',
                 'name_err' => '',
                 'email_err' => '',
@@ -116,7 +133,13 @@ class Users extends Controller{
                 'email_err' => '',
                 'password_err' =>''    
               ];
-      
+               // Check for user/email
+               if($this->userModel->findUserByEmail($data['email'])){
+                // User found
+              } else {
+                // User not found
+                $data['email_err'] = 'No user found';
+              }
               // Validate Email
               if(empty($data['email'])){
                 $data['email_err'] = 'Please enter email';
@@ -126,14 +149,7 @@ class Users extends Controller{
               if(empty($data['password'])){
                 $data['password_err'] = 'Please enter password';
               }
-              // Check for user/email
-              if($this->userModel->findUserByEmail($data['email'])){
-                // User found
-              } else {
-                // User not found
-                $data['email_err'] = 'No user found';
-              }
-      
+              
               // Make sure errors are empty
               if(empty($data['email_err']) && empty($data['password_err'])){
                 // Validated
@@ -189,6 +205,45 @@ class Users extends Controller{
                   return false;
                 }
               }
+
+              public function verify(){
+                if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    $data = [
+                        'otp'=>trim($_POST['otp']),
+                        'error'=>'',
+                        'status'=> ''
+                    ];
+        
+                    $verified = $this->Verify_model->verifyOTP($data['otp']);
+        
+                    if($verified){
+                        if($this->Verify_model->verify($verified->B_Id)){
+                            // set verification successful flash message
+        //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
+                            // redirect to the login
+                            redirect('users/login_ben');
+                        }
+                        else{
+                            // set verification failed flash message
+        //                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
+                            // redirect to the signup 
+                            redirect('users/signup_ben');
+                        }
+                    }
+                    else{
+                    
+                        $data['error'] = "Invalid OTP";
+                    }
+                }
+                else{
+                    $data = [
+                        'otp'=>'',
+                        'error'=>'',
+                        'status'=>''
+                    ];
+                }
+                $this->view('users/signup_verification', $data);
+            }
           }
       
         

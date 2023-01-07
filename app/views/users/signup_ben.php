@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&libraries=places"></script>
 <body>
 
     <div class="logo">
@@ -55,10 +56,12 @@
                         </div>
                         <div class="div">
                             <h5>Address</h5>
-                            <input type="text" name="address" class="input"  value="<?php echo $data['address'];?>">
+                            <input type="text" name="address"  class="input"  value="<?php echo $data['address'];?>">
+                            
                             <div class=warn><?php echo $data['address_err']; ?></div>
                         </div>
                         </div>
+                        
                         <div class="input-div one ">
                             <div class="i">
                                 <i class="fas fa-lock"></i>
@@ -78,6 +81,7 @@
                                     <input type="password" name="confirm_password" class="input" value="<?php echo $data['password'];?>" >
                                     <div class=warn><?php echo $data['confirm_password_err']; ?></div>
                                 </div>
+                                
                                 </div>
                 
                
@@ -89,5 +93,6 @@
         
 
     </div>
+  
     <script src="<?php echo URLROOT; ?>/js/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

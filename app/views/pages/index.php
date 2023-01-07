@@ -50,7 +50,7 @@
                                 <a href="#">sign up</a>
                             </li>
                             <li>
-                                <a href="#">login</a>
+                                <a href="<?php echo URLROOT; ?>/users/login_ben">login</a>
                             </li>
                         </ul>
 

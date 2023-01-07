@@ -21,10 +21,10 @@ class Request_bens extends Controller{
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                // 'Donation_Description' => trim($_POST['Donation_Description']),
-                // 'Donation_Quantity' => trim($_POST['Donation_Quantity']),
-                // 'Donation_Type' => trim($_POST['Donation_Type']),
-                // 'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Donation_Description' => trim($_POST['Donation_Description']),
+                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
+                'Donation_Type' => trim($_POST['Donation_Type']),
+                'Donation_Priority' => trim($_POST['Donation_Priority']),
                 // 'Donation_Status' => trim($_POST['Donation_Status']),
                 'user_id' => $_SESSION['user_id'],
                 'Donation_Description_err' => '',
@@ -90,7 +90,7 @@ class Request_bens extends Controller{
     public function show($id){
         
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->Donation_ID);
+        $user = $this->userModel->getUserById($request->B_Id);
         $data = [
             'request' => $request,
             'user' => $user

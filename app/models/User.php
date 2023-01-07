@@ -16,7 +16,7 @@ class User {
         }
     }
     public function register($data){
-        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password) VALUES(:name, :email,:telephone_number,:address, :password)');
+        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp) VALUES(:name, :email,:telephone_number,:address, :password,:otp)');
 
         ;
         //bind values
@@ -25,6 +25,7 @@ class User {
         $this->db->bind(':telephone_number', $data['telephone_number']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':otp', $data['otp']);
         //execute
         if($this->db->execute()){
             return true;
