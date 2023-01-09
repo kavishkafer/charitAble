@@ -6,7 +6,7 @@ class User {
     }
 
     //Beneficiary
-    public function findUserByEmail_ben($email){
+    public function findUserByEmail($email){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Email = :email');
         $this->db->bind(':email', $email);
         $row = $this->db->single();
@@ -17,7 +17,7 @@ class User {
             return false;
         }
     }
-    public function register_ben($data){
+    public function register($data){
         $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp) VALUES(:name, :email,:telephone_number,:address, :password,:otp)');
 
         ;
@@ -35,7 +35,7 @@ class User {
             return false;
         }
     }
-    public function signin_ben($email, $password){
+    public function login($email, $password){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Email = :email');
         $this->db->bind(':email', $email);
         $row = $this->db->single();
@@ -46,7 +46,7 @@ class User {
             return false;
         }
     }
-    public function getUserById_ben($id){
+    public function getUserById($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
         $this->db->bind(':B_id', $id);
         $row = $this->db->single();

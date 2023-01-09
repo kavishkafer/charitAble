@@ -77,7 +77,7 @@ class Users extends Controller{
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 //Register User
                 
-                if($this->userModel->register_ben($data)){
+                if($this->userModel->register($data)){
                     flash('register_success', 'You are registered and can log in');
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
@@ -134,7 +134,7 @@ class Users extends Controller{
                 'password_err' =>''    
               ];
                // Check for user/email
-               if($this->userModel->findUserByEmail_ben($data['email'])){
+               if($this->userModel->findUserByEmail($data['email'])){
                 // User found
               } else {
                 // User not found
@@ -154,10 +154,10 @@ class Users extends Controller{
               if(empty($data['email_err']) && empty($data['password_err'])){
                 // Validated
                 // Check and set logged in user
-                $loggedInUser = $this->userModel->signin_ben($data['email'], $data['password']);
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if($loggedInUser){
                   // Create Session
-                  $this->createUserSession_ben($loggedInUser);
+                  $this->createUserSession($loggedInUser);
                   
                 
                 } else {
@@ -184,13 +184,13 @@ class Users extends Controller{
               $this->view('users/login_ben', $data);
             }
             }
-            public function createUserSession_ben($user){
+            public function createUserSession($user){
                 $_SESSION['user_id'] = $user->B_Id;
                 $_SESSION['user_email'] = $user->B_Email;
                 $_SESSION['user_name'] = $user->B_Name;
                 redirect('request_bens');
               }
-              public function logout_ben(){
+              public function logout(){
                 unset($_SESSION['user_id']);
                 unset($_SESSION['user_email']);
                 unset($_SESSION['user_name']);
