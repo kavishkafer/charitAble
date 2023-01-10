@@ -64,7 +64,7 @@
                 <?php if(isset($_SESSION['user_id'])) : ?>
 
                 <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
+                    <a href="<?php echo URLROOT;?>/users/logout_ben">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
