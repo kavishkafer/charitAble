@@ -1,11 +1,16 @@
 <?php 
 use helpers\email;
-class Users extends Controller{
-    public function __construct(){
-   $this->userModel = $this->model('User');
-   $this->Verify_model = $this->model('Verify_model');
-   
+
+class Users extends Controller
+{   public function __construct(){
+    $this->userModel = $this->model('User');
+    $this->Verify_model = $this->model('Verify_model');
+  }
+
+    public function index(){
+
     }
+
 
     public function index(){
 
@@ -21,6 +26,9 @@ class Users extends Controller{
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             
             $otp_code = rand(100000,999999);
+
+            $role = 1;
+
             
          
             // Init data
@@ -31,6 +39,7 @@ class Users extends Controller{
                 'address' => trim($_POST['address']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
+                'user_role'=>$role,
                 'status' => false,
                 'otp'=>$otp_code,
                 'name_err' => '',
@@ -77,10 +86,16 @@ class Users extends Controller{
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 //Register User
                 
-                if($this->userModel->register($data)){
+
+                if($this->userModel->regcom($data) ){
+
                     flash('register_success', 'You are registered and can log in');
+                    $x=$this->userModel->getBenUserId($data['email']);
+                    $this->userModel->register($data,$x);
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
+                    
+
                     redirect('Users/verify');
                 } else {
                     die('Something went wrong');
@@ -106,6 +121,9 @@ class Users extends Controller{
                 'password' => '',
                 'status' => '',
                 'otp'=>'',
+
+                'role'=>'',
+
                 'confirm_password' => '',
                 'name_err' => '',
                 'email_err' => '',
@@ -120,7 +138,7 @@ class Users extends Controller{
     }
 
 
-    public function login_ben(){
+    public function login(){
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Process form
@@ -130,11 +148,18 @@ class Users extends Controller{
             $data =[
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
+                
+                
                 'email_err' => '',
                 'password_err' =>''    
               ];
+
+              
+
                // Check for user/email
                if($this->userModel->findUserByEmail($data['email'])){
+                $user_role=$this->userModel->findUserRoleByEmail($data['email']);
+
                 // User found
               } else {
                 // User not found
@@ -156,38 +181,53 @@ class Users extends Controller{
                 // Check and set logged in user
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if($loggedInUser){
+
                   // Create Session
-                  $this->createUserSession($loggedInUser);
-                  
+                  if($user_role==1){
+                    $this->createBenSession($loggedInUser);
+                  }
+                  else if($user_role==2){
+                    $this->createDonSession($loggedInUser);
+                  }
+                  else if($user_role==3){
+                    $this->createEhSession($loggedInUser);
+                  }
+                  else if($user_role==4){
+                    $this->createAdminSession($loggedInUser);
+                  }
+                  else{
+                    die('Something went wrong');
+                  }
+                } 
+                
                 
                 } else {
                   $data['password_err'] = 'Password incorrect';
       
-                  $this->view('users/login_ben', $data);
+                  $this->view('users/login', $data);
                 }
-              } else {
-                // Load view with errors
-                $this->view('users/login_ben', $data);
-              }
+              } 
       
       
-            } else {
+            else {
               // Init data
               $data =[    
                 'email' => '',
                 'password' => '',
                 'email_err' => '',
+                
                 'password_err' => '',        
               ];
       
               // Load view
-              $this->view('users/login_ben', $data);
+              $this->view('users/login', $data);
             }
-            }
-            public function createUserSession($user){
-                $_SESSION['user_id'] = $user->B_Id;
-                $_SESSION['user_email'] = $user->B_Email;
-                $_SESSION['user_name'] = $user->B_Name;
+          }
+          
+            public function createBenSession($user){
+                $_SESSION['user_id'] = $user->User_Id;
+                $_SESSION['user_email'] = $user->User_Email;
+                $_SESSION['user_role'] = $user->User_Role;
                 redirect('request_bens');
               }
               public function logout(){
@@ -195,7 +235,7 @@ class Users extends Controller{
                 unset($_SESSION['user_email']);
                 unset($_SESSION['user_name']);
                 session_destroy();
-                redirect('users/login_ben');
+                redirect('users/login');
               }
               
               public function isLoggedIn(){
@@ -218,10 +258,13 @@ class Users extends Controller{
         
                     if($verified){
                         if($this->Verify_model->verify($verified->B_Id)){
+
+                          
                             // set verification successful flash message
         //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
                             // redirect to the login
-                            redirect('users/login_ben');
+                            redirect('users/login');
+
                         }
                         else{
                             // set verification failed flash message
@@ -244,6 +287,7 @@ class Users extends Controller{
                 }
                 $this->view('users/signup_verification', $data);
             }
+
 
 //Donor
 
@@ -441,7 +485,7 @@ public function login_dons(){
         }
       }*/
 
+
           }
-      
         
     
