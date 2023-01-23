@@ -10,7 +10,9 @@ class Request_ben
     {
         $this->db->query('SELECT * FROM donation_table
                           INNER JOIN beneficiary_details
+
                           ON `donation_table`.`B_Id` = `beneficiary_details`.`B_Id` AND ' . $_SESSION['user_id'] . ' = `beneficiary_details`.`User_Id`
+
                           Order by `donation_table`.`Donation_Time` DESC');
         $results = $this->db->resultSet();
         return $results;
@@ -57,6 +59,7 @@ class Request_ben
             $this->db->bind(':Donation_Type', $data['Donation_Type']);
             $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
             $this->db->bind(':Donation_ID', $data['Donation_ID']);
+
         }
 
         // Execute
@@ -65,6 +68,7 @@ class Request_ben
         } else {
             return false;
         }
+
     }
     
     public function deleteRequest($id)
