@@ -18,15 +18,17 @@ class Request_bens extends Controller{
     }
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $a= $_SESSION['user_id'];
+            $y =$this->requestModel-> getBenId($a);
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                // 'Donation_Description' => trim($_POST['Donation_Description']),
-                // 'Donation_Quantity' => trim($_POST['Donation_Quantity']),
-                // 'Donation_Type' => trim($_POST['Donation_Type']),
-                // 'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Donation_Description' => trim($_POST['Donation_Description']),
+                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
+                'Donation_Type' => trim($_POST['Donation_Type']),
+                'Donation_Priority' => trim($_POST['Donation_Priority']),
                 // 'Donation_Status' => trim($_POST['Donation_Status']),
-                'user_id' => $_SESSION['user_id'],
+                'user_id' => $y->B_Id,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
@@ -90,19 +92,25 @@ class Request_bens extends Controller{
     public function show($id){
         
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->Donation_ID);
+        $user = $this->userModel->getUserById($request->B_Id);
         $data = [
             'request' => $request,
             'user' => $user
         ];
+        if($data['request']!=null){
         $this->view('request_bens/show', $data);
-
+        } else {
+            redirect('request_bens');
+        }
     }
 
     public function edit($id){
+        $a= $_SESSION['user_id'];
+        $y =$this->requestModel-> getBenId($a);
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+           
            
 
             $data = [
@@ -111,7 +119,7 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => trim($_GET['Donation_Quantity']),
                 'Donation_Type' => trim($_GET['Donation_Type']),
                 'Donation_Priority' => trim($_GET['Donation_Priority']),
-                'user_id' => $_SESSION['user_id'],
+                'user_id' => $y->B_Id,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
@@ -150,7 +158,7 @@ class Request_bens extends Controller{
             
             $request = $this->requestModel->getRequestById($id);
             // Check for owner
-            if($request->B_Id != $_SESSION['user_id']){
+            if($request->B_Id != $y->B_Id){
                 redirect('request_bens');
             }
             $data = [

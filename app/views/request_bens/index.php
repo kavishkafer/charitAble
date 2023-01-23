@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -84,9 +84,9 @@
                 </div>
 
                
-                <div class="user">
+                <!-- <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
+                </div> -->
             </div>
 
             <!-- ======================= Cards ================== -->
@@ -94,7 +94,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="cardName">Total Requests</div>
                     </div>
 
                     <div class="iconBx">
@@ -105,7 +105,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Pending Requests</div>
                     </div>
 
                     <div class="iconBx">
@@ -116,7 +116,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        <div class="cardName">Accepted request</div>
                     </div>
 
                     <div class="iconBx">
@@ -126,8 +126,8 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers">10</div>
+                        <div class="cardName">Completed Requests</div>
                     </div>
 
                     <div class="iconBx">
@@ -140,8 +140,8 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+                        <h2>Recent Requests</h2>
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add requests</a>
                     </div>
 
                     <table>
@@ -152,6 +152,7 @@
                                 <td>Type</td>
                                 <td>Quantity</td>
                                 <td>Priority</td>
+                                <td>View</td>
                                 
                             </tr>
                         </thead>
@@ -165,7 +166,7 @@
                                 <td><?php echo $requests->Donation_Description; ?></td>
                                 <td><?php echo $requests->Donation_Type; ?></td>
                                 <td><?php echo $requests->Donation_Quantity; ?></td>
-                                <td><?php echo $requests->Donation_Priority; ?></td>
+                                <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
                                 <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
                             </tr>
                             <?php endforeach; ?>
@@ -176,7 +177,7 @@
                 </div>
 
                 <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
+                <!-- <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>Recent Customers</h2>
                     </div>
@@ -253,7 +254,7 @@
                                 <h4>Amit <br> <span>India</span></h4>
                             </td>
                         </tr>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

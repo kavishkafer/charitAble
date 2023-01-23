@@ -42,6 +42,7 @@
                
                 <input type="submit" class="btn" value="Login">
                 <a href="<?php echo URLROOT; ?>/users/signup_ben"> click here if U don't have an account</a>
+                <a href="<?php echo URLROOT; ?>/reset_passwords/reset_password"> click here if U forget ur password</a>
             </form>
             
         </div>

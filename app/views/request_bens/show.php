@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -17,7 +17,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li id="#" >
                     <a href="#">
                         <span class="icon">
                             <i class="fas fa-home"></i>
@@ -85,56 +85,14 @@
 
                
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
+                   <i class="fas fa-user"></i>
                 </div>
             </div>
 
             <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
-                    </div>
+            
 
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
+               
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
@@ -144,7 +102,7 @@
                         <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
                     </div>
 
-                    <table>
+                    <!-- <table>
                         <thead>
                             <tr>
                                 <td>Request_Id</td>
@@ -168,106 +126,81 @@
                             <h1><?php echo $data['request']->Donation_ID; ?></h1>
                                <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
                                <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                <!-- <?php echo $data['user']->B_Name?>  -->
+                                   <?php echo $data['user']->B_Name?>   
                              <?php endif; ?>
                             </tr>
                 
                             <tr>
                         
                             </tr>
-                            
+                            <div>
                                 <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID ?>" method="post">
                                 <input type="submit" value="Edit" >
-                                
-                                <br>
+                                </form>
                                 <form action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>" method="post">
                                 <input type="submit" value="Delete" >
                                 </form>
-                           
+                           </div>
                         </tbody>
                     </table>
-                </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
+                </div> -->
+                <div class="content-sidebar">
+                        <div class="content">
+                            <h3>Donation ID</h3>
+                        </div>
+                        <div class="data">
+                        <?php echo $data['request']->Donation_ID; ?>
+                        </div>
+                        <div class="content">
+                            <h3>Donation Description</h3>
+                        </div>
+                        <div class="data">
+                        <?php echo $data['request']->Donation_Description; ?>
+                        </div>
+                        <div class="content">
+                            <h3>Donation Type</h3>
+                        </div>
+                        <div class="data">
+                        <?php echo $data['request']->Donation_Type; ?>
+                        </div>
+                        <div class="content">
+                            <h3>Donation Quantity</h3>
+                        </div>
+                        <div class="data">
+                        <?php echo $data['request']->Donation_Quantity; ?>
+                        </div>
                     </div>
 
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
+                    <div class="content-sidebar">
+                        <div class="content">
+                        <form
+                                action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID; ?>"
+                                method="post">
+                                <input type="submit" class="button button1" id="Edit" value="Edit">
+                            </form>
+                           
+                        </div>
+                        <div class="data">
+                            <form
+                                action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>"
+                                method="post">
+                                <input type="submit" class="button button2" id="Delete" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    </tbody>
                     </table>
                 </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+
+                <!-- ================= New Customers ================ -->
+               
             </div>
         </div>
     </div>

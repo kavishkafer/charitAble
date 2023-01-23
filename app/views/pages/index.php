@@ -50,7 +50,7 @@
                                 <a href="#">sign up</a>
                             </li>
                             <li>
-                                <a href="#">Log in</a>
+                                <a href="<?php echo URLROOT; ?>/users/login_ben/benificiary">login</a>
                             </li>
                         </ul>
 
@@ -81,21 +81,21 @@
                     <div class="donationBox">
                         <div class="title">Become a Donor</div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, vitae quidem. Laudantium, animi cum saepe hic id in? Quisquam corrupti odit commodi dolor ipsam architecto vitae iusto amet explicabo illo.</p>
-                    <button>Donate Now</button>
+                    <button>  <a href="<?php echo URLROOT; ?>/users/login">Donate Now</a></button>
                     </div>
                     <!--donation box ends here-->
 
             <div class="beneficiaryBox">
                 <div class="title">Become a Beneficiary</div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis officiis nemo quod sed mollitia maxime aliquam dolore voluptas. Dolor commodi voluptates aliquid, earum minima accusantium eos aspernatur ullam aperiam tempora.</p>
-            <button>Schedule Now</button>
+            <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
             </div>
                     <!--donation box ends here-->
 
             <div class="eventHosterBox">
                 <div class="title">Become an Event Hoster</div>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga neque expedita itaque alias aliquid cum qui voluptatem tenetur? Expedita enim fuga deserunt molestiae, tenetur molestias eveniet fugit non commodi pariatur!</p>
-                <button>Regsiter Now</button>
+                <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
             </div>
                     <!--donation box ends here-->
 
@@ -108,7 +108,7 @@
         <div class="container">
             <h1>Together you can <span>Help Them</span></h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
-            <button>Start with a little</button>
+            <button>  <a href="<?php echo URLROOT; ?>/users/login>login</a></button>
         </div>
     </section>
                     <!--donors section ends here-->
@@ -137,7 +137,7 @@
 
 
 <?php if(isset($_SESSION['user_id'])) : ?>
-  <h3>Welcome <?php echo $_SESSION['user_name']; ?></h3>
+  <h3>Welcome <?php echo $_SESSION['user_id']; ?></h3>
   <p>You are logged in with  and your user id is <?php echo $_SESSION['user_id']; ?>  </p>
   <?php else : ?> not logged in
 <?php endif; ?>

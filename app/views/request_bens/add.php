@@ -1,23 +1,106 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-<body>
 
-    <div class="logo">
-        <img src="<?php echo URLROOT; ?>/img/logo_black.png" alt="logo">
-        </div>
-       
-     <img class="wave" src="<?php echo URLROOT; ?>/img/signup_wave.svg">  
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/form.css">
+<body>
+    <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="img">
-            <img src="<?php echo URLROOT; ?>/img/signup_bg.svg">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
+                        </span>
+                         <span class="title"></span> 
+                    </a>
+                </li>
+
+                <li id="#" >
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="title">Requests</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-comment"></i>
+                        </span>
+                        <span class="title">Stats</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-calendar"></i>
+                        </span>
+                        <span class="title">Calender</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-cog"></i>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+                <?php if(isset($_SESSION['user_id'])) : ?>
+
+                <li>
+                    <a href="<?php echo URLROOT;?>/users/logout">
+                        <span class="icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                
+            </ul>
         </div>
-        <div class="login-container">
-            <form action="<?php echo URLROOT; ?>/request_bens/add" method="POST">
-                <img class="avatar" src="<?php echo URLROOT; ?>/img/signup.svg">
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+               
+                <div class="user">
+                   <i class="fas fa-user"></i>
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            
+
+               
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Add Request</h2>
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+                    </div>
                 
-                <h2>Add posts</h2>
-                
-                <div class="input-div one ">
+                <!-- <div class="input-div one ">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>
@@ -60,13 +143,63 @@
                                 <input type="text" name="Donation_Priority" class="input" value="<?php echo $data['Donation_Priority'];?>" >
                                  <div class=warn><?php echo $data['Donation_Priority_err']; ?></div> 
                             </div>
-                            </div>
+                            </div> -->
                            
                 
-               
+<!--                
                 <input type="submit" class="btn" value="submit">
                 
-            </form>
+            </form> -->
+            <form action="<?php echo URLROOT; ?>/request_bens/add" method="POST">
+                    <div class="container">
+                        <h1>Add</h1>
+                        <p>Please fill this to add a request</p>
+                        <hr>
+                <div class="content-sidebar">
+                    <div class="content">
+                        <div class="des">
+                        <h3> <label for="Donation Description"><b>Donation Description</b></label></h3>
+                    </div>
+                    </div>
+                    <div class="data">
+                        <textarea id="subject" name="Donation_Description" value="<?php echo $data['Donation_Description']; ?>" ></textarea>
+                        <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div> 
+                                 
+                    </div>
+                    <div class="content">
+                        <h3><label for="Donation Type"><b>Donation type</b></label></h3>
+                    </div>
+                    <div class="data">
+                        <select  name="Donation_Type">
+                            <option value="Dry Rations">Dry rations</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Sanitary items">Sanitary items</option>
+                            <option value="Others">Others</option>
+                            </select>
+                    </div>
+                    <div class="content">
+                        <h3><label for="Donation Priority"><b>Donation Priority</b></label></h3>
+                    </div>
+                    <div class="data">
+                        <select  name="Donation_Priority">
+                            <option value="High">High</option>
+                            <option value="Normal">Normal</option>
+                            </select>
+                    </div>
+                    <div class="content">
+                        <label for="Donation Quantity"><h3>Donation Quantity</h3></label>
+                    </div>
+                    <div class="data">
+                      <input type="text" name="Donation_Quantity" placeholder="Donation Quantity" value="<?php echo $data['Donation_Quantity']; ?>">
+                    </div>
+
+                </div>
+                <input type="submit" class="button button1" value="submit">
+                </div>
+            </div>
+        </div>
+    </div>
             
         </div>
         
