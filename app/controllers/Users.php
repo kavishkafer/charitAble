@@ -289,7 +289,7 @@ class Users extends Controller
             }
 
 //event hoster
- public function register(){
+ public function signup_eh(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -373,7 +373,7 @@ class Users extends Controller
 
         } else {
           // Load view with errors
-          $this->view('users/register', $data);
+          $this->view('users/signup_eh', $data);
         }
 
       } else {
@@ -390,7 +390,7 @@ class Users extends Controller
         ];
 
         // Load view
-        $this->view('users/register', $data);
+        $this->view('users/signup_eh', $data);
       }
     }
  
