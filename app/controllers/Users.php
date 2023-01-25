@@ -423,14 +423,14 @@ public function login_dons(){
         $_SESSION['user_id'] = $user->D_Id;
         $_SESSION['user_email'] = $user->D_Email;
         $_SESSION['user_name'] = $user->D_Name;
-        redirect('pages/about');
+        redirect('dashboard_dons/index');
       }
       public function logout_don(){
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        redirect('users/login_dons/0');
+        redirect('users/login_dons');
       }
       
       /*public function isLoggedIn(){
