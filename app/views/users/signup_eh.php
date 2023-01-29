@@ -23,13 +23,13 @@
                     </div>
                     <div class="form-item">
                         <label for="emailForm">Email</label>
-                        <input type="email" id="emailForm" placeholder="Email" class="input"  value="<?php echo $data['email']; ?>">
+                        <input type="email" id="email" placeholder="Email" class="input"  value="<?php echo $data['email']; ?>">
                         <div class=warn><?php echo $data['email_err']; ?></div>
                     </div>
 
                     <div class="form-item">
                         <label for="addressForm">Address</label>
-                        <input type="text" id="addressForm" placeholder="Enter your address" class="input"  value="<?php echo $data['address'];?>">
+                        <input type="text" id="address" placeholder="Enter your address" class="input"  value="<?php echo $data['address'];?>">
                             <div class=warn><?php echo $data['address_err']; ?></div>
                     </div>
 
