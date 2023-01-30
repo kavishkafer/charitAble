@@ -21,9 +21,7 @@ class User {
     public function register($data,$x){
         $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id)');
         
-       
-
-        
+     
         //bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -127,7 +125,10 @@ class User {
     
     
     //register event hoster
-    public function signup_eh($data){
+    
+
+    public function register($data){
+
       $this->db->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
       // Bind values
       $this->db->bind(':name', $data['name']);

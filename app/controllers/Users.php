@@ -346,6 +346,7 @@ class Users extends Controller
           }
 
 
+
         // Validate Password
         if(empty($data['password'])){
           $data['password_err'] = 'Pleae enter password';
@@ -382,6 +383,46 @@ class Users extends Controller
           $this->view('users/signup_eh', $data);
         }
 
+
+
+
+        // Validate Password
+        if(empty($data['password'])){
+          $data['password_err'] = 'Pleae enter password';
+        } elseif(strlen($data['password']) < 6){
+          $data['password_err'] = 'Password must be at least 6 characters';
+        }
+
+        // Validate Confirm Password
+        if(empty($data['confirm_password'])){
+          $data['confirm_password_err'] = 'Please confirm password';
+        } else {
+          if($data['password'] != $data['confirm_password']){
+            $data['confirm_password_err'] = 'Passwords do not match';
+          }
+        }
+
+        // Make sure errors are empty
+        if(empty($data['email_err']) && empty($data['name_err']) && empty($data['address_err']) && empty($data['telephone_number_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+          // Validated
+          
+            //Hash password
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+            //register user
+            if($this->userModel->register($data)){
+              flash('register_success', 'You are registered and can log in');
+                    redirect('users/login');
+            } else {
+                die('something went wrong');
+            }
+
+        } else {
+          // Load view with errors
+          $this->view('users/signup_eh', $data);
+        }
+
+
       } else {
         // Init data
         $data =[
@@ -389,12 +430,17 @@ class Users extends Controller
           'email' => '',
           'password' => '',
           'confirm_password' => '',
+
           'address' => '',
           'telephone_number' => '',
           'name_err' => '',
           'email_err' => '',
           'telephone_number_err' => '',
           'address_err' => '',
+
+          'name_err' => '',
+          'email_err' => '',
+
           'password_err' => '',
           'confirm_password_err' => ''
         ];
@@ -517,13 +563,64 @@ public function signup_dons(){
 
 
 
- 
+
+        // Validate Email
+        if(empty($data['email'])){
+          $data['email_err'] = 'Please enter email';
+        }
+
+        // Validate Password
+        if(empty($data['password'])){
+          $data['password_err'] = 'Please enter password';
+        }
+       
+        // Make sure errors are empty
+        if(empty($data['email_err']) && empty($data['password_err'])){
+          // Validated
+          // Check and set logged in user
+          $loggedInUser = $this->userModel->login_don($data['email'], $data['password']);
+          if($loggedInUser){
+            // Create Session
+            $this->createUserSession_don($loggedInUser);
+            
+          
+          } else {
+            $data['password_err'] = 'Password incorrect';
+
+            $this->view('users/login_dons', $data);
+          }
+        } else {
+          // Load view with errors
+          $this->view('users/login_dons', $data);
+        }
+
+
+      } else {
+        // Init data
+        $data =[    
+          'email' => '',
+          'password' => '',
+          'email_err' => '',
+          'password_err' => '',        
+        ];
+
+        // Load view
+        $this->view('users/login_dons', $data);
+      }
+      }
+      public function createUserSession_don($user){
+        $_SESSION['user_id'] = $user->D_Id;
+        $_SESSION['user_email'] = $user->D_Email;
+        $_SESSION['user_name'] = $user->D_Name;
+        redirect('dashboard_dons/index');
+     
+
       public function logout_don(){
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        redirect('users/login_dons/0');
+        redirect('users/login_dons');
       }
       
       /*public function isLoggedIn(){
