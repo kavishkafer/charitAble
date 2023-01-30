@@ -21,9 +21,7 @@ class User {
     public function register($data,$x){
         $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id)');
         
-       
-
-        
+     
         //bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -97,17 +95,25 @@ class User {
         $id=$row->User_Id;
         return $id;
     }
+    public function getDonUserId($email){
+        $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        $id=$row->User_Id;
+        return $id;
+    }
 
     //Donor
     //Register user
-    public function signup_don($data){
-        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_no, D_Address, D_password) VALUES(:name, :email, :tel_no, :address, :password)');
+    public function signup_don($data,$x){
+        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_no, D_Address, D_password,User_Id) VALUES(:name, :email, :tel_no, :address, :password,:User_Id)');
         //Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':User_Id', $x);
 
         //Execute
         if($this->db->execute()){
@@ -119,7 +125,10 @@ class User {
     
     
     //register event hoster
+    
+
     public function register($data){
+
       $this->db->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
       // Bind values
       $this->db->bind(':name', $data['name']);
