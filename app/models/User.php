@@ -46,6 +46,19 @@ class User {
         }
     }
 
+        public function regcom($data){
+            $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:email, :password,:user_role)');
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':user_role', $data['user_role']);
+            if($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }
+
+
+        }
     public function addAdmin($data){
         $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:admin_email, :admin_password,:user_role)');
         $this->db->bind(':admin_email', $data['admin_email']);
