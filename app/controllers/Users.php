@@ -5,6 +5,7 @@ class Users extends Controller
 {   public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
+    //$this->settingModel = $this->model('Setting');
   }
 
     public function index(){
@@ -12,8 +13,10 @@ class Users extends Controller
     }
 
 
+
  
     
+
     public function signup_ben(){
         // Check for POST
         
@@ -230,12 +233,23 @@ class Users extends Controller
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('request_bens');
               }
+
+
+              public function createAdminSession($user){
+                $_SESSION['user_id'] = $user->User_Id;
+                $_SESSION['user_email'] = $user->User_Email;
+                $_SESSION['user_role'] = $user->User_Role;
+                redirect('settings/add_newadmin');
+              }
+
+
               public function createDonSession($user){
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('pages/index');
               }
+
               public function logout(){
                 unset($_SESSION['user_id']);
                 unset($_SESSION['user_email']);
