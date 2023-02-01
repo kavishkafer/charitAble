@@ -144,7 +144,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
            /*if($post->user_id != $_SESSION['user_id']){
                reirect('posts');
            } */
-            if($thid->postModel->deletePost($id)){
+            if($this->postModel->deletePost($id)){
               flash('post_message', 'post removed');
               redirect('posts');
             } else {
