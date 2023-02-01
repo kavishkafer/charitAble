@@ -1,9 +1,9 @@
 <?php
 class Schedulereq_dons extends Controller {
     public function __construct(){
-        /*if(!isLoggedIn()){
+        if(!isLoggedIn()){
             redirect('users/login_dons');
-        }*/
+        }
 
         $this->requestModel = $this->model('Schedulereq_don');
     }
