@@ -14,7 +14,7 @@
                 </li>
 
                 <li>
-                <a href="<?php echo URLROOT; ?>/dashboard_dons/index">
+                <a href="<?php echo URLROOT; ?>/pages/about">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
