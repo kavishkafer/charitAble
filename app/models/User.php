@@ -45,6 +45,7 @@ class User {
             return false;
         }
     }
+
         public function regcom($data){
             $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:email, :password,:user_role)');
             $this->db->bind(':email', $data['email']);
@@ -55,9 +56,32 @@ class User {
             }else{
                 return false;
             }
-            
-           
+
+
         }
+    public function addAdmin($data){
+        $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:admin_email, :admin_password,:user_role)');
+        $this->db->bind(':admin_email', $data['admin_email']);
+        $this->db->bind(':admin_password', $data['admin_password']);
+        $this->db->bind(':user_role', $data['user_role']);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }     
+    }
+
+    public function regcom($data){
+        $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:email, :password,:user_role)');
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':user_role', $data['user_role']);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }     
+    }
     
     public function login($email, $password){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
@@ -113,6 +137,14 @@ class User {
         return $id;
     }
 
+    public function getAdminUserId($email){
+        $this->db->query('SELECT * FROM registered_users WHERE User_Email = :admin_email');
+        $this->db->bind(':admin_email', $email);
+        $row = $this->db->single();
+        $id=$row->User_Id;
+        return $id;
+    }
+
     //Donor
     //Register user
     public function signup_don($data,$x){
@@ -134,6 +166,7 @@ class User {
     }
     
     
+
     //register event hoster
     public function signup_eh($data,$x){
       $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:name, :email,:address,:telephone, :password,:user_Id)');
@@ -144,14 +177,13 @@ class User {
       $this->db->bind(':telephone', $data['tel_no']);
       $this->db->bind(':password', $data['password']);
      $this->db->bind(':user_Id', $x);
+}
+    
 
-      // Execute
-      if($this->db->execute()){
-        return true;
-      } else {
-        return false;
-      }
-    }
+    
+
+
+
 
   
 
