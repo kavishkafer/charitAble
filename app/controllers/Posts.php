@@ -29,6 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             'title' => trim($_POST['title']),
             'body' => trim($_POST['body']),
             'user_id' => $_SESSION['user_id'],
+            'image' => trim($_POST['image']),
             'title_err' => '',
             'body_err' => ''
 
@@ -60,7 +61,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 } else {
     $data = [
         'title' => '',
-        'body' => ''
+        'body' => '',
+        'image'=> '',
+        'title_err' => '',
+        'body_err' => '',
+        'image_err' => ''
+
       ];
 
       $this->view('posts/add', $data);
