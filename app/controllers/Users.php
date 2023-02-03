@@ -5,6 +5,7 @@ class Users extends Controller
 {   public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
+    //$this->settingModel = $this->model('Setting');
   }
 
     public function index(){
@@ -12,8 +13,10 @@ class Users extends Controller
     }
 
 
+
  
     
+
     public function signup_ben(){
         // Check for POST
         
@@ -146,8 +149,7 @@ class Users extends Controller
             $data =[
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                
-                
+
                 'email_err' => '',
                 'password_err' =>''    
               ];
@@ -195,6 +197,7 @@ class Users extends Controller
                     $this->createAdminSession($loggedInUser);
                   }
                   else{
+                    
                     die('Something went wrong');
                   }
                 } 
@@ -215,12 +218,10 @@ class Users extends Controller
                 'email' => '',
                 'password' => '',
                 'email_err' => '',
-                
                 'password_err' => '',        
               ];
       
-              // Load view
-              
+              // Load vie
               $this->view('users/login', $data);
             }
           }
@@ -231,18 +232,34 @@ class Users extends Controller
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('request_bens');
               }
+
+
+              public function createAdminSession($user){
+                $_SESSION['user_id'] = $user->User_Id;
+                $_SESSION['user_email'] = $user->User_Email;
+                $_SESSION['user_role'] = $user->User_Role;
+                $this->userModel->getAdminDetails($_SESSION['user_id']);
+                $_SESSION['user_name'] = $user->User_Name;
+                redirect('settings/add_newadmin');
+              }
+
+
               public function createDonSession($user){
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('pages/index');
               }
+
               public function createEhSession($user){
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('pages/index');
               }
+
+
+
               public function logout(){
                 unset($_SESSION['user_id']);
                 unset($_SESSION['user_email']);

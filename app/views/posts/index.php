@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_view.css">
 <body>
 
 
@@ -20,7 +20,7 @@
             <h4 class="title"><?php echo $post->title; ?></h4>
              
                 <div>
-                <p>Written by <?php echo $post->name; ?> on <?php echo $post->postCreated; ?> </p>
+                <p>Written by  on <?php echo $post->postCreated; ?> </p>
                 </div>
             <p class="text"><?php echo $post->body; ?></p>
             <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postId; ?>" class="moreLink">More</a>
