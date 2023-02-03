@@ -71,6 +71,20 @@ class User {
         }     
     }
 
+<<<<<<< HEAD
+=======
+    public function regcom($data){
+        $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:email, :password,:user_role)');
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':user_role', $data['user_role']);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }     
+    }
+>>>>>>> 017845760a1602476c13936c3c124852ff553da4
     
     public function login($email, $password){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
@@ -133,6 +147,7 @@ class User {
         $id=$row->User_Id;
         return $id;
     }
+<<<<<<< HEAD
     public function getAdminDetails($y){
         $this->db->query('SELECT * FROM admin_details WHERE User_Id = :User_Id');
         $this->db->bind(':User_Id', $y);
@@ -140,6 +155,8 @@ class User {
         return $row;
 
     }
+=======
+>>>>>>> 017845760a1602476c13936c3c124852ff553da4
 
     //Donor
     //Register user
