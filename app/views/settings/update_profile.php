@@ -25,7 +25,7 @@
                                 <input type="text" 
                                         name="admin_name" 
                                         placeholder="Enter name"
-                                        value="<?php echo $data['admin_name'] ?>" 
+                                        <!-- value="<?php echo $data['admin_name'] ?>"  -->
                                         class="<?php echo (!empty($data['admin_name_err'])) ? "invalid" : '' ; ?>" />
                                         <span class="invalid-feedback"><?php echo $data['admin_name_err']; ?></span> 
                             </div>
@@ -34,7 +34,7 @@
                                 <input type="email"
                                         name="admin_email" 
                                         placeholder="Enter email"
-                                        value="<?php echo $data['admin_email'] ?>"
+                                        <!-- value="<?php echo $data['admin_email'] ?>" -->
                                         class="<?php echo (!empty($data['admin_email_err'])) ? "invalid" : '' ; ?>" />
                                         <span class="invalid-feedback"><?php echo $data['admin_email_err']; ?></span>
                             </div>
