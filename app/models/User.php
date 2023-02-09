@@ -103,6 +103,14 @@ class User {
         $row = $this->db->single();
         return $row;
     }
+
+    public function getDUserById($id){
+        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_id');
+        $this->db->bind(':D_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function getBenUserId($email){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
         $this->db->bind(':email', $email);
@@ -144,13 +152,15 @@ class User {
     //Donor
     //Register user
     public function signup_don($data,$x){
-        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_no, D_Address, D_password,User_Id) VALUES(:name, :email, :tel_no, :address, :password,:User_Id)');
+        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id)');
         //Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':otp', $data['otp']);
+
         $this->db->bind(':User_Id', $x);
 
         //Execute
@@ -162,6 +172,7 @@ class User {
     }
     
     
+
 
     //register event hoster
     public function signup_eh($data,$x){
@@ -176,27 +187,10 @@ class User {
 }
     
 
-    
-
 
 
 
   
 
-    //find user by email
-    public function findUserByEmail_don($email){
-        $this->db->query('SELECT * FROM donor_details WHERE D_Email = :email');
-        //Bind values
-        $this->db->bind(':email', $email);
-
-        $row = $this->db->single();
-
-        //check row
-        if($this->db->rowCount() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 }
