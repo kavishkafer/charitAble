@@ -155,7 +155,30 @@ label{
 	transform: translateX(118%);
 }
 
+.btn2{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+	height: 45px;
+	width: 100%;
+	color: white;
+	background-color:#395B64 ;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	transition: 0.4s;
+	transform: translateX(118%);
+}
+
+
 .btn:hover{
+	background-color: #A5C9CA;
+}
+
+.btn2:hover{
 	background-color: #A5C9CA;
 }
 
@@ -514,6 +537,23 @@ display: none;
   background: #2C3333;
   color: white;
   border-radius: 1rem;
+
+}
+
+table{
+  table-layout: fixed;
+}
+
+th{
+  color: #395B64;
+  font-size: 1.6rem;
+}
+
+td, th{
+  vertical-align: top;
+  width: 10.5%;
+  padding: 8px;
+  text-align: left;
 
 }
 

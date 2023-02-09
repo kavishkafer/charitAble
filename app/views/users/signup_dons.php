@@ -58,7 +58,7 @@
 
 <input type="submit" value="Create Account" class="btn">
 <p class="text">Already have an account?
-<a href="<?php echo URLROOT; ?>/users/login_dons">Sign In</a>
+<a href="<?php echo URLROOT; ?>/users/login">Sign In</a>
 </p>
 </div>
 

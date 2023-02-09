@@ -19,7 +19,9 @@
             </li>
             <!-- <li>
                 <a href="#">
+
                     <span id="userName"><?php echo $_SESSION['user_email'];?></span><br>
+
                 </a>
             </li> -->
         </ul>

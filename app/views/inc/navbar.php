@@ -14,7 +14,9 @@
                 </li>
 
                 <li>
+
                     <a href="<?php echo URLROOT; ?>/admin_dashs/dash_view" class = "nav">
+
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -50,7 +52,9 @@
                 </li>
 
                 <li>
+
                     <a href="<?php echo URLROOT; ?>/donations/list_of_donations">
+
                         <span class="icon">
                             <i class="fas fa-heart"></i>
                         </span>
@@ -59,7 +63,9 @@
                 </li>
 
                 <li>
+
                     <a href="<?php echo URLROOT; ?>/events/list_of_events">
+
                         <span class="icon">
                             <i class="fas fa-gift"></i>
                         </span>
@@ -76,7 +82,9 @@
                     </a>
                 </li>
                 <li>
+
                     <a href="<?php echo URLROOT; ?>/posts">
+
                         <span class="icon">
                             <i class="fas fa-signal"></i>
                         </span>

@@ -68,6 +68,7 @@
 
                 }
 
+
                 if(empty($data['admin_nic'])){
                     $data['admin_nic_err'] = 'Please enter NIC';
                  } else if ((strlen($data['admin_nic'])!=10) || (strlen($data['admin_nic'])!=12)){
@@ -75,6 +76,7 @@
                 } else {
                     $data['admin_nic_err'] = 'Please enter valid NIC number';
                 }
+
 
                 if(empty($data['admin_date_assigned'])){
                     $data['admin_date_assigned_err'] = 'Please enter date assigned';
@@ -94,14 +96,18 @@
                         flash('register_success', 'You are registered and can log in');
                         $x=$this->userModel->getAdminUserId($data['admin_email']);
                         $this->settingModel->addAdminDetails($data,$x);
+
                         redirect('admin/list_of_admins');
+
                     } else {
                         die('Something went wrong');
                     }
 
                 } else {
                     // Load view with errors
+
                     $this->view('admin/add_new_admin', $data);
+
                 }
 
             } else {
@@ -125,7 +131,9 @@
                 'admin_date_assigned_err' => ''
             ];
 
+
             $this->view('admin/add_new_admin', $data);
+
        }
     }
 
@@ -135,10 +143,12 @@
             $_GET = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
+
                 'admin_name' =>trim($_SESSION['user_name']),
                 'admin_email' => trim($_SESSION['user_email']),
                 //'admin_phone' => trim($_SESSION['user_Phone']),
                 //'admin_password' => trim($_SESSION['user_Password']),
+
                 // 'admin_nic' => trim($_SESSION['admin_nic']),
                 //'admin_date_assigned' => trim($_SESSION['A_DateAssigned']),
                 'admin_name_err' => '',
@@ -150,6 +160,7 @@
             ];
             
             $this->view('admin/update_profile', $data);
+
             
        } else {
                 
@@ -224,7 +235,9 @@
 
         } else {
             // Load view with errors
+
             $this->view('admin/update_profile', $data);
+
         }
 
    }
@@ -239,7 +252,9 @@
              'admin_details' => $admin_details
         ];
 
+
         $this->view('admin/list_of_admins',$data);
+
 
     }
 }
