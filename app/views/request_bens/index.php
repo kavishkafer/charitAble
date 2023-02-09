@@ -93,7 +93,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
+                        <div class="numbers">50</div>
                         <div class="cardName">Total Requests</div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers">10</div>
                         <div class="cardName">Pending Requests</div>
                     </div>
 

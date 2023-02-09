@@ -41,6 +41,8 @@ class Users extends Controller
                 'status' => false,
                 'status_2' => '',
                 'otp'=>$otp_code,
+                'latitude' => trim($_POST['latitude']),
+                'longitude' => trim($_POST['longitude']),
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -122,6 +124,8 @@ class Users extends Controller
                 'otp'=>'',
                 'status_2' => '',
                 'role'=>'',
+                'latitude' => '',
+                'longitude' => '',
 
                 'confirm_password' => '',
                 'name_err' => '',
@@ -147,8 +151,7 @@ class Users extends Controller
             $data =[
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                
-                
+
                 'email_err' => '',
                 'password_err' =>'',
                 'status_2_err'  =>'' 
@@ -209,6 +212,7 @@ class Users extends Controller
                     $this->createAdminSession($loggedInUser);
                   }
                   else{
+                    
                     die('Something went wrong');
                   }
                 } 
@@ -234,12 +238,10 @@ class Users extends Controller
                 'email' => '',
                 'password' => '',
                 'email_err' => '',
-                
                 'password_err' => '',        
               ];
       
-              // Load view
-              
+              // Load vie
               $this->view('users/login', $data);
             }
           }
@@ -256,7 +258,9 @@ class Users extends Controller
                 $_SESSION['user_name'] = $user->User_Name;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
+
                 redirect('admin_dashs/dash_view');
+
               }
 
 

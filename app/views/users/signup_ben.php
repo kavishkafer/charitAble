@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&libraries=places"></script>
-<body>
+    <body onload="initMap()">
 
     <div class="logo">
         <img src="<?php echo URLROOT; ?>/img/logo_black.png" alt="logo">
@@ -56,11 +56,39 @@
                         </div>
                         <div class="div">
                             <h5>Address</h5>
+
                             <input type="text" name="address"  class="input"  value="<?php echo $data['address'];?>">
                             
                             <div class=warn><?php echo $data['address_err']; ?></div>
                         </div>
                         </div>
+                       <div class="space" style="height: 500px; margin=20px;">
+                           <div id="map" style="height: 400px; width: 100%; margin: 20px;">
+
+                               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=Function.prototype"></script>
+                               <script>
+                                   function initMap() {
+                                       var colombo = {lat: 6.9271, lng: 79.8612};
+                                       var map = new google.maps.Map(document.getElementById('map'), {
+                                           zoom: 12,
+                                           center: colombo
+
+                                       });
+                                       var marker = new google.maps.Marker({
+                                           position: colombo,
+                                           map: map,
+                                           draggable: true
+                                       });
+                                       google.maps.event.addListener(marker, 'dragend', function(event) {
+                                           document.getElementById("latitude").value = event.latLng.lat();
+                                           document.getElementById("longitude").value = event.latLng.lng();
+                                       });
+                                   }
+                               </script>
+                           </div>
+                           <input type="hidden" id="latitude" name="latitude"><br>
+                           <input type="hidden" id="longitude" name="longitude"><br>
+                       </div>
                         
                         <div class="input-div one ">
                             <div class="i">

@@ -19,9 +19,7 @@ class User {
     }
 
     public function register($data,$x){
-        $status = 'pending';
-        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,status) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:status)');
-   
+        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude)');
         //bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -29,13 +27,12 @@ class User {
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':otp', $data['otp']);
-
-
         $this->db->bind(':User_Id', $x);
-        $this->db->bind(':status',$status);
-        
-      
-        
+        $this->db->bind(':latitude', $data['latitude']);
+        $this->db->bind(':longitude', $data['longitude']);
+
+
+
 
 
         //execute
@@ -221,7 +218,14 @@ class User {
       $this->db->bind(':telephone', $data['tel_no']);
       $this->db->bind(':password', $data['password']);
      $this->db->bind(':user_Id', $x);
-     
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+
 }
     
 

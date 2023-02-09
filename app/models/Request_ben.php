@@ -84,4 +84,11 @@ class Request_ben
             return false;
         }
     }
+
+    public function totalRequests($id){
+        $this->db->query('Count(*) FROM donation_table WHERE B_Id = :B_Id');
+        $this->db->bind(':B_Id', $id);
+        $row = $this->db->single();
+    }
+
 }

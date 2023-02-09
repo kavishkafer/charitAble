@@ -16,7 +16,7 @@
                     <nav>
                         <ul>
                         <?php if(isset($_SESSION['user_id'])) : ?>
-  <h3>Welcome <?php echo $_SESSION['user_name']; ?></h3>
+  <h3>Welcome </h3>
   <p>You are logged in with  and your user id is <?php echo $_SESSION['user_id']; ?>  </p>
   <?php else : ?> not logged in
 <?php endif; ?>
