@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/event_hoster/signup.css">
 
 <body>
 <div class="container">
