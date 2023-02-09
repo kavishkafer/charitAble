@@ -5,7 +5,7 @@
 <div class="col-head">
     
 <div class="header">
-  <a href="#default" class="logo"><img src="img/img_dons/logo.svg" alt="logo"></a>
+  <a href="#default" class="logo"><img src="../public/img/img_dons/logo.svg" alt="logo"></a>
   <div class="header-right">
     <a href="#about">Hi James!</a>
   </div>
@@ -18,7 +18,7 @@
 <div>
 <h1>Add post</h1>
 <br>
-<form action="<?php echo URLROOT; ?>/posts/add/" method="post">
+<form action="<?php echo URLROOT; ?>/posts/add" method="post">
 
 <div class="card">
 <div class="div">

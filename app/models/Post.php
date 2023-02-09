@@ -64,7 +64,7 @@ class Post {
     public function deletePost($id){
       $this->db->query('DELETE FROM posts WHERE id = :id');
       // Bind values
-      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':id', $id);
       
   
       // Execute

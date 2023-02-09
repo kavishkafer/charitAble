@@ -133,8 +133,8 @@ margin-left: 15px;
   }
 
 
-  .edit-link{
-    background:#395B64;
+  .button-edit{
+    background:#395B64 ;
     border-radius: 22px;
     border: none;
     color: white;
@@ -179,3 +179,142 @@ margin-left: 15px;
       float: none;
     }
   }
+
+
+
+  /*here is the css for the comments section*/
+.comment-section-container{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 800px;
+  transition: .2s all;
+}
+
+
+/*comments*/
+
+.comment-container{
+  display: flex;
+  flex-direction: row;
+  background-color: aliceblue;
+  padding: 10px;
+
+}
+
+.comment-container .comment-left{
+padding:15px;
+}
+
+.comment-container .comment-left img{
+  height: 40px;
+  width: 40px;
+  border-radius:50%
+}
+
+.comment-container .comment-right .comment-user-name{
+  font-weight: 600;
+}
+
+.comment-container .comment-right .comment-posted-at{
+  color: grey;
+}
+
+.comment-container .comment-right .comment-right-footer{
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+}
+
+
+.comment-container .comment-right .comment-right-footer .comment-likes{
+  padding: 10px;
+  color: aquamarine;
+  cursor: pointer;
+  transition: .2s all;
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  padding-bottom: 5px;
+} 
+
+
+.comment-container .comment-right .comment-right-footer img{
+  height: 20px;
+  width: 20px;
+  padding-left: 1px;
+  padding-right: 1px;
+  
+}
+
+.comment-container .comment-right .comment-right-footer .comment-dislikes{
+  padding: 10px;
+  color: aquamarine;
+  cursor: pointer;
+  transition: .2s all;
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-bottom: 5px;
+} 
+
+.comment-container .comment-right .comment-right-footer .comment-likes.active{
+  background-color: #395B64;
+}
+
+.comment-container .comment-right .comment-right-footer .comment-dislikes.active{
+  background-color: red;
+}
+
+
+.post-card{
+  background-color: aliceblue;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+input[type=text]{
+  border: none;
+        outline: none;
+        height: 55px;
+        padding: 0 2rem;
+        border-radius: 100px;
+        width: 60%;
+        font-weight: lighter;
+        font-size: 20px;
+}
+
+input::placeholder {
+  font: 18px Readex Pro;
+  opacity: 0.5;
+  font-weight:300;
+}
+
+.post-footer-commentbtn{
+  padding-left: 10px;
+  border-radius: 20px;
+  padding-right: 10px;
+
+}
+
+.comment-input-field{
+  display: flex;
+  flex-direction: row;
+}
+
+.post-footer-commentbtn:hover{
+  background-color: beige;
+  
+  
+}
+
+.body p{
+  font-size: 20px;
+}
+
+.time-post p{
+  color: rgb(163, 163, 163);
+}
+
