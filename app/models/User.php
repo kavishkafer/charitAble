@@ -89,6 +89,13 @@ class User {
         return $row;
     }
 
+    public function getDUserById($id){
+        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_id');
+        $this->db->bind(':D_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function getBenUserId($email){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
         $this->db->bind(':email', $email);

@@ -6,23 +6,40 @@ class Schedulereq_don {
         $this->db = new Database;
     }
     public function getRequests(){
-        $this->db->query('SELECT * FROM shedule_request_table');
+        $this->db->query('SELECT * FROM shedule_request_table
+        INNER JOIN donor_details
+        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` ');
 
         $results = $this->db->resultSet();
 
         return $results;
     }
 
+    public function getDRequestByID($id)
+    {
+        $this->db->query('SELECT * FROM shedule_request_table WHERE B_Req_ID = :B_Req_ID');
+        $this->db->bind(':B_Req_ID', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+    public function getDonId($id){
+        $this->db->query('SELECT * FROM donor_details WHERE User_Id = :User_Id');
+        $this->db->bind(':User_Id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function addRequests($data){
-        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, D_Date, Time, D_Id) VALUES(:name, :tel_no, :address, :food_type, :date, :time, :D_Id)');
+        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, Donation_Quantity, D_Date, Time, D_Id) VALUES(:D_Name, :D_Tel_No, :D_Address, :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id)');
         //Bind values
-        $this->db->bind(':name', $data['name']);
-        $this->db->bind(':tel_no', $data['tel_no']);
-        $this->db->bind(':address', $data['address']);
-        $this->db->bind(':food_type', $data['food_type']);
-        $this->db->bind(':date', $data['date']);
-        $this->db->bind(':time', $data['time']);
-        $this->db->bind(':D_Id', $data['D_Id']);
+        $this->db->bind(':D_Name', $data['D_Name']);
+        $this->db->bind(':D_Tel_No', $data['D_Tel_No']);
+        $this->db->bind(':D_Address', $data['D_Address']);
+        $this->db->bind(':Food_Type', $data['Food_Type']);
+        $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
+        $this->db->bind(':D_Date', $data['D_Date']);
+        $this->db->bind(':Time', $data['Time']);
+        $this->db->bind(':D_Id', $data['user_id']);
 
 
         //Execute
@@ -34,9 +51,9 @@ class Schedulereq_don {
     }
 
     public function deleteRequest($id){
-        $this->db->query('DELETE FROM shedule_requst_table WHERE D_Id = :D_Id');
+        $this->db->query('DELETE FROM shedule_request_table where B_Req_ID = :B_Req_ID');
         // Bind values
-        $this->db->bind(':D_Id', $id);
+        $this->db->bind(':B_Req_ID', $id);
         
         // Execute
         if($this->db->execute()){

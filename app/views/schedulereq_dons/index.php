@@ -22,13 +22,15 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Telephone No</th>
-                <th>E-mail</th>
-                <th>Quantity</th>
-                <th ></th>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Telephone No</td>
+                <td>E-mail</td>
+                <td>Quantity</td>
+                <td ></td>
+                <td ></td>
+
 
                 
 
@@ -45,11 +47,8 @@
         <td><?php echo $name->B_Tpno; ?></td>
         <td><?php echo $name->B_Email; ?></td>
         <td><?php echo $name->B_Members; ?></td>
-        <td ><table>
-        <tr>
-        <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/add" class="btn2">Select</a></td>
+        <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/add" <?php echo $name->B_Id; ?> class="btn2">Select</a></td>
          <td ><a href="#" class="btn2">View Profile</a></td>
-        </tr></table></td>
 
     
     <?php endforeach; ?>
