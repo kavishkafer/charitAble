@@ -2,7 +2,11 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/donor_accept.css">
+=======
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -141,7 +145,11 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Requests</h2>
+<<<<<<< HEAD
                         <a href="<?php echo URLROOT; ?>" class="btn">Add requests</a>
+=======
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add requests</a>
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
                     </div>
 
                     <table>
@@ -152,7 +160,11 @@
                                 <td>Type</td>
                                 <td>Quantity</td>
                                 <td>Priority</td>
+<<<<<<< HEAD
                                 <td>Accept</td>
+=======
+                                <td>View</td>
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
                                 
                             </tr>
                         </thead>
@@ -161,7 +173,11 @@
                             
                             <tr>
                               
+<<<<<<< HEAD
                             <!-- <?php foreach($data['requests'] as $requests): ?>
+=======
+                            <?php foreach($data['requests'] as $requests): ?>
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
                                 <td> <?php echo $requests->Donation_ID; ?></td> 
                                 <td><?php echo $requests->Donation_Description; ?></td>
                                 <td><?php echo $requests->Donation_Type; ?></td>
@@ -169,7 +185,11 @@
                                 <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
                                 <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
                             </tr>
+<<<<<<< HEAD
                             <?php endforeach; ?> -->
+=======
+                            <?php endforeach; ?>
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
                             
                           
                         </tbody>

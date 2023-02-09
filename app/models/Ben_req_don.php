@@ -5,6 +5,7 @@ public function __construct(){
 $this->db = new Database;
 
 
+<<<<<<< HEAD
 }
 
 public function getAllRequest(){
@@ -42,4 +43,10 @@ return false;
 }
 
 
+=======
+puublic function getRequests(){
+    
+}
+
+>>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
 
