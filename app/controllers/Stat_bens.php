@@ -8,10 +8,10 @@ class Stat_bens extends Controller{
         $this->userModel = $this->model('User');
         $this->statModel = $this->model('Stat_ben');
     }
-    // public function index(){
-    //     $this->view('stat_bens/index');
+     public function index(){
+         $this->view('stat_bens/index');
 
-    // }
+     }
 public function No_of_requests(){
    $No_of_requests=$this->statModel->No_of_requests(10);
     $data= [

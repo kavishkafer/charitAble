@@ -43,6 +43,8 @@ class Users extends Controller
                 'user_role'=>$role,
                 'status' => false,
                 'otp'=>$otp_code,
+                'latitude' => trim($_POST['latitude']),
+                'longitude' => trim($_POST['longitude']),
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -124,6 +126,8 @@ class Users extends Controller
                 'otp'=>'',
 
                 'role'=>'',
+                'latitude' => '',
+                'longitude' => '',
 
                 'confirm_password' => '',
                 'name_err' => '',
@@ -238,11 +242,8 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-<<<<<<< HEAD
                 $this->userModel->getAdminDetails($_SESSION['user_id']);
                 $_SESSION['user_name'] = $user->User_Name;
-=======
->>>>>>> 017845760a1602476c13936c3c124852ff553da4
                 redirect('settings/add_newadmin');
               }
 
