@@ -1,6 +1,7 @@
 <?php
 class Schedulereq_dons extends Controller {
     public function __construct(){
+
         /*if(!isLoggedIn()){
             redirect('users/login');
         }*/
