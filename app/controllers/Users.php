@@ -242,12 +242,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-<<<<<<< HEAD
                 $this->userModel->getAdminDetails($_SESSION['user_id']);
-=======
-                $this->userModel->getAdminDetails($row->User_Id);
-
->>>>>>> d6e0bf34a1b9803fa4991581945ce5b4da94f2ad
                 $_SESSION['user_name'] = $user->User_Name;
                 redirect('settings/add_newadmin');
               }
