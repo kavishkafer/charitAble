@@ -5,8 +5,8 @@ public function __construct(){
 $this->db = new Database;
 
 
-puublic function getRequests(){
+public function getRequests(){
     
 }
 
-
+}}
