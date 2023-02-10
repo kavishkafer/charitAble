@@ -12,7 +12,9 @@
                 <a href="<?php echo URLROOT; ?>/donors/list_of_donors">
                     <div class="card">
                         <div>
+
                             <div class="numbers">44</div>
+
                             <div class="cardName">Donors</div>
                         </div>
 
@@ -25,7 +27,9 @@
                 <a href="<?php echo URLROOT; ?>/beneficiaries/list_of_beneficiaries">
                     <div class="card">
                         <div>
+
                             <div class="numbers">77</div>
+
                             <div class="cardName">Beneficiaries</div>
                         </div>
 

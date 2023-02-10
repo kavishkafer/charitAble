@@ -1,10 +1,10 @@
 <?php
-class Request_bens extends Controller{
+class Request_ehs extends Controller{
     public function __construct(){
         if(!isLoggedIn()){
-            redirect('users/login_ben');
+            redirect('users/login');
         }
-        $this->requestModel = $this->model('Request_ben');
+        $this->requestModel = $this->model('Request_eh');
         $this->userModel = $this->model('User');
     }
     public function index(){
@@ -14,37 +14,22 @@ class Request_bens extends Controller{
         ];
 
         
-        $this->view('request_bens/index', $data);
-    }
-
-    public function requests(){
-        $requests = $this->requestModel->getRequests();
-
-        $this->view('request_bens/request');
-    }
-
-    public function totalRequestsCount(){
-        $row=$this->requestModel->getBenId($_SESSION['user_id']);
-        $result=$this->requestModel->totalRequest($row->B_Id);
-        $data=[
-            'result' => $result
-        ];
-        $this->view('request_bens/index', $data);
+        $this->view('request_ehs/index', $data);
     }
 
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $a= $_SESSION['user_id'];
-            $y =$this->requestModel-> getBenId($a);
+            $y =$this->requestModel-> getEhId($a);
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                'Donation_Description' => trim($_POST['Donation_Description']),
-                'Donation_Quantity' => trim($_POST['Donation_Quantity']),
-                'Donation_Type' => trim($_POST['Donation_Type']),
-                'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Event_Date' => trim($_POST['Event_Date']),
+                'Event_Time' => trim($_POST['Event_Time']),
+                'Event_Description' => trim($_POST['Event_Description']),
+                'Event_Letter' => trim($_POST['Event_Letter']),
                 // 'Donation_Status' => trim($_POST['Donation_Status']),
-                'user_id' => $y->B_Id,
+                'user_id' => $y->E_ID,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
@@ -82,13 +67,13 @@ class Request_bens extends Controller{
                 // Validated
                 if($this->requestModel->addRequests($data)){
                     flash('request_message', 'Request Added');
-                    redirect('request_bens');
+                    redirect('request_ehs');
                 } else {
                     die('Something went wrong');
                 }
             } else {
                 // Load view with errors
-                $this->view('request_bens/add', $data);
+                $this->view('request_ehs/add', $data);
             }
         } else {
             $data = [
@@ -101,7 +86,7 @@ class Request_bens extends Controller{
                 'Donation_Type_err' => '',
                 'Donation_Priority_err' => ''
             ];
-            $this->view('request_bens/add', $data);
+            $this->view('request_ehs/add', $data);
         }
       
     }
@@ -114,9 +99,9 @@ class Request_bens extends Controller{
             'user' => $user
         ];
         if($data['request']!=null){
-        $this->view('request_bens/show', $data);
+        $this->view('request_ehs/show', $data);
         } else {
-            redirect('request_bens');
+            redirect('request_ehs');
         }
     }
 
@@ -161,13 +146,13 @@ class Request_bens extends Controller{
                 // Validated
                 if($this->requestModel->updateRequest($data)){
                     flash('request_message', 'Request Updated');
-                    redirect('request_bens');
+                    redirect('request_ehs');
                 } else {
                     die('Something went wrong');
                 }
             } else {
                 // Load view with errors
-                $this->view('request_bens/edit', $data);
+                $this->view('request_ehs/edit', $data);
             }
         } else {
            
@@ -175,7 +160,7 @@ class Request_bens extends Controller{
             $request = $this->requestModel->getRequestById($id);
             // Check for owner
             if($request->B_Id != $y->B_Id){
-                redirect('request_bens');
+                redirect('request_ehs');
             }
             $data = [
                 'Donation_ID' => $id,
@@ -185,7 +170,7 @@ class Request_bens extends Controller{
                 'Donation_Priority' => $request->Donation_Priority,
 
             ];
-            $this->view('request_bens/edit', $data);
+            $this->view('request_ehs/edit', $data);
     }
 
     }
@@ -195,16 +180,19 @@ class Request_bens extends Controller{
             $request = $this->requestModel->getRequestById($id);
             // Check for owner
             if($request->B_Id != $_SESSION['user_id']){
-                redirect('request_bens');
+                redirect('request_ehs');
             }
             if($this->requestModel->deleteRequest($id)){
                 flash('request_message', 'Request Removed');
-                redirect('request_bens');
+                redirect('request_ehs');
             } else {
                 die('Something went wrong');
             }
         } else {
-            redirect('request_bens');
+            redirect('request_ehs');
         }
     }
 }
+
+
+

@@ -336,7 +336,7 @@
   }
   .status.delivered {
     padding: 2px 4px;
-    background: #8de02c;
+    background: #395B64;
     color: var(--white);
     border-radius: 4px;
     font-size: 14px;
@@ -518,7 +518,7 @@
     min-width:50ch;
   }
   .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #395B64; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -532,13 +532,13 @@
   }
   
   .button1 {
-    background-color:#4CAF50; 
+    background-color:#395B64; 
     color: white; 
-    border: 2px solid #77DD77;
+    border: 2px solid #395B64;
     border-radius: 12px;
   }
   .button1:hover {
-    background-color: #77DD77;
+    background-color: #395B64;
     color: white;
   }
   .button2 {
@@ -611,7 +611,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
+  background-color: #395B64;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -715,20 +715,28 @@ hr {
   width: 50%;
   height: 40px;
   border-radius: 5px;
-  background-color:#F5F5F5;
+
+  background-color:#edeeee;
+
   padding: 5px;
  }
  .data textarea{
   width: 80%;
   height: 250px;
   border-radius: 5px;
-  background-color:#F5F5F5;
+
+
+  background-color:#ffffff;
+
+ 
   padding: 5px;
  }
  .data input{
   width: 50%;
   height: 40px;
   border-radius: 5px;
-  background-color:#F5F5F5;
+
+  background-color:#edeeee;
+
   padding: 5px;
  }

@@ -81,16 +81,7 @@
                         <span class="title">Forum</span>
                     </a>
                 </li>
-<!--                <li>-->
-<!---->
-<!--                    <a href="#">-->
-<!---->
-<!--                        <span class="icon">-->
-<!--                            <i class="fas fa-signal"></i>-->
-<!--                        </span>-->
-<!--                        <span class="title">Stats</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+
                 <li>
                     <a href="<?php echo URLROOT; ?>/settings/add_new_admin">
                         <span class="icon">

@@ -16,7 +16,9 @@ class BenReqDons extends Controller
         $data = [
             'dat' => $getRequest
         ];
+
         $y = 44;
+
         // $y=$getRequest->B_Id;
         $getBenDetails = $this->benreqdonModel->getBenDetails($y);
         $data = [

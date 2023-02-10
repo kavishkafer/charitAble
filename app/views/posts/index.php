@@ -9,7 +9,7 @@
 <div class="header">
   <a href="#default" class="logo"><img src="img/img_dons/logo.svg" alt="logo"></a>
   <div class="header-right">
-    <a href="#about">Hi James!</a>
+    <a href="#about">Hi Kavishka!</a>
   </div>
 
 </div>

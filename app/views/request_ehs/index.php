@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/donor_accept.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/requests_ehs_v">
                         <span class="icon">
                             <i class="fas fa-user"></i>
                         </span>
@@ -35,21 +35,14 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
+               
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts">
                         <span class="icon">
                             <i class="fas fa-calendar"></i>
                         </span>
-                        <span class="title">Calender</span>
+                        <span class="title">Forum</span>
                     </a>
                 </li>
 
@@ -61,6 +54,7 @@
                         <span class="title">Settings</span>
                     </a>
                 </li>
+                <?php if(isset($_SESSION['user_id'])) : ?>
 
                 <li>
                     <a href="<?php echo URLROOT;?>/users/logout">
@@ -70,7 +64,7 @@
                         <span class="title">Logout</span>
                     </a>
                 </li>
-            
+                <?php endif; ?>
                 
             </ul>
         </div>
@@ -140,44 +134,36 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Requests</h2>
-
-                        <a href="<?php echo URLROOT; ?>" class="btn">Add requests</a>
-
+                        <a href="<?php echo URLROOT; ?>/request_ehs/add" class="btn">Add requests</a>
                     </div>
 
                     <table>
                         <thead>
                             <tr>
-                                <td>Organization name</td>
                                 <td>Request_Id</td>
                                 <td>Description</td>
-                                <td>Type</td>
-                                <td>Quantity</td>
-                                <td>Priority</td>
-                                <td>Accept</td>
+                                <td>Documents Required</td>
+                               <!-- <td>Type</td>-->
+                               <!-- <td>Quantity</td> -->
+                               <!-- <td>Priority</td> -->
+                                <td>View</td>
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-                            <!-- <form action="<?php echo URLROOT; ?>/ben_req_dons/getAllRequests" method="post"> -->
+                            
                             <tr>
-
-
-                             <?php foreach($data['request'] as $requests): ?>
-                                <td><?php echo $data['ben']->B_Name; ?></td> 
+                              
+                            <?php foreach($data['requests'] as $requests): ?>
                                 <td> <?php echo $requests->Donation_ID; ?></td> 
                                 <td><?php echo $requests->Donation_Description; ?></td>
                                 <td><?php echo $requests->Donation_Type; ?></td>
                                 <td><?php echo $requests->Donation_Quantity; ?></td>
                                 <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $requests->Donation_ID; ?>">View</a></td>
-                                }
-
+                                <td><a href="<?php echo URLROOT; ?>/request_ehs/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
                             </tr>
-                            <?php endforeach; ?> 
-
-
+                            <?php endforeach; ?>
                             
                           
                         </tbody>

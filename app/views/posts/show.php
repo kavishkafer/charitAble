@@ -7,7 +7,7 @@
 <div class="col-head">
     
 <div class="header">
-  <a href="#default" class="logo"><img src="/public/img/img_dons/logo.svg" alt="logo"></a>
+  <a href="#default" class="logo"><img src="../public/img/img_dons/logo.svg" alt="logo"></a>
   <div class="header-right">
     <a href="#about">Hi James!</a>
   </div>
@@ -37,9 +37,27 @@
    <p> Written by <?php echo $data['user_id']->id; ?>  <?php echo convertTimeReadableFormat($data['post']->created_at); ?> </p>
 </div>
 
- <?php if($data['post']->user_id == $_SESSION['user_id']) : ?> 
 
+
+<?php if($data['post']->user_id == $_SESSION['user_id']) : ?> 
+
+<?php endif; ?>
+
+    <div class="post-options">
+    <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>">
+    <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
+    <input type="submit" value="Edit" class="button-edit">
     <?php endif; ?>
+    </form>
+    
+
+
+    <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method = "post">
+    <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
+    <input type="submit" value="Delete" class="button-delete">
+    <?php endif; ?>
+    </form>
+    </div>
 
     <!--comment input field-->
     <div class="comment-input-field">
@@ -52,6 +70,7 @@
     
     <!-- put the following line of code inside the if condition after the login is finalized -->
     <!--comments section -->
+    <br>
     <div class="comment-section-container">
       <div class="comment-section-header">
         <h2>Comments</h2>
@@ -59,15 +78,17 @@
 
       <!--comment -->
       <div class="comment-container">
+
+      <!--this is a single comment-->
         <div class="comment-left">
           <img src="<?php echo URLROOT;?>/img/comments/avatar.png" alt="">
         </div>
         <div class="comment-right">
               <div class="comment-right-header">
-                  <div class="comment-user-name">Ishini Avindya</div>
+                  <div class="comment-user-name">Leo Club Athugalpura</div>
                   <div class="comment-posted-at">Just now</div>
               </div>
-              <div class="comment-right-body">BLAAAAA BLAAA BLAAAAA LBLSJFCJFKMVLKFNVLFNVVNK</div>
+              <div class="comment-right-body">We love your work. I want to support this also.</div>
               <div class="comment-right-footer">
 
                   <div class="comment-likes">
@@ -81,33 +102,47 @@
                   </div>
               </div>
         </div>
-      </div>
+      </div>  
+      <!--single comment ends here-->
+      <br>
+<!--second single comment starts here-->
+       <!--comment -->
+       <div class="comment-container">
 
-      <br> <br>
+<!--this is a single comment-->
+  <div class="comment-left">
+    <img src="<?php echo URLROOT;?>/img/comments/avatar.png" alt="">
+  </div>
+  <div class="comment-right">
+        <div class="comment-right-header">
+            <div class="comment-user-name">Leo Club Athugalpura</div>
+            <div class="comment-posted-at">Just now</div>
+        </div>
+        <div class="comment-right-body">We love your work. I want to support this also.</div>
+        <div class="comment-right-footer">
+
+            <div class="comment-likes">
+              <img src="<?php echo URLROOT;?>/img/comments/like-btn.png" alt="">
+                <div class="comment-likes-count">0</div>
+            </div>
+
+            <div class="comment-dislikes">
+              <img src="<?php echo URLROOT;?>/img/comments/dislike-btn.png" alt="">
+              <div class="comment-likes-count">0</div>
+            </div>
+        </div>
+  </div>
+</div>  
+
+<!--second single comment ends here-->
+
+      
+
+      
     </div>
 
-
-
-
-
-    <br> <br>
-    <hr> 
-
-    <br> <br>
-    <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>">
-    <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
-    <input type="submit" value="Edit" class="button-edit">
-    <?php endif; ?>
-    </form>
-    <br><br>
-
-
-    <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method = "post">
-    <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
-    <input type="submit" value="Delete" class="button-delete">
-    <?php endif; ?>
-    </form>
-
+    <br> <br> <br>
+      
 
     <!--comments-->
     <script type="text/Javascript" src="<?php echo URLROOT; ?>/js/comments/comments.js"></script>
