@@ -2,7 +2,8 @@
 use helpers\email;
 
 class Users extends Controller
-{   public function __construct(){
+{
+    public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
     //$this->settingModel = $this->model('Setting');
@@ -162,6 +163,7 @@ class Users extends Controller
                // Check for user/email
                if($this->userModel->findUserByEmail($data['email'])){
                 $user_role=$this->userModel->findUserRoleByEmail($data['email']);
+
                 // User found
               } else {
                 // User not found
@@ -343,22 +345,6 @@ class Users extends Controller
 
 
 
-      } else {
-        // Init data
-        $data =[
-          'name' => '',
-          'email' => '',
-          'address' => '',
-          'telephone_number' => '',
-          'password' => '',
-          'confirm_password' => '',
-          'name_err' => '',
-          'email_err' => '',
-          'address_err' => '',
-          'telephone_number_err' => '',
-          'password_err' => '',
-          'confirm_password_err' => ''
-        ];
 
 
  

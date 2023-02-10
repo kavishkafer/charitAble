@@ -18,7 +18,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/request_bens/index">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/request_bens/requests">
                         <span class="icon">
                             <i class="fas fa-user"></i>
                         </span>
@@ -36,7 +36,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/stat_bens">
                         <span class="icon">
                             <i class="fas fa-comment"></i>
                         </span>

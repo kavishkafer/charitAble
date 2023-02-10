@@ -26,18 +26,18 @@
         
 
                             <li>
-                                <a href="#donorsSection">Donors</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_dons">Donors</a>
                             </li>
         
 
         
                             <li>
-                                <a href="#beneficiarySection">Beneficiaries</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_ben">Beneficiaries</a>
                             </li>
         
         
                             <li>
-                                <a href="#eventHostersSection">Event Hosters</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_eh">Event Hosters</a>
                             </li>
         
 

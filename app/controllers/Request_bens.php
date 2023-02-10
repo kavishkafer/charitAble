@@ -16,6 +16,11 @@ class Request_bens extends Controller{
         
         $this->view('request_bens/index', $data);
     }
+    public function requests(){
+        $requests = $this->requestModel->getRequests();
+
+        $this->view('request_bens/request');
+    }
     public function totalRequestsCount(){
         $row=$this->requestModel->getBenId($_SESSION['user_id']);
         $result=$this->requestModel->totalRequest($row->B_Id);

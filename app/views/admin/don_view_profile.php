@@ -21,7 +21,7 @@
 
                     <div class="details-card">
                         <div class="details-head">Donor ID :-</div>
-                        <div class="details-input"><?php echo $data['donor']->D_ID; ?></div>
+                        <div class="details-input"><?php echo $data['donor']->D_Id; ?></div>
                     <div>
                     <br />
 

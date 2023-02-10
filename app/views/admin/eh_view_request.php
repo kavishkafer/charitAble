@@ -45,7 +45,7 @@
 
                         <div class="details-card">
                             <div class="details-head">Event Hoster TP :-</div>
-                            <div class="details-input"><?php echo $data['eventHoster']->E_tpNo; ?></div>
+                            <div class="details-input"><?php echo $data['eventHoster']->E_Tpno; ?></div>
                         <div>
                         <br />
 

@@ -144,7 +144,7 @@
 
             $data = [
 
-                'admin_name' =>trim($_SESSION['user_name']),
+                //'admin_name' =>trim($_SESSION['user_name']),
                 'admin_email' => trim($_SESSION['user_email']),
                 //'admin_phone' => trim($_SESSION['user_Phone']),
                 //'admin_password' => trim($_SESSION['user_Password']),
