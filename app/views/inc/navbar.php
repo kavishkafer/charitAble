@@ -14,7 +14,9 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT; ?>/admin_dash/dash_view" class = "nav">
+
+                    <a href="<?php echo URLROOT; ?>/admin_dashs/dash_view" class = "nav">
+
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -50,7 +52,9 @@
                 </li>
 
                 <li>
-                    <a href="#">
+
+                    <a href="<?php echo URLROOT; ?>/donations/list_of_donations">
+
                         <span class="icon">
                             <i class="fas fa-heart"></i>
                         </span>
@@ -59,7 +63,9 @@
                 </li>
 
                 <li>
-                    <a href="#">
+
+                    <a href="<?php echo URLROOT; ?>/events/list_of_events">
+
                         <span class="icon">
                             <i class="fas fa-gift"></i>
                         </span>
@@ -68,27 +74,14 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts">
                         <span class="icon">
                             <i class="fas fa-comment"></i>
                         </span>
                         <span class="title">Forum</span>
                     </a>
                 </li>
-                <li>
-<<<<<<< Updated upstream
-                    <a href="#">
-=======
 
-                    <a href="<?php echo URLROOT; ?>/posts">
-
->>>>>>> Stashed changes
-                        <span class="icon">
-                            <i class="fas fa-signal"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
                 <li>
                     <a href="<?php echo URLROOT; ?>/settings/add_new_admin">
                         <span class="icon">

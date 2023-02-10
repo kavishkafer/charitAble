@@ -11,10 +11,11 @@
 <thead>
     <tr>
         <td>Request_Id</td>
+        <td>Beneficiary Name</td>
         <td>Date</td>
-        <td>Time</td>
+        <td>Time</th>
         <td>Food Type</td>
-        <!--<td>Quantity</td>-->
+        <td>Quantity</td>
           <td></td>
     </tr>
 </thead>
@@ -24,17 +25,17 @@
     <tr>
                               
     <?php foreach($data['requests'] as $requests): ?>
-        <td> <?php echo $requests->id; ?></td> 
-        <!--<td><?php echo $requests->name; ?></td>-->
-        <td><?php echo $requests->date; ?></td>
-        <td><?php echo $requests->time; ?></td>
-        <td><?php echo $requests->food_type; ?></td>
-        <!--<td><?php echo $requests->quantity; ?></td>-->
-        <td><!--<?php if($data['request']->id == $_SESSION['user_id']) : ?>-->
-         <form action="<?php echo URLROOT; ?>/schedulereq_dons/delete/<?php echo $requests->id; ?>" method="post">
+        <td> <?php echo $requests->B_Req_ID; ?></td> 
+        <td><!--<?php echo $requests->B_Name; ?>--></td>
+        <td><?php echo $requests->D_Date; ?></td>
+        <td><?php echo $requests->Time; ?></td>
+        <td><?php echo $requests->Food_Type; ?></td>
+        <td><?php echo $requests->Donation_Quantity; ?></td>
+        <td><!--<?php if($data['requests']->user_id == $_SESSION['user_id']) : ?>-->
+         <form action="<?php echo URLROOT; ?>/schedulereq_dons/delete/<?php echo $data['requests']->B_Req_ID; ?>" method="post">
          <input type="submit" value="Delete" class="btn" >
          </form>
-        <!-- <?php endif; ?>-->
+         <!--<?php endif; ?>-->
        </td>
 
     </tr>
@@ -47,6 +48,8 @@
 </div>
 
 </div>
+</div>
+        </main>
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

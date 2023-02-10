@@ -19,11 +19,7 @@ class User {
     }
 
     public function register($data,$x){
-        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id)');
-        
-       
-
-        
+        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude)');
         //bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -31,11 +27,12 @@ class User {
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':otp', $data['otp']);
-
         $this->db->bind(':User_Id', $x);
-        
-      
-        
+        $this->db->bind(':latitude', $data['latitude']);
+        $this->db->bind(':longitude', $data['longitude']);
+
+
+
 
 
         //execute
@@ -45,6 +42,7 @@ class User {
             return false;
         }
     }
+
 
         public function regcom($data){
             $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:email, :password,:user_role)');
@@ -59,6 +57,7 @@ class User {
 
 
         }
+
     public function addAdmin($data){
         $this->db->query('INSERT INTO registered_users (User_Email,User_Password,User_Role) VALUES(:admin_email, :admin_password,:user_role)');
         $this->db->bind(':admin_email', $data['admin_email']);
@@ -70,6 +69,8 @@ class User {
             return false;
         }     
     }
+
+
 
     
     public function login($email, $password){
@@ -92,17 +93,54 @@ class User {
         if($this->db->rowCount() > 0){
             $row=$this->db->single();
             $userrole=$row->User_Role;
-            return $userrole;
+            return $userrole;$status_2;
         }else{
             return null;
         }
     }
+
+    public function findBenStatusByEmail($email){
+        $this->db->query('SELECT * FROM beneficiary_details WHERE B_Email = :email');
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        //check row
+        if($this->db->rowCount() > 0){
+            $row=$this->db->single();
+            $status_2=$row->status_2;
+            return $status_2;
+        }else{
+            return null;
+        }
+    }
+
+    public function findEveHostStatusByEmail($email){
+        $this->db->query('SELECT * FROM event_hoster_details WHERE E_Email = :email');
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        //check row
+        if($this->db->rowCount() > 0){
+            $row=$this->db->single();
+            $status_2=$row->status_2;
+            return $status_2;
+        }else{
+            return null;
+        }
+    }
+
     public function getUserById($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
         $this->db->bind(':B_id', $id);
         $row = $this->db->single();
         return $row;
     }
+
+    public function getDUserById($id){
+        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_id');
+        $this->db->bind(':D_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function getBenUserId($email){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
         $this->db->bind(':email', $email);
@@ -110,6 +148,7 @@ class User {
         $id=$row->User_Id;
         return $id;
     }
+
 
     public function getDonUserId($email){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
@@ -133,6 +172,7 @@ class User {
         $id=$row->User_Id;
         return $id;
     }
+
     public function getAdminDetails($y){
         $this->db->query('SELECT * FROM admin_details WHERE User_Id = :User_Id');
         $this->db->bind(':User_Id', $y);
@@ -141,16 +181,19 @@ class User {
 
     }
 
+
     //Donor
     //Register user
     public function signup_don($data,$x){
-        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_no, D_Address, D_password,User_Id) VALUES(:name, :email, :tel_no, :address, :password,:User_Id)');
+        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id)');
         //Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':otp', $data['otp']);
+
         $this->db->bind(':User_Id', $x);
 
         //Execute
@@ -163,7 +206,9 @@ class User {
     
     
 
+
     //register event hoster
+
     public function signup_eh($data,$x){
       $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:name, :email,:address,:telephone, :password,:user_Id)');
       // Bind values
@@ -173,30 +218,22 @@ class User {
       $this->db->bind(':telephone', $data['tel_no']);
       $this->db->bind(':password', $data['password']);
      $this->db->bind(':user_Id', $x);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+
 }
     
 
-    
 
 
 
 
   
 
-    //find user by email
-    public function findUserByEmail_don($email){
-        $this->db->query('SELECT * FROM donor_details WHERE D_Email = :email');
-        //Bind values
-        $this->db->bind(':email', $email);
-
-        $row = $this->db->single();
-
-        //check row
-        if($this->db->rowCount() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 }

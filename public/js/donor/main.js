@@ -33,3 +33,14 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+
+$(document).ready(function() {
+  var calendar = $('#calendar').fullCalendar({
+   editable:true,
+   header:{
+    left:'prev,next today',
+    center:'title',
+    right:'month,agendaWeek,agendaDay'
+   }
+  });
+});

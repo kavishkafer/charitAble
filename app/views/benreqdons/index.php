@@ -140,7 +140,9 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Requests</h2>
+
                         <a href="<?php echo URLROOT; ?>" class="btn">Add requests</a>
+
                     </div>
 
                     <table>
@@ -171,6 +173,7 @@
                                 <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
                                 <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $requests->Donation_ID; ?>">View</a></td>
                                 }
+
                             </tr>
                             <?php endforeach; ?> 
 
