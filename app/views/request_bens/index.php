@@ -18,7 +18,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/request_bens/index">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/request_bens/requests">
                         <span class="icon">
                             <i class="fas fa-user"></i>
                         </span>
@@ -36,7 +36,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/stat_bens">
                         <span class="icon">
                             <i class="fas fa-comment"></i>
                         </span>
@@ -93,7 +93,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
+                        <div class="numbers">50</div>
                         <div class="cardName">Total Requests</div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers">10</div>
                         <div class="cardName">Pending Requests</div>
                     </div>
 

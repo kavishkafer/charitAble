@@ -5,11 +5,11 @@
     padding: 0;
     box-sizing: border-box;
   }
-
+  
   :root {
     --blue: #2C3333;
     --white: #ffffff;
-    --gray: #E7F6F2;
+    --gray: #395b642d;
     --black1: #222;
     --black2: rgb(107, 105, 105);
     --light: #D6E4E5;
@@ -154,6 +154,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    background-color: var(--blue);
   }
   
   .toggle {
@@ -267,11 +268,10 @@
   .details {
     position: relative;
     width: 100%;
-    height:100%;
     padding: 20px;
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    grid-gap: 30px;
+    /* grid-template-columns: 2fr 1fr;
+    grid-gap: 30px; */
     /* margin-top: 10px; */
   }
   
@@ -496,10 +496,7 @@
       margin-bottom: 10px;
       padding-bottom: 30px;
     }
-
-
   }
-  
   .content-sidebar{
     display:flex;
     flex-wrap: wrap;
@@ -511,7 +508,7 @@
     min-width:25ch;
     justify-content: center;
     
-
+  
   }
   .content-sidebar .data{
     flex: 1 1 70%;
@@ -551,11 +548,11 @@
     background-color: #FF6961;
     color: white;
   }
- #myBtn{
+  #myBtn{
   border:none;
- }
- /* The Modal (background) */
-.modal {
+  }
+  /* The Modal (background) */
+  .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -566,34 +563,34 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
+  }
+  
+  /* The Close Button */
+  .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-/* Modal */
-* {box-sizing: border-box}
-/* Full-width input fields */
+  }
+  /* Modal */
+  * {box-sizing: border-box}
+  /* Full-width input fields */
   input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
@@ -601,16 +598,16 @@
   display: inline-block;
   border: none;
   background: #f1f1f1;
-}
-
-/* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus {
+  }
+  
+  /* Add a background color when the inputs get focus */
+  input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
-}
-
-/* Set a style for all buttons */
-button {
+  }
+  
+  /* Set a style for all buttons */
+  button {
   background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
@@ -620,31 +617,31 @@ button {
   width: 120px;
   opacity: 0.9;
   
-}
-
-button:hover {
+  }
+  
+  button:hover {
   opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
   padding: 14px 20px;
   background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+  }
+  
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .signupbtn {
   float: left;
   width: 30%;
-}
-
-/* Add padding to container elements */
-.container {
+  }
   
-}
-
-/* The Modal (background) */
-.modal {
+  /* Add padding to container elements */
+  .container {
+  padding: 0px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -655,80 +652,58 @@ button:hover {
   overflow: auto; /* Enable scroll if needed */
   background:var(--white);
   background:rgba(0,0,0,0.8);
-
+  
   
   padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.forms {
-  display: flex;
-  background-color: var(--white);
-  padding: 10px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+  background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid rgb(231, 225, 225);
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+  border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
   
-}
-
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #14a85e;
+  }
+  
+  /* Style the horizontal ruler */
+  hr {
+  border: 1px solid #f1f1f1;
   margin-bottom: 25px;
-}
-
-/* The Close Button (x) */
-.close {
+  }
+  
+  /* The Close Button (x) */
+  .close {
   position: absolute;
   right: 35px;
   top: 15px;
   font-size: 40px;
   font-weight: bold;
   color: #f1f1f1;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
   color: #f44336;
   cursor: pointer;
-}
-
-/* Clear floats */
-.clearfix::after {
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
   content: "";
   clear: both;
+  display: table;
+  }
   
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
   .cancelbtn, .signupbtn {
     width: 100%;
   }
-
- 
-
- }
- .data select{
-  width: 50%;
-  height: 40px;
-  border-radius: 5px;
-  background-color:#F5F5F5;
-  padding: 5px;
- }
- .data textarea{
-  width: 80%;
-  height: 250px;
-  border-radius: 5px;
-  background-color:#F5F5F5;
-  padding: 5px;
- }
- .data input{
-  width: 50%;
-  height: 40px;
-  border-radius: 5px;
-  background-color:#F5F5F5;
-  padding: 5px;
- }
+  }
+  
+  
+  
+  
+  
+  

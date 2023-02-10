@@ -16,28 +16,30 @@
                     <nav>
                         <ul>
                         <?php if(isset($_SESSION['user_id'])) : ?>
-                        <h3>Welcome <?php echo $_SESSION['user_name']; ?></h3>
-                        <p>You are logged in with  and your user id is <?php echo $_SESSION['user_id']; ?>  </p>
-                         <?php else : ?> not logged in
-                        <?php endif; ?>
+
+  <h3>Welcome </h3>
+  <p>You are logged in with  and your user id is <?php echo $_SESSION['user_id']; ?>  </p>
+  <?php else : ?> not logged in
+<?php endif; ?>
+
                             <li>
                                 <a href="#homeSection">Home</a>
                             </li>
         
 
                             <li>
-                                <a href="#donorsSection">Donors</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_dons">Donors</a>
                             </li>
         
 
         
                             <li>
-                                <a href="#beneficiarySection">Beneficiaries</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_ben">Beneficiaries</a>
                             </li>
         
         
                             <li>
-                                <a href="#eventHostersSection">Event Hosters</a>
+                                <a href="<?php echo URLROOT;?>/users/signup_eh">Event Hosters</a>
                             </li>
         
 

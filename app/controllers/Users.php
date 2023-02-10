@@ -2,7 +2,8 @@
 use helpers\email;
 
 class Users extends Controller
-{   public function __construct(){
+{
+    public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
     //$this->settingModel = $this->model('Setting');
@@ -13,9 +14,6 @@ class Users extends Controller
     }
 
 
-
- 
-    
 
     public function signup_ben(){
         // Check for POST
@@ -42,7 +40,10 @@ class Users extends Controller
                 'confirm_password' => trim($_POST['confirm_password']),
                 'user_role'=>$role,
                 'status' => false,
+                'status_2' => '',
                 'otp'=>$otp_code,
+                'latitude' => trim($_POST['latitude']),
+                'longitude' => trim($_POST['longitude']),
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -122,8 +123,10 @@ class Users extends Controller
                 'password' => '',
                 'status' => '',
                 'otp'=>'',
-
+                'status_2' => '',
                 'role'=>'',
+                'latitude' => '',
+                'longitude' => '',
 
                 'confirm_password' => '',
                 'name_err' => '',
@@ -149,10 +152,10 @@ class Users extends Controller
             $data =[
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                
-                
+
                 'email_err' => '',
-                'password_err' =>''    
+                'password_err' =>'',
+                'status_2_err'  =>'' 
               ];
 
               
@@ -175,12 +178,25 @@ class Users extends Controller
               if(empty($data['password'])){
                 $data['password_err'] = 'Please enter password';
               }
+
+              if($user_role == 1){
+                $status_2=$this->userModel->findBenStatusByEmail($data['email']);
+              }
+              if($user_role == 2){
+                $status_2 = 'approved';
+              }
+              if($user_role == 3){
+                $status_2=$this->userModel->findEveHostStatusByEmail($data['email']);
+              }
+              if($user_role == 4){
+                $status_2 = 'approved';
+              }
               
               // Make sure errors are empty
-              if(empty($data['email_err']) && empty($data['password_err'])){
+              if(empty($data['email_err']) && empty($data['password_err']) && $status_2 == 'approved'){
                 // Validated
                 // Check and set logged in user
-                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                $loggedInUser = $this->userModel->login($data['email'], $data['password'],);
                 if($loggedInUser){
 
                   
@@ -198,12 +214,18 @@ class Users extends Controller
                     $this->createAdminSession($loggedInUser);
                   }
                   else{
+                    
                     die('Something went wrong');
                   }
                 } 
                 
                 
-                } else {
+                } 
+                else if($status_2 == 'pending') {
+                  die('Your account still pending for approval');
+                }
+                
+                else {
                   $data['password_err'] = 'Password incorrect';
                   echo "Password incorrect";
       
@@ -218,12 +240,10 @@ class Users extends Controller
                 'email' => '',
                 'password' => '',
                 'email_err' => '',
-                
                 'password_err' => '',        
               ];
       
-              // Load view
-              
+              // Load vie
               $this->view('users/login', $data);
             }
           }
@@ -237,14 +257,14 @@ class Users extends Controller
 
 
               public function createAdminSession($user){
-                $_SESSION['user_id'] = $user->User_Id;
+                $_SESSION['user_name'] = $user->User_Name;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                $this->userModel->getAdminDetails($row->User_Id);
 
-                $_SESSION['user_name'] = $user->User_Name;
-                redirect('settings/add_newadmin');
+                redirect('admin_dashs/dash_view');
+
               }
+
 
 
               public function createDonSession($user){
@@ -260,6 +280,7 @@ class Users extends Controller
                 $_SESSION['user_role'] = $user->User_Role;
                 redirect('pages/index');
               }
+
 
 
 
@@ -290,21 +311,22 @@ class Users extends Controller
                     $verified = $this->Verify_model->verifyOTP($data['otp']);
         
                     if($verified){
-                        if($this->Verify_model->verify($verified->B_Id)){
+        //                 if($this->Verify_model->verify($verified->B_Id)){
 
                           
-                            // set verification successful flash message
-        //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
-                            // redirect to the login
-                            redirect('users/login');
+        //                     // set verification successful flash message
+        // //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
+        //                     // redirect to the login
+        //                     redirect('users/login');
 
-                        }
-                        else{
-                            // set verification failed flash message
-        //                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
-                            // redirect to the signup 
-                            redirect('users/signup_ben');
-                        }
+        //                 }
+        //                 else{
+        //                     // set verification failed flash message
+        // //                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
+        //                     // redirect to the signup 
+        //                     redirect('users/signup_ben');
+        //                 }
+                redirect('users/login');
                     }
                     else{
                     
@@ -320,6 +342,8 @@ class Users extends Controller
                 }
                 $this->view('users/signup_verification', $data);
             }
+
+
 
 
 
@@ -556,13 +580,7 @@ public function signup_eh(){
   }
 }
 
-      public function createUserSession_don($user){
-        $_SESSION['user_id'] = $user->D_Id;
-        $_SESSION['user_email'] = $user->D_Email;
-        $_SESSION['user_name'] = $user->D_Name;
-        redirect('dashboard_dons/index');
-
-          }
+   
         
     
 }

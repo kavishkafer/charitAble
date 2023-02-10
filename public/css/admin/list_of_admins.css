@@ -34,6 +34,9 @@
   position: relative;
   width: 100%;
   padding: 20px;
+
+  margin-left: 30px;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
@@ -44,6 +47,7 @@
   position: relative;
   background: var(--gray);
   padding: 20px;
+  font-size: 1.1rem;
   border-radius: 10px;
   border: none;
   width: 250px;
@@ -56,7 +60,6 @@
 
 .btnBox a {
   color: var(--black2);
-  font-size: 1.3rem;
   margin-top: 0;
   text-decoration: none;
 }
@@ -96,6 +99,9 @@
   padding: 20px;
   border-radius: 10px;
   width: 80%;
+
+  margin-left: 180px;
+
 }
 
 
@@ -125,7 +131,9 @@
 }
 
 .details table td .btn_1 {
-  background-color: green;
+
+  background-color: var(--black2);
+
   padding: 5px;
   border-radius: 10px;
   color: #f2f2f2;
