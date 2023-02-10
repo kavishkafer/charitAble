@@ -271,7 +271,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('schedulereq_dons/index');
+                redirect('dashboard_dons/index');
               }
 
               public function createEhSession($user){
@@ -432,7 +432,7 @@ public function signup_dons(){
             //$email->sendVerificationEmail($data['email'], $otp_code);
                     
 
-            redirect('Users/login');
+            redirect('users/login');
           } /* else {
               die('Something went wrong');
           } */
