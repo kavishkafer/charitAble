@@ -8,8 +8,13 @@
 
 :root {
   --blue: #2C3333;
+<<<<<<< Updated upstream
   --white: #E7F6F2;
   --gray: #395b642d;
+=======
+  --white: #fff;
+  --gray: #ffffff2d;
+>>>>>>> Stashed changes
   --black1: #222;
   --black2: rgb(107, 105, 105);
   --light: #D6E4E5;

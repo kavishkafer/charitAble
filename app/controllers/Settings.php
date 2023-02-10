@@ -135,10 +135,19 @@
             $_GET = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
+<<<<<<< Updated upstream
                 // 'admin_name' =>trim($_SESSION['user_name']),
                 // 'admin_email' => trim($_SESSION['admin_email']),
                 // 'admin_phone' => trim($_SESSION['user_Phone']),
                 // 'admin_password' => trim($_SESSION['user_Password']),
+=======
+
+                'admin_name' =>trim($_SESSION['user_name']),
+                'admin_email' => trim($_SESSION['user_email']),
+                //'admin_phone' => trim($_SESSION['user_Phone']),
+                //'admin_password' => trim($_SESSION['user_Password']),
+
+>>>>>>> Stashed changes
                 // 'admin_nic' => trim($_SESSION['admin_nic']),
                 //'admin_date_assigned' => trim($_SESSION['A_DateAssigned']),
                 'admin_name_err' => '',

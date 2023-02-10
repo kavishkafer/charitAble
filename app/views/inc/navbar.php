@@ -76,7 +76,13 @@
                     </a>
                 </li>
                 <li>
+<<<<<<< Updated upstream
                     <a href="#">
+=======
+
+                    <a href="<?php echo URLROOT; ?>/posts">
+
+>>>>>>> Stashed changes
                         <span class="icon">
                             <i class="fas fa-signal"></i>
                         </span>
