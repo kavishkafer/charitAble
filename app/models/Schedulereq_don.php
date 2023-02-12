@@ -8,7 +8,7 @@ class Schedulereq_don {
     public function getRequests(){
         $this->db->query('SELECT * FROM shedule_request_table
         INNER JOIN donor_details
-        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` ');
+        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id` ');
 
         $results = $this->db->resultSet();
 
@@ -30,7 +30,7 @@ class Schedulereq_don {
     }
 
     public function addRequests($data){
-        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, Donation_Quantity, D_Date, Time, D_Id) VALUES(:D_Name, :D_Tel_No, :D_Address, :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id)');
+        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, D_Date, Time, Donation_Quantity, D_Id) VALUES(:D_Name, :D_Tel_No, :D_Address, :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id)');
         //Bind values
         $this->db->bind(':D_Name', $data['D_Name']);
         $this->db->bind(':D_Tel_No', $data['D_Tel_No']);

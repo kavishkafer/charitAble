@@ -54,7 +54,7 @@ class Schedulereq_dons extends Controller {
 
         //Validate Telephone Number
         if(empty($data['D_Tel_No'])){
-            $data['Tel_No_err'] = 'Please enter telephone number';
+            $data['D_Tel_No_err'] = 'Please enter telephone number';
         }
         //Validate Address
         if(empty($data['D_Address'])){
@@ -113,6 +113,8 @@ class Schedulereq_dons extends Controller {
         $this->view('schedulereq_dons/add', $data);
 
     }
+
+    echo json_encode($data);
 }
 
 public function reviewreq(){
