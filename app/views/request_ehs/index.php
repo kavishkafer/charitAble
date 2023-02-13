@@ -18,7 +18,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT; ?>/request_bens/index">
+                    <a href="#">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT; ?>/request_bens/requests">
+                    <a href="<?php echo URLROOT; ?>/requests_ehs_v">
                         <span class="icon">
                             <i class="fas fa-user"></i>
                         </span>
@@ -35,21 +35,14 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="<?php echo URLROOT; ?>/stat_bens">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
+               
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts">
                         <span class="icon">
                             <i class="fas fa-calendar"></i>
                         </span>
-                        <span class="title">Calender</span>
+                        <span class="title">Forum</span>
                     </a>
                 </li>
 
@@ -93,7 +86,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">50</div>
+                        <div class="numbers">1,504</div>
                         <div class="cardName">Total Requests</div>
                     </div>
 
@@ -104,7 +97,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers">80</div>
                         <div class="cardName">Pending Requests</div>
                     </div>
 
@@ -141,7 +134,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Requests</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add requests</a>
+                        <a href="<?php echo URLROOT; ?>/request_ehs/add" class="btn">Add requests</a>
                     </div>
 
                     <table>
@@ -149,9 +142,10 @@
                             <tr>
                                 <td>Request_Id</td>
                                 <td>Description</td>
-                                <td>Type</td>
-                                <td>Quantity</td>
-                                <td>Priority</td>
+                                <td>Documents Required</td>
+                               <!-- <td>Type</td>-->
+                               <!-- <td>Quantity</td> -->
+                               <!-- <td>Priority</td> -->
                                 <td>View</td>
                                 
                             </tr>
@@ -167,7 +161,7 @@
                                 <td><?php echo $requests->Donation_Type; ?></td>
                                 <td><?php echo $requests->Donation_Quantity; ?></td>
                                 <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
+                                <td><a href="<?php echo URLROOT; ?>/request_ehs/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
                             </tr>
                             <?php endforeach; ?>
                             

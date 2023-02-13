@@ -2,7 +2,8 @@
 use helpers\email;
 
 class Users extends Controller
-{   public function __construct(){
+{
+    public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
     //$this->settingModel = $this->model('Setting');
@@ -269,14 +270,14 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('schedulereq_dons/index');
+                redirect('dashboard_dons/index');
               }
 
               public function createEhSession($user){
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('pages/index');
+                redirect('request_ehs');
               }
 
 
@@ -343,22 +344,6 @@ class Users extends Controller
 
 
 
-      } else {
-        // Init data
-        $data =[
-          'name' => '',
-          'email' => '',
-          'address' => '',
-          'telephone_number' => '',
-          'password' => '',
-          'confirm_password' => '',
-          'name_err' => '',
-          'email_err' => '',
-          'address_err' => '',
-          'telephone_number_err' => '',
-          'password_err' => '',
-          'confirm_password_err' => ''
-        ];
 
 
  
@@ -446,7 +431,7 @@ public function signup_dons(){
             //$email->sendVerificationEmail($data['email'], $otp_code);
                     
 
-            redirect('Users/login');
+            redirect('users/login');
           } /* else {
               die('Something went wrong');
           } */

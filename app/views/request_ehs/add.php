@@ -33,21 +33,14 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
+                
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts">
                         <span class="icon">
                             <i class="fas fa-calendar"></i>
                         </span>
-                        <span class="title">Calender</span>
+                        <span class="title">Forum</span>
                     </a>
                 </li>
 
@@ -97,7 +90,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Add Request</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+                        <a href="<?php echo URLROOT; ?>/request_ehs/add" class="btn">Add posts</a>
                     </div>
                 
                 <!-- <div class="input-div one ">
@@ -158,40 +151,32 @@
                 <div class="content-sidebar">
                     <div class="content">
                         <div class="des">
-                        <h3> <label for="Donation Description"><b>Donation Description</b></label></h3>
+                        <h3> <label for="Event Date"><b>Event Date</b></label></h3>
                     </div>
                     </div>
                     <div class="data">
-                        <textarea id="subject" name="Donation_Description" value="<?php echo $data['Donation_Description']; ?>" ></textarea>
+                        <input type="date" >
                         <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div> 
                                  
                     </div>
                     <div class="content">
-                        <h3><label for="Donation Type"><b>Donation type</b></label></h3>
+                        <h3><label for="Donation Type"><b>Event time</b></label></h3>
                     </div>
                     <div class="data">
-                        <select  name="Donation_Type">
-                            <option value="Dry Rations">Dry rations</option>
-                            <option value="Clothes">Clothes</option>
-                            <option value="Medicine">Medicine</option>
-                            <option value="Sanitary items">Sanitary items</option>
-                            <option value="Others">Others</option>
-                            </select>
+                        <input type="time" name="Event_Time" placeholder="Event_Time" value="<?php echo $data['Event_Time']; ?>" >
                     </div>
                     <div class="content">
-                        <h3><label for="Donation Priority"><b>Donation Priority</b></label></h3>
+                        <h3><label for="Event Description"><b>Event Description</b></label></h3>
                     </div>
                     <div class="data">
-                        <select  name="Donation_Priority">
-                            <option value="High">High</option>
-                            <option value="Normal">Normal</option>
-                            </select>
+                    <textarea id="subject" name="Event_Description" value="<?php echo $data['Event_Description']; ?>" ></textarea>
+
                     </div>
                     <div class="content">
-                        <label for="Donation Quantity"><h3>Donation Quantity</h3></label>
+                        <label for="Event Letter"><h3>Event Letter</h3></label>
                     </div>
                     <div class="data">
-                      <input type="text" name="Donation_Quantity" placeholder="Donation Quantity" value="<?php echo $data['Donation_Quantity']; ?>">
+                      <input type="file" name="Event_Letter" placeholder="Event_Letter" value="<?php echo $data['Event_Letter']; ?>">
                     </div>
 
                 </div>
@@ -205,5 +190,5 @@
         
 
     </div>
-    <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
+    <script src="<?php echo URLROOT; ?>/js/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
