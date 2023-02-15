@@ -93,7 +93,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">50</div>
+                        <div class="numbers"><?php echo $data['count'] ?></div>
                         <div class="cardName">Total Requests</div>
                     </div>
 
