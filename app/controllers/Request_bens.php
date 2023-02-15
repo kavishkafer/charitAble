@@ -11,9 +11,15 @@ class Request_bens extends Controller{
         $requests = $this->requestModel->getRequests();
         $row=$this->requestModel->getBenId($_SESSION['user_id']);
         $count=$this->requestModel->totalRequestsByBen($row->B_Id);
+        $accept=$this->requestModel->acceptedRequestsBen($row->B_Id);
+        $complete=$this->requestModel->completedRequestsBen($row->B_Id);
+        $pending=$this->requestModel->pendingRequestsBen($row->B_Id);
         $data=[
             'requests' => $requests,
-            'count' => $count
+            'count' => $count,
+            'accept' => $accept,
+            'complete' => $complete,
+            'pending' => $pending
         ];
 
         

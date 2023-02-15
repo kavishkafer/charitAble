@@ -96,8 +96,20 @@ class Request_ben
 
 
     }
-    public function pendingRequestBen($id){
-        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND ');
+    public function pendingRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = false AND Completed = false');
+        $this->db->bind(':B_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function completedRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = true');
+        $this->db->bind(':B_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function acceptedRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = false');
         $this->db->bind(':B_Id', $id);
         $count=$this->db->resultset();
         return $this->db->rowCount();
