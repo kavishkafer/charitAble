@@ -29,14 +29,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             'title' => trim($_POST['title']),
             'body' => trim($_POST['body']),
             'user_id' => $_SESSION['user_id'],
-            'image' => trim($_POST['image']),
+            'image' => $_FILES['image'],
+            'image_name' => time().'_'.$_FILES['image']['name'],
             'title_err' => '',
-            'body_err' => ''
+            'body_err' => '',
+            'image_err' => ''
 
           ];
 
           //validate post data
-          if(empty($data['title'])){
+
+        if($data['image']['size'] > 0){
+            if (uploadImage($data['image']['tmp_name'], $data['image_name'], '/img/postsImgs/')){
+                //done
+            }
+            else {
+                $data['image_err'] = 'unsuccessful image uploading';
+
+            }
+    }
+    else {
+        $data['image_name'] = null;
+    }
+
+            /*----------------------------*/
+            if(empty($data['title'])){
             $data['title_err'] = 'Please enter title';
           }
 
@@ -44,17 +61,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data['body_err'] = 'Please enter post body';
           }
 
-          //make sure no errror
-            if(empty($data['title_err']) && empty($data['body_err'])){
+          //make sure no error
+            if(empty($data['title_err']) && empty($data['body_err']) && empty($data['image_err'])) {
                     //validated
-                    if($this->postModel->addPost($data)){
+                    if($this->postModel->addPost($data)) {
                         flash('post_message', 'Post Added');
                         redirect('posts');
                     } else {
                         die('something went wrong');
                     }
             } else {
-                // load view with errrors
+                // load view with errors
                 $this->view('posts/add', $data);
             }
 
@@ -63,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         'title' => '',
         'body' => '',
         'image'=> '',
+        'image_name' => '',
         'title_err' => '',
         'body_err' => '',
         'image_err' => ''
@@ -83,12 +101,35 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   'title' => trim($_POST['title']),
                   'body' => trim($_POST['body']),
                   'user_id' => $_SESSION['user_id'],
+                  'image' => $_FILES['image'],
+                  'image_name' => time().'_'.$_FILES['image']['name'],
                   'title_err' => '',
-                  'body_err' => ''
-      
+                  'body_err' => '',
+                  'image_err' => ''
                 ];
       
                 //validate post data
+          $post = $this->postModel->getPostById($id);
+          $oldImage = PUBROOT.'/img/postsImgs/'.$post->image;
+
+          //post updated
+          //user havent changed the existing image
+          if($_POST['intentially_removed'] == 'removed') {
+              deleteImage($oldImage);
+                $data['image_name'] = '';
+          }
+          else {
+              if ($_FILES['image']['name'] == '') {
+                  $data['image_name'] = $post->image;
+              } else {
+                  updateImage($oldImage, $data['image']['tmp_name'], $data['image_name'], '/img/postsImgs/');
+              }
+          }
+
+
+          //photo remove intentionally
+
+
                 if(empty($data['title'])){
                   $data['title_err'] = 'Please enter title';
                 }
@@ -122,7 +163,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           $data = [
             'id' => $id,
               'title' => $post->title,
-              'body' => $post->body
+              'body' => $post->body,
+              'image' => '',
+                'image_name' => '',
+                'title_err' => '',
+                'body_err' => '',
+                'image_err' => ''
             ];
       
             $this->view('posts/edit', $data);
@@ -143,13 +189,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     public function delete($id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-          
+
            //get existing post from model
            $post = $this->postModel->getPostById($id);
            //check for owner remove the comment once the login is finalized)
            if($post->user_id != $_SESSION['user_id']){
-               reirect('posts');
-           } 
+               redirect('posts');
+           }
+
+                $post = $this->postModel->getPostById($id);
+                $oldImage = PUBROOT.'/img/postsImgs/'.$post->image;
+                deleteImage($oldImage);
+
             if($this->postModel->deletePost($id)){
               flash('post_message', 'post removed');
               redirect('posts');
@@ -161,3 +212,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
   }
+

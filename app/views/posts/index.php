@@ -29,12 +29,17 @@
 </div>
 
 <?php foreach($data['posts'] as $post) : ?>
+
     <div class="card">
             <h1 class="title"><?php echo $post->title; ?></h1>
-            <br>
+
              
-            <div class="post_img">
-              <img src="<?php echo URLROOT; ?>/img/posts/sample.png" alt="" width="300px">
+            <div class="post-image">
+                <?php if($post->image != null) : ?>
+                    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
+                    <?php else: ?>
+              <!--<img src="" alt="" width="300px"> -->
+              <?php endif; ?>
             </div> 
             <br>
             <p class="text"><?php echo $post->body; ?></p>
@@ -66,4 +71,6 @@
 
     </div>
 <?php endforeach; ?>
+
+<script type="text/javascript" src="<?php echo URLROOT; ?>/public/js/post/post.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

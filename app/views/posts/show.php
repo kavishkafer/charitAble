@@ -25,7 +25,7 @@
 <h1><?php echo $data['post']->title; ?></h1>
 <br>
 <div class="post_img">
-              <img src="<?php echo URLROOT; ?>/img/posts/sample.png" alt="" width="300px">
+    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
             </div> 
 
 <br>

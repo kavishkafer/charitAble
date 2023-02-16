@@ -24,7 +24,15 @@
 <?php print_r($data); ?>
 
 <br> <br>
-<form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['id']; ?>" method="post">
+<form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['id']; ?>" method="post" enctype="multipart/form-data">
+
+    <div class="post-image">
+        <?php if($data['image_name'] != null): ?>
+        <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $data['image_name']; ?>" alt="" id="image_placeholder">
+        <?php else:?>
+        <img src="" alt="" id="image_placeholder" style="display: none;">
+<?php endif; ?>
+    </div>
 <div class="div">
         <label for="title">Title</label>
         <input name="title" type="text" class="addP <?php echo (!empty($data['title_err'])) ?>" value="<?php echo $data['title']; ?>">
@@ -38,7 +46,18 @@
         <div class=warn><?php echo $data['body_err']; ?></div>
          
 </div>
+
+    <div class="img">
+        <div class="imgBrowse">
+            <img src="<?php echo URLROOT; ?>/img/posts/browse-image.png" alt="" id="addImagebtn" onclick="toggleBrowse()">
+            <img src="<?php echo URLROOT; ?>/img/posts/remove-image.png" alt="" id="removeImagebtn" style="display: none;" onclick="removeImage()">
+            <input type="text" name="intentially_removed" id="intentially_removed" style="display: none;" readonly>
+            <input type="file" name="image" id="image" style="display: none;">
+        </div>
+
+    </div>
 <input type="submit" value="Submit" class="addPbtn">
 </form>
 </div>
+    <script type="text/javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
