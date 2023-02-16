@@ -93,7 +93,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">50</div>
+                        <div class="numbers"><?php echo $data['count'] ?></div>
                         <div class="cardName">Total Requests</div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers"><?php echo $data['pending'] ?></div>
                         <div class="cardName">Pending Requests</div>
                     </div>
 
@@ -115,7 +115,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
+                        <div class="numbers"><?php echo $data['accept'] ?></div>
                         <div class="cardName">Accepted request</div>
                     </div>
 
@@ -126,7 +126,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers"><?php echo $data['complete'] ?></div>
                         <div class="cardName">Completed Requests</div>
                     </div>
 
