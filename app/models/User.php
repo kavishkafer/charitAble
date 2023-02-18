@@ -135,8 +135,8 @@ class User {
     }
 
     public function getDUserById($id){
-        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_id');
-        $this->db->bind(':D_id', $id);
+        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_Id');
+        $this->db->bind(':D_Id', $id);
         $row = $this->db->single();
         return $row;
     }

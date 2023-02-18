@@ -1,5 +1,7 @@
 
-    <link rel="stylesheet" href="../public/css/donor/style.css">
+    <!--<link rel="stylesheet" href="../public/css/donor/style.css">-->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
+
     <!-- =============== Navigation ================ -->
     <div class="container-nav">
         <div class="navigation">

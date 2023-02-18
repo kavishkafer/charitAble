@@ -42,6 +42,29 @@ class Schedulereq_don {
         $this->db->bind(':D_Id', $data['user_id']);
 
 
+
+        //Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateRequests($data){
+        $this->db->query('UPDATE shedule_request_table SET D_Name = :D_Name, D_Tel_No = :D_Tel_No, D_Address = :D_Address, Food_Type = :Food_Type, D_Date = :D_Date, Time = :Time, Donation_Quantity = :Donation_Quantity WHERE B_Req_ID = :B_Req_ID');
+        //Bind values
+        if (isset($data['D_Name'])) {
+        $this->db->bind(':D_Name', $data['D_Name']);
+        $this->db->bind(':D_Tel_No', $data['D_Tel_No']);
+        $this->db->bind(':D_Address', $data['D_Address']);
+        $this->db->bind(':Food_Type', $data['Food_Type']);
+        $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
+        $this->db->bind(':D_Date', $data['D_Date']);
+        $this->db->bind(':Time', $data['Time']);
+        $this->db->bind(':B_Req_ID', $data['B_Req_ID']);
+        
+        }
         //Execute
         if($this->db->execute()){
             return true;
@@ -71,4 +94,49 @@ class Schedulereq_don {
         return $results;
     }
 
-}
+        
+
+    ///////////
+    public function getBenById($id){
+        $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_Id');
+        $this->db->bind(':B_Id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
+
+
+    public function get_meals(){
+        $this->db->query('SELECT B_Req_ID, Time, D_Date FROM shedule_request_table');
+        $results = $this->db->resultSet();
+
+        $count = mysqli_num_rows($results);
+        if($count > 0){
+            $data_arr = array();
+            $i=1;
+            while($data_row = mysqli_fetch_array($results, MYSQLI_ASSOC)) { 
+                $data_arr[$i]['B_Req_ID'] = $data_row['B_Req_ID'];
+                $data_arr[$i]['Time'] = $data_row['Time'];
+                $data_arr[$i]['D_Date'] = date("Y-m-d", strtotime($data_row['D_Date']));
+                $i++;
+              }
+              $data = array(
+                          'status' => true,
+                          'msg' => 'successfully!',
+                          'data' => $data_arr
+                      );
+            }
+            else {
+              $data = array(
+                          'status' => false,
+                          'msg' => 'Error!'       
+                      );
+            }
+            echo json_encode($data);
+    }
+
+    
+ }
+
+    
+
