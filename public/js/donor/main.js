@@ -104,7 +104,7 @@ function get_meals(calendar) {
         meals.push(
           {
             reqID: item.B_Req_ID,
-            time: item.Time,
+            title: item.Time,
             date: item.D_Date
           }
         );

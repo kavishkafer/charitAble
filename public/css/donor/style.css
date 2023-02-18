@@ -448,21 +448,13 @@ display: none;
 /* ===================== schedulereq_dons ===================== */
 .calender-container{
   position: absolute;
-  display: flex;
+  display: block;
   height:calc(100% - 60px);
   width: 41%;
   top: 60px;
   left: 18%;
   background-color: #B7C4CF;
-  justify-content: flex-end;
-  }
-
-  .calendar img{
-  position: absolute;
-	height: 60%;
-	left: 10%;
-	width: auto;
-	bottom: 20%;
+  justify-content: center;
   }
 
 .form-container-req{

@@ -266,7 +266,7 @@ public function delete($id){
 }
 
 public function get_meals(){
-    $requests = $this->requestModel->getRequests();
+    $requests = $this->requestModel->getAllRequests();
     //$user = $this->userModel->getUserById($id);
     $data = [
         'requests' => $requests,

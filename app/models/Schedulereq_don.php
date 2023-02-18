@@ -8,7 +8,17 @@ class Schedulereq_don {
     public function getRequests(){
         $this->db->query('SELECT * FROM shedule_request_table
         INNER JOIN donor_details
-        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id` ');
+        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id` WHERE accepted = false and completed = false ');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getAllRequests(){
+        $this->db->query('SELECT * FROM shedule_request_table 
+        /*INNER JOIN donor_details
+        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id`*/ ');
 
         $results = $this->db->resultSet();
 
@@ -106,7 +116,7 @@ class Schedulereq_don {
 
 
 
-    public function get_meals(){
+/*     public function get_meals(){
         $this->db->query('SELECT B_Req_ID, Time, D_Date FROM shedule_request_table');
         $results = $this->db->resultSet();
 
@@ -133,7 +143,7 @@ class Schedulereq_don {
                       );
             }
             echo json_encode($data);
-    }
+    } */
 
     
  }
