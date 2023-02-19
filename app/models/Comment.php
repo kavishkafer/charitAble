@@ -30,6 +30,17 @@ class Comment
         $this->db->bind(':post_id', $id);
         return $this->db->resultSet();
     }
+
+
+    public function deleteComment($commentId) {
+        $this->db->query('DELETE FROM comments WHERE comment_id = :id');
+        $this->db->bind(':id', $commentId);
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

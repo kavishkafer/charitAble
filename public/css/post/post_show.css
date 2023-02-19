@@ -334,3 +334,24 @@ input::placeholder {
   flex-direction: row;
 }
 
+.comments-delete-btn img{
+  height: 28px;
+  width: 28px;
+  padding-left: 10px;
+
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.comments-delete-btn{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 3px;
+    border-radius: 20px;
+}
+
+.comments-delete-btn:hover{
+  background-color: #ffc5c5;
+}
+

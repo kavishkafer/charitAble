@@ -42,3 +42,17 @@ $(document).ready(function() {
     })
 
 })
+
+//delete comment
+function deleteComment(commentid) {
+    $.ajax({
+        url: URLROOT + "/Comments/deleteComment/" + commentid,
+        dataType: "post",
+        data: $('form').serialize(),
+        success: function(response) {
+            location.reload();
+        }
+    })
+
+
+}
