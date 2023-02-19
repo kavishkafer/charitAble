@@ -1,7 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
 <body>
-<link rel="stylesheet" href="/css/donor/style.css">
 
 <div class="container">
 
