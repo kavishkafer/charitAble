@@ -19,14 +19,13 @@ class Schedulereq_dons extends Controller {
         $this->view('schedulereq_dons/index', $data);
     }
 
-    public function add(){
+    public function add($ben_id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $c= $_SESSION['user_id'];
             $d =$this->requestModel-> getdonId($c);
             //Sanitize request data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            
 
         $data = [
             'D_Name' => trim($_POST['D_Name']),  
@@ -36,10 +35,8 @@ class Schedulereq_dons extends Controller {
             'Donation_Quantity' => trim($_POST['Donation_Quantity']),
             'D_Date' => trim($_POST['D_Date']),
             'Time' => trim($_POST['Time']),
-            'user_id' => $d->D_Id,
-
-            
-
+            'user_id' => $d->D_Id,            
+            'B_id' => $ben_id,
             'D_Name_err' =>'',
             'D_Tel_No_err' => '',
             'D_Address_err' => '',
@@ -103,6 +100,7 @@ class Schedulereq_dons extends Controller {
             'Donation_Quantity' => '',
             'D_Date' => '',
             'Time' => '',
+            'B_id' => $ben_id,
             'D_Name_err' => '',
             'D_Tel_No_err' => '',
             'D_Address_err' => '',

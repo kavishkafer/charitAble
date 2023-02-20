@@ -12,7 +12,7 @@
 </div>
 <div class="form-container-req">
 <div class="form-inner" id="meal-entry">
-<form action="<?php echo URLROOT; ?>/schedulereq_dons/add" autocomplete="off" method="POST">
+<form action="<?php echo URLROOT; ?>/schedulereq_dons/edit/<?php echo $data['B_Req_ID'];?>" method="GET">
 <div class="heading-req">
 <h2>UPDATE RESERVATION</h2>
 </div>

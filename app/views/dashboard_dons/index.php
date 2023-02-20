@@ -9,7 +9,7 @@
 <!-- ======================= Cards ================== -->
 <div class="cardBox">
                 <div class="card">
-                <a href="#">
+                <a href="<?php echo URLROOT; ?>/requests_dons/index">
                     <div>
                         <div class="numbers">01</div>
                         <div class="cardName">Ongoing Requests</div>
@@ -35,6 +35,7 @@
                 </div>
 
                 <div class="card">
+                    <a href="#">
                     <div>
                         <div class="numbers">05</div>
                         <div class="cardName">Completed Donations</div>
@@ -43,8 +44,8 @@
                     <div class="iconBx">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </div>
+                </a>
                 </div>
-
             </div>
             
             <div class="all-req">

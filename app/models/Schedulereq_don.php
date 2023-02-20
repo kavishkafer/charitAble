@@ -15,15 +15,15 @@ class Schedulereq_don {
         return $results;
     }
 
-    public function getAllRequests(){
+     public function getAllRequests(){
         $this->db->query('SELECT * FROM shedule_request_table 
         /*INNER JOIN donor_details
-        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id`*/ ');
+        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id`*/  ');
 
         $results = $this->db->resultSet();
 
         return $results;
-    }
+    }  
 
     public function getDRequestByID($id)
     {
@@ -40,7 +40,7 @@ class Schedulereq_don {
     }
 
     public function addRequests($data){
-        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, D_Date, Time, Donation_Quantity, D_Id) VALUES(:D_Name, :D_Tel_No, :D_Address, :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id)');
+        $this->db->query('INSERT INTO shedule_request_table (D_Name, D_Tel_No, D_Address, Food_Type, D_Date, Time, Donation_Quantity, D_Id, B_Id) VALUES(:D_Name, :D_Tel_No, :D_Address, :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id, :B_Id)');
         //Bind values
         $this->db->bind(':D_Name', $data['D_Name']);
         $this->db->bind(':D_Tel_No', $data['D_Tel_No']);
@@ -50,9 +50,7 @@ class Schedulereq_don {
         $this->db->bind(':D_Date', $data['D_Date']);
         $this->db->bind(':Time', $data['Time']);
         $this->db->bind(':D_Id', $data['user_id']);
-
-
-
+        $this->db->bind(':B_Id', $data['B_id']);
         //Execute
         if($this->db->execute()){
             return true;
@@ -116,7 +114,7 @@ class Schedulereq_don {
 
 
 
-/*     public function get_meals(){
+     /* public function get_meals(){
         $this->db->query('SELECT B_Req_ID, Time, D_Date FROM shedule_request_table');
         $results = $this->db->resultSet();
 
@@ -125,9 +123,9 @@ class Schedulereq_don {
             $data_arr = array();
             $i=1;
             while($data_row = mysqli_fetch_array($results, MYSQLI_ASSOC)) { 
-                $data_arr[$i]['B_Req_ID'] = $data_row['B_Req_ID'];
-                $data_arr[$i]['Time'] = $data_row['Time'];
-                $data_arr[$i]['D_Date'] = date("Y-m-d", strtotime($data_row['D_Date']));
+                $data_arr[$i]['reqID'] = $data_row['B_Req_ID'];
+                $data_arr[$i]['title'] = $data_row['Time'];
+                $data_arr[$i]['date'] = date("Y-m-d", strtotime($data_row['D_Date']));
                 $i++;
               }
               $data = array(
@@ -143,7 +141,7 @@ class Schedulereq_don {
                       );
             }
             echo json_encode($data);
-    } */
+    }  */
 
     
  }
