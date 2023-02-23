@@ -24,7 +24,6 @@ class BenReqDons extends Controller
     public function acceptRequest($Id)
     {
         $this->benreqdonModel->getRequestDetails($Id);
-
         if ($this->benreqdonModel->acceptRequest($Id)) {
             flash('request_message', 'Request Accepted');
             redirect('benreqdons/index');
