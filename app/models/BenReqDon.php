@@ -29,6 +29,7 @@ return $row;
 
 
 public function acceptRequest($Id){
+
 $this->db->query('UPDATE donation_table SET Accepted = true  WHERE Donation_ID = :Id');
 $this->db->bind(':Id', $Id);
 if($this->db->execute()){
@@ -38,6 +39,7 @@ else{
 return false;
 }
 }
+
 public function completeRequest($Id){
 $this->db->query('UPDATE donation_table SET completed = true WHERE Donation_ID = :Id');
 $this->db->bind(':Id', $Id);

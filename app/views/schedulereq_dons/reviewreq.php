@@ -26,7 +26,7 @@
                               
     <?php foreach($data['requests'] as $requests): ?>
         <td> <?php echo $requests->B_Req_ID; ?></td> 
-        <td><!--<?php echo $requests->B_Name; ?>--></td>
+        <td><?php echo $requests->B_Name; ?></td>
         <td><?php echo $requests->D_Date; ?></td>
         <td><?php echo $requests->Time; ?></td>
         <td><?php echo $requests->Food_Type; ?></td>

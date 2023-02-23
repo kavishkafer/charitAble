@@ -5,10 +5,13 @@ class Schedulereq_don {
     public function __construct(){
         $this->db = new Database;
     }
-    public function getRequests(){
-        $this->db->query('SELECT * FROM shedule_request_table
-        INNER JOIN donor_details
-        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id` WHERE accepted = false and completed = false ');
+     public function getRequests(){
+    
+     $this->db->query('SELECT s.*, d.*, b.B_Name
+                  FROM shedule_request_table s
+                  INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
+                  WHERE s.accepted = false AND s.completed = false'); 
 
         $results = $this->db->resultSet();
 
@@ -16,13 +19,16 @@ class Schedulereq_don {
     }
 
      public function getAllRequests(){
-        $this->db->query('SELECT * FROM shedule_request_table 
+        $this->db->query('SELECT * FROM shedule_request_table /*WHERE B_Id = :B_Id */ 
         /*INNER JOIN donor_details
         ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id`*/  ');
-
+/* 
+         $this->db->bind(':B_Id', $id);
+        $row = $this->db->single();
+        return $row;  */
         $results = $this->db->resultSet();
 
-        return $results;
+        return $results;  
     }  
 
     public function getDRequestByID($id)
