@@ -7,6 +7,7 @@ class BenReqDons extends Controller
         $this->benreqdonModel = $this->model('BenReqDon');
         $this->userModel = $this->model('User');
         $this->requestModel = $this->model('Request_ben');
+
     }
 
 
@@ -23,8 +24,10 @@ class BenReqDons extends Controller
 
     public function acceptRequest($Id)
     {
+        $c= $_SESSION['user_id'];
+        $d =$this->benreqdonModel-> getDonId($c);
         $this->benreqdonModel->getRequestDetails($Id);
-        if ($this->benreqdonModel->acceptRequest($Id)) {
+        if ($this->benreqdonModel->acceptRequest($Id, $d->D_Id)) {
             flash('request_message', 'Request Accepted');
             redirect('benreqdons/index');
 
