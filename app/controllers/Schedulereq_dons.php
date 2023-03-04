@@ -265,13 +265,9 @@ public function delete($id){
 
 public function get_meals(){
     $requests = $this->requestModel->getAllRequests();
-    //$user = $this->userModel->getUserById($id);
     $data = [
         'requests' => $requests,
-        //'user' => $user
     ];
-
-    //$this->view('schedulereq_dons/reviewreq', $data);
     echo json_encode($data);
     }
 }

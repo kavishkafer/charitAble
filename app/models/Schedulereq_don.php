@@ -19,13 +19,9 @@ class Schedulereq_don {
     }
 
      public function getAllRequests(){
-        $this->db->query('SELECT * FROM shedule_request_table /*WHERE B_Id = :B_Id */ 
-        /*INNER JOIN donor_details
-        ON `shedule_request_table`.`D_Id` = `donor_details`.`D_Id` AND ' . $_SESSION['user_id'] . ' = `donor_details`.`User_Id`*/  ');
-/* 
-         $this->db->bind(':B_Id', $id);
-        $row = $this->db->single();
-        return $row;  */
+        $this->db->query('SELECT * FROM shedule_request_table');
+
+         /*$this->db->bind(':B_Id', $ben_id);*/
         $results = $this->db->resultSet();
 
         return $results;  
