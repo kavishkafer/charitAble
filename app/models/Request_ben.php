@@ -114,5 +114,17 @@ class Request_ben
         $count=$this->db->resultset();
         return $this->db->rowCount();
     }
+    public function completedRequestsBenDetails($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = true');
+        $this->db->bind(':B_Id', $id);
+        $array=$this->db->resultset();
+        return $array;
+    }
+    public function AcceptedRequestsBenDetails($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = false');
+        $this->db->bind(':B_Id', $id);
+        $array=$this->db->resultset();
+        return $array;
+    }
 
 }

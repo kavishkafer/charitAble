@@ -57,7 +57,7 @@
                         <div class="div">
                             <h5>Address</h5>
 
-                            <input type="text" name="address"  class="input"  value="<?php echo $data['address'];?>">
+                            <input type="text" name="address" id="autocomplete" class="input" value="<?php echo $data['address'];?>">
                             
                             <div class=warn><?php echo $data['address_err']; ?></div>
                         </div>
@@ -84,6 +84,9 @@
                                            document.getElementById("longitude").value = event.latLng.lng();
                                        });
                                    }
+                                   var autocomplete = new google.maps.places.Autocomplete(
+                                       document.getElementById('autocomplete'),
+                                       {types: ['geocode']});
                                </script>
                            </div>
                            <input type="hidden" id="latitude" name="latitude"><br>

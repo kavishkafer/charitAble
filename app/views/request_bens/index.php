@@ -54,7 +54,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT ?>/SettingBens/viewProfile">
                         <span class="icon">
                             <i class="fas fa-cog"></i>
                         </span>

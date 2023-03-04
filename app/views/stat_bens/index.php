@@ -162,24 +162,36 @@
                         const ctp = document.getElementById('myPie');
                         const ctr = document.getElementById('myLine');
 
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
+
+                            // setup block
+
+                            const data={
                                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                                 datasets: [{
-                                    label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
+                                label: 'title',
+                                data: [<?php echo $data['donation_quantity']?>, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                                borderWidth: 1
+                            }]
+                        };
+                            //config block
+                            const config = {
+                                type: 'bar',
+                                data,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
                                 }
                             }
-                        });
+                        }
+                            };
+                            //Render block
+                            const myChart = new Chart(
+                                document.getElementById('myChart'),
+                                config
+                            );
+
+
 
                         new Chart(ctp, {
                             type: 'pie',

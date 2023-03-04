@@ -173,6 +173,42 @@ label{
 	transform: translateX(118%);
 }
 
+.btn3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+	height: 45px;
+	width: 15%;
+	color: white;
+	background-color:red ;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	transition: 0.4s;
+	transform: translateX(118%);
+}
+
+.btn4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+	height: 45px;
+	width: 30%;
+	color: white;
+	background-color:#2C3333 ;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	transition: 0.4s;
+	transform: translateX(118%);
+}
+
 
 .btn:hover{
 	background-color: #A5C9CA;
@@ -180,6 +216,14 @@ label{
 
 .btn2:hover{
 	background-color: #A5C9CA;
+}
+
+.btn3:hover{
+	background-color: #FF6961;
+}
+
+.btn4:hover{
+	background-color: #B7C4CF;
 }
 
 .text{
@@ -404,21 +448,13 @@ display: none;
 /* ===================== schedulereq_dons ===================== */
 .calender-container{
   position: absolute;
-  display: flex;
+  display: block;
   height:calc(100% - 60px);
   width: 41%;
   top: 60px;
   left: 18%;
-  background-color: #395B64;
-  justify-content: flex-end;
-  }
-
-  .calendar img{
-  position: absolute;
-	height: 60%;
-	left: 10%;
-	width: auto;
-	bottom: 20%;
+  background-color: #B7C4CF;
+  justify-content: center;
   }
 
 .form-container-req{
@@ -535,6 +571,22 @@ display: none;
   border-radius: 20px;
   top: 240px;
   left: 20%;
+}
+
+.slt{
+  background-color: #E7F6F2;
+  position: absolute;
+  height:calc(100% - 260px);
+  padding: 20px;
+  font-size: 1.25rem;
+  text-align: left;
+  justify-content: center;
+  display: grid;
+  width: 60%;
+  border-radius: 20px;
+  top: 160px;
+  left: 28%;
+
 }
 
 .new-select{
@@ -727,6 +779,26 @@ td, th{
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }*/
+
+/*reviewreq*/
+.content-sidebar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  text-align: left;
+
+}
+.content-sidebar .content{
+  flex: 1 1 25%;
+  min-width:25ch;
+  
+
+}
+.content-sidebar .data{
+  flex: 1 1 70%;
+  min-width:50ch;
+}
 
 
 /* ====================== Responsive Design ========================== */

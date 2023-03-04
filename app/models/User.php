@@ -127,7 +127,7 @@ class User {
         }
     }
 
-    public function getUserById($id){
+    public function getBenDetailsById($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
         $this->db->bind(':B_id', $id);
         $row = $this->db->single();
@@ -135,8 +135,8 @@ class User {
     }
 
     public function getDUserById($id){
-        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_id');
-        $this->db->bind(':D_id', $id);
+        $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_Id');
+        $this->db->bind(':D_Id', $id);
         $row = $this->db->single();
         return $row;
     }
@@ -228,6 +228,14 @@ class User {
 
 }
     
+
+        public function getBidFromUid($id){
+            $this->db->query('SELECT B_Id FROM beneficiary_details WHERE User_Id = :User_Id');
+            $this->db->bind(':User_Id', $id);
+            $row = $this->db->single();
+            $bid=$row->B_Id;
+            return $bid;
+        }
 
 
 

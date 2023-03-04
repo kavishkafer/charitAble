@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_show.css">
 
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/comments/comments.css">
 
 
 <div class="row">
@@ -25,7 +26,7 @@
 <h1><?php echo $data['post']->title; ?></h1>
 <br>
 <div class="post_img">
-              <img src="<?php echo URLROOT; ?>/img/posts/sample.png" alt="" width="300px">
+    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
             </div> 
 
 <br>
@@ -59,6 +60,7 @@
     </form>
     </div>
 
+    <form method="post">
     <!--comment input field-->
     <div class="comment-input-field">
     <input type="text" name="post-comment" id="post-comment" placeholder="Add a comment...">
@@ -66,6 +68,7 @@
       <img src="<?php echo URLROOT;?>/img/comments/comment-btn.png" alt="">
     </div>
 </div>
+    </form>
     </div>
     
     <!-- put the following line of code inside the if condition after the login is finalized -->
@@ -75,75 +78,38 @@
       <div class="comment-section-header">
         <h2>Comments</h2>
       </div>
+            <!--for testing purposes only-->
+      <!--  <div id="msg"> </div> -->
 
-      <!--comment -->
-      <div class="comment-container">
+        <!-- comment thread-->
+        <div id="results"> </div>
 
-      <!--this is a single comment-->
-        <div class="comment-left">
-          <img src="<?php echo URLROOT;?>/img/comments/avatar.png" alt="">
-        </div>
-        <div class="comment-right">
-              <div class="comment-right-header">
-                  <div class="comment-user-name">Leo Club Athugalpura</div>
-                  <div class="comment-posted-at">Just now</div>
-              </div>
-              <div class="comment-right-body">We love your work. I want to support this also.</div>
-              <div class="comment-right-footer">
+<br>
+        <!--comment -->
 
-                  <div class="comment-likes">
-                    <img src="<?php echo URLROOT;?>/img/comments/like-btn.png" alt="">
-                      <div class="comment-likes-count">0</div>
-                  </div>
+        <!--single comment ends here-->
+        <br>
 
-                  <div class="comment-dislikes">
-                    <img src="<?php echo URLROOT;?>/img/comments/dislike-btn.png" alt="">
-                    <div class="comment-likes-count">0</div>
-                  </div>
-              </div>
-        </div>
-      </div>  
-      <!--single comment ends here-->
-      <br>
-<!--second single comment starts here-->
-       <!--comment -->
-       <div class="comment-container">
 
-<!--this is a single comment-->
-  <div class="comment-left">
-    <img src="<?php echo URLROOT;?>/img/comments/avatar.png" alt="">
-  </div>
-  <div class="comment-right">
-        <div class="comment-right-header">
-            <div class="comment-user-name">Leo Club Athugalpura</div>
-            <div class="comment-posted-at">Just now</div>
-        </div>
-        <div class="comment-right-body">We love your work. I want to support this also.</div>
-        <div class="comment-right-footer">
 
-            <div class="comment-likes">
-              <img src="<?php echo URLROOT;?>/img/comments/like-btn.png" alt="">
-                <div class="comment-likes-count">0</div>
-            </div>
 
-            <div class="comment-dislikes">
-              <img src="<?php echo URLROOT;?>/img/comments/dislike-btn.png" alt="">
-              <div class="comment-likes-count">0</div>
-            </div>
-        </div>
-  </div>
-</div>  
 
-<!--second single comment ends here-->
 
-      
 
-      
+
+
     </div>
 
     <br> <br> <br>
-      
+    <script type="text/JavaScript" src="<?php echo URLROOT; ?>/js/jQuery.js"></script>
+
+    <script type="text/javascript">
+        var URLROOT = '<?php echo URLROOT; ?>';
+        var CURRENT_POST= '<?php echo $data['post']->id; ?>';
+    </script>
 
     <!--comments-->
     <script type="text/Javascript" src="<?php echo URLROOT; ?>/js/comments/comments.js"></script>
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+    <script type="text/Javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
+
+    <?php require APPROOT . '/views/inc/footer.php'; ?>
