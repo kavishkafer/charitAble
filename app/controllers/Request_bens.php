@@ -27,9 +27,15 @@ class Request_bens extends Controller{
     }
 
     public function requests(){
-        $requests = $this->requestModel->getRequests();
+        $row=$this->requestModel->getBenId($_SESSION['user_id']);
+        $completed = $this->requestModel->CompletedRequestsBenDetails($row->B_Id);
+        $accepted = $this->requestModel->AcceptedRequestsBenDetails($row->B_Id);
+        $data=[
+            'completed' => $completed,
+            'accepted' => $accepted
+        ];
 
-        $this->view('request_bens/request');
+        $this->view('request_bens/request',$data);
     }
 
 
@@ -114,7 +120,7 @@ class Request_bens extends Controller{
     public function show($id){
         
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->B_Id);
+        $user = $this->userModel->getBenDetailsById($request->B_Id);
         $data = [
             'request' => $request,
             'user' => $user
