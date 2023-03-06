@@ -53,7 +53,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts/index">
                         <span class="icon">
                             <i class="fas fa-columns"></i>
                         </span>
@@ -71,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT; ?>/users/logout_don">
+                    <a href="<?php echo URLROOT; ?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>

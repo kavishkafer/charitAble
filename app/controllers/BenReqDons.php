@@ -36,11 +36,11 @@ class BenReqDons extends Controller
         }
     }
     
-    public function show($id = null)
+    public function show($id)
     {
 
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->B_Id);
+        $user = $this->userModel->getBenDetailsById($request->B_Id);
         $data = [
             'requests' => $request,
             'user' => $user
