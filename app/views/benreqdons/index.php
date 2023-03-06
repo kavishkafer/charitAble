@@ -140,6 +140,9 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Requests</h2>
+
+                        <a href="<?php echo URLROOT; ?>" class="btn">Add requests</a>
+
                     </div>
 
                     <table>
@@ -161,14 +164,15 @@
                             <tr>
 
 
-                             <?php foreach($data['request'] as $requests): ?>
-                                <td><?php echo $data['ben']->B_Name; ?></td> 
-                                <td> <?php echo $requests->Donation_ID; ?></td> 
-                                <td><?php echo $requests->Donation_Description; ?></td>
-                                <td><?php echo $requests->Donation_Type; ?></td>
-                                <td><?php echo $requests->Donation_Quantity; ?></td>
-                                <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $requests->Donation_ID; ?>">View</a></td>
+                             <?php foreach($data['requests'] as $request): ?>
+                                <td><?php echo $request->B_Name; ?></td>
+                                <td> <?php echo $request->Donation_ID; ?></td>
+                                <td><?php echo $request->Donation_Description; ?></td>
+                                <td><?php echo $request->Donation_Type; ?></td>
+                                <td><?php echo $request->Donation_Quantity; ?></td>
+                                <td style="justify-content: center;"><?php echo $request->Donation_Priority; ?></td>
+                                <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $request->Donation_ID; ?>">View</a></td>
+                                }
 
                             </tr>
                             <?php endforeach; ?> 

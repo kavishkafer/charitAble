@@ -2,6 +2,9 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
+<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/benificiary/ben_stat.css">
+
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
 <!-- =============== Navigation ================ -->
@@ -159,24 +162,36 @@
                         const ctp = document.getElementById('myPie');
                         const ctr = document.getElementById('myLine');
 
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
+
+                            // setup block
+
+                            const data={
                                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                                 datasets: [{
-                                    label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
+                                label: 'title',
+                                data: [<?php echo $data['donation_quantity']?>, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                                borderWidth: 1
+                            }]
+                        };
+                            //config block
+                            const config = {
+                                type: 'bar',
+                                data,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
                                 }
                             }
-                        });
+                        }
+                            };
+                            //Render block
+                            const myChart = new Chart(
+                                document.getElementById('myChart'),
+                                config
+                            );
+
+
 
                         new Chart(ctp, {
                             type: 'pie',
@@ -222,89 +237,8 @@
 
             </div>
 
-            <!-- ================= New Customers ================ -->
-            <!-- <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Recent Customers</h2>
-                </div>
 
-                <table>
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-                </table> -->
-        </div>
-    </div>
-</div>
-</div>
 
 
 

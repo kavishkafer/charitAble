@@ -157,6 +157,12 @@
                         <div class="data">
                         <?php echo $data['request']->Donation_Description; ?>
                         </div>
+                    <div class="content">
+                        <h3>Donation Details</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['request']->Donation_Details; ?>
+                    </div>
                         <div class="content">
                             <h3>Donation Type</h3>
                         </div>

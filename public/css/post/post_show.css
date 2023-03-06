@@ -95,8 +95,9 @@ p{
   } 
   
 
-  h2{
-margin-left: 15px;
+  h1{
+
+font-size: 40px;
 
   }
 
@@ -129,7 +130,8 @@ margin-left: 15px;
   .post-img-div{
     border: #395B64;
     width: auto;
-    height: 150px;
+    
+    
   }
 
 
@@ -147,7 +149,7 @@ margin-left: 15px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
   }
 
@@ -157,7 +159,7 @@ margin-left: 15px;
     border-radius: 22px;
     border: none;
     color: white;
-    padding: 15px 15px 15px 15px;
+    padding: 15px;
     text-align: center;
     font-weight: bold;
     letter-spacing: 2px;
@@ -189,6 +191,10 @@ margin-left: 15px;
   margin-top: 10px;
   width: 800px;
   transition: .2s all;
+  background-color: rgb(233, 242, 236);
+  padding: 20px;
+  border-radius: 20px;
+
 }
 
 
@@ -198,7 +204,8 @@ margin-left: 15px;
   display: flex;
   flex-direction: row;
   background-color: aliceblue;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 20px;
 
 }
 
@@ -229,7 +236,7 @@ padding:15px;
 
 .comment-container .comment-right .comment-right-footer .comment-likes{
   padding: 10px;
-  color: aquamarine;
+  color: rgb(152, 152, 152);
   cursor: pointer;
   transition: .2s all;
   display: flex;
@@ -269,10 +276,12 @@ padding:15px;
 
 
 .post-card{
-  background-color: aliceblue;
+  background-color: rgb(236, 236, 236);
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
+  width: 80%;
+  border-radius: 20px;
 }
 
 input[type=text]{
@@ -311,10 +320,38 @@ input::placeholder {
 }
 
 .body p{
-  font-size: 20px;
+  font-size: 15px;
+  font-style: normal;
 }
 
 .time-post p{
   color: rgb(163, 163, 163);
+}
+
+
+.post-option{
+  display: flex;
+  flex-direction: row;
+}
+
+.comments-delete-btn img{
+  height: 28px;
+  width: 28px;
+  padding-left: 10px;
+
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.comments-delete-btn{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 3px;
+    border-radius: 20px;
+}
+
+.comments-delete-btn:hover{
+  background-color: #ffc5c5;
 }
 

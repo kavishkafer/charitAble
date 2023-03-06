@@ -152,44 +152,25 @@
                         <td>Type</td>
                         <td>Quantity</td>
                         <td>Priority</td>
-                        <td>View</td>
+                        <td>Accepted time</td>
 
                     </tr>
                     </thead>
 
                     <tbody>
 
-                    <tr>
+                     <tr>
 
-
-                        <td> 01</td>
-                        <td>CR books</td>
-                        <td>Education</td>
-                        <td>10</td>
-                        <td style="justify-content: center;">Normal</td>
-                        <td>accept</td>
-                    </tr>
-                    <tr>
-
-
-                        <td> 02</td>
-                        <td>Shoes</td>
-                        <td>Wearables</td>
-                        <td>5</td>
-                        <td style="justify-content: center;">Normal</td>
-                        <td>accept</td>
-                    </tr>
-                    <tr>
-
-
-                        <td> 03</td>
-                        <td>CR books</td>
-                        <td>Education</td>
-                        <td>10</td>
-                        <td style="justify-content: center;">Normal</td>
-                        <td>accept</td>
-                    </tr>
-
+                            <?php foreach($data['accepted'] as $accept): ?>
+                            <td> <?php echo $accept->Donation_ID; ?></td>
+                            <td><?php echo $accept->Donation_Description; ?></td>
+                            <td><?php echo $accept->Donation_Type; ?></td>
+                            <td><?php echo $accept->Donation_Quantity; ?></td>
+                            <td style="justify-content: center;"><?php echo $accept->Donation_Priority; ?></td>
+                            <td><?php echo $accept->Accepted_Time; ?></td>
+<!--                            <td><a href="--><?php //echo URLROOT; ?><!--/request_bens/show/--><?php //echo $requests->Donation_ID; ?><!--"?>view more</a></td>-->
+                        </tr>
+                    <?php endforeach; ?>
 
 
                     </tbody>
@@ -219,34 +200,17 @@
 
                         <tr>
 
+                            <?php foreach($data['completed'] as $requests): ?>
+                            <td> <?php echo $requests->Donation_ID; ?></td>
+                            <td><?php echo $requests->Donation_Description; ?></td>
+                            <td><?php echo $requests->Donation_Type; ?></td>
+                            <td><?php echo $requests->Donation_Quantity; ?></td>
+                            <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
+                            <td><?php echo $requests->Accepted_Time; ?></td>
 
-                            <td> 01</td>
-                            <td>Medical supplies</td>
-                            <td>Medical</td>
-                            <td>not defined</td>
-                            <td style="justify-content: center;">High</td>
-                            <td>2023/2/8-19.05</td>
                         </tr>
-                        <tr>
+                        <?php endforeach; ?>
 
-
-                            <td> 02</td>
-                            <td>Medical supplies</td>
-                            <td>Medical</td>
-                            <td>not defined</td>
-                            <td style="justify-content: center;">High</td>
-                            <td>2023/2/8-19.05</td>
-                        </tr>
-                        <tr>
-
-
-                            <td> 03</td>
-                            <td>Medical supplies</td>
-                            <td>Medical</td>
-                            <td>not defined</td>
-                            <td style="justify-content: center;">High</td>
-                            <td>2023/2/8-19.05</td>
-                        </tr>
 
 
 
@@ -254,7 +218,7 @@
                     </table>
                 </div>
 
-            <!-- ================= New Customers ================ -->
+
              <div class="recentCustomers">
                 <div class="cardHeader">
                     <h2>Recent Beneficiaries</h2>
@@ -309,3 +273,4 @@
 
 <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+

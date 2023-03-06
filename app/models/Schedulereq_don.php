@@ -24,7 +24,7 @@ class Schedulereq_don {
          /*$this->db->bind(':B_Id', $ben_id);*/
         $results = $this->db->resultSet();
 
-        return $results;  
+        return $results;
     }  
 
     public function getDRequestByID($id)

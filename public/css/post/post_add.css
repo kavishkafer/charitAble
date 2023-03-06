@@ -165,7 +165,18 @@ input[type=text]:focus
         margin-left: 15px;
         cursor: pointer;
 
-      } 
+      }
+
+      .post-image{
+          width: 50%;
+      }
+      .post-image img{
+        width: 50%;
+        height: 300px;
+        border-radius: 20px;
+      }
+
+
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
 @media screen and (max-width: 500px) {
