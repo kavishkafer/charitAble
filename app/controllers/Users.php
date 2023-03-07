@@ -345,11 +345,6 @@ class Users extends Controller
 
 
 
-
-
- 
-
-
 public function signup_dons(){
   // Check for POST
   
@@ -374,6 +369,8 @@ public function signup_dons(){
           'user_role' => $user_role,
           'status' => false,
           'otp'=>$otp_code,
+          'latitude' => trim($_POST['latitude']),
+          'longitude' => trim($_POST['longitude']),
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -457,6 +454,9 @@ public function signup_dons(){
           'password' => '',
           'confirm_password' => '',
           'user_role' => '',
+          'latitude' => '',
+          'longitude' => '',
+
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
