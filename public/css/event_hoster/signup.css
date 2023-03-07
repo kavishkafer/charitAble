@@ -26,6 +26,7 @@ body,input{
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 7rem;
 	padding: 2rem;
+	overflow: auto;
 
 }
 
@@ -38,6 +39,7 @@ top: 0;
 left: 0;
 background-color: #395B64;
 justify-content: flex-end;
+	overflow: auto;
 }
 
 .img{
@@ -68,7 +70,7 @@ align-items: center;
 	height: 400px;
 	width: 400px;
 	bottom: 64%;
-	left: -4%;
+	left: 4%;
 }
 
 .form-container{
@@ -79,6 +81,7 @@ width: 55%;
 top: 0;
 left: 45%;
 background-color: white;
+	overflow: auto;
 }
 
 form{
@@ -96,6 +99,8 @@ form{
 	font-weight: 600;
 	color: #2C3333;
 	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 30px;
 }
 
 .input{
