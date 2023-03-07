@@ -134,6 +134,13 @@ class User {
         return $row;
     }
 
+    public function getUserById($id){
+        $this->db->query('SELECT * FROM registered_users WHERE User_Id = :user_id');
+        $this->db->bind(':user_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function getDUserById($id){
         $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_Id');
         $this->db->bind(':D_Id', $id);
@@ -210,9 +217,11 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
-      $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:name, :email,:address,:telephone, :password,:user_Id)');
+      $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
       // Bind values
-      $this->db->bind(':name', $data['name']);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
+
+        $this->db->bind(':name', $data['name']);
       $this->db->bind(':email', $data['email']);
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':telephone', $data['tel_no']);
