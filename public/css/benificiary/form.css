@@ -5,11 +5,11 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   :root {
     --blue: #2C3333;
-    --white: #E7F6F2;
-    --gray: #395b642d;
+    --white: #ffffff;
+    --gray: #E7F6F2;
     --black1: #222;
     --black2: rgb(107, 105, 105);
     --light: #D6E4E5;
@@ -715,20 +715,28 @@ hr {
   width: 50%;
   height: 40px;
   border-radius: 5px;
+
   background-color:#edeeee;
+
   padding: 5px;
  }
  .data textarea{
   width: 80%;
   height: 250px;
   border-radius: 5px;
+
+
   background-color:#ffffff;
+
+ 
   padding: 5px;
  }
  .data input{
   width: 50%;
   height: 40px;
   border-radius: 5px;
+
   background-color:#edeeee;
+
   padding: 5px;
  }

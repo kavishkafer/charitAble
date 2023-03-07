@@ -25,26 +25,21 @@ class Request_bens extends Controller{
         
         $this->view('request_bens/index', $data);
     }
-<<<<<<< Updated upstream
 
     public function requests(){
-        $requests = $this->requestModel->getRequests();
-
-        $this->view('request_bens/request');
-    }
-
-
-
-=======
-    public function totalRequestsCount(){
         $row=$this->requestModel->getBenId($_SESSION['user_id']);
-        $result=$this->requestModel->totalRequest($row->B_Id);
+        $completed = $this->requestModel->CompletedRequestsBenDetails($row->B_Id);
+        $accepted = $this->requestModel->AcceptedRequestsBenDetails($row->B_Id);
         $data=[
-            'result' => $result
+            'completed' => $completed,
+            'accepted' => $accepted
         ];
-        $this->view('request_bens/index', $data);
+
+        $this->view('request_bens/request',$data);
     }
->>>>>>> Stashed changes
+
+
+
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $a= $_SESSION['user_id'];
@@ -125,7 +120,7 @@ class Request_bens extends Controller{
     public function show($id){
         
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->B_Id);
+        $user = $this->userModel->getBenDetailsById($request->B_Id);
         $data = [
             'request' => $request,
             'user' => $user

@@ -6,9 +6,10 @@
     <div class="container-nav">
         <div class="navigation">
             <ul>
+                <br>
                 <li>
                     <a href="#">
-                        <span class="icon">
+                        <span class="">
                             <img src="../public/img/img_dons/logo.svg">
                         </span>
                          <span class="title"></span> 
@@ -16,7 +17,7 @@
                 </li>
 
                 <li>
-                <a href="<?php echo URLROOT; ?>/pages/about">
+                <a href="<?php echo URLROOT; ?>/dashboard_dons/index">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -52,7 +53,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/posts/index">
                         <span class="icon">
                             <i class="fas fa-columns"></i>
                         </span>
@@ -70,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT; ?>/users/logout_don">
+                    <a href="<?php echo URLROOT; ?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>

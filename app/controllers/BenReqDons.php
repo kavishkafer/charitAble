@@ -7,6 +7,7 @@ class BenReqDons extends Controller
         $this->benreqdonModel = $this->model('BenReqDon');
         $this->userModel = $this->model('User');
         $this->requestModel = $this->model('Request_ben');
+
     }
 
 
@@ -14,18 +15,7 @@ class BenReqDons extends Controller
     {
         $getRequests = $this->benreqdonModel->getAllRequests();
         $data = [
-<<<<<<< Updated upstream
             'requests' => $getRequests
-=======
-            'dat' => $getRequest
-        ];
-        $y = $data['dat']->B_Id;
-        // $y=$getRequest->B_Id;
-        $getBenDetails = $this->benreqdonModel->getBenDetails($y);
-        $data = [
-            'request' => $getRequest,
-            'ben' => $getBenDetails
->>>>>>> Stashed changes
         ];
 
         $this->view('benreqdons/index', $data);
@@ -34,8 +24,10 @@ class BenReqDons extends Controller
 
     public function acceptRequest($Id)
     {
+        $c= $_SESSION['user_id'];
+        $d =$this->benreqdonModel-> getDonId($c);
         $this->benreqdonModel->getRequestDetails($Id);
-        if ($this->benreqdonModel->acceptRequest($Id)) {
+        if ($this->benreqdonModel->acceptRequest($Id, $d->D_Id)) {
             flash('request_message', 'Request Accepted');
             redirect('benreqdons/index');
 
@@ -44,11 +36,11 @@ class BenReqDons extends Controller
         }
     }
     
-    public function show($id = null)
+    public function show($id)
     {
 
         $request = $this->requestModel->getRequestById($id);
-        $user = $this->userModel->getUserById($request->B_Id);
+        $user = $this->userModel->getBenDetailsById($request->B_Id);
         $data = [
             'requests' => $request,
             'user' => $user

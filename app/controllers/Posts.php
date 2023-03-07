@@ -107,10 +107,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   'body_err' => '',
                   'image_err' => ''
                 ];
-      
+
+
                 //validate post data
           $post = $this->postModel->getPostById($id);
           $oldImage = PUBROOT.'/img/postsImgs/'.$post->image;
+
 
           //post updated
           //user havent changed the existing image
@@ -138,7 +140,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   $data['body_err'] = 'Please enter post body';
                 }
       
-                //make sure no errror
+                //make sure no error
                   if(empty($data['title_err']) && empty($data['body_err'])){
                           //validated
                           if($this->postModel->updatePost($data)){
@@ -148,7 +150,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                               die('something went wrong');
                           }
                   } else {
-                      // load view with errrors
+                      // load view with errors
                       $this->view('posts/edit', $data);
                   }
       

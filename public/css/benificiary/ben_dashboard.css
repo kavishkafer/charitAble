@@ -8,7 +8,10 @@
 
 :root {
   --blue: #2C3333;
+
   --white: #fff;
+
+  
   --gray: #ffffff2d;
   --black1: #222;
   --black2: rgb(107, 105, 105);
@@ -426,6 +429,7 @@ display: none;
   margin-bottom: 10px;
   padding-bottom: 30px;
 }
+
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation {

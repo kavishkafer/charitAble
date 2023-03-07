@@ -2,8 +2,7 @@
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
 <body>
 
-
-<?php flash('post_message'); ?>
+<div class="container">
 
 <div class="choose-ben">
    <h2>Choose A Beneficiary</h2> 
@@ -21,7 +20,6 @@
     <table>
         <thead>
             <tr>
-<<<<<<< Updated upstream
                 <th>Id</th>
                 <th>Name</th>
                 <th>Address</th>
@@ -30,21 +28,6 @@
                 <th>Quantity</th>
                 <th ></th>
                 <th ></th>
-=======
-                <td>Id</td>
-                <td>Name</td>
-                <td>Address</td>
-                <td>Telephone No</td>
-                <td>E-mail</td>
-                <td>Quantity</td>
-                <td ></td>
-                <td ></td>
-
-
-                
-
-
->>>>>>> Stashed changes
             </tr>
         </thead>
     
@@ -60,9 +43,9 @@
         <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/add/<?php echo $name->B_Id; ?>" class="btn2">Select</a></td>
          <td ><a href="#" class="btn2">View Profile</a></td>
 
-    
+         </tr>
+
     <?php endforeach; ?>
-    </tr>
     </tbody>
     </table>
 </div>

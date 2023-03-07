@@ -17,7 +17,7 @@
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="admin_details">
-                    <div class="title">Admin - <?php echo $_SESSION['admin_name']; ?></div>
+
                     <form action="<?php echo URLROOT; ?>/settings/update_profile" method="post">
                         <div class="user_details">
                             <div class="input_box">
@@ -25,8 +25,10 @@
                                 <input type="text" 
                                         name="admin_name" 
                                         placeholder="Enter name"
-                                        value="<?php echo $data['admin_name'] ?>" 
-                                        class="<?php echo (!empty($data['admin_name_err'])) ? "invalid" : '' ; ?>" />
+
+
+                                        <?php echo (!empty($data['admin_name_err'])) ? "invalid" : '' ; ?>"
+
                                         <span class="invalid-feedback"><?php echo $data['admin_name_err']; ?></span> 
                             </div>
                             <div class="input_box">
@@ -35,7 +37,9 @@
                                         name="admin_email" 
                                         placeholder="Enter email"
                                         value="<?php echo $data['admin_email'] ?>"
-                                        class="<?php echo (!empty($data['admin_email_err'])) ? "invalid" : '' ; ?>" />
+
+                                        class="<?php echo (!empty($data['admin_email_err'])) ? "invalid" : '' ; ?>"
+
                                         <span class="invalid-feedback"><?php echo $data['admin_email_err']; ?></span>
                             </div>
                             <div class="input_box">
@@ -43,8 +47,10 @@
                                 <input type="text" 
                                         name="admin_phone" 
                                         placeholder="Enter phone number (eg :- 0XXXXXXXXX)"
-                                        value="<?php echo $data['admin_phone'] ?>"
-                                        class="<?php echo (!empty($data['admin_phone_err'])) ? "invalid" : '' ; ?>" />
+
+
+                                        <?php echo (!empty($data['admin_phone_err'])) ? "invalid" : '' ; ?>
+
                                         <span class="invalid-feedback"><?php echo $data['admin_phone_err']; ?></span>
                             </div>
                             
@@ -53,8 +59,10 @@
                                 <input type="password" 
                                         name="admin_password" 
                                         placeholder="Enter password"
-                                        value="<?php echo $data['admin_password'] ?>"
-                                        class="<?php echo (!empty($data['admin_password_err'])) ? "invalid" : '' ; ?>" />
+
+
+                                        <?php echo (!empty($data['admin_password_err'])) ? "invalid" : '' ; ?>
+
                                         <span class="invalid-feedback"><?php echo $data['admin_password_err']; ?></span>
                             </div>
                             
@@ -64,7 +72,9 @@
                                         name="admin_nic" 
                                         placeholder="Enter NIC"
                                         value="<?php echo $data['admin_nic'] ?>"
-                                        class="<?php echo (!empty($data['admin_nic_err'])) ? "invalid" : '' ; ?>" />
+
+                                        class="<?php echo (!empty($data['admin_nic_err'])) ? "invalid" : '' ; ?>"
+
                                         <span class="invalid-feedback"><?php echo $data['admin_nic_err']; ?></span>
                             </div> -->
                             <!-- <div class="input_box">
@@ -73,7 +83,9 @@
                                         name="admin_date_assigned" 
                                         placeholder="Enter date assigned"
                                         value="<?php echo $data['admin_date_assigned'] ?>"
-                                        class="<?php echo (!empty($data['admin_date_assigned_err'])) ? "invalid" : '' ; ?>" />
+
+                                        class="<?php echo (!empty($data['admin_date_assigned_err'])) ? "invalid" : '' ; ?>"
+
                                         <span class="invalid-feedback"><?php echo $data['admin_date_assigned_err']; ?></span>
                             </div> -->
                         </div>
