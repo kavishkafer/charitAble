@@ -9,13 +9,23 @@ class Request_bens extends Controller{
     }
     public function index(){
         $requests = $this->requestModel->getRequests();
+        $row=$this->requestModel->getBenId($_SESSION['user_id']);
+        $count=$this->requestModel->totalRequestsByBen($row->B_Id);
+        $accept=$this->requestModel->acceptedRequestsBen($row->B_Id);
+        $complete=$this->requestModel->completedRequestsBen($row->B_Id);
+        $pending=$this->requestModel->pendingRequestsBen($row->B_Id);
         $data=[
-            'requests' => $requests
+            'requests' => $requests,
+            'count' => $count,
+            'accept' => $accept,
+            'complete' => $complete,
+            'pending' => $pending
         ];
 
         
         $this->view('request_bens/index', $data);
     }
+<<<<<<< Updated upstream
 
     public function requests(){
         $requests = $this->requestModel->getRequests();
@@ -23,6 +33,9 @@ class Request_bens extends Controller{
         $this->view('request_bens/request');
     }
 
+
+
+=======
     public function totalRequestsCount(){
         $row=$this->requestModel->getBenId($_SESSION['user_id']);
         $result=$this->requestModel->totalRequest($row->B_Id);
@@ -31,7 +44,7 @@ class Request_bens extends Controller{
         ];
         $this->view('request_bens/index', $data);
     }
-
+>>>>>>> Stashed changes
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $a= $_SESSION['user_id'];
@@ -43,12 +56,14 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => trim($_POST['Donation_Quantity']),
                 'Donation_Type' => trim($_POST['Donation_Type']),
                 'Donation_Priority' => trim($_POST['Donation_Priority']),
+                'Donation_Details' => trim($_POST['Donation_Details']),
                 // 'Donation_Status' => trim($_POST['Donation_Status']),
                 'user_id' => $y->B_Id,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
-                'Donation_Priority_err' => ''
+                'Donation_Priority_err' => '',
+                'Donation_Details_err' => ''
             ];
             // Validate data
             if(empty($data['Donation_Description'])){
@@ -96,10 +111,12 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => '',
                 'Donation_Type' => '',
                 'Donation_Priority' => '',
+                'Donation_Details' => '',
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
-                'Donation_Priority_err' => ''
+                'Donation_Priority_err' => '',
+                'Donation_Details_err' => ''
             ];
             $this->view('request_bens/add', $data);
         }
@@ -135,11 +152,13 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => trim($_GET['Donation_Quantity']),
                 'Donation_Type' => trim($_GET['Donation_Type']),
                 'Donation_Priority' => trim($_GET['Donation_Priority']),
+                'Donation_Details' => trim($_GET['Donation_Details']),
                 'user_id' => $y->B_Id,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',
-                'Donation_Priority_err' => ''
+                'Donation_Priority_err' => '',
+                'Donation_Details_err'=>''
 
             ];
         
@@ -156,8 +175,11 @@ class Request_bens extends Controller{
             if(empty($data['Donation_Priority'])){
                 $data['Donation_Priority_err'] = 'Please enter Donation priority';
             }
+            if(empty($data['Donation_Details'])){
+                $data['Donation_Details_err'] = 'Please enter Donation Details';
+            }
             // Make sure no errors
-            if(empty($data['Donation_Description_err']) && empty($data['Donation_Quantity_err']) && empty($data['Donation_Type_err']) && empty($data['Donation_Priority_err'])){
+            if(empty($data['Donation_Description_err']) && empty($data['Donation_Quantity_err']) && empty($data['Donation_Type_err']) && empty($data['Donation_Priority_err']) && empty($data['Donation_Details_err'])){
                 // Validated
                 if($this->requestModel->updateRequest($data)){
                     flash('request_message', 'Request Updated');
@@ -183,6 +205,7 @@ class Request_bens extends Controller{
                 'Donation_Quantity' => $request->Donation_Quantity,
                 'Donation_Type' => $request->Donation_Type,
                 'Donation_Priority' => $request->Donation_Priority,
+                'Donation_Details' => $request->Donation_Details
 
             ];
             $this->view('request_bens/edit', $data);
@@ -207,4 +230,5 @@ class Request_bens extends Controller{
             redirect('request_bens');
         }
     }
+
 }

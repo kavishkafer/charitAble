@@ -99,8 +99,8 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
-                    </div>
+<!--                         <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+ -->                    </div>
 
                     <!-- <table>
                         <thead>

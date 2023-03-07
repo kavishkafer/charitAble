@@ -40,9 +40,7 @@
                                 <td><?php echo $event_hoster_details->E_ID; ?></td>
                                 <td><?php echo $event_hoster_details->E_Name; ?></td>
                                 <td><?php echo $event_hoster_details->E_Email; ?></td>
-
-                                <td><?php echo $event_hoster_details->E_Tpno; ?></td>
-
+                                <td><?php echo $event_hoster_details->E_tpNo; ?></td>
                                 <td><?php echo $event_hoster_details->E_Address; ?></td>
                                 <td><a href="<?php echo URLROOT; ?>/eventHosters/view_profile/<?php echo $event_hoster_details->E_ID; ?>"><button class="btn_1">View Profile</button></td></a></td>
                             </tr>

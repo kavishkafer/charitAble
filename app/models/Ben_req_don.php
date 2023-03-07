@@ -43,14 +43,6 @@ return false;
 }
 
 
-public function getBenDetails($id) {
-$this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_Id');
-$this->db->bind(':B_Id', $id);
-$row = $this->db->single();
-return $row;
-}
-
-
 
 
 

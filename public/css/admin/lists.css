@@ -138,15 +138,9 @@
     background-color: var(--black2);
     padding: 8px;
     border-radius: 10px;
-
-    border: none;
     color: #f2f2f2;
     cursor: pointer;
   }
-  .details table td .btn_1:hover{
-    background-color: var(--black1);
-  }
-
   .details .recentOrders table tr {
     color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

@@ -13,7 +13,7 @@
 </div>
 </div>
 <div class="form-container">
-<form action="<?php echo URLROOT; ?>/users/signup_eh" autocomplete="off" method="POST" enctype="multipart/form-data">
+<form action="<?php echo URLROOT; ?>/users/signup_eh" autocomplete="off" method="POST">
 <div class="heading">
 <h2>SignUp</h2>
 </div>
@@ -44,7 +44,6 @@
 <div class="warn"><?php echo $data['address_err']; ?></div>
 </div>
 
-
 <div class="input">
 <input type="password" name="password" minlength="4" class="input-field <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value = "<?php echo $data['password']; ?>" autocomplete="off"/>
 <label>Create Password</label>
@@ -57,29 +56,6 @@
 <div class="warn"><?php echo $data['confirm_password_err']; ?></div>
 </div>
 
-<!--profile image-->
-
-    <div class="form-drag-area">
-        <div class="icon">
-            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/placeholder-icon.png" alt="placeholder-icon" width="90px" height="90px" id="profile_image_placeholder">
-        </div>
-
-        <div class="right-content">
-            <div class="description">Drag and drop</div>
-            <div class="form-upload">
-                <input type="file" name="profile_image" id="profile_image" style="display: none">
-                Browse File
-            </div>
-        </div>
-    </div>
-
-    <div class="form-validation">
-        <div class="profile-image-validation">
-            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/green-tick-icon.png" alt="green-tick" width="15px" height="15px">
-            Select a profile picture
-        </div>
-    </div>
-
 <input type="submit" value="Create Account" class="btn">
 <p class="text">Already have an account?
 <a href="<?php echo URLROOT; ?>/users/login">Sign In</a>
@@ -91,8 +67,6 @@
 </div>
 </div>
 
-<!--javascript for profile image-->
-<script src="<?php echo URLROOT; ?>/js/components/imageUpload/imageUpload.js"></script>
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

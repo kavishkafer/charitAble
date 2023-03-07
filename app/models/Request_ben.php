@@ -19,13 +19,14 @@ class Request_ben
     }
     public function addRequests($data)
     {
-        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority,B_Id) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority,:B_Id)');
+        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority,B_Id,Donation_Details) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority,:B_Id,:Donation_Details)');
         // Bind values
         $this->db->bind(':Donation_Description', $data['Donation_Description']);
         $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
         $this->db->bind(':Donation_Type', $data['Donation_Type']);
         $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
         $this->db->bind(':B_Id', $data['user_id']);
+        $this->db->bind(':Donation_Details', $data['Donation_Details']);
 
         // Execute
         if ($this->db->execute()) {
@@ -50,7 +51,7 @@ class Request_ben
 
     public function UpdateRequest($data)
     {
-        $this->db->query('UPDATE donation_table SET Donation_Description = :Donation_Description, Donation_Quantity = :Donation_Quantity, Donation_Type = :Donation_Type, Donation_Priority = :Donation_Priority WHERE Donation_ID = :Donation_ID');
+        $this->db->query('UPDATE donation_table SET Donation_Description = :Donation_Description, Donation_Quantity = :Donation_Quantity, Donation_Type = :Donation_Type, Donation_Priority = :Donation_Priority, Donation_Details= :Donation_Details  WHERE Donation_ID = :Donation_ID');
         // Bind values
         if (isset($data['Donation_Description'])) {
 
@@ -58,6 +59,7 @@ class Request_ben
             $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
             $this->db->bind(':Donation_Type', $data['Donation_Type']);
             $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
+            $this->db->bind(':Donation_Details', $data['Donation_Details']);
             $this->db->bind(':Donation_ID', $data['Donation_ID']);
 
         }
@@ -85,10 +87,32 @@ class Request_ben
         }
     }
 
-    public function totalRequests($id){
-        $this->db->query('Count(*) FROM donation_table WHERE B_Id = :B_Id');
+
+    public function totalRequestsByBen($id){
+        $this->db->query('Select *  FROM donation_table WHERE B_Id = :B_Id');
         $this->db->bind(':B_Id', $id);
-        $row = $this->db->single();
+        $count=$this->db->resultSet();
+        return $this->db->rowCount();
+
+
+    }
+    public function pendingRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = false AND Completed = false');
+        $this->db->bind(':B_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function completedRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = true');
+        $this->db->bind(':B_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function acceptedRequestsBen($id){
+        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = false');
+        $this->db->bind(':B_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
     }
 
 }

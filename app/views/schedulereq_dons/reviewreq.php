@@ -26,17 +26,12 @@
                               
     <?php foreach($data['requests'] as $requests): ?>
         <td> <?php echo $requests->B_Req_ID; ?></td> 
-        <td><!--<?php echo $requests->B_Name; ?>--></td>
+        <td><?php echo $requests->B_Name; ?></td>
         <td><?php echo $requests->D_Date; ?></td>
         <td><?php echo $requests->Time; ?></td>
         <td><?php echo $requests->Food_Type; ?></td>
         <td><?php echo $requests->Donation_Quantity; ?></td>
-        <td><!--<?php if($data['requests']->user_id == $_SESSION['user_id']) : ?>-->
-         <form action="<?php echo URLROOT; ?>/schedulereq_dons/delete/<?php echo $data['requests']->B_Req_ID; ?>" method="post">
-         <input type="submit" value="Delete" class="btn" >
-         </form>
-         <!--<?php endif; ?>-->
-       </td>
+        <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/show/<?php echo $requests->B_Req_ID;?>">View More</a></td>
 
     </tr>
     

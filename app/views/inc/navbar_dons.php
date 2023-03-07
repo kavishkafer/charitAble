@@ -1,13 +1,14 @@
 
-    <link rel="stylesheet" href="../public/css/donor/style.css">
+    <!--<link rel="stylesheet" href="../public/css/donor/style.css">-->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
+
     <!-- =============== Navigation ================ -->
     <div class="container-nav">
         <div class="navigation">
             <ul>
-                <br>
                 <li>
                     <a href="#">
-                        <span class="">
+                        <span class="icon">
                             <img src="../public/img/img_dons/logo.svg">
                         </span>
                          <span class="title"></span> 
@@ -15,7 +16,7 @@
                 </li>
 
                 <li>
-                <a href="<?php echo URLROOT; ?>/dashboard_dons/index">
+                <a href="<?php echo URLROOT; ?>/pages/about">
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -24,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/benreqdons/index">
                         <span class="icon">
                             <i class="fas fa-user"></i>
                         </span>

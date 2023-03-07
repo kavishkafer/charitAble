@@ -4,12 +4,13 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/style.css">
 
 <body>
-
-
 <!-- ======================= Cards ================== -->
 <div class="cardBox">
                 <div class="card">
-                <a href="#">
+<<<<<<< Updated upstream
+                <a href="<?php echo URLROOT; ?>/requests_dons/index">
+=======
+>>>>>>> Stashed changes
                     <div>
                         <div class="numbers">01</div>
                         <div class="cardName">Ongoing Requests</div>
@@ -18,7 +19,6 @@
                     <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
                     </div>
-                </a>
                 </div>
 
                 <div class="card">
@@ -35,6 +35,7 @@
                 </div>
 
                 <div class="card">
+                    <a href="#">
                     <div>
                         <div class="numbers">05</div>
                         <div class="cardName">Completed Donations</div>
@@ -43,8 +44,9 @@
                     <div class="iconBx">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </div>
+                </a>
                 </div>
-
+<<<<<<< Updated upstream
             </div>
             
             <div class="all-req">
@@ -100,5 +102,9 @@
     
 </div>
 
+=======
+
+            </div> 
+>>>>>>> Stashed changes
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

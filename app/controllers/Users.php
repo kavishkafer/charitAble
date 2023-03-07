@@ -2,8 +2,7 @@
 use helpers\email;
 
 class Users extends Controller
-{
-    public function __construct(){
+{   public function __construct(){
     $this->userModel = $this->model('User');
     $this->Verify_model = $this->model('Verify_model');
     //$this->settingModel = $this->model('Setting');
@@ -270,7 +269,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('dashboard_dons/index');
+                redirect('schedulereq_dons/index');
               }
 
               public function createEhSession($user){
@@ -344,8 +343,24 @@ class Users extends Controller
 
 
 
+     /* } else {
+        // Init data
+        $data =[
+          'name' => '',
+          'email' => '',
+          'address' => '',
+          'telephone_number' => '',
+          'password' => '',
+          'confirm_password' => '',
+          'name_err' => '',
+          'email_err' => '',
+          'address_err' => '',
+          'telephone_number_err' => '',
+          'password_err' => '',
+          'confirm_password_err' => ''
+        ]; */
 
-
+  
  
 
 
@@ -431,7 +446,7 @@ public function signup_dons(){
             //$email->sendVerificationEmail($data['email'], $otp_code);
                     
 
-            redirect('users/login');
+            redirect('Users/login');
           } /* else {
               die('Something went wrong');
           } */
@@ -481,10 +496,7 @@ public function signup_eh(){
    
       // Init data
       $data = [
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
-          'profile_image_err' => '',
-          'name' => trim($_POST['name']),
+        'name' => trim($_POST['name']),
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
         'tel_no' => trim($_POST['tel_no']),
@@ -496,19 +508,8 @@ public function signup_eh(){
         'address_err' => '',
         'tel_no_err' => '',
         'password_err' => '',
-        'confirm_password_err' => '',
-
+        'confirm_password_err' => ''
       ];
-
-      //validate profile_image and upload
-      if(uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-          //done
-      }
-      else {
-          $data['profile_image_err'] = 'Error uploading image';
-      }
-
-
       //Validate Email
       if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
@@ -518,8 +519,6 @@ public function signup_eh(){
             $data['email_err'] = 'Email is already taken';  
         }
     }
-
-
 
       //Validate Name
       if(empty($data['name'])){
@@ -548,7 +547,7 @@ public function signup_eh(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['E_Image_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
           // Validatede
         
           //Hash

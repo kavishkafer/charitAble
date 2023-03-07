@@ -161,9 +161,45 @@ label{
   align-items: center;
   text-decoration: none;
 	height: 45px;
-	width: 80%;
+	width: 100%;
 	color: white;
 	background-color:#395B64 ;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	transition: 0.4s;
+	transform: translateX(118%);
+}
+
+.btn3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+	height: 45px;
+	width: 15%;
+	color: white;
+	background-color:red ;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	transition: 0.4s;
+	transform: translateX(118%);
+}
+
+.btn4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+	height: 45px;
+	width: 30%;
+	color: white;
+	background-color:#2C3333 ;
 	cursor: pointer;
 	border: none;
 	border-radius: 1rem;
@@ -180,6 +216,14 @@ label{
 
 .btn2:hover{
 	background-color: #A5C9CA;
+}
+
+.btn3:hover{
+	background-color: #FF6961;
+}
+
+.btn4:hover{
+	background-color: #B7C4CF;
 }
 
 .text{
@@ -216,7 +260,7 @@ label{
 
 .navigation {
   position: fixed;
-  width: 300px;
+  width: 18%;
   height: 100%;
   background: var(--blue);
   border-left: 10px solid var(--blue);
@@ -224,7 +268,7 @@ label{
   overflow: hidden;
 }
 .navigation.active {
-  width: 80px;
+  width: 110px;
 }
 .navigation.active img{
 display: none;
@@ -249,7 +293,7 @@ display: none;
 
 .navigation ul li:hover,
 .navigation ul li.hovered {
-  background-color: white;
+  background-color: var(--white);
 }
 
 .navigation ul li:nth-child(1) {
@@ -303,7 +347,7 @@ display: none;
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px 35px 0 10px white;
+  box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
 .navigation ul li:hover a::after,
@@ -316,35 +360,22 @@ display: none;
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px -35px 0 10px white;
+  box-shadow: 35px -35px 0 10px var(--white);
   pointer-events: none;
 }
 
 /* ===================== Main ===================== */
-/*.main {
+.main {
   position: absolute;
   width: 82%;
   left: 18%;
   min-height: 100vh;
-  background: white;
+  background: var(--white);
   transition: 0.5s;
 }
 .main.active {
   width: calc(100% - 110px);
   left: 110px;
-}*/
-
-.main {
-  position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
-  min-height: 100vh;
-  background: white;
-  transition: 0.5s;
-}
-.main.active {
-  width: calc(100% - 80px);
-  left: 80px;
 }
 
 .topbar {
@@ -404,21 +435,13 @@ display: none;
 /* ===================== schedulereq_dons ===================== */
 .calender-container{
   position: absolute;
-  display: flex;
+  display: block;
   height:calc(100% - 60px);
   width: 41%;
   top: 60px;
   left: 18%;
-  background-color: #395B64;
-  justify-content: flex-end;
-  }
-
-  .calendar img{
-  position: absolute;
-	height: 60%;
-	left: 10%;
-	width: auto;
-	bottom: 20%;
+  background-color: #B7C4CF;
+  justify-content: center;
   }
 
 .form-container-req{
@@ -505,26 +528,14 @@ display: none;
 	transform: translateX(118%);
 }
 
-.all-req{
-  /*display: flex;*/
-  position: absolute;
-	height: 60px;
-	width: 20%;
-  top: 300px;
-	color: white;
-  text-align: center;
-  left: 25%;
-	background-color:#2C3333 ;
-	cursor: pointer;
-	border: none;
-  margin-bottom: 2rem;
-	border-radius: 1rem;
-	font-size: 1.5rem;
-	transition: 0.4s;
-	transform: translateX(118%);
-}
-
 .select{
+  /*position: absolute;
+  display: grid;
+  padding: 40px;
+  font-size: 1.3rem;
+  width: 74%;
+  top: 220px;
+  left: 22%;*/
   position: absolute;
   height:calc(100% - 260px);
   padding: 20px;
@@ -534,7 +545,24 @@ display: none;
   width: 74%;
   border-radius: 20px;
   top: 240px;
-  left: 20%;
+  left: 22%;
+}
+
+<<<<<<< Updated upstream
+.slt{
+  background-color: #E7F6F2;
+  position: absolute;
+  height:calc(100% - 260px);
+  padding: 20px;
+  font-size: 1.25rem;
+  text-align: left;
+  justify-content: center;
+  display: grid;
+  width: 60%;
+  border-radius: 20px;
+  top: 160px;
+  left: 28%;
+
 }
 
 .new-select{
@@ -544,6 +572,8 @@ display: none;
 }
 
 
+=======
+>>>>>>> Stashed changes
 .city{
   position: absolute;
 	height: 45px;
@@ -578,13 +608,12 @@ table{
 
 th{
   color: #395B64;
-  font-size: 1.32rem;
-  
+  font-size: 1.6rem;
 }
 
 td, th{
   vertical-align: top;
-  width: 11%;
+  width: 10.5%;
   padding: 8px;
   text-align: left;
 
@@ -662,7 +691,7 @@ td, th{
   border-radius: 20px;
   top: 180px;
   left: 22%;
-  background-color: var(--gray);
+  background-color: #395B64;
 }
 
 .container-review table {
@@ -727,6 +756,26 @@ td, th{
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }*/
+
+/*reviewreq*/
+.content-sidebar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  text-align: left;
+
+}
+.content-sidebar .content{
+  flex: 1 1 25%;
+  min-width:25ch;
+  
+
+}
+.content-sidebar .data{
+  flex: 1 1 70%;
+  min-width:50ch;
+}
 
 
 /* ====================== Responsive Design ========================== */

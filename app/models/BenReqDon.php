@@ -7,18 +7,18 @@ $this->db = new Database;
 
 }
 
-public function getAllRequest(){
-$this->db->query('select * from donation_table where accepted = false and completed = false ');
 
-//Assign Result Set
-$row = $this->db->resultSet();
-//check row
-if($this->db->rowCount() > 0){
-return $row;
-}
-else{ 
-return false;
-}
+
+public function getAllRequests(){
+    $this->db->query('SELECT * FROM `donation_table` AS D INNER JOIN `beneficiary_details` AS B ON D.`B_Id`=B.`B_Id` WHERE D.`Accepted`=false AND D.`Completed`=false');
+    $row = $this->db->resultSet();
+
+    if($this->db->rowCount() > 0){
+        return $row;
+    }
+    else{
+        return false;
+    }
 }
 public function getRequestDetails($id){
 $this->db->query('select * from donation_table where Donation_ID = :D_Id');
@@ -29,6 +29,7 @@ return $row;
 
 
 public function acceptRequest($Id){
+
 $this->db->query('UPDATE donation_table SET Accepted = true  WHERE Donation_ID = :Id');
 $this->db->bind(':Id', $Id);
 if($this->db->execute()){
@@ -38,6 +39,7 @@ else{
 return false;
 }
 }
+
 public function completeRequest($Id){
 $this->db->query('UPDATE donation_table SET completed = true WHERE Donation_ID = :Id');
 $this->db->bind(':Id', $Id);

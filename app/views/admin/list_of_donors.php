@@ -35,13 +35,11 @@
                          <tbody> 
                             <tr>
                                 <?php foreach($data['donor_details'] as $donor_details): ?>
-
-                                <td><?php echo $donor_details->D_Id; ?></td>
+                                <td><?php echo $donor_details->D_ID; ?></td>
                                 <td><?php echo $donor_details->D_Name; ?></td>
                                 <td><?php echo $donor_details->D_Email; ?></td>
                                 <td><?php echo $donor_details->D_Address; ?></td>
-                                <td><a href="<?php echo URLROOT; ?>/donors/view_profile/<?php echo $donor_details->D_Id; ?>"><button class="btn_1">View Profile</button></td></a></td>
-
+                                <td><a href="<?php echo URLROOT; ?>/donors/view_profile/<?php echo $donor_details->D_ID; ?>"><button class="btn_1">View Profile</button></td></a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

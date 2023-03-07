@@ -166,6 +166,17 @@
                         <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div> 
                                  
                     </div>
+
+                        <div class="content">
+                            <div class="des">
+                                <h3> <label for="Donation Details"><b>Donation Details</b></label></h3>
+                            </div>
+                        </div>
+                    <div class="data">
+                        <textarea id="subject" name="Donation_Details" value="<?php echo $data['Donation_Details']; ?>" ></textarea>
+                        <div class=warn> <?php if(isset($data['Donation_Details_err'])) echo $data['Donation_Details_err']; ?></div>
+
+                    </div>
                     <div class="content">
                         <h3><label for="Donation Type"><b>Donation type</b></label></h3>
                     </div>
@@ -205,5 +216,5 @@
         
 
     </div>
-    <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
+    <script src="<?php echo URLROOT; ?>/js/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

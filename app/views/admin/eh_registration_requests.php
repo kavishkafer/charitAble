@@ -35,9 +35,7 @@
                                 <td><?php echo $reg_eveHosts->E_Name; ?></td>
                                 <td><?php echo $reg_eveHosts->E_Address; ?></td>
                                 <td><?php echo $reg_eveHosts->E_Email; ?></td>
-
-                                <td><?php echo $reg_eveHosts->E_Tpno; ?></td>
-
+                                <td><?php echo $reg_eveHosts->E_tpNo; ?></td>
                                 <td><a href="<?php echo URLROOT; ?>/eventHosters/view_request/<?php echo $reg_eveHosts->E_ID; ?>"><button class="btn_1">View Request</button></td>
                             </tr>
                             <?php endforeach; ?>

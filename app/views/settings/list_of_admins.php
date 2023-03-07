@@ -23,7 +23,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</tn>
+                                <th>Email</th>
                                 <th>Phone Number</th>
                                 <!-- <th>NIC</th> -->
                                 <th>Date Assigned</th>

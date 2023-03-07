@@ -1,10 +1,13 @@
 
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
 <link rel="stylesheet" href="<?php echo URLROOT; ?> /css/benificiary/ben_stat.css">
+<body onload="initMap()">
 
+<!--<div class="chartBox">-->
+<!--  <canvas id="myChart"></canvas>-->
+<!--</div>-->
 
+<<<<<<< Updated upstream
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <body>
 <!-- =============== Navigation ================ -->
@@ -225,93 +228,56 @@
 
             </div>
 
-            <!-- ================= New Customers ================ -->
-            <!-- <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Recent Customers</h2>
-                </div>
 
-                <table>
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
+=======
+<div id="map" style="height: 500px; width: 100%;">
 
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-                </table> -->
-        </div>
-    </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=Function.prototype"></script>
+<script>
+    function initMap() {
+        var colombo = {lat: 6.9271, lng: 79.8612};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 50,
+            center: colombo
+        });
+        var marker = new google.maps.Marker({
+            position: colombo,
+            map: map,
+            draggable: true
+        });
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+            document.getElementById("latitude").value = event.latLng.lat();
+            document.getElementById("longitude").value = event.latLng.lng();
+        });
+    }
+</script>
 </div>
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!---->
+<!--<script>-->
+<!--  const ctx = document.getElementById('myChart');-->
+<!---->
+<!--  new Chart(ctx, {-->
+<!--    type: 'bar',-->
+<!--    data: {-->
+<!--      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],-->
+<!--      datasets: [{-->
+<!--        label: '# of Votes',-->
+<!--        data: [20, 19, 3, 5, 2, 3],-->
+<!--        borderWidth: 1-->
+<!--      }]-->
+<!--    },-->
+<!--    options: {-->
+<!--      scales: {-->
+<!--        y: {-->
+<!--          beginAtZero: true-->
+<!--        }-->
+<!--      }-->
+<!--    }-->
+<!--  });-->
+<!--  -->
+<!--</script>-->
+>>>>>>> Stashed changes
 
-</div>
 
-
-
-
-<script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

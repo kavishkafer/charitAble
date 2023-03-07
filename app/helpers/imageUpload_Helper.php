@@ -5,7 +5,7 @@ function uploadImage($img, $img_name, $location) {
     return move_uploaded_file($img, $target);
 }
 
-function updateImage($old, $img, $img_name, $location) {
+function updateImage($old, $img, $img_name, $location){
     unlink($old);
 
     $target = PUBROOT.$location.$img_name;
