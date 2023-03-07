@@ -215,25 +215,25 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
-      $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
-      // Bind values
-        $this->db->bind(':profile_image', $data['profile_image_name']);
-
-        $this->db->bind(':name', $data['name']);
-      $this->db->bind(':email', $data['email']);
-      $this->db->bind(':address', $data['address']);
-      $this->db->bind(':telephone', $data['tel_no']);
-      $this->db->bind(':password', $data['password']);
-     $this->db->bind(':user_Id', $x);
-
-        // Execute
-        if($this->db->execute()){
-            return true;
-        } else {
-            return false;
-        }
-
-}
+        $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
+        // Bind values
+          $this->db->bind(':profile_image', $data['profile_image_name']);
+  
+          $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':telephone', $data['tel_no']);
+        $this->db->bind(':password', $data['password']);
+       $this->db->bind(':user_Id', $x);
+  
+          // Execute
+          if($this->db->execute()){
+              return true;
+          } else {
+              return false;
+          }
+  
+  }
     
 
         public function getBidFromUid($id){

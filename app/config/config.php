@@ -13,4 +13,10 @@ define('URLROOT', 'http://localhost/charitAble');
 define('SITENAME', 'charitable');
 
 //PUBROOT
+<<<<<<< Updated upstream
 define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
+=======
+define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
+
+?>
+>>>>>>> Stashed changes
