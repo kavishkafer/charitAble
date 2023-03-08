@@ -30,7 +30,7 @@ return $row;
 
 public function acceptRequest($Id, $D_Id){
 
-$this->db->query('UPDATE donation_table SET Accepted = true, D_Id = :D_Id WHERE Donation_ID = :Id');
+$this->db->query('UPDATE donation_table SET Accepted = true,Accepted_Time=current_timestamp, D_Id = :D_Id WHERE Donation_ID = :Id');
 $this->db->bind(':Id', $Id);
 $this->db->bind(':D_Id', $D_Id);
 if($this->db->execute()){
