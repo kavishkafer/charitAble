@@ -464,9 +464,9 @@ display: none;
   position: absolute;
   display: block;
   height:calc(100% - 60px);
-  width: 41%;
+  width: 50%;
   top: 60px;
-  left: 18%;
+    left: 0%;
   background-color: #B7C4CF;
   justify-content: center;
   }
@@ -475,9 +475,9 @@ display: none;
       display: flex;
       position: absolute;
       height:calc(100% - 60px);
-      width: 41%;
+      width: 50%;
       top: 60px;
-      left: 59%;
+      left: 50%;
       background-color: white;
       
 }
@@ -544,7 +544,6 @@ display: none;
   top: 80px;
 	color: white;
   text-align: center;
-  left: 7%;
 	background-color:#2C3333 ;
 	cursor: pointer;
 	border: none;
@@ -584,7 +583,7 @@ display: none;
   width: 74%;
   border-radius: 20px;
   top: 240px;
-  left: 20%;
+  left: 10%;
 }
 
 .slt{
@@ -595,11 +594,11 @@ display: none;
   font-size: 1.25rem;
   text-align: left;
   justify-content: center;
-  display: grid;
+  display: flex;
   width: 60%;
   border-radius: 20px;
   top: 160px;
-  left: 28%;
+  left: 20%;
 
 }
 
@@ -660,9 +659,7 @@ td, th{
 /* ======================= Cards ====================== */
 .cardBox {
   position: relative;
-  width: 82%;
-  left: 18%;
-  top: 60px;
+  width: 100%;
   padding: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -677,7 +674,7 @@ td, th{
   text-decoration: none;
   position: relative;
   background: var(--gray);
-  padding: 30px;
+  padding: 40px;
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
@@ -724,11 +721,11 @@ td, th{
   text-align: center;
   display: grid;
   grid-template-columns: 4 1fr;
-  width: 74%;
+  width: 85%;
   border-radius: 20px;
   top: 180px;
-  left: 22%;
-  background-color: var(--gray);
+  left: 8%;
+  background-color: white;
 }
 
 .container-review table {

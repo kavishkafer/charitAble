@@ -1,13 +1,8 @@
 
-
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
-<body>
 
-<div class="container">
-
-                <div class="slt">
+            <div class="slt">
                     <div class="content-sidebar">
                         <div class="content">
                             <h3>ID</h3>
@@ -60,11 +55,14 @@
                             </form>
                         </div>
                     </div>
-                </div>
-    
             
+            </div>
+    </div>
 </div>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+
+<script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
+
+                <?php require APPROOT . '/views/inc/footer.php'; ?>
 
 

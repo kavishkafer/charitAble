@@ -127,6 +127,15 @@ class User {
         }
     }
 
+    public function getUserById($id){
+        $this->db->query('SELECT * FROM registered_users WHERE User_Id = :user_id');
+        $this->db->bind(':user_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
+<<<<<<< Updated upstream
+=======
     public function getBenDetailsById($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
         $this->db->bind(':B_id', $id);
@@ -134,6 +143,7 @@ class User {
         return $row;
     }
 
+>>>>>>> Stashed changes
     public function getDUserById($id){
         $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_Id');
         $this->db->bind(':D_Id', $id);
@@ -185,8 +195,13 @@ class User {
     //Donor
     //Register user
     public function signup_don($data,$x){
+<<<<<<< Updated upstream
         $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id, latitude, longitude) VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id, :latitude, :longitude)');
+=======
+        $this->db->query('INSERT INTO donor_details (profile_image, D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id, latitude, longitude) VALUES(:profile_image, :name, :email, :tel_no, :address, :password, :otp, :User_Id, :latitude, :longitude)');
+>>>>>>> Stashed changes
         //Bind values
+        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
