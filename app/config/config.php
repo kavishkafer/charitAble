@@ -11,3 +11,6 @@ define('APPROOT',dirname(dirname(__FILE__)));
 define('URLROOT', 'http://localhost/charitAble');
 //Site Name
 define('SITENAME', 'charitable');
+
+//PUBROOT
+define('PUBROOT', dirname(dirname(dirname(__FILE__))).'\public');

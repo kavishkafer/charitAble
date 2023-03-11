@@ -163,7 +163,6 @@ class Users extends Controller
                // Check for user/email
                if($this->userModel->findUserByEmail($data['email'])){
                 $user_role=$this->userModel->findUserRoleByEmail($data['email']);
-
                 // User found
               } else {
                 // User not found
@@ -278,7 +277,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('pages/index');
+                redirect('request_ehs');
               }
 
 
@@ -502,20 +501,34 @@ public function signup_eh(){
    
       // Init data
       $data = [
-        'name' => trim($_POST['name']),
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
+          'name' => trim($_POST['name']),
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
         'tel_no' => trim($_POST['tel_no']),
         'password' => trim($_POST['password']),
         'confirm_password' => trim($_POST['confirm_password']),
         'user_role' => $user_role,
+          'profile_image_err' => '',
         'name_err' => '',
         'email_err' => '',
         'address_err' => '',
         'tel_no_err' => '',
         'password_err' => '',
-        'confirm_password_err' => ''
+        'confirm_password_err' => '',
+
       ];
+
+      //validate profile_image and upload
+      if(uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+          //done
+      }
+      else {
+          $data['profile_image_err'] = 'Error uploading image';
+      }
+
+
       //Validate Email
       if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
@@ -525,6 +538,8 @@ public function signup_eh(){
             $data['email_err'] = 'Email is already taken';  
         }
     }
+
+
 
       //Validate Name
       if(empty($data['name'])){
@@ -553,7 +568,7 @@ public function signup_eh(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])) {
           // Validatede
         
           //Hash
@@ -582,12 +597,14 @@ public function signup_eh(){
   else{
       // Init data
       $data = [
+          'profile_image' => '',
         'name' => '',
         'email' => '',
                   'address' => '',
                   'tel_no' => '',
                   'password' => '',
-                  'confirm_password' => '',  
+                  'confirm_password' => '',
+          'profile_image_err' => '',
                   'name_err' => '',
                   'email_err' => '',
                   'tel_no_err' => '',

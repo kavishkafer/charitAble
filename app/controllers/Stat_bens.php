@@ -19,27 +19,90 @@ class Stat_bens extends Controller
             'donation_quantity' => $No_of_requests,
 
         ];
-     echo json_encode($data);
+//     echo json_encode($data);
         $this->view('stat_bens/index', $data);
 
     }
 
     public function No_of_requests()
     {
-        $No_of_requests = $this->statModel->No_of_requests(10);
+        $id = $_SESSION['user_id'];
+        $No_of_requests = $this->statModel->No_of_requests(12);
         $data = [
             'title' => 'No_of_requests',
             'donation_quantity' => $No_of_requests,
-            'donation_type' => $No_of_requests->donation_type,
-            'donation_priority' => $No_of_requests->donation_priority,
+//            'donation_type' => $No_of_requests->donation_type,
+//            'donation_priority' => $No_of_requests->donation_priority,
         ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function requestStatus(){
+        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $pending=$this->requestModel->pendingRequestsBen($id);
+        $accepted=$this->requestModel->acceptedRequestsBen($id);
+        $completed=$this->requestModel->completedRequestsBen($id);
+        $data = [
+            'pending' => 'pending Requests',
+            'accepted' => 'accepted Requests',
+            'completed' => 'completed Requests',
+            'pendingCount' => $pending,
+            'acceptedCount' => $accepted,
+            'completedCount' => $completed,
+        ];
+        header('Content-Type: application/json');
         echo json_encode($data);
 
 
-        $this->view('stat_bens/index', $data);
-
+    }
+    public function donationViaMonths(){
+        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $jan=$this->statModel->donationViaMonths($id,1);
+        $feb=$this->statModel->donationViaMonths($id,2);
+        $mar=$this->statModel->donationViaMonths($id,3);
+        $apr=$this->statModel->donationViaMonths($id,4);
+        $may=$this->statModel->donationViaMonths($id,5);
+        $jun=$this->statModel->donationViaMonths($id,6);
+        $jul=$this->statModel->donationViaMonths($id,7);
+        $aug=$this->statModel->donationViaMonths($id,8);
+        $sep=$this->statModel->donationViaMonths($id,9);
+        $oct=$this->statModel->donationViaMonths($id,10);
+        $nov=$this->statModel->donationViaMonths($id,11);
+        $dec=$this->statModel->donationViaMonths($id,12);
+        $data = [
+            'jan' => 'jan',
+            'feb' => 'feb',
+            'mar' => 'mar',
+            'apr' => 'apr',
+            'may' => 'may',
+            'jun' => 'jun',
+            'jul' => 'jul',
+            'aug' => 'aug',
+            'sep' => 'sep',
+            'oct' => 'oct',
+            'nov' => 'nov',
+            'dec' => 'dec',
+            'janCount' => $jan,
+            'febCount' => $feb,
+            'marCount' => $mar,
+            'aprCount' => $apr,
+            'mayCount' => $may,
+            'junCount' => $jun,
+            'julCount' => $jul,
+            'augCount' => $aug,
+            'sepCount' => $sep,
+            'octCount' => $oct,
+            'novCount' => $nov,
+            'decCount' => $dec,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
 
     }
+
+
+
 
     public function donationQuantity()
     {
