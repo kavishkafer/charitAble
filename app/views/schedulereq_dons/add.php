@@ -74,7 +74,9 @@
 </div>
 </div>
 </main>
+  </div>
+  </div>
 
-<script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
+  <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

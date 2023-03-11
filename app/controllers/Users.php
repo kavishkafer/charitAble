@@ -359,6 +359,8 @@ public function signup_dons(){
    
       // Init data
       $data = [
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),  
           'tel_no' => trim($_POST['tel_no']),
@@ -370,6 +372,10 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
+<<<<<<< Updated upstream
+=======
+          'profile_image_err' => '',
+>>>>>>> Stashed changes
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -377,6 +383,15 @@ public function signup_dons(){
           'password_err' => '',
           'confirm_password_err' => ''
       ];
+
+      //validate profile_image and upload
+      if(uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+          //done
+      }
+      else {
+          $data['profile_image_err'] = 'Error uploading image';
+      }
+
       //Validate Email
       if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
@@ -414,7 +429,7 @@ public function signup_dons(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])){
           // Validated
           //Hash
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -446,6 +461,7 @@ public function signup_dons(){
   else{
       // Init data
       $data = [
+          'profile_image' => '',
           'name' => '',
           'email' => '',  
           'tel_no' => '',
@@ -456,6 +472,10 @@ public function signup_dons(){
           'latitude' => '',
           'longitude' => '',
 
+<<<<<<< Updated upstream
+=======
+          'profile_image_err' => '',
+>>>>>>> Stashed changes
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
