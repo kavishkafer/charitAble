@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCykzd2-mQTQdSMQNh8PxrWAnDBgqjf_Xg&libraries=places"></script>
     <body onload="initMap()">
 
     <div class="logo">
@@ -65,7 +65,7 @@
                        <div class="space" style="height: 500px; margin=20px;">
                            <div id="map" style="height: 400px; width: 100%; margin: 20px;">
 
-                               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=Function.prototype"></script>
+<!--                               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCykzd2-mQTQdSMQNh8PxrWAnDBgqjf_Xg&callback=Function.prototype"></script>-->
                                <script>
                                    function initMap() {
                                        var colombo = {lat: 6.9271, lng: 79.8612};
@@ -84,10 +84,9 @@
                                            document.getElementById("longitude").value = event.latLng.lng();
                                        });
                                    }
-                                   var autocomplete = new google.maps.places.Autocomplete(
-                                       document.getElementById('autocomplete'),
-                                       {types: ['geocode']});
+
                                </script>
+
                            </div>
                            <input type="hidden" id="latitude" name="latitude"><br>
                            <input type="hidden" id="longitude" name="longitude"><br>

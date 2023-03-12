@@ -145,17 +145,18 @@
         <!-- ================ Order Details List ================= -->
 
                     <div class="main-container">
-                        <div class="chart" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center">
-                            <div class="chart1" style="width: 50%; display: flex; flex-direction: column">
+                        <div class="chart" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center ">
+                            <div class="chart1" style="width: 50%; display: flex; flex-direction: column; margin-left: 20px">
                                 <canvas id="myChart"></canvas>
                                 <canvas id="myLine"></canvas>
                             </div>
-                            <div class="chart2" style="width: 50%; display: flex; flex-direction: column">
+                            <div class="chart2" style="width: 25%; display: flex; flex-direction: column; margin-left: 40px;">
                                 <canvas id="myPie"></canvas>
+                                <canvas id="myDon" ></canvas>
                             </div>
-                            <div class="chart2" >
-                                <canvas id="myDon"></canvas>
-                            </div>
+<!--                            <div class="chart2"  >-->
+<!--                               -->
+<!--                            </div>-->
                         </div>
                     </div>
                     </section>
@@ -169,9 +170,38 @@
 
 
 
+
                         const ctx = document.getElementById('myChart');
                         const ctp = document.getElementById('myPie');
                         const ctr = document.getElementById('myLine');
+                        const ctd = document.getElementById('myDon');
+
+                        // new Chart(ctd,{
+                        //     type: 'doughnut',
+                        //     data: {
+                        //         labels: ['High', 'Normal'],
+                        //         datasets: [{
+                        //             label: 'No. of Requests',
+                        //             data: [10, 10],
+                        //             backgroundColor: [
+                        //                 'rgba(255, 99, 132, 0.2)',
+                        //                 'rgba(54, 162, 235, 0.2)',
+                        //
+                        //             ],
+                        //             borderColor: [
+                        //                 'rgba(255, 99, 132, 1)',
+                        //                 'rgba(54, 162, 235, 1)',
+                        //
+                        //             ],
+                        //             borderWidth: 1
+                        //         }]
+                        //     },
+                        //     options: {
+                        //         scales: {
+                        //
+                        //         }
+                        //     }
+                        // })
                         
 
 
@@ -289,6 +319,51 @@
 
                         }
                      pieChart();
+
+                        function donutChart(){
+                            $.ajax({
+                                url: "http://localhost/charitAble/Stat_bens/priorityCount",
+
+                                method: 'GET',
+                                dataType: 'JSON',
+                                success: function (response2) {
+                                    // count = response2.high;
+                                    // req = response2.highCount;
+                                    console.log(response2);
+                                    //setup pie chart
+                                    const data = {
+                                        labels: [response2.high, response2.normal],
+                                        datasets: [{
+                                            label: 'Donation Priority',
+                                            data: [response2.highCount.num_rows, response2.normalCount.num_rows],
+                                            borderWidth: 1
+                                        }]
+                                    };
+
+                                    //config pie chart
+                                    const configDonut = {
+                                        type: 'doughnut',
+                                        data: data,
+
+                                        options: {
+                                            scales: {
+                                                // y: {
+                                                //     beginAtZero: true
+                                                // }
+                                            }
+                                        }
+                                    };
+                                    //render pie chart
+                                    const myPie = new Chart(
+                                        document.getElementById('myDon'),
+                                        configDonut
+                                    );
+                                    console.log(response2);
+                                }
+                            })
+
+                            }
+                            donutChart();
                     </script>
                 </div>
 

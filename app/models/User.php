@@ -224,6 +224,7 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
+
         $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
         // Bind values
           $this->db->bind(':profile_image', $data['profile_image_name']);
@@ -243,6 +244,7 @@ class User {
           }
   
   }
+
     
 
         public function getBidFromUid($id){

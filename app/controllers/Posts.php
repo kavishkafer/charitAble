@@ -37,8 +37,10 @@
       
       
                 ];
-      
+
+
                 //validate post data
+
       
               if($data['image']['size'] > 0){
                   if(uploadImage($data['image']['tmp_name'], $data['image_name'], '/img/postsImgs/')){
@@ -48,6 +50,7 @@
                       $data['image_err'] = 'unsuccessful image uploading';
       
                   }
+
           }
           else {
               $data['image_name'] = null;
@@ -63,7 +66,9 @@
                 }
       
                 //make sure no error
+
                   if(empty($data['title_err']) && empty($data['body_err']) && empty($data['image_err'])) {
+
                           //validated
                           if($this->postModel->addPost($data)) {
                               flash('post_message', 'Post Added');
@@ -73,7 +78,9 @@
                           }
                   } else {
                       // load view with errors
+
                       $this->view('posts/add', $data);
+
                   }
       
       } else {

@@ -100,6 +100,23 @@ class Stat_bens extends Controller
         echo json_encode($data);
 
     }
+    public function priorityCount(){
+        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $high=$this->statModel->highPriorityCount($id);
+        $normal=$this->statModel->normalPriorityCount($id);
+
+        $data = [
+            'high' => 'high',
+            'normal' => 'normal',
+            'low' => 'low',
+            'highCount' => $high,
+            'normalCount' => $normal,
+
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+
+    }
 
 
 
