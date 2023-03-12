@@ -1,7 +1,7 @@
 
     <!--<link rel="stylesheet" href="../public/css/donor/style.css">-->
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
-
+<body>
     <!-- =============== Navigation ================ -->
     <div class="container-nav">
         <div class="navigation">
@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/SettingsDons/viewProfile">
                         <span class="icon">
                             <i class="fas fa-cog"></i>
                         </span>
@@ -94,8 +94,7 @@
             <img src="../public/img/img_dons/customer01.jpg" alt="">
         </div>
     </div>
-</div>
-</div>
+
 
 <!-- =========== Scripts =========  -->
 <script src="../public/js/donor/main.js"></script>

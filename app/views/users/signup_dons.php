@@ -1,8 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/style.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/signup.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&libraries=places"></script>
 
-<body>
+<body onload="initMap()">
 <div class="container">
 <div class="img-container">
   <div class="logo">
@@ -43,6 +44,37 @@
 <label>Address</label>
 <div class="warn"><?php echo $data['address_err']; ?></div>
 </div>
+    <!--map-->
+    <div class="space" style="height: 500px; margin=20px;">
+        <div id="map" style="height: 400px; width: 100%; margin: 20px;">
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=Function.prototype"></script>
+            <script>
+                function initMap() {
+                    var colombo = {lat: 6.9271, lng: 79.8612};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 12,
+                        center: colombo
+
+                    });
+                    var marker = new google.maps.Marker({
+                        position: colombo,
+                        map: map,
+                        draggable: true
+                    });
+                    google.maps.event.addListener(marker, 'dragend', function(event) {
+                        document.getElementById("latitude").value = event.latLng.lat();
+                        document.getElementById("longitude").value = event.latLng.lng();
+                    });
+                }
+                var autocomplete = new google.maps.places.Autocomplete(
+                    document.getElementById('autocomplete'),
+                    {types: ['geocode']});
+            </script>
+        </div>
+        <input type="hidden" id="latitude" name="latitude"><br>
+        <input type="hidden" id="longitude" name="longitude"><br>
+    </div>
 
 <div class="input">
 <input type="password" name="password" minlength="4" class="input-field <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value = "<?php echo $data['password']; ?>" autocomplete="off"/>
@@ -56,6 +88,29 @@
 <div class="warn"><?php echo $data['confirm_password_err']; ?></div>
 </div>
 
+    <!--profile image-->
+
+    <div class="form-drag-area">
+        <div class="icon">
+            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/placeholder-icon.png" alt="placeholder-icon" width="90px" height="90px" id="profile_image_placeholder">
+        </div>
+
+        <div class="right-content">
+            <div class="description">Drag and drop</div>
+            <div class="form-upload">
+                <input type="file" name="profile_image" id="profile_image" style="display: none">
+                Browse File
+            </div>
+        </div>
+    </div>
+
+    <div class="form-validation">
+        <div class="profile-image-validation">
+            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/green-tick-icon.png" alt="green-tick" width="15px" height="15px">
+            Select a profile picture
+        </div>
+    </div>
+
 <input type="submit" value="Create Account" class="btn">
 <p class="text">Already have an account?
 <a href="<?php echo URLROOT; ?>/users/login">Sign In</a>
@@ -66,7 +121,8 @@
 
 </div>
 </div>
-
+<!--javascript for profile image-->
+<script src="<?php echo URLROOT; ?>/js/components/imageUpload/imageUpload.js"></script>
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

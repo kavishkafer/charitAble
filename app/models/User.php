@@ -127,6 +127,14 @@ class User {
         }
     }
 
+    public function getUserById($id){
+        $this->db->query('SELECT * FROM registered_users WHERE User_Id = :user_id');
+        $this->db->bind(':user_id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
+
     public function getBenDetailsById($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_id');
         $this->db->bind(':B_id', $id);
@@ -134,12 +142,7 @@ class User {
         return $row;
     }
 
-    public function getUserById($id){
-        $this->db->query('SELECT * FROM registered_users WHERE User_Id = :user_id');
-        $this->db->bind(':user_id', $id);
-        $row = $this->db->single();
-        return $row;
-    }
+
 
     public function getDUserById($id){
         $this->db->query('SELECT * FROM donor_details WHERE D_Id = :D_Id');
@@ -192,15 +195,19 @@ class User {
     //Donor
     //Register user
     public function signup_don($data,$x){
-        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id)');
+
+        $this->db->query('INSERT INTO donor_details (profile_image, D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id, latitude, longitude) VALUES(:profile_image, :name, :email, :tel_no, :address, :password, :otp, :User_Id, :latitude, :longitude)');
+
         //Bind values
+        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':otp', $data['otp']);
-
+        $this->db->bind(':latitude', $data['latitude']);
+        $this->db->bind(':longitude', $data['longitude']);
         $this->db->bind(':User_Id', $x);
 
         //Execute
@@ -217,25 +224,27 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
-      $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
-      // Bind values
-        $this->db->bind(':profile_image', $data['profile_image_name']);
 
-        $this->db->bind(':name', $data['name']);
-      $this->db->bind(':email', $data['email']);
-      $this->db->bind(':address', $data['address']);
-      $this->db->bind(':telephone', $data['tel_no']);
-      $this->db->bind(':password', $data['password']);
-     $this->db->bind(':user_Id', $x);
+        $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
+        // Bind values
+          $this->db->bind(':profile_image', $data['profile_image_name']);
+  
+          $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':telephone', $data['tel_no']);
+        $this->db->bind(':password', $data['password']);
+       $this->db->bind(':user_Id', $x);
+  
+          // Execute
+          if($this->db->execute()){
+              return true;
+          } else {
+              return false;
+          }
+  
+  }
 
-        // Execute
-        if($this->db->execute()){
-            return true;
-        } else {
-            return false;
-        }
-
-}
     
 
         public function getBidFromUid($id){
