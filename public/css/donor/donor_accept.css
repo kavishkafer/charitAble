@@ -671,6 +671,13 @@
     width: 100%;
   }
   }
+.warn{
+  color:red;
+  font-size: 20px;
+  font-weight: bold;
+  align-content: center;
+  display: flex;
+}
   
   
   

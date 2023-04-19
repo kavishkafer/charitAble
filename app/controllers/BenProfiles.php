@@ -7,10 +7,10 @@ class BenProfiles extends Contoller
     }
     public function index()
     {
-        $ben = $this->benProfileModel->getOrigin();
-        $data = [
-            'ben' => $ben
-        ];
-        $this->view('benProfiles/index', $data);
+//        $ben = $this->benProfileModel->getOrigin();
+//        $data = [
+//            'ben' => $ben
+//        ];
+        $this->view('benProfiles/index');
     }
 }

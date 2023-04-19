@@ -66,7 +66,8 @@ class BenSearchs extends Controller
                     
                         <td data-label="Name">' . $res->B_Name . '</td>
                         <td data-label="Address">' . $res->B_Address . '</td>
-                        <td data-label="">' . $res->B_Tpno . '</td>
+                        <td data-label="Telephone">' . $res->B_Tpno . '</td>
+                        <td data-label="members">'.$res->B_Members.'</td>
                        
                         
                     </tr>';

@@ -198,10 +198,50 @@
                     </tbody>
                     </table>
                 </div>
+               <div class="recentOrders">
+                Donation History
+                   <div class="tablex">
+                       <?php if ($data['partial']!=0){ ?>
+                           <table>
+                               <thead>
+                               <tr>
+                                   <td>Donor name</td>
+                                   <td>Telephone number</td>
+                                   <td>Donation Quantity</td>
+<!--                                   <td>Type</td>-->
 
-                
+
+                               </tr>
+                               </thead>
+
+                               <tbody>
+                               <!-- <form action="<?php echo URLROOT; ?>/ben_req_dons/getAllRequests" method="post"> -->
+                               <tr>
+
+
+                                   <?php foreach($data['partial'] as $request): ?>
+                                   <td><?php echo $request->D_Name; ?></td>
+                                   <td> <?php echo $request->D_Tel_No; ?></td>
+                                   <td><?php echo $request->Donation_Quantity; ?></td>
+<!--                                   <td>--><?php //echo $request->Donation_Type; ?><!--</td>-->
+<!--                                   <td>--><?php //echo $request->Remaining_Quantity; ?><!--</td>-->
+<!--                                   <td style="justify-content: center;">--><?php //echo $request->Donation_Priority; ?><!--</td>-->
+
+<!--                                   <td><a href="--><?php //echo URLROOT;?><!--/BenReqDons/show/--><?php //= $request->Donation_ID; ?><!--">View</a></td>-->
+
+
+                               </tr>
+                               <?php endforeach; ?>
+
+
+
+
+                               </tbody>
+                           </table>
+                       <?php }else { echo '<div class="warn">No requests at the moment</div>';} ?>
+                   </div>
             </div>
-        </div>
+
     </div>
 
 

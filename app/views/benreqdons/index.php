@@ -95,7 +95,7 @@
                         <h2>Recent Requests</h2>
 
                     </div>
-
+                    <?php if ($data['requests']!=0){ ?>
                     <table>
                         <thead>
                             <tr>
@@ -115,15 +115,16 @@
                             <tr>
 
 
-                             <?php foreach($data['requests'] as $request): ?>
-                                <td><?php echo $request->B_Name; ?></td>
-                                <td> <?php echo $request->Donation_ID; ?></td>
+                             <?php foreach($data['partial'] as $request): ?>
+                                <td><?php echo $request->Donor_Id; ?></td>
+                                <td> <?php echo $request->Req_Id; ?></td>
                                 <td><?php echo $request->Donation_Description; ?></td>
                                 <td><?php echo $request->Donation_Type; ?></td>
-                                <td><?php echo $request->Donation_Quantity; ?></td>
+                                <td><?php echo $request->Remaining_Quantity; ?></td>
                                 <td style="justify-content: center;"><?php echo $request->Donation_Priority; ?></td>
+
                                 <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $request->Donation_ID; ?>">View</a></td>
-                                }
+
 
                             </tr>
                             <?php endforeach; ?> 
@@ -133,6 +134,7 @@
                           
                         </tbody>
                     </table>
+                    <?php }else { echo '<div class="warn">No requests at the moment</div>';} ?>
                 </div>
 
                 <!-- ================= New Customers ================ -->

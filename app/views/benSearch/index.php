@@ -12,7 +12,7 @@
             <th>Benificiary Name</th>
             <th>Address</th>
             <th>Telephone Number</th>
-            <th>Email</th>
+            <th>Members</th>
         </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
                 <td><?php echo $search->B_Name; ?></td>
                 <td><?php echo $search->B_Address; ?></td>
                 <td><?php echo $search->B_Tpno; ?></td>
-                <td><?php echo $search->B_Email; ?></td>
+                <td><?php echo $search->B_Members; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
