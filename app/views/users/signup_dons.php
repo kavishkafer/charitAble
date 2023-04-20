@@ -14,7 +14,7 @@
 </div>
 </div>
 <div class="form-container">
-<form action="<?php echo URLROOT; ?>/users/signup_dons" autocomplete="off" method="POST">
+<form action="<?php echo URLROOT; ?>/users/signup_dons" autocomplete="off" method="POST" enctype="multipart/form-data">
 <div class="heading">
 <h2>SignUp</h2>
 </div>

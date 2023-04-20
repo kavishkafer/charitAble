@@ -813,8 +813,6 @@ td, th{
     min-width:50ch;
 }
 
-<<<<<<< Updated upstream
-=======
 /* ====================== profile picture ========================== */
 .form-drag-area{
     background-color: #eeeeee;
@@ -899,7 +897,6 @@ td, th{
 .form-validation > div.img{
     opacity: 1;
 }
->>>>>>> Stashed changes
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {

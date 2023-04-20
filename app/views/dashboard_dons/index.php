@@ -8,10 +8,21 @@
 
 <!-- ======================= Cards ================== -->
 <div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers"><?php echo $data['count'] ?></div>
+            <div class="cardName">Total Requests</div>
+        </div>
+
+        <div class="iconBx">
+            <ion-icon name="eye-outline"></ion-icon>
+        </div>
+    </div>
+
                 <div class="card">
                 <a href="<?php echo URLROOT; ?>/requests_dons/index">
                     <div>
-                        <div class="numbers">01</div>
+                        <div class="numbers"><?php echo $data['accept'] ?></div>
                         <div class="cardName">Ongoing Requests</div>
                     </div>
 
@@ -24,7 +35,7 @@
                 <div class="card">
                 <a href="<?php echo URLROOT; ?>/schedulereq_dons/reviewreq">
                     <div>
-                        <div class="numbers">01</div>
+                        <div class="numbers"><?php echo $data['pending'] ?></div>
                         <div class="cardName">Requests Under Review</div>
                     </div>
 
@@ -35,9 +46,8 @@
                 </div>
 
                 <div class="card">
-                    <a href="#">
                     <div>
-                        <div class="numbers">05</div>
+                        <div class="numbers"><?php echo $data['complete'] ?></div>
                         <div class="cardName">Completed Donations</div>
                     </div>
 

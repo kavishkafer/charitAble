@@ -41,7 +41,7 @@
         <td><?php echo $name->B_Email; ?></td>
         <td><?php echo $name->B_Members; ?></td>
         <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/add/<?php echo $name->B_Id; ?>" class="btn2">Select</a></td>
-         <td ><a href="#" class="btn2">View Profile</a></td>
+         <td ><a href="<?php echo URLROOT; ?>/profilebens/index/<?php echo $name->B_Id; ?>" class="btn2">View Profile</a></td>
 
          </tr>
 
