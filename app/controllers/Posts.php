@@ -107,13 +107,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   'body_err' => '',
                   'image_err' => ''
                 ];
-
-
+      
                 //validate post data
           $post = $this->postModel->getPostById($id);
           $oldImage = PUBROOT.'/img/postsImgs/'.$post->image;
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
           //post updated
           //user havent changed the existing image
           if($_POST['intentially_removed'] == 'removed') {
@@ -140,7 +142,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   $data['body_err'] = 'Please enter post body';
                 }
       
+<<<<<<< Updated upstream
                 //make sure no error
+=======
+                //make sure no errror
+>>>>>>> Stashed changes
                   if(empty($data['title_err']) && empty($data['body_err'])){
                           //validated
                           if($this->postModel->updatePost($data)){
@@ -150,7 +156,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                               die('something went wrong');
                           }
                   } else {
+<<<<<<< Updated upstream
                       // load view with errors
+=======
+                      // load view with errrors
+>>>>>>> Stashed changes
                       $this->view('posts/edit', $data);
                   }
       
