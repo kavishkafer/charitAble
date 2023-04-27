@@ -1,9 +1,14 @@
 <?php
-class Profileben{
+
+class Profileben
+{
     private $db;
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->db = new Database;
     }
+
     public function profile($id)
     {
         $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_Id');

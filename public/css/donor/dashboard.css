@@ -8,8 +8,11 @@
 
 :root {
     --blue: #2C3333;
-    --white: #ffffff;
-    --gray: #E7F6F2;
+
+    --white: #fff;
+
+
+    --gray: #ffffff2d;
     --black1: #222;
     --black2: rgb(107, 105, 105);
     --light: #D6E4E5;
@@ -41,7 +44,6 @@ body {
 .navigation.active img{
     display: none;
 }
-
 
 .navigation ul {
     position: absolute;
@@ -154,6 +156,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    background-color: var(--blue);
 }
 
 .toggle {
@@ -267,27 +270,21 @@ body {
 .details {
     position: relative;
     width: 100%;
-    height:100%;
     padding: 20px;
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    grid-gap: 30px;
+    /* grid-template-columns: 2fr 1fr;
+    grid-gap: 30px; */
     /* margin-top: 10px; */
 }
 
 .details .recentOrders {
     position: relative;
     display: grid;
-    width: 70%;
-    left: 15%;
     min-height: 500px;
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    /*
-    align-content: center;
-    */
 }
 
 .details .cardHeader {
@@ -313,7 +310,6 @@ body {
     border-collapse: collapse;
     margin-top: 10px;
 }
-
 .details table thead td {
     font-weight: 600;
 }
@@ -342,7 +338,7 @@ body {
 }
 .status.delivered {
     padding: 2px 4px;
-    background: #395B64;
+    background: #8de02c;
     color: var(--white);
     border-radius: 4px;
     font-size: 14px;
@@ -433,9 +429,6 @@ body {
     padding-bottom: 30px;
 }
 
-h2{
-    text-align: center;
-}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
@@ -506,28 +499,26 @@ h2{
         margin-bottom: 10px;
         padding-bottom: 30px;
     }
-
-
 }
-
 .content-sidebar{
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1em;
 }
-
 .content-sidebar .content{
     flex: 1 1 25%;
     min-width:25ch;
-}
+    justify-content: center;
 
+
+}
 .content-sidebar .data{
     flex: 1 1 70%;
     min-width:50ch;
 }
 .button {
-    background-color: #395B64; /* Green */
+    background-color: #4CAF50; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -541,15 +532,14 @@ h2{
 }
 
 .button1 {
-    background-color:#395B64;
+    background-color:#4CAF50;
     color: white;
-    border: 2px solid #395B64;
+    border: 2px solid #77DD77;
     border-radius: 12px;
 }
 .button1:hover {
-    background-color: #395B64;
+    background-color: #77DD77;
     color: white;
-
 }
 .button2 {
     background-color:#FF1205;
@@ -621,7 +611,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-    background-color: #395B64;
+    background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -650,6 +640,7 @@ button:hover {
 
 /* Add padding to container elements */
 .container {
+    padding: 0px;
 }
 
 /* The Modal (background) */
@@ -670,21 +661,17 @@ button:hover {
 }
 
 /* Modal Content/Box */
-.forms {
-    display: flex;
-    background-color: var(--white);
-    padding: 10px;
+.modal-content {
+    background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid rgb(231, 225, 225);
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    border: 1px solid #888;
     width: 60%; /* Could be more or less, depending on screen size */
 
 }
 
 /* Style the horizontal ruler */
 hr {
-    border: 1px solid #14a85e;
+    border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
 
@@ -708,7 +695,7 @@ hr {
 .clearfix::after {
     content: "";
     clear: both;
-
+    display: table;
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
@@ -716,41 +703,9 @@ hr {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
-
-
-
 }
-.data select{
-    width: 50%;
-    height: 40px;
-    border-radius: 5px;
-
-    background-color:#edeeee;
-
-    padding: 5px;
-}
-.data textarea{
-    width: 80%;
-    height: 250px;
-    border-radius: 5px;
 
 
-    background-color:#ffffff;
 
 
-    padding: 5px;
-}
-.data input{
-    width: 50%;
-    height: 40px;
-    border-radius: 5px;
-
-    background-color:#edeeee;
-
-    padding: 5px;
-}
-.button-alignment{
-    text-align: center;
-    margin: auto;
-}
 

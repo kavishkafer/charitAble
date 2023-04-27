@@ -163,6 +163,7 @@ class Users extends Controller
                // Check for user/email
                if($this->userModel->findUserByEmail($data['email'])){
                 $user_role=$this->userModel->findUserRoleByEmail($data['email']);
+
                 // User found
               } else {
                 // User not found
@@ -277,7 +278,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user->User_Id;
                 $_SESSION['user_email'] = $user->User_Email;
                 $_SESSION['user_role'] = $user->User_Role;
-                redirect('request_ehs');
+                redirect('pages/index');
               }
 
 
@@ -372,14 +373,7 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
           'profile_image_err' => '',
->>>>>>> Stashed changes
-=======
-          'profile_image_err' => '',
->>>>>>> Stashed changes
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -476,14 +470,7 @@ public function signup_dons(){
           'latitude' => '',
           'longitude' => '',
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
           'profile_image_err' => '',
->>>>>>> Stashed changes
-=======
-          'profile_image_err' => '',
->>>>>>> Stashed changes
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -509,13 +496,7 @@ public function signup_eh(){
    
       // Init data
       $data = [
-<<<<<<< Updated upstream
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
-          'name' => trim($_POST['name']),
-=======
         'name' => trim($_POST['name']),
->>>>>>> Stashed changes
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
         'tel_no' => trim($_POST['tel_no']),
@@ -566,11 +547,7 @@ public function signup_eh(){
           }
       }
       // Make sure errors are empty
-<<<<<<< Updated upstream
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])) {
-=======
       if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
->>>>>>> Stashed changes
           // Validatede
         
           //Hash

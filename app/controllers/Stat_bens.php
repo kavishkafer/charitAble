@@ -40,12 +40,6 @@ class Stat_bens extends Controller
 
 
     }
-<<<<<<< Updated upstream
-
-
-
-=======
->>>>>>> Stashed changes
 
     public function donationQuantity()
     {

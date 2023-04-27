@@ -150,12 +150,6 @@
                             <div class="chart2" style="width: 50%; display: flex; flex-direction: column">
                                 <canvas id="myPie"></canvas>
                             </div>
-<<<<<<< Updated upstream
-                            <div class="chart2" >
-                                <canvas id="myDon"></canvas>
-                            </div>
-=======
->>>>>>> Stashed changes
                         </div>
                     </div>
                     </section>
@@ -164,17 +158,6 @@
                     <script src="<?php echo URLROOT; ?>/js/sidebar.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <script>
-<<<<<<< Updated upstream
-                        var count;
-                        var req;
-
-
-
-                        const ctx = document.getElementById('myChart');
-                        const ctp = document.getElementById('myPie');
-                        const ctr = document.getElementById('myLine');
-                        
-=======
                         const ctx = document.getElementById('myChart');
                         const ctp = document.getElementById('myPie');
                         const ctr = document.getElementById('myLine');
@@ -207,7 +190,6 @@
                                 document.getElementById('myChart'),
                                 config
                             );
->>>>>>> Stashed changes
 
 
 
@@ -246,58 +228,9 @@
                                         beginAtZero: true
                                     }
                                 }
-<<<<<<< Updated upstream
-                            })
-                        }
-                        No_of_requests();
-
-                        function pieChart(){
-                            $.ajax({
-                                url: "http://localhost/charitAble/Stat_bens/requestStatus",
-
-                                method: 'GET',
-                                dataType: 'JSON',
-                                success: function (response1) {
-                                    count = response1.pending;
-                                    req = response1.pendingCount;
-                                    console.log(response1);
-                                    //setup pie chart
-                                    const data = {
-                                        labels: [response1.pending, response1.accepted, response1.completed],
-                                        datasets: [{
-                                            label: 'No. of Donations',
-                                            data: [response1.pendingCount, response1.acceptedCount, response1.completedCount],
-                                            borderWidth: 1
-                                        }]
-                                    };
-                                    //config pie chart
-                                    const configPie = {
-                                        type: 'pie',
-                                        data: data,
-
-                                        options: {
-                                            scales: {
-                                                // y: {
-                                                //     beginAtZero: true
-                                                // }
-                                            }
-                                        }
-                                    };
-                                    //render pie chart
-                                    const myPie = new Chart(
-                                        document.getElementById('myPie'),
-                                        configPie
-                                    );
-                                }
-                            })
-
-                        }
-                     pieChart();
-=======
                             }
                         });
 
->>>>>>> Stashed changes
                     </script>
                 </div>
 

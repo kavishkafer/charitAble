@@ -80,7 +80,7 @@
                         <div class="content">
                             <label for="Registration Letter"><h3>Registration letter</h3></label>
                         </div>
-                        <div class="data">
+                        <div class="data" >
                             <?php echo $data['requests']->B_RegistrationLetter; ?>
                         </div>
 
