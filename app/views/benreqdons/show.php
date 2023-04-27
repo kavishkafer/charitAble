@@ -98,7 +98,7 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
+                        <h2>Accept Request</h2>
 <!--                         <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
  -->                    </div>
 
@@ -144,6 +144,9 @@
                         </tbody>
                     </table>
                 </div> -->
+                    <form
+                        action="<?php echo URLROOT; ?>/BenReqDons/show/<?php echo $data['requests']->Donation_ID?>"
+                        method="post">
                 <div class="content-sidebar">
                         <div class="content">
                             <h3>Donation ID</h3>
@@ -167,16 +170,15 @@
                             <h3>Donation Quantity</h3>
                         </div>
                         <div class="data">
-                        <?php echo $data['requests']->Donation_Quantity; ?>
+                            <input type="text" name="Donation_Quantity" placeholder="quantity" value="<?php echo $data['requests']->Remaining_Quantity; ?>">
+                            <div class="warn"> <?php if(isset($data['Quantity_err'])) echo $data['Quantity_err']; ?></div>
                         </div>
                     </div>
 
 
                     <div class="content-sidebar">
                         <div class="content">
-                        <form
-                                action="<?php echo URLROOT; ?>/BenReqDons/acceptRequest/<?php echo $data['requests']->Donation_ID; ?>"
-                                method="post">
+
                                 <input type="submit" class="button button1" id="Edit" value="Accept">
                             </form>
                            

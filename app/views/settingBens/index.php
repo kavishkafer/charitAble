@@ -181,6 +181,7 @@
 
                         <input type="submit" class="button button1" value="submit">
                     </div>
+                </form>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 class Request_bens extends Controller{
     public function __construct(){
         if(!isLoggedIn()){
-            redirect('users/login_ben');
+            redirect('users/login');
         }
         $this->requestModel = $this->model('Request_ben');
         $this->userModel = $this->model('User');
@@ -118,12 +118,18 @@ class Request_bens extends Controller{
       
     }
     public function show($id){
+        if(!isLoggedIn()){
+            redirect('users/login');
+        }
         
         $request = $this->requestModel->getRequestById($id);
         $user = $this->userModel->getBenDetailsById($request->B_Id);
+        $partialUser = $this->requestModel->partialDonorId($id);
+        $partial = $this->requestModel->partialRequestsDetails($partialUser->Donor_Id);
         $data = [
             'request' => $request,
-            'user' => $user
+            'user' => $user,
+            'partial' => $partial
         ];
         if($data['request']!=null){
         $this->view('request_bens/show', $data);
