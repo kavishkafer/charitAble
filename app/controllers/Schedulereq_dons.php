@@ -276,8 +276,8 @@ public function delete($id){
     }
 }
 
-public function get_meals($id){
-    $requests = $this->requestModel->getAllRequests($id);
+public function get_meals(/*$id*/){
+    $requests = $this->requestModel->getAllRequests(/*$id*/);
     //$user = $this->userModel->getBenDetailsById($requests->B_Id);
 
     $data = [

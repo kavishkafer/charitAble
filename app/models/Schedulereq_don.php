@@ -32,8 +32,8 @@ class Schedulereq_don {
     }
 
      public function getAllRequests($id){
-        $this->db->query('SELECT * FROM shedule_request_table WHERE B_Id = :B_Id');
-        $this->db->bind(':B_Id', $id);
+        $this->db->query('SELECT * FROM shedule_request_table /*WHERE B_Id = :B_Id*/');
+        //$this->db->bind(':B_Id', $id);
         $results = $this->db->resultSet();
 
         return $results;

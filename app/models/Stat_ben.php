@@ -28,7 +28,8 @@ public function donationQuantity($Id)
     else return false;
 }
 
-
+public function donationViaMonths($Id,$month)
+{
     $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_table WHERE MONTH(Donation_Time)=:month AND B_Id = :Id');
     $this->db->bind(':Id', $Id);
     $this->db->bind(':month', $month);
