@@ -373,7 +373,11 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
+
+
           'profile_image_err' => '',
+
+
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -470,7 +474,11 @@ public function signup_dons(){
           'latitude' => '',
           'longitude' => '',
 
+
+
           'profile_image_err' => '',
+
+
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -496,7 +504,13 @@ public function signup_eh(){
    
       // Init data
       $data = [
-        'name' => trim($_POST['name']),
+
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
+
+
+          'name' => trim($_POST['name']),
+
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
         'tel_no' => trim($_POST['tel_no']),
@@ -547,7 +561,11 @@ public function signup_eh(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+
+
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])) {
+
+
           // Validatede
         
           //Hash

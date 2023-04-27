@@ -21,11 +21,14 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
+
 }
 
 .container {
   position: relative;
   width: 100%;
+
+
 }
 
 /* =============== Navigation ================ */
@@ -226,6 +229,7 @@ display: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+
 }
 
 .cardBox .card {
@@ -237,6 +241,7 @@ display: none;
   justify-content: space-between;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
 }
 
 .cardBox .card .numbers {
@@ -275,6 +280,7 @@ display: none;
   /* grid-template-columns: 2fr 1fr;
   grid-gap: 30px; */
   /* margin-top: 10px; */
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
 }
 
 .details .recentOrders {
@@ -285,6 +291,7 @@ display: none;
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
 }
 
 .details .cardHeader {
@@ -505,6 +512,7 @@ display: none;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1em;
+
 }
 .content-sidebar .content{
   flex: 1 1 25%;
@@ -542,11 +550,13 @@ display: none;
   color: white;
 }
 .button2 {
-  background-color:#FF1205; 
-  color: white; 
-  border: 2px solid #FF6961;
+  background-color:red;
+  color: red;
+  border: 2px solid red;
   border-radius: 12px;
+
 }
+
 .button2:hover {
   background-color: #FF6961;
   color: white;
@@ -704,6 +714,57 @@ display: table;
   width: 100%;
 }
 }
+
+.warn{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+
+
+}
+.data input{
+    width: 25%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/*tablex {*/
+
+/*  width: 50%;*/
+/*}*/
+
+/*th, td {*/
+/*  text-align: left;*/
+/*  padding: 8px;*/
+/*}*/
+
+/*th {*/
+/*  background-color: #4CAF50;*/
+/*  color: white;*/
+/*}*/
+
+/*tr:nth-child(even) {*/
+/*  background-color: #f2f2f2;*/
+/*}*/
+
+/*tr:hover {*/
+/*  background-color: #ddd;*/
+/*}*/
+
+/*td:first-child {*/
+/*  color: blue;*/
+/*}*/
+
+/*td:nth-child(2) {*/
+/*  color: red;*/
+/*}*/
+
+/*td:nth-child(4) {*/
+/*  color: green;*/
+/*}*/
 
 
 

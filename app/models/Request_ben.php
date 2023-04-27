@@ -19,7 +19,7 @@ class Request_ben
     }
     public function addRequests($data)
     {
-        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority,B_Id,Donation_Details) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority,:B_Id,:Donation_Details)');
+        $this->db->query('INSERT INTO donation_table (Donation_Description, Donation_Quantity, Donation_Type, Donation_Priority,B_Id,Donation_Details,Remaining_Quantity) VALUES(:Donation_Description, :Donation_Quantity, :Donation_Type, :Donation_Priority,:B_Id,:Donation_Details,:Donation_Quantity)');
         // Bind values
         $this->db->bind(':Donation_Description', $data['Donation_Description']);
         $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
@@ -27,6 +27,7 @@ class Request_ben
         $this->db->bind(':Donation_Priority', $data['Donation_Priority']);
         $this->db->bind(':B_Id', $data['user_id']);
         $this->db->bind(':Donation_Details', $data['Donation_Details']);
+        $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
 
         // Execute
         if ($this->db->execute()) {
@@ -124,6 +125,23 @@ class Request_ben
         $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = false');
         $this->db->bind(':B_Id', $id);
         $array=$this->db->resultset();
+        return $array;
+    }
+    public function partialRequestsDetails($id){
+        $this->db->query('SELECT *
+            FROM donor_details
+           INNER JOIN partial_donations
+ON donor_details.D_Id = partial_donations.donor_Id
+WHERE donor_details.D_Id = :Donation_Id ');
+        $this->db->bind(':Donation_Id', $id);
+        $array=$this->db->resultset();
+        return $array;
+
+    }
+    public function partialDonorId($id){
+        $this->db->query('SELECT * FROM partial_donations WHERE Req_Id = :Donation_Id');
+        $this->db->bind(':Donation_Id', $id);
+        $array=$this->db->single();
         return $array;
     }
 

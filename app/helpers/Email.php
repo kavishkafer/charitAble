@@ -96,6 +96,9 @@ class Email{
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+    public function requestAcceptanceMail($receiverName, $data){
+
+    }
 }
 
 //TODO : Reset Password
