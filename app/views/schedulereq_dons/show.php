@@ -2,7 +2,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
 
-            <div class="slt">
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Recent Orders</h2>
+        </div>
                     <div class="content-sidebar">
                         <div class="content">
                             <h3>ID</h3>
@@ -45,7 +49,7 @@
                                 method="post">
                                 <input type="submit" class="btn4" id="Edit" value="Edit">
                             </form>
-                           
+
                         </div>
                         <div class="data">
                             <form
@@ -58,6 +62,7 @@
             
             </div>
     </div>
+</div>
 </div>
 
 

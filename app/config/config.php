@@ -14,5 +14,7 @@ define('SITENAME', 'charitable');
 
 //PUBROOT
 
+
 define('PUBROOT', dirname(dirname(dirname(__FILE__))).'\public');
+
 

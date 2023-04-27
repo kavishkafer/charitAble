@@ -43,7 +43,6 @@ class Request_ben
         $row = $this->db->single();
         return $row;
     }
-
     public function getBenId($id){
         $this->db->query('SELECT * FROM beneficiary_details WHERE User_Id = :User_Id');
         $this->db->bind(':User_Id', $id);
@@ -133,8 +132,8 @@ class Request_ben
             FROM donor_details
            INNER JOIN partial_donations
 ON donor_details.D_Id = partial_donations.donor_Id
-WHERE partial_donations.Req_Id = :Req_Id ');
-        $this->db->bind(':Req_Id', $id);
+WHERE donor_details.D_Id = :Donation_Id ');
+        $this->db->bind(':Donation_Id', $id);
         $array=$this->db->resultset();
         return $array;
 
@@ -145,6 +144,5 @@ WHERE partial_donations.Req_Id = :Req_Id ');
         $array=$this->db->single();
         return $array;
     }
-
 
 }
