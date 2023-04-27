@@ -263,8 +263,10 @@ public function delete($id){
     }
 }
 
+
 public function get_meals(){
     $requests = $this->requestModel->getAllRequests();
+
     $data = [
         'requests' => $requests,
     ];
