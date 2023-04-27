@@ -92,12 +92,12 @@ const calendar = new FullCalendar.Calendar(calendarElement, {
 
 calendar.render();
 
-function get_meals(calendar/*, $ben_id*/) {
+function get_meals(calendar, B_Id) {
   var meals = [];
-  /*$ben_id=12;
-  console.log($ben_id);*/
+
+  console.log(B_Id);
   $.ajax({
-    url: "http://localhost/charitAble/Schedulereq_dons/get_meals/" /*+ $ben_id*/,
+    url: "http://localhost/charitAble/Schedulereq_dons/get_meals/" + B_Id,
     method: 'GET',
     dataType: 'JSON',
     success: function (response) {
