@@ -88,7 +88,7 @@ class Email{
                     <h2 style='color: #0A2558;'>Welcome To CharitAble</h2>
                     <h4>Before using our service there is one more little thing to do. Please use the below OTP to verify your account.</h4>
                     <h3 style='color: #0A2558;'>Thank You!</h3>
-                    <a href=".$url."><h4 style='text-align: center;'>The password change URL is : <b>" .$url. "<b></h4></a>";
+                    <a href=".$url.">><h4 style='text-align: center;'>The password change URL is : <b>" .$url. "<b></h4></a>";
             }
             $this->mail->send();
         }
