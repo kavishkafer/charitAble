@@ -1,28 +1,17 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/dashboard.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?> /css/donor/style.css">
 
 <body>
 
 
 <!-- ======================= Cards ================== -->
 <div class="cardBox">
-    <div class="card">
-        <div>
-            <div class="numbers"><?php echo $data['count'] ?></div>
-            <div class="cardName">Total Requests</div>
-        </div>
-
-        <div class="iconBx">
-            <ion-icon name="eye-outline"></ion-icon>
-        </div>
-    </div>
-
                 <div class="card">
                 <a href="<?php echo URLROOT; ?>/requests_dons/index">
                     <div>
-                        <div class="numbers"><?php echo $data['accept'] ?></div>
+                        <div class="numbers">01</div>
                         <div class="cardName">Ongoing Requests</div>
                     </div>
 
@@ -35,7 +24,7 @@
                 <div class="card">
                 <a href="<?php echo URLROOT; ?>/schedulereq_dons/reviewreq">
                     <div>
-                        <div class="numbers"><?php echo $data['pending'] ?></div>
+                        <div class="numbers">01</div>
                         <div class="cardName">Requests Under Review</div>
                     </div>
 
@@ -46,8 +35,9 @@
                 </div>
 
                 <div class="card">
+                    <a href="#">
                     <div>
-                        <div class="numbers"><?php echo $data['complete'] ?></div>
+                        <div class="numbers">05</div>
                         <div class="cardName">Completed Donations</div>
                     </div>
 
@@ -56,102 +46,60 @@
                     </div>
                 </a>
                 </div>
-
+            </div>
             
-            <!--<div class="all-req">
+            <div class="all-req">
             <h2>Recent Requests</h2> 
             </div>
 
             <div class="new-select">
--->
-    <!-- ================ Order Details List ================= -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Telephone No</th>
+                <th>E-mail</th>
+                <th>Quantity</th>
+                <th ></th>
+                <th ></th>
+
+
+                
+
+
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+        <td> 1</td> 
+        <td>ABCD</td>
+        <td>Colombo</td>
+        <td>0116543689</td>
+        <td>ABCD@gmail.com</td>
+        <td>30</td>
+        <td ><a href="#"  class="btn2">Select</a></td>
+
+         </tr>
+
+         <tr>
+        <td> 2</td> 
+        <td>ABCD</td>
+        <td>Colombo</td>
+        <td>0116543689</td>
+        <td>ABCD@gmail.com</td>
+        <td>20</td>
+        <td ><a href="<?php echo URLROOT; ?>"  class="btn2">Select</a></td>
+
+         </tr>
+
+    </tbody>
+    </table>
     
 </div>
-<div class="details">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Recent Requests</h2>
-            <!--                <a href="<?php /*echo URLROOT; */?>/request_bens/add" class="btn">Add requests</a>
--->            </div>
 
-        <table>
-            <thead>
-            <tr>
-                <td>Request_Id</td>
-                <td>Beneficiary</td>
-                <td>Date</td>
-                <td>Food Type</td>
-                <td>Quantity</td>
-                <td>Time</td>
-                <td>View</td>
-
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <tr>
-
-                <?php foreach($data['requests'] as $requests): ?>
-                <td> <?php echo $requests->B_Req_ID; ?></td>
-                <td><?php echo $requests->B_Name; ?></td>
-                <td><?php echo $requests->D_Date; ?></td>
-                <td><?php echo $requests->Food_Type; ?></td>
-                <td><?php echo $requests->Donation_Quantity; ?></td>
-                <td ><?php echo $requests->Time; ?></td>
-                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
-            </tr>
-            <?php endforeach; ?>
-
-
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="details">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Recent Requests</h2>
-            <!--                <a href="<?php /*echo URLROOT; */?>/request_bens/add" class="btn">Add requests</a>
--->            </div>
-
-        <table>
-            <thead>
-            <tr>
-                <td>Request_Id</td>
-                <td>Beneficiary</td>
-                <td>Date</td>
-                <td>Food Type</td>
-                <td>Quantity</td>
-                <td>Time</td>
-                <td>View</td>
-
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <tr>
-
-                <?php foreach($data['requests'] as $requests): ?>
-                <td> <?php echo $requests->B_Req_ID; ?></td>
-                <td><?php echo $requests->B_Name; ?></td>
-                <td><?php echo $requests->D_Date; ?></td>
-                <td><?php echo $requests->Food_Type; ?></td>
-                <td><?php echo $requests->Donation_Quantity; ?></td>
-                <td ><?php echo $requests->Time; ?></td>
-                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
-            </tr>
-            <?php endforeach; ?>
-
-
-            </tbody>
-        </table>
-    </div>
-</div>
-
-</div>
-</div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

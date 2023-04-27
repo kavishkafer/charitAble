@@ -175,6 +175,12 @@
                         <div class="data">
                         <?php echo $data['request']->Donation_Quantity; ?>
                         </div>
+                    <div class="content">
+                        <h3>Status</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['request']->Donation_Quantity; ?>
+                    </div>
                     </div>
 
 
@@ -195,8 +201,7 @@
                             </form>
                         </div>
                     </div>
-                    </tbody>
-                    </table>
+
                 </div>
                <div class="recentOrders">
                 Donation History

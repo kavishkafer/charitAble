@@ -5,7 +5,10 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?> /css/benificiary/ben_stat.css">
 
 
+
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
+
 <body>
 <!-- =============== Navigation ================ -->
 <div class="container">
@@ -151,20 +154,17 @@
                                 <canvas id="myPie"></canvas>
                                 <canvas id="myDon" ></canvas>
                             </div>
-
 <!--                            <div class="chart2"  >-->
 <!--                               -->
 <!--                            </div>-->
-
                         </div>
                     </div>
                     </section>
                     <!--home section end-->
 
-                    <script src="<?php echo URLROOT; ?>/js/sidebar.js"></script>
+
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <script>
-
                         var count;
                         var req;
 
@@ -208,65 +208,22 @@
 
 
 
-                            // setup block
-
-                            const data={
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                                datasets: [{
-                                label: 'title',
-                                data: [<?php echo $data['donation_quantity']?>, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                borderWidth: 1
-                            }]
-                        };
-                            //config block
-                            const config = {
-                                type: 'bar',
-                                data,
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                            };
-                            //Render block
-                            const myChart = new Chart(
-                                document.getElementById('myChart'),
-                                config
-                            );
 
 
 
-                        new Chart(ctp, {
-                            type: 'pie',
-                            data: {
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                                datasets: [{
-                                    label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
+
 
                         new Chart(ctr, {
                             type: 'line',
                             data: {
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                labels: [count, 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                                 datasets: [{
                                     label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                                    data: [req, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
                                     borderWidth: 1
                                 }]
                             },
+
                             options: {
                                 scales: {
                                     y: {
@@ -275,7 +232,44 @@
                                 }
                             }
                         });
+                        function No_of_requests() {
 
+                            $.ajax({
+                                url: "http://localhost/charitAble/Stat_bens/donationViaMonths",
+                                method: 'GET',
+                                dataType: 'JSON',
+                                success: function (response) {
+
+                                    console.log(response);
+
+                                    // setup block
+                                    const data={
+
+                                        labels: [response.jan,response.feb,response.mar,response.apr,response.may,response.jun,response.jul,response.aug,response.sep,response.oct,response.nov,response.dec],
+                                        datasets: [{
+                                            label: 'title',
+                                            data: [response.janCount.num_rows,response.febCount.num_rows,response.marCount.num_rows,response.aprCount.num_rows,response.mayCount.num_rows,response.junCount.num_rows,response.julCount.num_rows,response.augCount.num_rows,response.sepCount.num_rows,response.octCount.num_rows,response.novCount.num_rows,response.decCount.num_rows],
+                                            borderWidth: 2
+                                        }]
+                                    };
+                                    //config block
+                                    const config = {
+                                        type: 'bar',
+                                        data,
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    };
+                                    //Render block
+                                    const myChart = new Chart(
+                                        document.getElementById('myChart'),
+                                        config
+
+                                    );
 
 
                                 }
@@ -330,6 +324,7 @@
                             $.ajax({
                                 url: "http://localhost/charitAble/Stat_bens/priorityCount",
 
+
                                 method: 'GET',
                                 dataType: 'JSON',
                                 success: function (response2) {
@@ -370,7 +365,6 @@
 
                             }
                             donutChart();
-
                     </script>
                 </div>
 
