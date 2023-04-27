@@ -26,6 +26,11 @@ body {
     overflow: auto;
 }
 
+.container-nav {
+    position: relative;
+    width: 100%;
+}
+
 /* =============== Navigation ================ */
 .navigation {
     position: fixed;

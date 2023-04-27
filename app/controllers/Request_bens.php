@@ -124,24 +124,13 @@ class Request_bens extends Controller{
         
         $request = $this->requestModel->getRequestById($id);
         $user = $this->userModel->getBenDetailsById($request->B_Id);
-        if($this->requestModel->partialDonorId($id)!=null) {
-            $partialUser = $this->requestModel->partialDonorId($id);
-            $partial = $this->requestModel->partialRequestsDetails($partialUser->Req_Id);
-            $data = [
-                'request' => $request,
-                'user' => $user,
-                'partial' => $partial,
-                'partialUser' => $partialUser
-            ];
-        }
-        else{
-            $data = [
-                'request' => $request,
-                'user' => $user,
-                'partial' => null,
-                'partialUser' => null
-            ];
-        }
+        $partialUser = $this->requestModel->partialDonorId($id);
+        $partial = $this->requestModel->partialRequestsDetails($partialUser->Donor_Id);
+        $data = [
+            'request' => $request,
+            'user' => $user,
+            'partial' => $partial
+        ];
         if($data['request']!=null){
         $this->view('request_bens/show', $data);
         } else {

@@ -1,5 +1,5 @@
 <?php
-use helpers\email;
+use helpers\Email;
 class Reset_passwords extends Controller{
     public function __construct(){
        
@@ -10,11 +10,15 @@ class Reset_passwords extends Controller{
    
 public function Reset_password(){
     if(isset($_POST["reset_request_submit"])){
-        $data=['email' => trim($_POST['email'])
-
+        $data=['email' => trim($_POST['email']),
+                'email_err' => ''
     ];
-        
-        
+
+        // Validate Email
+        if(empty($data['email'])){
+            $data['email_err'] = 'Please enter email';
+        }
+
         $selector = bin2hex(random_bytes(8));
         $token = random_bytes(32);
         $url = URLROOT . "/reset_passwords/create_new_password?selector=" . $selector . "&validator=" . bin2hex($token);
@@ -37,35 +41,56 @@ public function Reset_password(){
     
         $this->view('reset_passwords/reset_password', $data);
     }else{
-        $data=['email' => ''];
+        $data=['email' => '',
+               'email_err' => '',
+
+        ];
        
         $this->view('reset_passwords/reset_password', $data);
     }
 
 }
 public function create_new_password(){
+    $selector = '';
+    $validator = '';
+    $pwd_err = '';
     if(isset($_POST ["reset_password_submit"])){
         $selector = $_POST["selector"];
         $validator = $_POST["validator"];
         $password = $_POST["pwd"];
         $passwordRepeat = $_POST["pwd-repeat"];
         if(empty($password) || empty($passwordRepeat)){
-            //redirect('reset_passwords/create_new_password?newpwd=empty');
+            redirect('reset_passwords/create_new_password?newpwd=empty');
             header("<?php echo URLROOT; ?>/reset_passwords/create_new_password?newpwd=empty");
-            $this->view('reset_passwords/create_new_password');
+            //$this->view('reset_passwords/create_new_password');
             exit();
         }else if($password != $passwordRepeat){
+            redirect('reset_passwords/create_new_password?newpwd=pwdnotsame');
             header("<?php echo URLROOT; ?>/reset_passwords/create_new_password?newpwd=pwdnotsame");
-            $this->view('reset_passwords/create_new_password');
+            //$this->view('reset_passwords/create_new_password');
             exit();
         }
         $currentDate = date("U");
-        $this->resetModel->getToken($selector, $validator);
-        if(!$row = $this->resetModel->getToken($selector, $validator)){
+        echo $selector;
+        $row = $this->resetModel->getToken($selector, $validator);
+        var_dump($row);
+        if (!$row || $row["pwdResetExpires"] < date("U")) {
             echo "You need to re-submit your reset request.";
+            //$this->view('reset_passwords/token_expired');
             exit();
-        }else{
-            if($row["expires"] >= $currentDate){
+        }
+        // Verify if the $selector value is correct
+        elseif ($row["pwdResetSelector"] !== $selector) {
+            echo "Invalid selector value.";
+            exit();
+        }
+        elseif ($row) {
+        //$this->resetModel->getToken($selector, $validator);
+        //if(!$row = $this->resetModel->getToken($selector, $validator)){
+            //echo "You need to re-submit your reset request.";
+           // exit();
+        //}else{
+            //--if($row["expires"] >= $currentDate){
                 $tokenBin = hex2bin($validator);
                 $tokenCheck = password_verify($tokenBin, $row["token"]);
                 if($tokenCheck === false){
@@ -73,19 +98,25 @@ public function create_new_password(){
                     exit();
                 }elseif($tokenCheck === true){
                     $tokenEmail = $row["userEmail"];
-                    $this->userModel->updatePassword($password, $tokenEmail);
+                    $this->resetModel->updatePassword($password, $tokenEmail);
                     $this->resetModel->deleteToken($tokenEmail);
                     header("<?php echo URLROOT; ?>/reset_passwords/create_new_password?newpwd=passwordupdated");
                     $this->view('reset_passwords/create_new_password');
+                exit();
                 }
             }else{
                 echo "You need to re-submit your reset request.";
             }
         }
+    $data = [
+        'selector' => $_GET['selector'] ?? $selector,
+        'validator' => $_GET['validator'] ?? $validator,
+        'pwd_err' => $_GET['newpwd'] ?? $pwd_err
+    ];
+    $this->view('reset_passwords/create_new_password', $data);
     }
 }
-}
-    
+
     
 
 
