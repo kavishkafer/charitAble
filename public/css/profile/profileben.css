@@ -23,12 +23,6 @@ body {
 .container {
     position: relative;
     width: 100%;
-    overflow: auto;
-}
-
-.container-nav {
-    position: relative;
-    width: 100%;
 }
 
 /* =============== Navigation ================ */
@@ -173,6 +167,36 @@ body {
     cursor: pointer;
 }
 
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+}
+
 .user {
     position: relative;
     width: 40px;
@@ -241,9 +265,9 @@ body {
 
 /* ================== Order Details List ============== */
 .details {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: calc(100% - 60px);
+    height:100%;
     padding: 20px;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
@@ -254,11 +278,16 @@ body {
 .details .recentOrders {
     position: relative;
     display: grid;
+    width: 70%;
+    left: 15%;
     min-height: 500px;
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    /*
+    align-content: center;
+    */
 }
 
 .details .cardHeader {
@@ -284,6 +313,7 @@ body {
     border-collapse: collapse;
     margin-top: 10px;
 }
+
 .details table thead td {
     font-weight: 600;
 }
@@ -402,6 +432,10 @@ body {
     margin-bottom: 10px;
     padding-bottom: 30px;
 }
+
+h2{
+    text-align: center;
+}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
@@ -482,13 +516,12 @@ body {
     justify-content: space-between;
     gap: 1em;
 }
+
 .content-sidebar .content{
     flex: 1 1 25%;
     min-width:25ch;
-    justify-content: center;
-
-
 }
+
 .content-sidebar .data{
     flex: 1 1 70%;
     min-width:50ch;
@@ -516,6 +549,7 @@ body {
 .button1:hover {
     background-color: #395B64;
     color: white;
+
 }
 .button2 {
     background-color:#FF1205;
@@ -614,6 +648,10 @@ button:hover {
     width: 30%;
 }
 
+/* Add padding to container elements */
+.container {
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -635,13 +673,12 @@ button:hover {
 .forms {
     display: flex;
     background-color: var(--white);
-    width: 1800px;
     padding: 10px;
-    margin: 0 auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid rgb(231, 225, 225);
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-     /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
 
 }
 
@@ -712,3 +749,8 @@ hr {
 
     padding: 5px;
 }
+.button-alignment{
+    text-align: center;
+    margin: auto;
+}
+

@@ -37,9 +37,9 @@
       
       
                 ];
-
-
+      
                 //validate post data
+
 
       
               if($data['image']['size'] > 0){
@@ -65,9 +65,11 @@
                   $data['body_err'] = 'Please enter post body';
                 }
       
+
                 //make sure no error
 
                   if(empty($data['title_err']) && empty($data['body_err']) && empty($data['image_err'])) {
+
 
                           //validated
                           if($this->postModel->addPost($data)) {
@@ -77,9 +79,11 @@
                               die('something went wrong');
                           }
                   } else {
+
                       // load view with errors
 
                       $this->view('posts/add', $data);
+
 
                   }
       

@@ -145,5 +145,4 @@ WHERE donor_details.D_Id = :Donation_Id ');
         return $array;
     }
 
-
 }

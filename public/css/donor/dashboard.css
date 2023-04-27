@@ -8,8 +8,11 @@
 
 :root {
     --blue: #2C3333;
-    --white: #ffffff;
-    --gray: #E7F6F2;
+
+    --white: #fff;
+
+
+    --gray: #ffffff2d;
     --black1: #222;
     --black2: rgb(107, 105, 105);
     --light: #D6E4E5;
@@ -21,12 +24,6 @@ body {
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    overflow: auto;
-}
-
-.container-nav {
     position: relative;
     width: 100%;
 }
@@ -47,7 +44,6 @@ body {
 .navigation.active img{
     display: none;
 }
-
 
 .navigation ul {
     position: absolute;
@@ -160,6 +156,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    background-color: var(--blue);
 }
 
 .toggle {
@@ -171,6 +168,36 @@ body {
     align-items: center;
     font-size: 2.5rem;
     cursor: pointer;
+}
+
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
 }
 
 .user {
@@ -241,13 +268,12 @@ body {
 
 /* ================== Order Details List ============== */
 .details {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: calc(100% - 60px);
     padding: 20px;
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    grid-gap: 30px;
+    /* grid-template-columns: 2fr 1fr;
+    grid-gap: 30px; */
     /* margin-top: 10px; */
 }
 
@@ -312,7 +338,7 @@ body {
 }
 .status.delivered {
     padding: 2px 4px;
-    background: #395B64;
+    background: #8de02c;
     color: var(--white);
     border-radius: 4px;
     font-size: 14px;
@@ -402,6 +428,7 @@ body {
     margin-bottom: 10px;
     padding-bottom: 30px;
 }
+
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
@@ -472,10 +499,7 @@ body {
         margin-bottom: 10px;
         padding-bottom: 30px;
     }
-
-
 }
-
 .content-sidebar{
     display:flex;
     flex-wrap: wrap;
@@ -494,7 +518,7 @@ body {
     min-width:50ch;
 }
 .button {
-    background-color: #395B64; /* Green */
+    background-color: #4CAF50; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -508,13 +532,13 @@ body {
 }
 
 .button1 {
-    background-color:#395B64;
+    background-color:#4CAF50;
     color: white;
-    border: 2px solid #395B64;
+    border: 2px solid #77DD77;
     border-radius: 12px;
 }
 .button1:hover {
-    background-color: #395B64;
+    background-color: #77DD77;
     color: white;
 }
 .button2 {
@@ -587,7 +611,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-    background-color: #395B64;
+    background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -614,6 +638,11 @@ button:hover {
     width: 30%;
 }
 
+/* Add padding to container elements */
+.container {
+    padding: 0px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -632,22 +661,17 @@ button:hover {
 }
 
 /* Modal Content/Box */
-.forms {
-    display: flex;
-    background-color: var(--white);
-    width: 1800px;
-    padding: 10px;
-    margin: 0 auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid rgb(231, 225, 225);
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-     /* Could be more or less, depending on screen size */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
 
 }
 
 /* Style the horizontal ruler */
 hr {
-    border: 1px solid #14a85e;
+    border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
 
@@ -671,7 +695,7 @@ hr {
 .clearfix::after {
     content: "";
     clear: both;
-
+    display: table;
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
@@ -679,36 +703,9 @@ hr {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
-
-
-
 }
-.data select{
-    width: 50%;
-    height: 40px;
-    border-radius: 5px;
-
-    background-color:#edeeee;
-
-    padding: 5px;
-}
-.data textarea{
-    width: 80%;
-    height: 250px;
-    border-radius: 5px;
 
 
-    background-color:#ffffff;
 
 
-    padding: 5px;
-}
-.data input{
-    width: 50%;
-    height: 40px;
-    border-radius: 5px;
 
-    background-color:#edeeee;
-
-    padding: 5px;
-}

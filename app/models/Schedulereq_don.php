@@ -18,10 +18,22 @@ class Schedulereq_don {
         return $results;
     }
 
-     public function getAllRequests(){
-        $this->db->query('SELECT * FROM shedule_request_table');
+    public function getRecentRequests(){
 
-         /*$this->db->bind(':B_Id', $ben_id);*/
+        $this->db->query('SELECT s.*, d.*, b.B_Name
+                  FROM shedule_request_table s
+                  INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
+                  WHERE s.accepted = true AND s.completed = false');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+     public function getAllRequests($id){
+        $this->db->query('SELECT * FROM shedule_request_table WHERE B_Id = :B_Id');
+        $this->db->bind(':B_Id', $id);
         $results = $this->db->resultSet();
 
         return $results;
@@ -107,14 +119,33 @@ class Schedulereq_don {
         
 
     ///////////
-    public function getBenById($id){
-        $this->db->query('SELECT * FROM beneficiary_details WHERE B_Id = :B_Id');
-        $this->db->bind(':B_Id', $id);
-        $row = $this->db->single();
-        return $row;
+
+    public function totalRequestsByDon($id){
+        $this->db->query('Select *  FROM shedule_request_table WHERE D_Id = :D_Id');
+        $this->db->bind(':D_Id', $id);
+        $count=$this->db->resultSet();
+        return $this->db->rowCount();
+
+
     }
-
-
+    public function pendingRequestsDon($id){
+        $this->db->query('Select * from shedule_request_table Where D_Id = :D_Id AND accepted = false AND completed = false');
+        $this->db->bind(':D_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function completedRequestsDon($id){
+        $this->db->query('Select * from shedule_request_table Where D_Id = :D_Id AND accepted = true AND completed = true');
+        $this->db->bind(':D_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+    public function acceptedRequestsDon($id){
+        $this->db->query('Select * from shedule_request_table Where D_Id = :D_Id AND accepted = true AND completed = false');
+        $this->db->bind(':D_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
 
      /* public function get_meals(){
         $this->db->query('SELECT B_Req_ID, Time, D_Date FROM shedule_request_table');
