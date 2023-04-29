@@ -228,19 +228,6 @@ public function reviewreq(){
     $this->view('schedulereq_dons/reviewreq', $data);
 }
 
-    public function recentreq(){
-
-        //get requests
-        $requests = $this->requestModel->getRecentRequests();
-        //$user = $this->userModel->getUserById($id);
-        $data = [
-            'requests' => $requests,
-            //'user' => $user
-        ];
-
-        $this->view('dashboard_dons/index', $data);
-    }
-
 public function show($id){
     $requests = $this->requestModel->getDRequestById($id);
     $user = $this->userModel->getDUserById($requests->D_Id);
@@ -276,13 +263,10 @@ public function delete($id){
     }
 }
 
-public function get_meals(/*$id*/){
-    $requests = $this->requestModel->getAllRequests(/*$id*/);
-    //$user = $this->userModel->getBenDetailsById($requests->B_Id);
-
+public function get_meals(){
+    $requests = $this->requestModel->getAllRequests();
     $data = [
         'requests' => $requests,
-        //'user' => $user
     ];
     echo json_encode($data);
     }

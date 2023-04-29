@@ -10,7 +10,7 @@
         <div class="details">
             <div class="recentOrders">
                 <form class="forms" action="<?php echo URLROOT; ?>/settingsdons/index" method="POST">
-                    <div class="container-nav">
+                    <div class="container">
                     <h1>Update Profile</h1>
                         <hr>
                         <div class="content-sidebar">

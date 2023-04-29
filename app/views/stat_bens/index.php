@@ -5,7 +5,10 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?> /css/benificiary/ben_stat.css">
 
 
+
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
+
 <body>
 <!-- =============== Navigation ================ -->
 <div class="container">
@@ -92,52 +95,7 @@
             </div> -->
         </div>
 
-        <!-- ======================= Cards ================== -->
-<!--        <div class="cardBox">-->
-<!--            <div class="card">-->
-<!--                <div>-->
-<!--                    <div class="numbers">50</div>-->
-<!--                    <div class="cardName">Total Requests</div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="iconBx">-->
-<!--                    <ion-icon name="eye-outline"></ion-icon>-->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="card">-->
-<!--                <div>-->
-<!--                    <div class="numbers">10</div>-->
-<!--                    <div class="cardName">Pending Requests</div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="iconBx">-->
-<!--                    <ion-icon name="cart-outline"></ion-icon>-->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="card">-->
-<!--                <div>-->
-<!--                    <div class="numbers">284</div>-->
-<!--                    <div class="cardName">Accepted request</div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="iconBx">-->
-<!--                    <ion-icon name="chatbubbles-outline"></ion-icon>-->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="card">-->
-<!--                <div>-->
-<!--                    <div class="numbers">10</div>-->
-<!--                    <div class="cardName">Completed Requests</div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="iconBx">-->
-<!--                    <ion-icon name="cash-outline"></ion-icon>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+       
 
         <!-- ================ Order Details List ================= -->
 
@@ -151,227 +109,17 @@
                                 <canvas id="myPie"></canvas>
                                 <canvas id="myDon" ></canvas>
                             </div>
-
 <!--                            <div class="chart2"  >-->
 <!--                               -->
 <!--                            </div>-->
-
                         </div>
                     </div>
                     </section>
                     <!--home section end-->
 
-                    <script src="<?php echo URLROOT; ?>/js/sidebar.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-
-                        var count;
-                        var req;
 
 
 
-
-                        const ctx = document.getElementById('myChart');
-                        const ctp = document.getElementById('myPie');
-                        const ctr = document.getElementById('myLine');
-                        const ctd = document.getElementById('myDon');
-
-                        // new Chart(ctd,{
-                        //     type: 'doughnut',
-                        //     data: {
-                        //         labels: ['High', 'Normal'],
-                        //         datasets: [{
-                        //             label: 'No. of Requests',
-                        //             data: [10, 10],
-                        //             backgroundColor: [
-                        //                 'rgba(255, 99, 132, 0.2)',
-                        //                 'rgba(54, 162, 235, 0.2)',
-                        //
-                        //             ],
-                        //             borderColor: [
-                        //                 'rgba(255, 99, 132, 1)',
-                        //                 'rgba(54, 162, 235, 1)',
-                        //
-                        //             ],
-                        //             borderWidth: 1
-                        //         }]
-                        //     },
-                        //     options: {
-                        //         scales: {
-                        //
-                        //         }
-                        //     }
-                        // })
-                        
-
-
-
-
-
-                            // setup block
-
-                            const data={
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                                datasets: [{
-                                label: 'title',
-                                data: [<?php echo $data['donation_quantity']?>, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                borderWidth: 1
-                            }]
-                        };
-                            //config block
-                            const config = {
-                                type: 'bar',
-                                data,
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                            };
-                            //Render block
-                            const myChart = new Chart(
-                                document.getElementById('myChart'),
-                                config
-                            );
-
-
-
-                        new Chart(ctp, {
-                            type: 'pie',
-                            data: {
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                                datasets: [{
-                                    label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-
-                        new Chart(ctr, {
-                            type: 'line',
-                            data: {
-                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                                datasets: [{
-                                    label: 'No. of Donations',
-                                    data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-
-
-
-                                }
-                            })
-                        }
-                        No_of_requests();
-
-                        function pieChart(){
-                            $.ajax({
-                                url: "http://localhost/charitAble/Stat_bens/requestStatus",
-
-                                method: 'GET',
-                                dataType: 'JSON',
-                                success: function (response1) {
-                                    count = response1.pending;
-                                    req = response1.pendingCount;
-                                    console.log(response1);
-                                    //setup pie chart
-                                    const data = {
-                                        labels: [response1.pending, response1.accepted, response1.completed],
-                                        datasets: [{
-                                            label: 'No. of Donations',
-                                            data: [response1.pendingCount, response1.acceptedCount, response1.completedCount],
-                                            borderWidth: 1
-                                        }]
-                                    };
-                                    //config pie chart
-                                    const configPie = {
-                                        type: 'pie',
-                                        data: data,
-
-                                        options: {
-                                            scales: {
-                                                // y: {
-                                                //     beginAtZero: true
-                                                // }
-                                            }
-                                        }
-                                    };
-                                    //render pie chart
-                                    const myPie = new Chart(
-                                        document.getElementById('myPie'),
-                                        configPie
-                                    );
-                                }
-                            })
-
-                        }
-                     pieChart();
-
-                        function donutChart(){
-                            $.ajax({
-                                url: "http://localhost/charitAble/Stat_bens/priorityCount",
-
-                                method: 'GET',
-                                dataType: 'JSON',
-                                success: function (response2) {
-                                    // count = response2.high;
-                                    // req = response2.highCount;
-                                    console.log(response2);
-                                    //setup pie chart
-                                    const data = {
-                                        labels: [response2.high, response2.normal],
-                                        datasets: [{
-                                            label: 'Donation Priority',
-                                            data: [response2.highCount.num_rows, response2.normalCount.num_rows],
-                                            borderWidth: 1
-                                        }]
-                                    };
-
-                                    //config pie chart
-                                    const configDonut = {
-                                        type: 'doughnut',
-                                        data: data,
-
-                                        options: {
-                                            scales: {
-                                                // y: {
-                                                //     beginAtZero: true
-                                                // }
-                                            }
-                                        }
-                                    };
-                                    //render pie chart
-                                    const myPie = new Chart(
-                                        document.getElementById('myDon'),
-                                        configDonut
-                                    );
-                                    console.log(response2);
-                                }
-                            })
-
-                            }
-                            donutChart();
-
-                    </script>
                 </div>
 
 
@@ -381,6 +129,6 @@
 
 
 
-
+<script src="<?php echo URLROOT; ?>/js/beneficiary/statben.js"></script>
 <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

@@ -1,7 +1,4 @@
-<?php
-$selector = '';
-$validator = '';
-require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
 <body>
 

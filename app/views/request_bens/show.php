@@ -175,6 +175,16 @@
                         <div class="data">
                         <?php echo $data['request']->Donation_Quantity; ?>
                         </div>
+                    <div class="content">
+                        <h3>Status</h3>
+                    </div>
+                    <div class="data">
+                        <?php if ($data['request']->Accepted && $data['request']->Completed || $data['request']->Expiry){
+                            echo "Expired";
+                        }
+                        else{ echo "Active";}
+                        ; ?>
+                    </div>
                     </div>
 
 
@@ -195,8 +205,7 @@
                             </form>
                         </div>
                     </div>
-                    </tbody>
-                    </table>
+
                 </div>
                <div class="recentOrders">
                 Donation History

@@ -6,7 +6,7 @@ function uploadImage($img, $img_name, $location) {
     return move_uploaded_file($img, $target);
 }
 
-function updateImage($old, $img, $img_name, $location){
+function updateImage($old, $img, $img_name, $location) {
     unlink($old);
 
     $target = PUBROOT.$location.$img_name;
@@ -14,6 +14,20 @@ function updateImage($old, $img, $img_name, $location){
 
     return move_uploaded_file($img, $target);
 }
+
+/*function uploadImage($img, $img_name, $location) {
+    $target = PUBROOT.$location.$img_name;
+
+    return move_uploaded_file($img, $target);
+}
+
+function updateImage($old, $img, $img_name, $location) {
+    unlink($old);
+
+    $target = PUBROOT.$location.$img_name;
+
+    return move_uploaded_file($img, $target);
+} */
 
 function deleteImage($img)
 {
