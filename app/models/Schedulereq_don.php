@@ -18,13 +18,52 @@ class Schedulereq_don {
         return $results;
     }
 
-    public function getRecentRequests(){
+    public function getRecentScheduleReq(){
 
         $this->db->query('SELECT s.*, d.*, b.B_Name
                   FROM shedule_request_table s
                   INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
                   INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
                   WHERE s.accepted = true AND s.completed = false');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getRecentBeneficiaryReq(){
+
+        $this->db->query('SELECT o.*, d.*, b.B_Name
+                  FROM donation_table o
+                  INNER JOIN donor_details d ON o.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON o.B_Id = b.B_Id
+                  WHERE o.Accepted = true AND o.Completed = false');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getCompletedScheduleReq(){
+
+        $this->db->query('SELECT s.*, d.*, b.B_Name
+                  FROM shedule_request_table s
+                  INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
+                  WHERE s.accepted = true AND s.completed = true');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getCompletedBeneficiaryReq(){
+
+        $this->db->query('SELECT o.*, d.*, b.B_Name
+                  FROM donation_table o
+                  INNER JOIN donor_details d ON o.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON o.B_Id = b.B_Id
+                  WHERE o.Accepted = true AND o.Completed = true');
 
         $results = $this->db->resultSet();
 
@@ -146,6 +185,8 @@ class Schedulereq_don {
         $count=$this->db->resultset();
         return $this->db->rowCount();
     }
+
+
 
      /* public function get_meals(){
         $this->db->query('SELECT B_Req_ID, Time, D_Date FROM shedule_request_table');

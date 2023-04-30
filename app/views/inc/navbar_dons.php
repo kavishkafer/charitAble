@@ -1,20 +1,23 @@
 
     <!--<link rel="stylesheet" href="../public/css/donor/style.css">-->
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
-<body>
+<body onload="initMap()">
     <!-- =============== Navigation ================ -->
     <div class="container-nav">
         <div class="navigation">
             <ul>
                 <br>
-                <li>
+
+                <li style="pointer-events: none">
                     <a href="#">
                         <span class="">
                             <img src="../public/img/img_dons/logo.svg">
-                        </span>
+<!--                             <img src="<?php /*echo URLROOT; */?>/img/logo_white.png">
+-->                        </span>
                          <span class="title"></span> 
                     </a>
                 </li>
+                <br>
 
                 <li>
                 <a href="<?php echo URLROOT; ?>/dashboard_dons/index">

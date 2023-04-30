@@ -1,11 +1,12 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/schedulereq.css">
 
 
-<body>
-  <main>
-<div class="container">
-<div class="calender-container">
+<div class="container" >
+<!--    <div class="recentOrders" style="background-color: #0A2558">
+-->
+    <div class="calender-container">
   <div class="calendar">
     <div id="calendar"></div>
   </div>
@@ -73,7 +74,7 @@
 
 </div>
 </div>
-</main>
+</div>
   </div>
   </div>
 

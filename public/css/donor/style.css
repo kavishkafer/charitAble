@@ -1,6 +1,7 @@
 /* ----signup_dons----*/
 *{
-	padding:0;
+    font-family: 'Readex pro', sans-serif;
+    padding:0;
 	margin:0;
 	box-sizing:border-box;
 }
@@ -13,13 +14,12 @@
     --black2: rgb(107, 105, 105);
   }
 
-body,input{
-	font-family: "Readex Pro", sans-serif;
-  /*min-height: 100vh;*/
-  /*overflow: hidden;*/
+body{
+  min-height: 100vh;
+  overflow: auto;
 }
 
-.container{
+/*.container{
 	width:100%;
 	height:100%;
 	display:grid;
@@ -41,10 +41,9 @@ body,input{
     background-color: #395B64;
     justify-content: flex-end;
     overflow:auto;
+}*/
 
-}
-
-.img{
+/*.img{
 display: flex;
 grid-template: 1fr;
 justify-content:center;
@@ -66,24 +65,26 @@ align-items: center;
 	width: auto;
 	bottom: 15%;
 }
-
+*/
 .logo img{
 	position: absolute;
 	height: 400px;
 	width: 400px;
 	bottom: 64%;
 	left: 4%;
+    pointer-events: none;
+
 }
 
-.space{
+/*.space{
     display: flex;
     position: relative;
     height: 400px;
     width: 400px;
     left: 20%;
-}
+}*/
 
-.form-container{
+/*.form-container{
 display: flex;
 position: absolute;
 height:100%;
@@ -102,7 +103,7 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-}
+}*/
 
 .heading{
 	font-size: 2.5rem;
@@ -113,7 +114,7 @@ form{
     padding-bottom: 40px;
 }
 
-.input{
+/*.input{
 	position: relative;
 	margin-bottom: 2.5rem;
 	height: 40px;
@@ -223,7 +224,6 @@ label{
 	transform: translateX(118%);
 }
 
-
 .btn:hover{
 	background-color: #A5C9CA;
 }
@@ -239,7 +239,6 @@ label{
 .btn4:hover{
 	background-color: #B7C4CF;
 }
-
 .text{
 	color: #2C3333;
 	font-size: 0.75rem;
@@ -262,14 +261,26 @@ label{
   left: 20%;
   top: 38px;
   
+}*/
+
+/*.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
 }
-
-
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}*/
 
 /* =============== Navigation ================ */
 .container-nav {
   position: relative;
   width: 100%;
+
 }
 
 .navigation {
@@ -302,15 +313,19 @@ display: none;
 .navigation ul li {
   position: relative;
   width: 100%;
-  align-content: left;
+  /*
+  align-content: ;
+  */
+  /*
   list-style: none;
+  */
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
 .navigation ul li:hover,
 .navigation ul li.hovered {
-  background-color: white;
+  background-color: var(--white);;
 }
 
 .navigation ul li:nth-child(1) {
@@ -364,7 +379,7 @@ display: none;
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px 35px 0 10px white;
+  box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
 .navigation ul li:hover a::after,
@@ -380,7 +395,6 @@ display: none;
   box-shadow: 35px -35px 0 10px white;
   pointer-events: none;
 }
-
 /* ===================== Main ===================== */
 /*.main {
   position: absolute;
@@ -445,25 +459,31 @@ display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
-} 
+}
+
+.icon{
+
+}
 
 .title{
   margin-top: 5px;
   font-size: 1.1rem;
 }
+
 .icon img{
   width: 200px;
   height:100px;
-  border-radius: 20%;
+  border-radius: 50%;
   object-fit: cover;
-  padding-left: 35px;
+  padding-left: 20px;
   margin-bottom: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
+  pointer-events: none;
+
 }
 
-
 /* ===================== schedulereq_dons ===================== */
-.calender-container{
+/*.calender-container{
   position: absolute;
   display: block;
   height:calc(100% - 60px);
@@ -540,7 +560,7 @@ display: none;
 }
 
 .choose-ben{
-  /*display: flex;*/
+  !*display: flex;*!
   position: absolute;
 	height: 60px;
 	width: 30%;
@@ -558,7 +578,7 @@ display: none;
 }
 
 .all-req{
-  /*display: flex;*/
+  !*display: flex;*!
   position: absolute;
 	height: 60px;
 	width: 20%;
@@ -638,14 +658,14 @@ display: none;
   color: white;
   border-radius: 1rem;
 
-}
+}*/
 
-table{
+/*table{
   table-layout: fixed;
 }
 
 th{
-  color: #395B64;
+  color: red;
   font-size: 1.32rem;
   
 }
@@ -656,17 +676,19 @@ td, th{
   padding: 8px;
   text-align: left;
 
-}
+}*/
 
 /* ================== Order Details List ============== */
-.details {
+/*.details {
     position: relative;
     width: 100%;
     padding: 20px;
     display: grid;
-    /* grid-template-columns: 2fr 1fr;
-    grid-gap: 30px; */
-    /* margin-top: 10px; */
+    !* grid-template-columns: 2fr 1fr;
+    grid-gap: 30px; *!
+    !* margin-top: 10px; *!
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
+
 }
 
 .details .recentOrders {
@@ -677,6 +699,7 @@ td, th{
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
 }
 
 .details .cardHeader {
@@ -727,6 +750,7 @@ td, th{
 }
 .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
+;
 }
 .status.delivered {
     padding: 2px 4px;
@@ -810,10 +834,9 @@ td, th{
 .title{
     margin-top: 5px;
     font-size: 1.1rem;
-}
-
+}*/
 /* ======================= Cards ====================== */
-.cardBox {
+/*.cardBox {
   position: relative;
   width: 100%;
   padding: 40px;
@@ -865,10 +888,10 @@ td, th{
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
   color: var(--white);
-}
+}*/
 
 /* ======================Requests under Review ========================== */
-.container-review{
+/*.container-review{
   position: absolute;
   height:calc(100% - 240px);
   padding: 20px;
@@ -903,10 +926,10 @@ td, th{
 .container-review table tr:last-child {
   border-bottom: none;
 }
-/*.container-review table tbody tr:hover {
+!*.container-review table tbody tr:hover {
   background: var(--blue);
   color: var(--white);
-}*/
+}*!
 .container-review table tr td {
   padding: 10px;
 }
@@ -919,8 +942,8 @@ td, th{
 .container-review table tr td:nth-child(3) {
   text-align: center;
 }
-
-/*.container-review {
+!*!////////////////////////////////!*!
+.container-review {
   position: absolute;
   padding: 20px;
   height:calc(100% - 240px);
@@ -929,10 +952,10 @@ td, th{
   top: 180px;
   left: 22%;
   background-color: #395B64;
-  /*display: grid;
+  !*display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
-  /* margin-top: 10px; 
+  !* margin-top: 10px;
 }
 
 .container-review .container-review-content {
@@ -945,9 +968,11 @@ td, th{
   background: none;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-}*/
-
-/*reviewreq*/
+}
+!*
+///////////////////////
+*!
+!*reviewreq*!
 .content-sidebar{
     display: flex;
     flex-wrap: wrap;
@@ -964,7 +989,7 @@ td, th{
 .content-sidebar .data{
   flex: 1 1 70%;
   min-width:50ch;
-}
+}*/
 
 
 /* ====================== Responsive Design ========================== */
@@ -989,18 +1014,22 @@ td, th{
   .user {
     min-width: 40px;
   }
+
   .navigation {
     width: 100%;
     left: -100%;
     z-index: 1000;
   }
+
   .navigation.active {
     width: 100%;
     left: 0;
   }
+
   .toggle {
     z-index: 10001;
   }
+
   .main.active .toggle {
     color: #fff;
     position: fixed;
@@ -1008,15 +1037,101 @@ td, th{
     left: initial;
   }
 
-  .icon img{
+  .icon img {
     width: 100px;
-    height:50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
     padding-right: 20px;
     margin-bottom: 10px;
     padding-bottom: 30px;
   }
+}
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  /* Add padding to container elements */
+  .container {
+    padding: 0px;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background:var(--white);
+    background:rgba(0,0,0,0.8);
+
+
+    padding-top: 50px;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+
+  }
+
+  /* Add padding to container elements */
+  .container {
+    padding: 0px;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background:var(--white);
+    background:rgba(0,0,0,0.8);
+
+
+    padding-top: 50px;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+
+  }
+
   .content-table{
       border-collapse: collapse;
       margin: 25px 0;
@@ -1046,5 +1161,5 @@ td, th{
     .content-table tbody tr:last-of-type {
         border-bottom: 2px solid #009879;
     }
-}
-  
+
+

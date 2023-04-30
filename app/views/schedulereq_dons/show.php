@@ -1,6 +1,7 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/dashboard.css">
 
 <div class="details">
     <div class="recentOrders">
@@ -44,10 +45,9 @@
                     <div class="content-sidebar">
                         <div class="content">
 
-                            <form
-                                action="<?php echo URLROOT; ?>/schedulereq_dons/edit/<?php echo $data['requests']->B_Req_ID; ?>"
+                            <form action="<?php echo URLROOT; ?>/schedulereq_dons/edit/<?php echo $data['requests']->B_Req_ID; ?>"
                                 method="post">
-                                <input type="submit" class="btn4" id="Edit" value="Edit">
+                                <input type="submit" class="button button1" id="Edit" value="Edit">
                             </form>
 
                         </div>
@@ -55,7 +55,7 @@
                             <form
                                 action="<?php echo URLROOT; ?>/schedulereq_dons/delete/<?php echo $data['requests']->B_Req_ID; ?>"
                                 method="post">
-                                <input type="submit" class="btn3" id="Delete" value="Delete">
+                                <input type="submit" class="button button2" id="Delete" value="Delete">
                             </form>
                         </div>
                     </div>
