@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
 <!-- =============== Navigation ================ -->
 <div class="container">
@@ -43,7 +44,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo URLROOT?>/schedulereq_dons/index">
                         <span class="icon">
                             <i class="fas fa-calendar"></i>
                         </span>

@@ -426,7 +426,6 @@ body {
     margin-bottom: 10px;
     padding-bottom: 30px;
 }
-
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
@@ -745,5 +744,5 @@ hr {
 .button-alignment{
     text-align: center;
     margin: auto;
-}
 
+}
