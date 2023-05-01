@@ -1,17 +1,20 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
+<?php /*require APPROOT . '/views/inc/navbar_dons.php'; */?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/updatepwd/styles.css" xmlns="http://www.w3.org/1999/html">
+<body>
+<!-- =============== Navigation ================ -->
+<div class="container">
 
-<main>
-    <div class="button-pwd">
+<!--<main>
+-->    <div class="button-pwd">
         <a href="<?php echo URLROOT ?>/SettingsDons/viewProfile "> <input type="submit" class="button button3" value="Edit profile"></a>
         <a href="<?php echo URLROOT ?>/updatepwds/index "> <input type="submit" class="button button4" value="Change Password"></a>
     </div>
-    <div class="details">
+    <div class="details" >
         <div class="recentOrders">
-            <div class="container-nav">
+            <div class="container">
                 <h1>Change Password</h1>
                 <hr>
                 <div class="content-sidebar">
@@ -52,10 +55,10 @@
             </div>
         </div>
     </div>
-</main>
-
+<!--</main>
+-->
 </div>
-</div>
+<!--</div>-->
 
 
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>

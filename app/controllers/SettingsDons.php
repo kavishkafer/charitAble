@@ -23,8 +23,8 @@ class SettingsDons extends Controller
                 'D_Tel_No' => $d->D_Tel_No,
                 'D_Address' => $d->D_Address,
                 //'D_Password' => $d->D_Password,
-                //'latitude' => $d->latitude,
-               // 'longitude' => $d->longitude,
+                'latitude' => $d->latitude,
+                'longitude' => $d->longitude,
                 'D_Name_err' => '',
                 //'D_Email_err' => '',
                 'D_Tel_No_err' => '',
@@ -48,8 +48,8 @@ class SettingsDons extends Controller
                 'D_Tel_No' => trim($_POST['D_Tel_No']),
                 'D_Address' => trim($_POST['D_Address']),
 //                  'B_Password' => trim($_GET['B_Password']),
-//                  'latitude' => trim($_POST['latitude']),
-//                  'longitude' => trim($_POST['longitude']),
+                'latitude' => trim($_POST['latitude']),
+                'longitude' => trim($_POST['longitude']),
                 'D_Name_err' => '',
                 //'D_Email_err' => '',
                 'D_Tel_No_err' => '',
@@ -75,7 +75,7 @@ class SettingsDons extends Controller
             if (empty($data['D_Name_err']) && empty($data['D_Tel_No_err']) && empty($data['D_Address_err'])) {
                 if ($this->settingsModel->updateProfile($data)) {
                     flash('profile_message', 'Profile Updated');
-                    redirect('dashboard_dons/index');
+                    redirect('settingsdons/viewProfile');
                 } else {
                     die('Something went wrong');
                 }

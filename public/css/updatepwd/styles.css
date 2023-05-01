@@ -18,21 +18,13 @@
 body {
     min-height: 100vh;
     overflow-x: hidden;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
+
 }
 
 .container {
     position: relative;
     width: 100%;
-}
-
-.container-nav {
-    position: relative;
-    width: 100%;
-}
-
-/* Add padding to container elements */
-.container-nav {
-
 }
 
 /* =============== Navigation ================ */
@@ -225,13 +217,6 @@ body {
     object-fit: cover;
 }
 
-.warn {
-    color: #f51010;
-    font-size: 0.7rem;
-    margin-top: 1.8rem;
-    padding-top:0.5rem;
-}
-
 /* ======================= Cards ====================== */
 .cardBox {
     position: relative;
@@ -283,13 +268,15 @@ body {
 /* ================== Order Details List ============== */
 .details {
     position: relative;
-    width: 100%;
+    width: 60%;
     height:100%;
     padding: 20px;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
     grid-gap: 30px;
     /* margin-top: 10px; */
+    left: 20%;
+    top: 20%;
 }
 
 .details .recentOrders {
@@ -523,11 +510,11 @@ body {
     justify-content: space-between;
     gap: 1em;
 }
+
 .content-sidebar .content{
     flex: 1 1 25%;
     min-width:25ch;
     justify-content: center;
-
 
 }
 .content-sidebar .data{
@@ -558,6 +545,34 @@ body {
     background-color: #395B64;
     color: white;
 }
+
+.button3 {
+    background-color:#395B64;
+    color: white;
+    height: 50px;
+    width: 170px;
+    border-right: 1px solid white;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+.button3:hover {
+    background-color: #395B64;
+    color: white;
+}
+
+.button4 {
+    background-color:#395B64;
+    color: white;
+    height: 50px;
+    width: 170px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.button4:hover {
+    background-color: #395B64;
+    color: white;
+}
+
 .button2 {
     background-color:#FF1205;
     color: white;
@@ -636,7 +651,6 @@ button {
     cursor: pointer;
     width: 120px;
     opacity: 0.9;
-
 }
 
 button:hover {
@@ -757,3 +771,29 @@ hr {
 
     padding: 5px;
 }
+.button-alignment{
+    text-align: center;
+    margin: auto;
+}
+
+/*.button-pwd input[type="submit"]{
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}*/
+.button-pwd {
+    top: 10px;
+    left: 20px;
+    position: relative;
+    display: flex;
+}
+
+.button-pwd input[type="submit"] {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+

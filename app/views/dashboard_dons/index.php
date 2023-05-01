@@ -9,7 +9,6 @@
 <!-- ======================= Cards ================== -->
 <div class="cardBox">
                 <div class="card">
-                <a href="<?php echo URLROOT; ?>/requests_dons/index">
                     <div>
                         <div class="numbers">01</div>
                         <div class="cardName">Ongoing Requests</div>
@@ -22,7 +21,6 @@
                 </div>
 
                 <div class="card">
-                <a href="<?php echo URLROOT; ?>/schedulereq_dons/reviewreq">
                     <div>
                         <div class="numbers">01</div>
                         <div class="cardName">Requests Under Review</div>
@@ -54,6 +52,37 @@
 
             <div class="new-select">
 
+-->
+    <!-- ================ Order Details List ================= -->
+    
+</div>
+
+<div class="details">
+    <div class="cardHeader">
+        <a href="<?php echo URLROOT; ?>/schedulereq_dons/reviewreq" class="btn">Requests Under Review</a>
+    </div>
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Ongoing Scheduled Requests</h2>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Beneficiary</td>
+                <td>Date</td>
+                <td>Food Type</td>
+                <td>Quantity</td>
+                <td>Time</td>
+                <td>View</td>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+
     <table>
         <thead>
             <tr>
@@ -70,35 +99,132 @@
                 
 
 
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Ongoing Beneficiary Requests</h2>
+            <!--                <a href="<?php /*echo URLROOT; */?>/request_bens/add" class="btn">Add requests</a>
+-->            </div>
+        <table>
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Beneficiary</td>
+                <td>Donation Type</td>
+                <td>Donation Discription</td>
+                <td>Quantity</td>
+                <td>View</td>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr>
+
+                <?php foreach($data['requestsben'] as $requestsben): ?>
+                <td> <?php echo $requestsben->Donation_ID; ?></td>
+                <td><?php echo $requestsben->B_Name; ?></td>
+                <td><?php echo $requestsben->Donation_Type; ?></td>
+                <td><?php echo $requestsben->Donation_Description; ?></td>
+                <td><?php echo $requestsben->Donation_Quantity; ?></td>
+                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
+            </tr>
+            <?php endforeach; ?>
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="details" >
+    <div class="recentOrders" >
+        <div class="cardHeader">
+            <h2>Completed Donations</h2>
+        </div>
+
+        <div class="recentOrders">
+
+        <div class="cardHeader">
+            <h3>Scheduled Requests</h3>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Beneficiary</td>
+                <td>Date</td>
+                <td>Food Type</td>
+                <td>Quantity</td>
+                <td>Time</td>
+                <td>View</td>
+
+
             </tr>
         </thead>
     
         <tbody>
             <tr>
-        <td> 1</td> 
-        <td>ABCD</td>
-        <td>Colombo</td>
-        <td>0116543689</td>
-        <td>ABCD@gmail.com</td>
-        <td>30</td>
-        <td ><a href="#"  class="btn2">Select</a></td>
 
-         </tr>
 
-         <tr>
-        <td> 2</td> 
-        <td>ABCD</td>
-        <td>Colombo</td>
-        <td>0116543689</td>
-        <td>ABCD@gmail.com</td>
-        <td>20</td>
-        <td ><a href="<?php echo URLROOT; ?>"  class="btn2">Select</a></td>
+                <?php foreach($data['requestscom'] as $requestscom): ?>
+                <td> <?php echo $requestscom->B_Req_ID; ?></td>
+                <td><?php echo $requestscom->B_Name; ?></td>
+                <td><?php echo $requestscom->D_Date; ?></td>
+                <td><?php echo $requestscom->Food_Type; ?></td>
+                <td><?php echo $requestscom->Donation_Quantity; ?></td>
+                <td ><?php echo $requestscom->Time; ?></td>
+                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
+            </tr>
+            <?php endforeach; ?>
 
-         </tr>
 
-    </tbody>
-    </table>
-    
+            </tbody>
+        </table>
+        </div>
+
+        <div class="recentOrders">
+        <div class="cardHeader">
+            <h3>Beneficiary Requests</h3>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Beneficiary</td>
+                <td>Donation Type</td>
+                <td>Donation Discription</td>
+                <td>Quantity</td>
+                <td>View</td>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr>
+
+                <?php foreach($data['requestscomben'] as $requestscomben): ?>
+                <td> <?php echo $requestscomben->Donation_ID; ?></td>
+                <td><?php echo $requestscomben->B_Name; ?></td>
+                <td><?php echo $requestscomben->Donation_Type; ?></td>
+                <td><?php echo $requestscomben->Donation_Description; ?></td>
+                <td><?php echo $requestscomben->Donation_Quantity; ?></td>
+                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
+            </tr>
+            <?php endforeach; ?>
+
+
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+
 </div>
 
 
