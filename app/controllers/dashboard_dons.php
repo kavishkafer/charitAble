@@ -5,12 +5,11 @@ class dashboard_dons extends Controller{
             redirect('users/login_dons');
         }
         $this->view('dashboard_dons/index', $data);*/
-        $this->requestModel = $this->model('Schedulereq_don');
-        $this->userModel = $this->model('User');
 
     }
 
     public function index(){
+
 
         $requests = $this->requestModel->getRecentScheduleReq();
         $requestsben = $this->requestModel->getRecentBeneficiaryReq();
@@ -30,6 +29,7 @@ class dashboard_dons extends Controller{
             'accept' => $accept,
             'complete' => $complete,
             'pending' => $pending
+
         ];
 
        $this->view('dashboard_dons/index', $data);

@@ -3,11 +3,7 @@
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/dashboard.css">
 
-<div class="details">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Recent Orders</h2>
-        </div>
+            <div class="slt">
                     <div class="content-sidebar">
                         <div class="content">
                             <h3>ID</h3>
@@ -49,7 +45,7 @@
                                 method="post">
                                 <input type="submit" class="button button1" id="Edit" value="Edit">
                             </form>
-
+                           
                         </div>
                         <div class="data">
                             <form
@@ -62,7 +58,6 @@
             
             </div>
     </div>
-</div>
 </div>
 
 

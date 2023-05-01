@@ -101,11 +101,10 @@
                         <thead>
                             <tr>
                                 <td>Organization name</td>
-                                <td>Request_Id</td>
+                                <td>Address</td>
                                 <td>Description</td>
-                                <td>Type</td>
-                                <td>Quantity</td>
                                 <td>Priority</td>
+                                <td>Quantity</td>
                                 <td>Accept</td>
                                 
                             </tr>
@@ -118,11 +117,13 @@
 
                              <?php foreach($data['requests'] as $request): ?>
                                 <td><?php echo $request->B_Name; ?></td>
-                                <td> <?php echo $request->Donation_ID; ?></td>
-                                <td><?php echo $request->Donation_Description; ?></td>
-                                <td><?php echo $request->Donation_Type; ?></td>
+
+                                <td><?php echo $request->B_Address; ?></td>
+                                <td> <?php echo $request->Donation_Description; ?></td>
+                                <td><?php echo $request->Donation_Priority; ?></td>
+
                                 <td><?php echo $request->Remaining_Quantity; ?></td>
-                                <td style="justify-content: center;"><?php echo $request->Donation_Priority; ?></td>
+
 
                                 <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $request->Donation_ID; ?>">View</a></td>
 

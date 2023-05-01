@@ -25,9 +25,7 @@
                     <div class="div">
                         <h5>Email</h5>
                         <input name="email" type="text" class="input" value="<?php echo $data['email']; ?>" >
-                        <br>
-
-                         <div class=warn><?php echo $data['email_err']; ?></div>
+                        <!-- <div class=warn><?php echo $data['email_err']; ?></div> -->
                         <button type="submit" name="reset_request_submit" class="btn" value="Login">Recieve reset request</button>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
+
 <!--<link rel="stylesheet" href="<?php /*echo URLROOT; */?>/css/donor/dashboard.css" xmlns="http://www.w3.org/1999/html">
 -->
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/schedulereq.css">
@@ -24,10 +25,11 @@
                 <td></td>
                 <td></td>
             </tr>
-            </thead>
-
-            <tbody>
+        </thead>
+    
+        <tbody>
             <tr>
+
                 <?php foreach ($data['names'] as $name): ?>
                 <td> <?php echo $name->B_Id; ?></td>
                 <td><?php echo $name->B_Name; ?></td>
@@ -54,7 +56,8 @@
 
 
 
-<script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+    <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
+
+    <?php require APPROOT . '/views/inc/footer.php'; ?>
 
