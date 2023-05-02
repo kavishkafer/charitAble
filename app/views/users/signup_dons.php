@@ -56,6 +56,28 @@
 <div class="warn"><?php echo $data['confirm_password_err']; ?></div>
 </div>
 
+//image upload
+    <div class="form-drag-area">
+        <div class="icon">
+            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/placeholder-icon.png" alt="placeholder-icon" width="90px" height="90px" id="profile_image_placeholder">
+        </div>
+
+        <div class="right-content">
+            <div class="description">Drag and drop</div>
+            <div class="form-upload">
+                <input type="file" name="profile_image" id="profile_image" style="display: none">
+                Browse File
+            </div>
+        </div>
+    </div>
+
+    <div class="form-validation">
+        <div class="profile-image-validation">
+            <img src="<?php echo URLROOT; ?>/img/components/imageUpload/green-tick-icon.png" alt="green-tick" width="15px" height="15px">
+            Select a profile picture
+        </div>
+    </div>
+
 <input type="submit" value="Create Account" class="btn">
 <p class="text">Already have an account?
 <a href="<?php echo URLROOT; ?>/users/login">Sign In</a>
@@ -66,6 +88,8 @@
 
 </div>
 </div>
+
+<script src="<?php echo URLROOT; ?>/js/components/imageUpload/imageUpload.js"></script>
 
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 

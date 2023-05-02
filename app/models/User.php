@@ -19,8 +19,10 @@ class User {
     }
 
     public function register($data,$x){
-        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude)');
+        $this->db->query('INSERT INTO beneficiary_details (document,profile_image,B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude) VALUES(:document, :profile_image, :name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude)');
         //bind values
+        $this->db->bind(':document', $data['document_name']);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':telephone_number', $data['telephone_number']);
@@ -192,8 +194,9 @@ class User {
     //Donor
     //Register user
     public function signup_don($data,$x){
-        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id)');
+        $this->db->query('INSERT INTO donor_details (profile_image, D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:profile_image, :name, :email, :tel_no, :address, :password, :otp, :User_Id)');
         //Bind values
+        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
@@ -217,10 +220,10 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
-        $this->db->query('INSERT INTO event_hoster_details (profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
+        $this->db->query('INSERT INTO event_hoster_details (document, profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:document, :profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
         // Bind values
-          $this->db->bind(':profile_image', $data['profile_image_name']);
-  
+        $this->db->bind(':document', $data['document_name']);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
           $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':address', $data['address']);

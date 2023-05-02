@@ -32,6 +32,10 @@ class Users extends Controller
          
             // Init data
             $data = [
+              'document' => $_FILES['document'],
+            'document_name' => time().'_'.$_FILES['document']['name'],
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
                 'name' => trim($_POST['name']),
                 'email' => trim($_POST['email']),  
                 'telephone_number' => trim($_POST['telephone_number']),
@@ -44,6 +48,8 @@ class Users extends Controller
                 'otp'=>$otp_code,
                 'latitude' => trim($_POST['latitude']),
                 'longitude' => trim($_POST['longitude']),
+                'document_err' => '',
+                'profile_image_err' => '',
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -51,6 +57,27 @@ class Users extends Controller
                 'password_err' => '',
                 'confirm_password_err' => ''
             ];
+
+ //validate profile_image and upload
+ if ($data['profile_image']['size'] > 0) {
+  if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+      //done
+  } else {
+      $data['profile_image_err'] = 'unsuccessful image uploading';
+
+  }
+} else {
+  $data['profile_image_name'] = null;
+}
+
+if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
+  //done
+}
+else {
+  $data['document_err'] = 'Error uploading image';
+}
+
+
             //Validate Email
             if(empty($data['email'])){
                 $data['email_err'] = 'Please enter email';
@@ -82,7 +109,7 @@ class Users extends Controller
                 }
             }
             // Make sure errors are empty
-            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])){
                 // Validated
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -116,6 +143,8 @@ class Users extends Controller
         else{
             // Init data
             $data = [
+              'document' => '',
+                'profile_image' => '',
                 'name' => '',
                 'email' => '',  
                 'telephone_number' => '',
@@ -127,8 +156,9 @@ class Users extends Controller
                 'role'=>'',
                 'latitude' => '',
                 'longitude' => '',
-
                 'confirm_password' => '',
+                'document_err' => '',
+                'profile_image_err' => '',
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -364,6 +394,10 @@ public function signup_dons(){
    
       // Init data
       $data = [
+        'document' => $_FILES['document'],
+            'document_name' => time().'_'.$_FILES['document']['name'],
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),  
           'tel_no' => trim($_POST['tel_no']),
@@ -373,6 +407,8 @@ public function signup_dons(){
           'user_role' => $user_role,
           'status' => false,
           'otp'=>$otp_code,
+          'document_err' => '',
+          'profile_image_err' => '',
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -380,6 +416,18 @@ public function signup_dons(){
           'password_err' => '',
           'confirm_password_err' => ''
       ];
+
+      if ($data['profile_image']['size'] > 0) {
+        if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+            //done
+        } else {
+            $data['profile_image_err'] = 'unsuccessful image uploading';
+
+        }
+    } else {
+        $data['profile_image_name'] = null;
+    }
+
       //Validate Email
       if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
@@ -417,7 +465,7 @@ public function signup_dons(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])){
           // Validated
           //Hash
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -449,6 +497,8 @@ public function signup_dons(){
   else{
       // Init data
       $data = [
+        'document' => '',
+        'profile_image' => '',
           'name' => '',
           'email' => '',  
           'tel_no' => '',
@@ -456,6 +506,8 @@ public function signup_dons(){
           'password' => '',
           'confirm_password' => '',
           'user_role' => '',
+          'document_err' => '',
+          'profile_image_err' => '',
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
@@ -481,8 +533,10 @@ public function signup_eh(){
    
       // Init data
       $data = [
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
+        'document' => $_FILES['document'],
+        'document_name' => time().'_'.$_FILES['document']['name'],
+      'profile_image' => $_FILES['profile_image'],
+      'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name' => trim($_POST['name']),
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
@@ -490,7 +544,8 @@ public function signup_eh(){
         'password' => trim($_POST['password']),
         'confirm_password' => trim($_POST['confirm_password']),
         'user_role' => $user_role,
-          'profile_image_err' => '',
+        'document_err' => '',
+        'profile_image_err' => '',
         'name_err' => '',
         'email_err' => '',
         'address_err' => '',
@@ -501,12 +556,23 @@ public function signup_eh(){
       ];
 
       //validate profile_image and upload
-      if(uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-          //done
-      }
-      else {
-          $data['profile_image_err'] = 'Error uploading image';
-      }
+ if ($data['profile_image']['size'] > 0) {
+  if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+      //done
+  } else {
+      $data['profile_image_err'] = 'unsuccessful image uploading';
+
+  }
+} else {
+  $data['profile_image_name'] = null;
+}
+
+if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
+  //done
+}
+else {
+  $data['document_err'] = 'Error uploading image';
+}
 
 
       //Validate Email
@@ -548,7 +614,7 @@ public function signup_eh(){
           }
       }
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])) {
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err'])) {
           // Validatede
         
           //Hash
@@ -577,6 +643,7 @@ public function signup_eh(){
   else{
       // Init data
       $data = [
+        'document' => '',
           'profile_image' => '',
         'name' => '',
         'email' => '',
@@ -584,6 +651,7 @@ public function signup_eh(){
                   'tel_no' => '',
                   'password' => '',
                   'confirm_password' => '',
+                  'document_err' => '',
           'profile_image_err' => '',
                   'name_err' => '',
                   'email_err' => '',

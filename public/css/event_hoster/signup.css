@@ -272,6 +272,93 @@ label{
 .form-validation > div.img{
 	opacity: 1;
 }
+
+/* ====================== documnt ========================== */
+.form1-drag-area{
+	background-color: #eeeeee;
+	height: 150px;
+	width: 100%;
+	border:5px;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+	display:grid;
+	grid-template-columns: 1fr 2fr;
+	transition: 300ms ease-in;
+	padding: 5px;
+}
+
+.form1-drag-area.active {
+	border: 2px dashed #2C3333;
+	background-color: white;
+}
+
+.form1-drag-area .right-content{
+	margin: 0 auto;
+}
+
+.form1-drag-area .form1-upload{
+	background-color: #2C3333;
+
+}
+
+.form1-drag-area .icon{
+	margin: 0 auto;
+}
+
+.form1-drag-area .icon img{
+	border-radius: 50%;
+
+}
+
+.form1-drag-area description1{
+	color: #2C3333;
+	font-size: 13px;
+	font-weight: 500;
+
+}
+
+.form1-drag-area .form1-upload{
+	background-color: #395B64;
+	color: white;
+	padding: 8px 8px;
+
+	border: none;
+	cursor: pointer;
+	opacity: 0.9;
+	border-radius: 3px;
+	width: 200px;
+}
+
+.form1-drag-area .form1-upload:hover{
+	opacity: 1;
+}
+
+.form1-validation{
+	padding: 5px;
+	transition: .2s all;
+}
+
+.form1-validation.active{
+	opacity: 1;
+	height: auto;
+}
+
+.form1-validation > div {
+	opacity: 0.5;
+}
+
+.form1-validation > div.active {
+	opacity: 1;
+	font-weight: 600;
+	color: #4CAF50;
+}
+
+.form1-validation > div.img{
+	opacity: 1;
+}
+
+
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation {
