@@ -46,9 +46,11 @@
    </tbody>
 </table>
 </div>
-    </div>
 </div>
 </div>
+</div>
+</div>
+</main>
 
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 

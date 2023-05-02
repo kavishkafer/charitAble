@@ -5,7 +5,8 @@ class dashboard_dons extends Controller{
             redirect('users/login_dons');
         }
         $this->view('dashboard_dons/index', $data);*/
-
+        $this->requestModel = $this->model('Schedulereq_don');
+        $this->userModel = $this->model('User');
     }
 
     public function index(){
