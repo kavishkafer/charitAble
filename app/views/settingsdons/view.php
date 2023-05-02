@@ -5,7 +5,11 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/settings.css" xmlns="http://www.w3.org/1999/html">
 
     <!-- ================ Order Details List ================= -->
-       <div class="details">
+<div class="button-pwd">
+    <a href="<?php echo URLROOT ?>/SettingsDons/viewProfile "> <input type="submit" class="button button3" value="Edit profile"></a>
+    <a href="<?php echo URLROOT ?>/updatepwds/index "> <input type="submit" class="button button4" value="Change Password"></a>
+</div>
+<div class="details">
            <div class="recentOrders">
 
                <div class="cardHeader">
