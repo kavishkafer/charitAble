@@ -164,7 +164,7 @@
                 <form class="forms" action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['Donation_ID'];?>" method="GET">
                     <div class="container">
                         <h1>Edit</h1>
-                        <p>Please fill this to add a request</p>
+                        <p>Edit request</p>
                         <hr>
                 <div class="content-sidebar">
                     <div class="content">

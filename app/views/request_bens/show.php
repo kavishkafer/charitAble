@@ -2,92 +2,10 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
-
-                <li id="#" >
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Calender</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout_ben">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                
-            </ul>
-        </div>
+<?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
 
-               
-                <div class="user">
-                   <i class="fas fa-user"></i>
-                </div>
-            </div>
 
             <!-- ======================= Cards ================== -->
             
@@ -102,48 +20,7 @@
                         <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
                     </div>
 
-                    <!-- <table>
-                        <thead>
-                            <tr>
-                                <td>Request_Id</td>
-                                <td>Description</td>
-                                <td>Type</td>
-                                <td>Quantity</td>
-                                <td>Priority</td>
-                                
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            
-                            <tr>
-                               
-                           
-                            </tr>
-                            <tr>
-                                <?php if($data['request']->B_Id == $_SESSION['user_id']) : ?>
-                           
-                            <h1><?php echo $data['request']->Donation_ID; ?></h1>
-                               <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
-                               <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                   <?php echo $data['user']->B_Name?>   
-                             <?php endif; ?>
-                            </tr>
-                
-                            <tr>
-                        
-                            </tr>
-                            <div>
-                                <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID ?>" method="post">
-                                <input type="submit" value="Edit" >
-                                </form>
-                                <form action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>" method="post">
-                                <input type="submit" value="Delete" >
-                                </form>
-                           </div>
-                        </tbody>
-                    </table>
-                </div> -->
                 <div class="content-sidebar">
                         <div class="content">
                             <h3>Donation ID</h3>
@@ -187,7 +64,7 @@
                     </div>
                     </div>
 
-
+                    <?php if($data['request']->Donation_Quantity == $data['request']->Remaining_Quantity) {;?>
                     <div class="content-sidebar">
                         <div class="content">
                         <form
@@ -205,33 +82,45 @@
                             </form>
                         </div>
                     </div>
-
+                    <?php  } ?>
                 </div>
                <div class="recentOrders">
-                Donation History
-                   <div class="tablex">
+                   <h2>Donation History</h2>
                        <?php if ($data['partial']!=0){ ?>
                            <table>
                                <thead>
                                <tr>
+
                                    <td>Donor name</td>
                                    <td>Telephone number</td>
                                    <td>Donation Quantity</td>
-<!--                                   <td>Type</td>-->
+
+
+
+
+
+
+
 
 
                                </tr>
                                </thead>
-
+<!--                                <form action="--><?php //echo URLROOT; ?><!--/request_bens/completeRequest/--><?php //echo $data['request']->Id?><!--" method="post">-->
                                <tbody>
-                               <!-- <form action="<?php echo URLROOT; ?>/ben_req_dons/getAllRequests" method="post"> -->
+                               <?php foreach($data['partial'] as $request): ?>
+                                   <form action="<?php echo URLROOT; ?>/request_bens/completePartialRequest/<?php echo $request->Id?>" method="post">
+
                                <tr>
 
 
-                                   <?php foreach($data['partial'] as $request): ?>
+
+
                                    <td><?php echo $request->D_Name; ?></td>
                                    <td> <?php echo $request->D_Tel_No; ?></td>
                                    <td><?php echo $request->Donation_Quantity; ?></td>
+                                   <td><input type="submit" class="button button1" id="Complete" value="complete"> </td>
+                                   </form>
+
 <!--                                   <td>--><?php //echo $request->Donation_Type; ?><!--</td>-->
 <!--                                   <td>--><?php //echo $request->Remaining_Quantity; ?><!--</td>-->
 <!--                                   <td style="justify-content: center;">--><?php //echo $request->Donation_Priority; ?><!--</td>-->
@@ -247,7 +136,61 @@
 
                                </tbody>
                            </table>
-                       <?php }else { echo '<div class="warn">No requests at the moment</div>';} ?>
+
+                           <div class="progress-bar-container">
+                               <div class="progress-bar"></div>
+                               <div class="progress-value">0%</div>
+                           </div>
+                           <script>
+                               var progressBar = document.querySelector('.progress-bar');
+                               var progressValue = document.querySelector('.progress-value');
+
+                               var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
+
+                               progressBar.style.width = percent + '%';
+                               progressValue.innerHTML = percent + '%';
+                           </script>
+
+
+                       <?php }elseif(($data['partial']==null) && ($data['request']->Accepted==1)){?>
+                           <form action="<?php echo URLROOT; ?>/request_bens/completeFullRequest/<?php echo $data['request']->Donation_ID; ?>" method="post">
+
+                           <table>
+                               <thead>
+                               <tr>
+                                   <td>Donor name</td>
+                                   <td>Telephone number</td>
+                                   <td>Donation Quantity</td>
+                           </tr>
+                                 </thead>
+                                 <tbody>
+                                 <tr>
+                                      <td><?php echo $data['donor']->D_Name; ?></td>
+                                      <td> <?php echo $data['donor']->D_Tel_No; ?></td>
+                                      <td><?php echo $data['request']->Donation_Quantity; ?></td>
+                                     <td> <input type="submit" class="button button1" id="Complete" value="complete"></td>
+                                 </tr>
+                                 </tbody>
+                            </table>
+                               <div class="progress-bar-container">
+                                   <div class="progress-bar"></div>
+                                   <div class="progress-value">0%</div>
+                               </div>
+                               <script>
+                                   var progressBar = document.querySelector('.progress-bar');
+                                   var progressValue = document.querySelector('.progress-value');
+
+                                   var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
+
+                                       progressBar.style.width = percent + '%';
+                                   progressValue.innerHTML = percent + '%';
+                               </script>
+
+
+
+
+                               <?php   }
+                       else{ echo '<div class="warn"><h2>No requests at the moment</h2></div>';} ?>
                    </div>
             </div>
 

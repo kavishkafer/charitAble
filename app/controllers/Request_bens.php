@@ -124,6 +124,7 @@ class Request_bens extends Controller{
         
         $request = $this->requestModel->getRequestById($id);
         $user = $this->userModel->getBenDetailsById($request->B_Id);
+
         if($this->requestModel->partialDonorId($id)!=null) {
             $partialUser = $this->requestModel->partialDonorId($id);
             $partial = $this->requestModel->partialRequestsDetails($partialUser->Req_Id);
@@ -134,7 +135,16 @@ class Request_bens extends Controller{
                 'partialUser' => $partialUser
             ];
         }
-        else{
+        elseif($request->Accepted==1){
+            $donor = $this->userModel->getDUserById($request->D_Id);
+            $data = [
+                'request' => $request,
+                'user' => $user,
+                'partial' => null,
+                'partialUser' => null,
+                'donor' => $donor
+            ];
+        }else{
             $data = [
                 'request' => $request,
                 'user' => $user,
@@ -241,6 +251,57 @@ class Request_bens extends Controller{
         } else {
             redirect('request_bens');
         }
+    }
+    public function completePartialRequest($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Get existing post from model
+            $reqId= $this->requestModel->getReqIdpartial($id);
+            $request = $this->requestModel->getRequestById($reqId->Req_Id);
+
+
+
+            if($this->requestModel->partialDonorId($reqId->Req_Id)!=null) {
+                $partialUser = $this->requestModel->partialDonorId($reqId->Req_Id);
+                $partial = $this->requestModel->partialRequestsDetails($reqId->Req_Id);
+                $data = [
+                    'user' => $user,
+                    'partial' => $partial,
+                    'partialUser' => $partialUser
+                ];
+                $this->requestModel->completePartialRequest($id);
+                redirect('request_bens/show/'.$reqId->Req_Id);
+            }
+
+             else {
+                die('Something went wrong');
+            }
+        } else {
+            redirect('request_bens');
+        }
+    }
+    public function completeFullRequest($id){
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Get existing post from model
+           $request = $this->requestModel->getRequestById($id);
+           $user = $this->userModel->getBenDetailsById($request->B_Id);
+
+
+
+
+                $data = [
+                    'user' => $user,
+                    'request' => $request,
+
+                ];
+                $this->requestModel->completeFullRequest($id);
+                redirect('request_bens/show/'.$id);
+            }
+
+
+         else {
+            redirect('request_bens');
+        }
+
     }
 
 }

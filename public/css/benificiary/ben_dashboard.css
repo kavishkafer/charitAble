@@ -732,40 +732,35 @@ display: table;
     background: #f1f1f1;
 }
 
-/*tablex {*/
+.progress-bar-container {
+  width: 60%;
+  height: 50px;
+  background-color: #ddd;
+  margin-left: 20%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  border-radius: 15px;
+  margin-top: 40px;
+}
 
-/*  width: 50%;*/
-/*}*/
+.progress-bar {
+  height: 100%;
+  background-color: #395B64;
+  width: 0%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
 
-/*th, td {*/
-/*  text-align: left;*/
-/*  padding: 8px;*/
-/*}*/
-
-/*th {*/
-/*  background-color: #4CAF50;*/
-/*  color: white;*/
-/*}*/
-
-/*tr:nth-child(even) {*/
-/*  background-color: #f2f2f2;*/
-/*}*/
-
-/*tr:hover {*/
-/*  background-color: #ddd;*/
-/*}*/
-
-/*td:first-child {*/
-/*  color: blue;*/
-/*}*/
-
-/*td:nth-child(2) {*/
-/*  color: red;*/
-/*}*/
-
-/*td:nth-child(4) {*/
-/*  color: green;*/
-/*}*/
+.progress-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
 
 
 
