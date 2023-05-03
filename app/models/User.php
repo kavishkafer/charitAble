@@ -19,10 +19,8 @@ class User {
     }
 
     public function register($data,$x){
-        $this->db->query('INSERT INTO beneficiary_details (document,profile_image,B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude) VALUES(:document, :profile_image, :name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude)');
+        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude,document,profile_image) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude, :document, :profile_image)');
         //bind values
-        $this->db->bind(':document', $data['document_name']);
-        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':telephone_number', $data['telephone_number']);
@@ -32,6 +30,8 @@ class User {
         $this->db->bind(':User_Id', $x);
         $this->db->bind(':latitude', $data['latitude']);
         $this->db->bind(':longitude', $data['longitude']);
+        $this->db->bind(':document', $data['document_name']);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
 
 
 
@@ -194,17 +194,16 @@ class User {
     //Donor
     //Register user
     public function signup_don($data,$x){
-        $this->db->query('INSERT INTO donor_details (profile_image, D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id) VALUES(:profile_image, :name, :email, :tel_no, :address, :password, :otp, :User_Id)');
+        $this->db->query('INSERT INTO donor_details (D_Name, D_Email, D_Tel_No, D_Address, D_Password,otp,User_Id, profile_image VALUES(:name, :email, :tel_no, :address, :password, :otp, :User_Id, :profile_image)');
         //Bind values
-        $this->db->bind(':profile_image', $data['profile_image_name']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':tel_no', $data['tel_no']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':otp', $data['otp']);
-
         $this->db->bind(':User_Id', $x);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
 
         //Execute
         if($this->db->execute()){
@@ -220,16 +219,16 @@ class User {
     //register event hoster
 
     public function signup_eh($data,$x){
-        $this->db->query('INSERT INTO event_hoster_details (document, profile_image,E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id) VALUES(:document, :profile_image, :name, :email,:address,:telephone, :password, :user_Id)');
-        // Bind values
-        $this->db->bind(':document', $data['document_name']);
-        $this->db->bind(':profile_image', $data['profile_image_name']);
-          $this->db->bind(':name', $data['name']);
+        $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id, document, profile_image) VALUES(:name, :email,:address,:telephone, :password, :user_Id, :document, :profile_image)');
+        // Bind value
+        $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':telephone', $data['tel_no']);
         $this->db->bind(':password', $data['password']);
-       $this->db->bind(':user_Id', $x);
+        $this->db->bind(':user_Id', $x);
+        $this->db->bind(':document', $data['document_name']);
+        $this->db->bind(':profile_image', $data['profile_image_name']);
   
           // Execute
           if($this->db->execute()){

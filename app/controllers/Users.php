@@ -32,10 +32,6 @@ class Users extends Controller
          
             // Init data
             $data = [
-              'document' => $_FILES['document'],
-            'document_name' => time().'_'.$_FILES['document']['name'],
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
                 'name' => trim($_POST['name']),
                 'email' => trim($_POST['email']),  
                 'telephone_number' => trim($_POST['telephone_number']),
@@ -48,35 +44,19 @@ class Users extends Controller
                 'otp'=>$otp_code,
                 'latitude' => trim($_POST['latitude']),
                 'longitude' => trim($_POST['longitude']),
-                'document_err' => '',
-                'profile_image_err' => '',
+                'document' => $_FILES['document'],
+            'document_name' => time().'_'.$_FILES['document']['name'],
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
                 'address_err' => '',
                 'password_err' => '',
-                'confirm_password_err' => ''
+                'confirm_password_err' => '',
+                'document_err' => '',
+                'profile_image_err' => '',
             ];
-
- //validate profile_image and upload
- if ($data['profile_image']['size'] > 0) {
-  if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-      //done
-  } else {
-      $data['profile_image_err'] = 'unsuccessful image uploading';
-
-  }
-} else {
-  $data['profile_image_name'] = null;
-}
-
-if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
-  //done
-}
-else {
-  $data['document_err'] = 'Error uploading image';
-}
-
 
             //Validate Email
             if(empty($data['email'])){
@@ -108,8 +88,30 @@ else {
                     $data['confirm_password_err'] = 'Passwords do not match';
                 }
             }
+
+
+ //validate profile_image and upload
+ if ($data['profile_image']['size'] > 0) {
+  if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+      //done
+  } else {
+      $data['profile_image_err'] = 'unsuccessful image uploading';
+
+  }
+} else {
+  $data['profile_image_name'] = null;
+}
+
+if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
+  //done
+}
+else {
+  $data['document_err'] = 'Error uploading image';
+}
+
+
             // Make sure errors are empty
-            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])){
+            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['document_err']) && empty($data['profile_image_err'])){
                 // Validated
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -143,8 +145,6 @@ else {
         else{
             // Init data
             $data = [
-              'document' => '',
-                'profile_image' => '',
                 'name' => '',
                 'email' => '',  
                 'telephone_number' => '',
@@ -164,7 +164,9 @@ else {
                 'telephone_number_err' => '',
                 'address_err' => '',
                 'password_err' => '',
-                'confirm_password_err' => ''
+                'confirm_password_err' => '',
+                'document' => '',
+                'profile_image' => '',
             ];
             // Load view
             $this->view('users/signup_ben', $data);
@@ -394,10 +396,6 @@ public function signup_dons(){
    
       // Init data
       $data = [
-        'document' => $_FILES['document'],
-            'document_name' => time().'_'.$_FILES['document']['name'],
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),  
           'tel_no' => trim($_POST['tel_no']),
@@ -407,26 +405,21 @@ public function signup_dons(){
           'user_role' => $user_role,
           'status' => false,
           'otp'=>$otp_code,
-          'document_err' => '',
-          'profile_image_err' => '',
+          'document' => $_FILES['document'],
+          'document_name' => time().'_'.$_FILES['document']['name'],
+          'profile_image' => $_FILES['profile_image'],
+          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
           'address_err' => '',
           'password_err' => '',
-          'confirm_password_err' => ''
+          'confirm_password_err' => '',
+          'document_err' => '',
+          'profile_image_err' => '',
       ];
 
-      if ($data['profile_image']['size'] > 0) {
-        if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-            //done
-        } else {
-            $data['profile_image_err'] = 'unsuccessful image uploading';
-
-        }
-    } else {
-        $data['profile_image_name'] = null;
-    }
+    
 
       //Validate Email
       if(empty($data['email'])){
@@ -464,8 +457,20 @@ public function signup_dons(){
               $data['confirm_password_err'] = 'Passwords do not match';
           }
       }
+
+      if ($data['profile_image']['size'] > 0) {
+        if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+            //done
+        } else {
+            $data['profile_image_err'] = 'unsuccessful image uploading';
+
+        }
+    } else {
+        $data['profile_image_name'] = null;
+    }
+
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err'])){
           // Validated
           //Hash
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -497,8 +502,6 @@ public function signup_dons(){
   else{
       // Init data
       $data = [
-        'document' => '',
-        'profile_image' => '',
           'name' => '',
           'email' => '',  
           'tel_no' => '',
@@ -506,14 +509,16 @@ public function signup_dons(){
           'password' => '',
           'confirm_password' => '',
           'user_role' => '',
-          'document_err' => '',
-          'profile_image_err' => '',
+          'document' => '',
+          'profile_image' => '',
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
           'address_err' => '',
           'password_err' => '',
-          'confirm_password_err' => ''
+          'confirm_password_err' => '',
+          'document_err' => '',
+          'profile_image_err' => '',
       ];
       // Load view
       $this->view('users/signup_dons', $data);
@@ -533,46 +538,26 @@ public function signup_eh(){
    
       // Init data
       $data = [
-        'document' => $_FILES['document'],
-        'document_name' => time().'_'.$_FILES['document']['name'],
-      'profile_image' => $_FILES['profile_image'],
-      'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
-          'name' => trim($_POST['name']),
+        'name' => trim($_POST['name']),
         'email' => trim($_POST['email']),
         'address' => trim($_POST['address']),
         'tel_no' => trim($_POST['tel_no']),
         'password' => trim($_POST['password']),
         'confirm_password' => trim($_POST['confirm_password']),
         'user_role' => $user_role,
-        'document_err' => '',
-        'profile_image_err' => '',
+        'document' => $_FILES['document'],
+        'document_name' => time().'_'.$_FILES['document']['name'],
+        'profile_image' => $_FILES['profile_image'],
+        'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
         'name_err' => '',
         'email_err' => '',
         'address_err' => '',
         'tel_no_err' => '',
         'password_err' => '',
         'confirm_password_err' => '',
-
+        'document_err' => '',
+        'profile_image_err' => ''
       ];
-
-      //validate profile_image and upload
- if ($data['profile_image']['size'] > 0) {
-  if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-      //done
-  } else {
-      $data['profile_image_err'] = 'unsuccessful image uploading';
-
-  }
-} else {
-  $data['profile_image_name'] = null;
-}
-
-if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
-  //done
-}
-else {
-  $data['document_err'] = 'Error uploading image';
-}
 
 
       //Validate Email
@@ -613,8 +598,29 @@ else {
               $data['confirm_password_err'] = 'Passwords do not match';
           }
       }
+
+    //validate profile_image and upload
+    if ($data['profile_image']['size'] > 0) {
+      if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+          //done
+      } else {
+          $data['profile_image_err'] = 'unsuccessful image uploading';
+    
+      }
+    } else {
+      $data['profile_image_name'] = null;
+    }
+    
+    if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
+      //done
+    }
+    else {
+      $data['document_err'] = 'Error uploading image';
+    }
+    
+
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err'])) {
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])) {
           // Validatede
         
           //Hash
@@ -643,22 +649,23 @@ else {
   else{
       // Init data
       $data = [
-        'document' => '',
-          'profile_image' => '',
-        'name' => '',
-        'email' => '',
+       
+                  'name' => '',
+                  'email' => '',
                   'address' => '',
                   'tel_no' => '',
                   'password' => '',
                   'confirm_password' => '',
-                  'document_err' => '',
-          'profile_image_err' => '',
+                  'document' => '',
+                  'profile_image' => '',
                   'name_err' => '',
                   'email_err' => '',
                   'tel_no_err' => '',
                   'address_err' => '',
                   'password_err' => '',
-                  'confirm_password_err' => ''
+                  'confirm_password_err' => '',
+                  'document_err' => '',
+                  'profile_image_err' => ''
       ];
       // Load view
       $this->view('users/signup_eh', $data);
