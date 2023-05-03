@@ -18,11 +18,13 @@
   body {
     min-height: 100vh;
     overflow-x: hidden;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
   }
   
   .container {
     position: relative;
     width: 100%;
+
   }
   
   /* =============== Navigation ================ */

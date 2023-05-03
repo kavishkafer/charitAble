@@ -13,7 +13,7 @@
 
         <!-- ================ Order Details List ================= -->
 
-                    <div class="main-container">
+                    <div class="details">
                         <div class="chart" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center ">
                             <div class="chart1" style="width: 50%; display: flex; flex-direction: column; margin-left: 20px">
                                 <canvas id="myChart"></canvas>

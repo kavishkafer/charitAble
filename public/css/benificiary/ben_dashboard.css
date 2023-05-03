@@ -329,8 +329,9 @@ display: none;
   border-bottom: none;
 }
 .details .recentOrders table tbody tr:hover {
-  background: var(--blue);
-  color: var(--white);
+  background:  #dfe9ec;
+  color: var(--blue);
+  transition-duration: 0.7s;
 }
 .details .recentOrders table tr td {
   padding: 10px;
@@ -654,33 +655,7 @@ width: 30%;
 padding: 0px;
 }
 
-/* The Modal (background) */
-.modal {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background:var(--white);
-background:rgba(0,0,0,0.8);
 
-
-padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-background-color: #fefefe;
-margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-border: 1px solid #888;
-width: 60%; /* Could be more or less, depending on screen size */
-
-}
-
-/* Style the horizontal ruler */
 hr {
 border: 1px solid #f1f1f1;
 margin-bottom: 25px;
@@ -736,12 +711,12 @@ display: table;
   width: 60%;
   height: 50px;
   background-color: #ddd;
-  margin-left: 20%;
+
   position: relative;
   overflow: hidden;
   display: flex;
   border-radius: 15px;
-  margin-top: 40px;
+  margin-top: -10px;
 }
 
 .progress-bar {
@@ -761,6 +736,22 @@ display: table;
   transform: translate(-50%, -50%);
   color: #fff;
 }
+.nodata img{
+    width: 40%;
+    height: 40%;
+    margin-left: 25%;
+}
+.nodata h3 {
+    width: 40%;
+    height: 40%;
+    margin-left: 25%;
+  margin-top: 5px;
+
+    text-align: center;
+      color: #2C3333;
+
+}
+
 
 
 

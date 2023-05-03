@@ -53,6 +53,24 @@
                         <?php echo $data['request']->Donation_Quantity; ?>
                         </div>
                     <div class="content">
+                        <h3>Accepted percentage</h3>
+                    </div>
+                    <div class="data">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar"></div>
+                            <div class="progress-value">0%</div>
+                        </div>
+                        <script>
+                            var progressBar = document.querySelector('.progress-bar');
+                            var progressValue = document.querySelector('.progress-value');
+
+                            var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
+
+                                progressBar.style.width = percent + '%';
+                            progressValue.innerHTML = percent + '%';
+                        </script>
+                    </div>
+                    <div class="content">
                         <h3>Status</h3>
                     </div>
                     <div class="data">
@@ -137,19 +155,7 @@
                                </tbody>
                            </table>
 
-                           <div class="progress-bar-container">
-                               <div class="progress-bar"></div>
-                               <div class="progress-value">0%</div>
-                           </div>
-                           <script>
-                               var progressBar = document.querySelector('.progress-bar');
-                               var progressValue = document.querySelector('.progress-value');
 
-                               var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
-
-                               progressBar.style.width = percent + '%';
-                               progressValue.innerHTML = percent + '%';
-                           </script>
 
 
                        <?php }elseif(($data['partial']==null) && ($data['request']->Accepted==1)){?>
@@ -172,25 +178,18 @@
                                  </tr>
                                  </tbody>
                             </table>
-                               <div class="progress-bar-container">
-                                   <div class="progress-bar"></div>
-                                   <div class="progress-value">0%</div>
-                               </div>
-                               <script>
-                                   var progressBar = document.querySelector('.progress-bar');
-                                   var progressValue = document.querySelector('.progress-value');
-
-                                   var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
-
-                                       progressBar.style.width = percent + '%';
-                                   progressValue.innerHTML = percent + '%';
-                               </script>
+                            </form>
 
 
 
 
                                <?php   }
-                       else{ echo '<div class="warn"><h2>No requests at the moment</h2></div>';} ?>
+                       else{ ?>
+
+                           <div class="nodata"> <img src="<?php echo URLROOT; ?>/img/nodata.svg" alt="empty" class="empty">
+                               <h3>No donors has accepted the request yet</h3><br></div>
+                       <?php }?>
+
                    </div>
             </div>
 

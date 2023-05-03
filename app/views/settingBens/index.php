@@ -12,7 +12,7 @@
 
         <!-- ================ Order Details List ================= -->
         <div class="details">
-            <div class="recentOrders">
+
 
 
 
