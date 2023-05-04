@@ -113,6 +113,53 @@
                                 </div>
                                 
                                 </div>
+
+                                 <!--profile image-->
+
+                <div class="form-drag-area">
+                    <div class="icon">
+                        <img src="<?php echo URLROOT; ?>/img/components/imageUpload/placeholder-icon.png" alt="placeholder-icon" width="90px" height="90px" id="profile_image_placeholder">
+                    </div>
+
+                    <div class="right-content">
+                        <div class="description">Drag and drop</div>
+                        <div class="form-upload">
+                            <input type="file" name="profile_image" id="profile_image" style="display: none">
+                            Browse File
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-validation">
+                    <div class="profile-image-validation">
+                        <img src="<?php echo URLROOT; ?>/img/components/imageUpload/green-tick-icon.png" alt="green-tick" width="15px" height="15px">
+                        Select a profile picture
+                    </div>
+                </div>
+
+
+                <!--legal doc image-->
+                <div class="form1-drag-area">
+                    <div class="icon">
+                        <img src="<?php echo URLROOT; ?>/img/components/imageUpload/placeholder-icon.png" alt="placeholder-icon" width="90px" height="90px" id="document_placeholder">
+                    </div>
+
+                    <div class="right-content">
+                        <div class="description1">Drag and drop</div>
+                        <div class="form1-upload">
+                            <input type="file" name="document" id="document" style="display: none">
+                            Upload proof of organization's identity
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form1-validation">
+                    <div class="document-validation">
+                        <img src="<?php echo URLROOT; ?>/img/components/imageUpload/green-tick-icon.png" alt="green-tick" width="15px" height="15px">
+                        Select a document
+                    </div>
+                </div>
+
                 
                
                 <input type="submit" class="btn" value="Register">
@@ -123,6 +170,10 @@
         
 
     </div>
+
+    <!--javascript for profile image-->
+<script src="<?php echo URLROOT; ?>/js/components/imageUpload/imageUpload.js"></script>
+<script src="<?php echo URLROOT; ?>/js/components/imageUpload/documentUpload.js"></script>
   
     <script src="<?php echo URLROOT; ?>/js/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
