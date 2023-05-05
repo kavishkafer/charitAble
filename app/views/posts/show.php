@@ -1,20 +1,14 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/lists.css" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_show.css">
-
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/comments/comments.css">
+
+<div class="main">
+<?php require APPROOT . '/views/inc/topbar.php'; ?>
 
 
 <div class="row">
-<div class="col-head">
-    
-<div class="header">
-  <a href="#default" class="logo"><img src="../public/img/img_dons/logo.svg" alt="logo"></a>
-  <div class="header-right">
-    <a href="#about">Hi James!</a>
-  </div>
-
-</div>
-</div>
 
 <br>
 <a href="<?php echo URLROOT; ?>/posts" class="btn">Back</a>
@@ -26,7 +20,7 @@
 <h1><?php echo $data['post']->title; ?></h1>
 <br>
 <div class="post_img">
-    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
+    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $data['post']->image;?>" alt="" width="300px">
             </div> 
 
 <br>
@@ -40,16 +34,17 @@
 
 
 
-<?php if($data['post']->user_id == $_SESSION['user_id']) : ?> 
+<?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
+    <div class="post-options">
+        <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>">
+            <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
+                <input type="submit" value="Edit" class="button-edit">
+            <?php endif; ?>
+        </form>
 
 <?php endif; ?>
 
-    <div class="post-options">
-    <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>">
-    <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
-    <input type="submit" value="Edit" class="button-edit">
-    <?php endif; ?>
-    </form>
+
     
 
 
@@ -101,6 +96,7 @@
     </div>
 
     <br> <br> <br>
+</div>
     <script type="text/JavaScript" src="<?php echo URLROOT; ?>/js/jQuery.js"></script>
 
     <script type="text/javascript">
