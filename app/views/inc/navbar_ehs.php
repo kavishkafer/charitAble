@@ -34,13 +34,25 @@
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="<?php echo URLROOT; ?>/posts">
                         <span class="icon">
                             <i class="fas fa-user-check"></i>
                         </span>
                         <span class="title">Forum</span>
                     </a>
                 </li>
+
+                <li>
+
+                <a href="#">
+
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    <span class="title">Stats</span>
+                </a>
+            </li>
+
 
                 <li>
                     <a href="#">
@@ -64,3 +76,5 @@
          <!-- =========== Scripts =========  -->
      <script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
      <script src="<?php echo URLROOT ?>/public/js/navbar.js"></script>
+     <script src="<?php echo URLROOT ?>/public/js/admin/main.js"></script>
+
