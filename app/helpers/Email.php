@@ -98,6 +98,12 @@ class Email{
     }
     public function requestAcceptanceMail($receiverName, $data){
 
+
+    }
+    public function highPriorityMail($receiverName, $data){
+
+
+
     }
 }
 

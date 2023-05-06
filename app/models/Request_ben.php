@@ -145,6 +145,36 @@ WHERE partial_donations.Req_Id = :Req_Id ');
         $array=$this->db->single();
         return $array;
     }
+    public function completePartialRequest($id){
+        $this->db->query('UPDATE partial_donations SET Completed = true,Completed_Time =current_time WHERE Id = :Id');
+        // Bind values
+        $this->db->bind(':Id', $id);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function completeFullRequest($id){
+        $this->db->query('UPDATE donation_table SET Completed = true WHERE Donation_ID = :Donation_ID');
+        // Bind values
+        $this->db->bind(':Donation_ID', $id);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function getReqIdPartial($id){
+        $this->db->query('SELECT * FROM partial_donations WHERE Id = :Id');
+        $this->db->bind(':Id', $id);
+        $array=$this->db->single();
+        return $array;
+    }
 
 
 }

@@ -44,7 +44,7 @@
             </li>
 
             <li>
-                <a href="<?php echo URLROOT?>/schedulereq_dons/index">
+                <a href="<?php echo URLROOT?>/schedulereqbens/index">
                         <span class="icon">
                             <i class="fas fa-calendar"></i>
                         </span>
