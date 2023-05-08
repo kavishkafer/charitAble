@@ -401,6 +401,8 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
+          'document' => $_FILES['document'],
+          'document_name' => time().'_'.$_FILES['document']['name'],
           'profile_image' => $_FILES['profile_image'],
           'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name_err' => '',
@@ -409,6 +411,7 @@ public function signup_dons(){
           'address_err' => '',
           'password_err' => '',
           'confirm_password_err' => '',
+          'document_err' => '',
           'profile_image_err' => ''
       ];
 
@@ -670,7 +673,6 @@ else {
                   'tel_no' => '',
                   'password' => '',
                   'confirm_password' => '',
-                  'profile_image' => '',
                   'document' => '',
                   'profile_image' => '',
                   'name_err' => '',
@@ -680,7 +682,7 @@ else {
                   'password_err' => '',
                   'confirm_password_err' => '',
                   'document_err' => '',
-                  'profile_image_err' => '',
+                  'profile_image_err' => ''
 
       ];
       // Load view
