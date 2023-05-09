@@ -285,6 +285,19 @@ body {
 
 .details .recentOrders {
     position: relative;
+    width: 80%;
+    display: grid;
+    left: 10%;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
+}
+
+.details .recentOrders-new {
+    position: relative;
     display: grid;
     min-height: 500px;
     background: var(--white);
@@ -345,13 +358,13 @@ body {
     padding: 10px;
 }
 .details .recentOrders table tr td:last-child {
-    text-align: end;
+    text-align: left;
 }
 .details .recentOrders table tr td:nth-child(2) {
-    text-align: end;
+    text-align: left;
 }
 .details .recentOrders table tr td:nth-child(3) {
-    text-align: center;
+    text-align: left;
 }
 .status.delivered {
     padding: 2px 4px;
@@ -552,6 +565,8 @@ body {
 .button1 {
     background-color:#4CAF50;
     color: white;
+    width: 200px;
+    height: 50px;
     border: 2px solid #77DD77;
     border-radius: 12px;
 }
@@ -562,6 +577,8 @@ body {
 .button2 {
     background-color:red;
     color: red;
+    width: 100px;
+    height: 50px;
     border: 2px solid red;
     border-radius: 12px;
 }
