@@ -49,7 +49,6 @@ class Users extends Controller
                 'document_name' => time().'_'.$_FILES['document']['name'],
                 'profile_image' => $_FILES['profile_image'],
                 'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
-
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
@@ -57,6 +56,7 @@ class Users extends Controller
                 'password_err' => '',
                 'confirm_password_err' => '',
                 'document_err' => '',
+
                 'profile_image_err' => '',
                 'B_Type_err' => ''
             ];
@@ -110,6 +110,7 @@ class Users extends Controller
             } else {
                 $data['profile_image_name'] = null;
             }
+
             if(empty($data['B_Type'])){
                 $data['B_Type_err'] = 'Please enter Beneficiary Type';
             }
@@ -117,6 +118,7 @@ class Users extends Controller
 
             // Make sure errors are empty
             if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['document_err']) && empty($data['profile_image_err']&& empty($data['B_Type_err'])) ){
+
                 // Validated
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -172,8 +174,10 @@ class Users extends Controller
                 'password_err' => '',
                 'confirm_password_err' => '',
                 'document_err' => '',
+
                 'profile_image_err' => '',
                 'B_Type_err' => ''
+
             ];
             // Load view
             $this->view('users/signup_ben', $data);
@@ -409,6 +413,10 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
+
+          'document' => $_FILES['document'],
+          'document_name' => time().'_'.$_FILES['document']['name'],
+
           'profile_image' => $_FILES['profile_image'],
           'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name_err' => '',
@@ -417,6 +425,7 @@ public function signup_dons(){
           'address_err' => '',
           'password_err' => '',
           'confirm_password_err' => '',
+          'document_err' => '',
           'profile_image_err' => ''
       ];
 
@@ -678,7 +687,8 @@ else {
                   'tel_no' => '',
                   'password' => '',
                   'confirm_password' => '',
-                  'profile_image' => '',
+
+
                   'document' => '',
                   'profile_image' => '',
                   'name_err' => '',
@@ -688,7 +698,9 @@ else {
                   'password_err' => '',
                   'confirm_password_err' => '',
                   'document_err' => '',
-                  'profile_image_err' => '',
+
+                  'profile_image_err' => ''
+
 
       ];
       // Load view

@@ -470,11 +470,27 @@ label{
 .calender-container{
     position: absolute;
     display: block;
+
+    height:calc(100% - 210px);
+    width: 45%;
+    top: 150px;
+    left: 5%;
+    background-color: white ;
+    justify-content: center;
+
+}
+
+.calendar{
+    position: absolute;
+    display: block;
     height:calc(100% - 60px);
-    width: 50%;
+    width: 90%;
     top: 60px;
     left: 0%;
-    background-color: #B7C4CF;
+    /*
+    background-color: rgb(107, 105, 105);
+    */
+
     justify-content: center;
 }
 
@@ -729,13 +745,15 @@ td, th{
     padding: 10px;
 }
 .details .recentOrders table tr td:last-child {
-    text-align: end;
+
+    text-align: left;
 }
 .details .recentOrders table tr td:nth-child(2) {
-    text-align: end;
+    text-align: left;
 }
 .details .recentOrders table tr td:nth-child(3) {
-    text-align: center;
+    text-align: left;
+
 }
 .status.delivered {
     padding: 2px 4px;

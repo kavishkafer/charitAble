@@ -349,6 +349,7 @@ a:hover{
         font-size: 2.4rem;
         margin:8px 0;
     }
+
     .img img{
         width: 400px;
     }
@@ -369,6 +370,7 @@ a:hover{
     }
     .img{
         display: none;
+
     }
     .wave{
         display:none
@@ -385,6 +387,7 @@ a:hover{
         margin: 1rem;
 
     }
+
 }
 .warn {
     color: #f51010;
@@ -400,6 +403,7 @@ a:hover{
     margin-top: 1.8rem;
     text-align: center;
 }
+
 /* Styling for select tag */
 .select-div {
     position: relative;
@@ -540,5 +544,6 @@ a:hover{
 .select-wrapper select:focus {
     outline: none;
 }
+
 
  

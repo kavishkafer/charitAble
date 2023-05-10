@@ -13,7 +13,9 @@
             <img src="<?php echo URLROOT; ?>/img/signup_bg.svg">
         </div>
         <div class="login-container">
+
             <form action="<?php echo URLROOT; ?>/users/signup_ben" method="POST" enctype="multipart/form-data" >
+
                 <img class="avatar" src="<?php echo URLROOT; ?>/img/signup.svg">
                 
                 <h2>SignUp</h2>
@@ -132,6 +134,9 @@
                                 </div>
                                 
                                 </div>
+
+
+                                 <!--profile image-->
 
 
                 <div class="form-drag-area">
