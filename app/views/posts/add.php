@@ -2,9 +2,8 @@
 <?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/lists.css" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post/post_add.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-<div class="main">
-<?php require APPROOT . '/views/inc/topbar.php'; ?>
 
 <br> <br>
 
@@ -56,7 +55,9 @@
 </div>
 </form>
 </div>
-</div>
+
 
     <script type="text/javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
+<script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

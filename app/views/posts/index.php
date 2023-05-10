@@ -1,13 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/lists.css" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_view.css">
 
 
-<div class="main">
-<?php require APPROOT . '/views/inc/topbar.php'; ?>
 
 
 
@@ -33,7 +30,7 @@
             <h1 class="title"><?php echo $post->title; ?></h1>
 <hr>
 <br>
-             
+
             <div class="post-image">
                 <?php if($post->image != null) : ?>
                     <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
@@ -44,7 +41,7 @@
             <br>
             <p class="text"><?php echo $post->body; ?></p>
 
-          
+
 
 
             <div class="time-post">
@@ -65,7 +62,15 @@
                     </div>
 
                 </div>
-            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postId; ?>" class="moreLink">More</a>
+
+       
+        <!--for testing purposes only-->
+        <!--  <div id="msg"> </div> -->
+
+        <!-- comment thread-->
+
+
+        <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postId; ?>" class="moreLink">More</a>
 
 
 
@@ -81,8 +86,9 @@
 
 <?php endforeach; ?>
 
-</div>
 
+
+    <script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
 
 <script type="text/javascript" src="<?php echo URLROOT; ?>/public/js/post/post.js"></script>
     <script type="text/javascript" src="<?php echo URLROOT; ?>/public/js/jQuery.js"></script>
