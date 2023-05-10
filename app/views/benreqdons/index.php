@@ -1,17 +1,18 @@
 
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
+
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/donor_accept.css">
-<body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
+    <!--<div class="container">
         <div class="navigation">
             <ul>
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
+                            <img src="<?php /*echo URLROOT; */?>/img/logo_white.png">
                         </span>
                          <span class="title"></span> 
                     </a>
@@ -63,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
+                    <a href="<?php /*echo URLROOT;*/?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
@@ -73,21 +74,21 @@
             
                 
             </ul>
-        </div>
+        </div>-->
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
+        <!--<div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <i class="fas fa-bars"></i>
                 </div>
-
+-->
                
                 <!-- <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div> -->
-            </div>
-
+<!--            </div>
+-->
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
@@ -116,9 +117,11 @@
 
                              <?php foreach($data['requests'] as $request): ?>
                                 <td><?php echo $request->B_Name; ?></td>
+
                                 <td><?php echo $request->B_Address; ?></td>
                                 <td> <?php echo $request->Donation_Description; ?></td>
                                 <td><?php echo $request->Donation_Priority; ?></td>
+
                                 <td><?php echo $request->Remaining_Quantity; ?></td>
 
 

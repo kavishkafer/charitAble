@@ -26,8 +26,9 @@ class Stat_bens extends Controller
 
     public function No_of_requests()
     {
-        $id = $_SESSION['user_id'];
-        $No_of_requests = $this->statModel->No_of_requests(12);
+        $userId = $_SESSION['user_id'];
+        $id = $this->requestModel->getBenId($userId)->B_Id;
+        $No_of_requests = $this->statModel->No_of_requests($id);
         $data = [
             'title' => 'No_of_requests',
             'donation_quantity' => $No_of_requests,
@@ -100,6 +101,50 @@ class Stat_bens extends Controller
         echo json_encode($data);
 
     }
+    public function scheduledDonationsViaMonths(){
+        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $jan=$this->statModel->scheduledDonationsViaMonths($id,1);
+        $feb=$this->statModel->scheduledDonationsViaMonths($id,2);
+        $mar=$this->statModel->scheduledDonationsViaMonths($id,3);
+        $apr=$this->statModel->scheduledDonationsViaMonths($id,4);
+        $may=$this->statModel->scheduledDonationsViaMonths($id,5);
+        $jun=$this->statModel->scheduledDonationsViaMonths($id,6);
+        $jul=$this->statModel->scheduledDonationsViaMonths($id,7);
+        $aug=$this->statModel->scheduledDonationsViaMonths($id,8);
+        $sep=$this->statModel->scheduledDonationsViaMonths($id,9);
+        $oct=$this->statModel->scheduledDonationsViaMonths($id,10);
+        $nov=$this->statModel->scheduledDonationsViaMonths($id,11);
+        $dec=$this->statModel->scheduledDonationsViaMonths($id,12);
+        $data=[
+            'jan' => 'jan',
+            'feb' => 'feb',
+            'mar' => 'mar',
+            'apr' => 'apr',
+            'may' => 'may',
+            'jun' => 'jun',
+            'jul' => 'jul',
+            'aug' => 'aug',
+            'sep' => 'sep',
+            'oct' => 'oct',
+            'nov' => 'nov',
+            'dec' => 'dec',
+            'janCount' => $jan,
+            'febCount' => $feb,
+            'marCount' => $mar,
+            'aprCount' => $apr,
+            'mayCount' => $may,
+            'junCount' => $jun,
+            'julCount' => $jul,
+            'augCount' => $aug,
+            'sepCount' => $sep,
+            'octCount' => $oct,
+            'novCount' => $nov,
+            'decCount' => $dec,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+
+    }
     public function priorityCount(){
         $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
         $high=$this->statModel->highPriorityCount($id);
@@ -117,6 +162,7 @@ class Stat_bens extends Controller
         echo json_encode($data);
 
     }
+
 
 
 

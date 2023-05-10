@@ -26,6 +26,7 @@ body {
     overflow: auto;
 }
 
+
 /* =============== Navigation ================ */
 .navigation {
     position: fixed;
@@ -234,11 +235,21 @@ body {
     color: var(--white);
 }
 
+.space{
+    display: flex;
+    position: relative;
+    height: 400px;
+    width: 400px;
+    left: 0%;
+}
+
 /* ================== Order Details List ============== */
 .details {
     position: absolute;
     width: 100%;
+    /*
     height: calc(100% - 60px);
+    */
     padding: 20px;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
@@ -472,12 +483,14 @@ body {
 }
 
 .content-sidebar{
+    position: relative;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1em;
 }
 .content-sidebar .content{
+    position: relative;
     flex: 1 1 25%;
     min-width:25ch;
     justify-content: center;
@@ -630,13 +643,12 @@ button:hover {
 .forms {
     display: flex;
     background-color: var(--white);
-    width: 1800px;
     padding: 10px;
-    margin: 0 auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 0% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid rgb(231, 225, 225);
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-     /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
 
 }
 

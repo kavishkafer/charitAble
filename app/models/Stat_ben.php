@@ -41,6 +41,17 @@ public function donationViaMonths($Id,$month){
 
 
         }
+        public function scheduledDonationsViaMonths($id,$month){
+            $this->db->query('SELECT COUNT(*) AS num_rows FROM schedule_request_table WHERE MONTH(D_Date)=:month AND B_Id = :Id');
+            $this->db->bind(':Id', $id);
+            $this->db->bind(':month', $month);
+            $row = $this->db->single();
+            //check row
+            if ($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else return false;
+        }
 
         public function highPriorityCount($id){
             $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_table WHERE Donation_Priority = "High" AND B_Id = :Id');

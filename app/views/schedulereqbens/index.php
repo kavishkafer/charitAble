@@ -1,17 +1,17 @@
 
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_accept.css">
-<body>
 <!-- =============== Navigation ================ -->
-<div class="container">
+<!--<div class="container">
     <div class="navigation">
         <ul>
             <li>
                 <a href="#">
                         <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
+                            <img src="<?php /*echo URLROOT; */?>/img/logo_white.png">
                         </span>
                     <span class="title"></span>
                 </a>
@@ -63,7 +63,7 @@
             </li>
 
             <li>
-                <a href="<?php echo URLROOT;?>/users/logout">
+                <a href="<?php /*echo URLROOT;*/?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
@@ -74,19 +74,19 @@
 
         </ul>
     </div>
-
+-->
     <!-- ========================= Main ==================== -->
-    <div class="main">
+  <!--  <div class="main">
         <div class="topbar">
             <div class="toggle">
                 <i class="fas fa-bars"></i>
             </div>
 
-
+-->
             <!-- <div class="user">
                 <img src="assets/imgs/customer01.jpg" alt="">
             </div> -->
-        </div>
+     <!--   </div>-->
 
         <!-- ======================= Cards ================== -->
         <!-- <div class="cardBox">

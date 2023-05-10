@@ -20,7 +20,7 @@ body {
     overflow-x: hidden;
 }
 
-.container {
+.container-nav {
     position: relative;
     width: 100%;
 }
@@ -511,7 +511,6 @@ body {
     min-width:25ch;
     justify-content: center;
 
-
 }
 .content-sidebar .data{
     flex: 1 1 70%;
@@ -540,6 +539,30 @@ body {
 .button1:hover {
     background-color: #395B64;
     color: white;
+
+}
+
+.button3 {
+    background-color:#395B64;
+    color: white;
+    height: 50px;
+    width: 170px;
+    border-right: 1px solid white;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+.button3:hover {
+    background-color: #395B64;
+    color: white;
+}
+
+.button4 {
+    background-color:#395B64;
+    color: white;
+    height: 50px;
+    width: 170px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
 
 }
 .button2 {
@@ -741,8 +764,26 @@ hr {
 
     padding: 5px;
 }
-.button-alignment{
+.button-alignment {
     text-align: center;
     margin: auto;
+}
+
+/*.button-pwd input[type="submit"]{
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}*/
+.button-pwd {
+    top: 10px;
+    left: 20px;
+    position: relative;
+    display: flex;
+}
+
+.button-pwd input[type="submit"] {
+    margin: 0;
+    padding: 0;
 
 }
