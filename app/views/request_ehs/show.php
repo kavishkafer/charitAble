@@ -1,204 +1,81 @@
-
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/view_request.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
 
-                <li id="#" >
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
+<!-- ========================= Main ==================== -->
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
+    <!-- ================ Order Details List ================= -->
+    <div class="details">
+        <div class="recentOrders">
+            <h2><?php echo $data['requests']->Event_Name; ?></h2>
 
-    
 
-                <li>
-                    <a href="<?php echo URLROOT; ?>/posts">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Forum</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout_ben">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                
-            </ul>
-        </div>
-
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-               
-                <div class="user">
-                   <i class="fas fa-user"></i>
-                </div>
+            <div class="details-card">
+                <div class="details-head">Event Name</div>
+                <div class="details-input"><?php echo $data['requests']->Event_Name; ?></div>
             </div>
+            <br />
 
-            <!-- ======================= Cards ================== -->
-            
+            <div class="details-card">
+                <div class="details-head">Event Date</div>
+                <div class="details-input"><?php echo $data['requests']->Event_Date; ?></div>
+            </div>
+            <br />
 
-               
+            <div class="details-card">
+                <div class="details-head">Event Time</div>
+                <div class="details-input"><?php echo $data['requests']->Event_Time; ?></div>
+            </div>
+            <br />
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
-                    </div>
+            <div class="details-card">
+                <div class="details-head">Event Description</div>
 
-                    <!-- <table>
-                        <thead>
-                            <tr>
-                                <td>Request_Id</td>
-                                <td>Description</td>
-                                <td>Type</td>
-                                <td>Quantity</td>
-                                <td>Priority</td>
-                                
-                            </tr>
-                        </thead>
+                <div class="details-input"><?php echo $data['requests']->Event_Description; ?></div>
 
-                        <tbody>
-                            
-                            <tr>
-                               
-                           
-                            </tr>
-                            <tr>
-                                <?php if($data['request']->B_Id == $_SESSION['user_id']) : ?>
-                           
-                            <h1><?php echo $data['request']->Donation_ID; ?></h1>
-                               <td> <h1><?php echo $data['request']->Donation_Description; ?></h1></td></td>
-                               <h3> <?php echo $data['request']->Donation_Quantity; ?></h3>
-                                   <?php echo $data['user']->B_Name?>   
-                             <?php endif; ?>
-                            </tr>
-                
-                            <tr>
-                        
-                            </tr>
-                            <div>
-                                <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID ?>" method="post">
-                                <input type="submit" value="Edit" >
-                                </form>
-                                <form action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>" method="post">
-                                <input type="submit" value="Delete" >
-                                </form>
-                           </div>
-                        </tbody>
-                    </table>
-                </div> -->
-                <div class="content-sidebar">
+            </div>
+            <br />
+
+            <div class="details-card">
+                <div class="details-head">Event Letter</div>
+
+                <?php if($data['requests']->document != null) : ?>
+                    <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['requests']->document;?>" alt="" width="300px"download>
+                <?php else: ?>
+                    <!--<img src="" alt="" width="300px"> -->
+                <?php endif; ?>
+
+            </div>
+            <br />
+
+            <div class="content-sidebar">
                         <div class="content">
-                            <h3>Donation ID</h3>
-                        </div>
-                        <div class="data">
-                        <?php echo $data['request']->Donation_ID; ?>
-                        </div>
-                        <div class="content">
-                            <h3>Donation Description</h3>
-                        </div>
-                        <div class="data">
-                        <?php echo $data['request']->Donation_Description; ?>
-                        </div>
-                        <div class="content">
-                            <h3>Donation Type</h3>
-                        </div>
-                        <div class="data">
-                        <?php echo $data['request']->Donation_Type; ?>
-                        </div>
-                        <div class="content">
-                            <h3>Donation Quantity</h3>
-                        </div>
-                        <div class="data">
-                        <?php echo $data['request']->Donation_Quantity; ?>
-                        </div>
-                    </div>
 
-
-                    <div class="content-sidebar">
-                        <div class="content">
-                        <form
-                                action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID; ?>"
+                            <form
+                                action="<?php echo URLROOT; ?>/request_ehs/edit/<?php echo $data['requests']->Event_ID; ?>"
                                 method="post">
-                                <input type="submit" class="button button1" id="Edit" value="Edit">
+                                <input type="submit" class="btn4" id="Edit" value="Edit">
                             </form>
                            
                         </div>
                         <div class="data">
                             <form
-                                action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>"
+                                action="<?php echo URLROOT; ?>/request_ehs/delete/<?php echo $data['requests']->Event_ID; ?>"
                                 method="post">
-                                <input type="submit" class="button button2" id="Delete" value="Delete">
+                                <input type="submit" class="btn3" id="Delete" value="Delete">
                             </form>
                         </div>
                     </div>
-                    </tbody>
-                    </table>
-                </div>
-
-                
-            </div>
         </div>
     </div>
+</div>
+
+<!-- =========== Scripts =========  -->
+<script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/eventHost/main.js"></script>
 
 
-                <!-- ================= New Customers ================ -->
-               
-            </div>
-        </div>
-    </div>
 
-    
-
- <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
