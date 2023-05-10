@@ -13,7 +13,9 @@
             <img src="<?php echo URLROOT; ?>/img/signup_bg.svg">
         </div>
         <div class="login-container">
-            <form action="<?php echo URLROOT; ?>/users/signup_ben" method="POST" enctype="multipart/form-data">
+
+            <form action="<?php echo URLROOT; ?>/users/signup_ben" method="POST" enctype="multipart/form-data" >
+
                 <img class="avatar" src="<?php echo URLROOT; ?>/img/signup.svg">
                 
                 <h2>SignUp</h2>
@@ -40,6 +42,25 @@
                     </div>
                     
                 </div>
+                <div class="input-div two ">
+                    <div class="i">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="div">
+                        <h5> Beneficiary Type</h5>
+                        <div class="select-wrapper">
+                        <select name="B_Type">
+                            <option value="Elder Home">Elder Home</option>
+                            <option value="Children Home">Children home</option>
+                            <option value="Disabled Institute">Disabled Institute</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        </div>
+
+<!--                        <input type="tel" name="telephone_number" pattern="[0-9]{10}" class="input" value="--><?php //echo $data['telephone_number'];?><!--"  >-->
+                        <div class=warn><?php echo $data['B_Type_err']; ?></div>
+                    </div>
+                </div>
                 <div class="input-div one ">
                     <div class="i">
                         <i class="fas fa-mobile"></i>
@@ -65,7 +86,7 @@
                        <div class="space" style="height: 500px; margin=20px;">
                            <div id="map" style="height: 400px; width: 100%; margin: 20px;">
 
-<!--                               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCykzd2-mQTQdSMQNh8PxrWAnDBgqjf_Xg&callback=Function.prototype"></script>-->
+
                                <script>
                                    function initMap() {
                                        var colombo = {lat: 6.9271, lng: 79.8612};
@@ -114,7 +135,9 @@
                                 
                                 </div>
 
+
                                  <!--profile image-->
+
 
                 <div class="form-drag-area">
                     <div class="icon">

@@ -1,5 +1,7 @@
 <?php
+use helpers\email;
 class Request_bens extends Controller{
+
     public function __construct(){
         if(!isLoggedIn()){
             redirect('users/login');
@@ -56,6 +58,7 @@ class Request_bens extends Controller{
                 'user_id' => $y->B_Id,
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
+
                 'Donation_Type_err' => '',
                 'Donation_Priority_err' => '',
                 'Donation_Details_err' => ''
@@ -75,6 +78,18 @@ class Request_bens extends Controller{
             else{
                 $data[ 'Donation_Quantity' ]= trim($_POST['Donation_Quantity']);
             }
+            if($data['Donation_Quantity']<=0){
+                $data['Donation_Quantity_err'] = 'Please enter Quantity greater than 0';
+            }
+            else{
+                $data[ 'Donation_Quantity' ]= trim($_POST['Donation_Quantity']);
+            }
+            if(empty($data['Donation_Details'])){
+                $data['Donation_Details_err'] = 'Please enter Donation details';
+            }
+            else{
+                $data[ 'Donation_Details' ]= trim($_POST['Donation_Details']);
+            }
             if(empty($data['Donation_Type'])){
                 $data['Donation_Type_err'] = 'Please enter Donation type';
             }
@@ -92,7 +107,21 @@ class Request_bens extends Controller{
                 // Validated
                 if($this->requestModel->addRequests($data)){
                     flash('request_message', 'Request Added');
-                    redirect('request_bens');
+                    if($data['Donation_Priority']=='High') {
+                        $donors=$this->requestModel->getNearDonors($y->latitude, $y->longitude);
+                        foreach ($donors as $donor) {
+                            $email = new Email($donor->D_Email);
+                            $email->sendHighPriorityEmail();
+
+                        }
+
+
+                        redirect('request_bens');
+                    }
+                    else{
+                        redirect('request_bens');
+                    }
+
                 } else {
                     die('Something went wrong');
                 }
@@ -301,7 +330,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
          else {
             redirect('request_bens');
         }
-
     }
+
 
 }

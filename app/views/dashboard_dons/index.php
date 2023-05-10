@@ -156,7 +156,9 @@
             <h2>Completed Donations</h2>
         </div>
 
+
         <div class="recentOrders-new">
+
 
         <div class="cardHeader">
             <h3>Scheduled Requests</h3>
@@ -196,7 +198,9 @@
         </table>
         </div>
 
+
         <div class="recentOrders-new">
+
         <div class="cardHeader">
             <h3>Beneficiary Requests</h3>
         </div>

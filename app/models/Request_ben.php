@@ -175,6 +175,18 @@ WHERE partial_donations.Req_Id = :Req_Id ');
         $array=$this->db->single();
         return $array;
     }
+    public function getNearDonors($latitude,$longitude)
+    {
+        $this->db->query("SELECT *,
+       ( 6371 * acos( cos( radians(:lat) ) * cos( radians( $latitude ) ) * cos( radians( $longitude ) - radians(:lng) ) + sin( radians(:lat) ) * sin( radians( $latitude ) ) ) )
+           AS distance FROM donor_details HAVING distance < 10 ORDER BY distance");
+        $this->db->bind(':lat', $latitude);
+        $this->db->bind(':lng', $longitude);
+        $array = $this->db->resultset();
+        return $array;
+    }
+
+
 
 
 }

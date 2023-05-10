@@ -281,7 +281,7 @@ display: none;
   /* grid-template-columns: 2fr 1fr;
   grid-gap: 30px; */
   /* margin-top: 10px; */
-  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
+
 }
 
 .details .recentOrders {
@@ -292,6 +292,8 @@ display: none;
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  width: 70%;
+  margin-left: 15%;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(231, 246, 242));
 }
 
@@ -320,6 +322,8 @@ display: none;
 }
 .details table thead td {
   font-weight: 600;
+  text-align: center;
+
 }
 .details .recentOrders table tr {
   color: var(--black1);
@@ -334,16 +338,19 @@ display: none;
   transition-duration: 0.7s;
 }
 .details .recentOrders table tr td {
+  max-width:20px;
   padding: 10px;
+  text-align: left;
+  overflow-wrap: break-word;
 }
 .details .recentOrders table tr td:last-child {
-  text-align: end;
+  text-align: left;
 }
 .details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
+  text-align: left;
 }
 .details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
+  text-align: left;
 }
 .status.delivered {
   padding: 2px 4px;
