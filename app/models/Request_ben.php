@@ -186,6 +186,58 @@ WHERE partial_donations.Req_Id = :Req_Id ');
         return $array;
     }
 
+    public function feedbackpartial($id,$data){
+        $this->db->query('INSERT INTO feedback_partial (Partial_Id,D_Id,Feedback,Satisfaction) VALUES (:Partial_Id,:Donation_Id,:Feedback,:Satisfaction)');
+        // Bind values
+        $this->db->bind(':Partial_Id', $data['partialId']);
+        $this->db->bind(':Donation_Id', $id);
+        $this->db->bind(':Feedback', $data['Feedback']);
+        $this->db->bind(':Satisfaction', $data['satisfaction']);
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function feedbackfull($id,$data){
+        $this->db->query('INSERT INTO feedback_full (D_Id,Feedback,Satisfaction) VALUES (:Donation_Id,:Feedback,:Satisfaction)');
+        // Bind values
+        $this->db->bind(':Donation_Id', $id);
+        $this->db->bind(':Feedback', $data['Feedback']);
+        $this->db->bind(':Satisfaction', $data['satisfaction']);
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public function feedbackPartialCheck($id){
+        $this->db->query('SELECT * FROM feedback_partial WHERE Partial_Id = :Partial_Id');
+        $this->db->bind(':Partial_Id', $id);
+        $array=$this->db->single();
+        if($array){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function feedbackFullCheck($id){
+        $this->db->query('SELECT * FROM feedback_full WHERE D_Id = :D_Id');
+        $this->db->bind(':D_Id', $id);
+        $array=$this->db->single();
+        if($array){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
 
 
 

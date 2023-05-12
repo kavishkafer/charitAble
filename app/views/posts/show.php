@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/lists.css" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_show.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/comments/comments.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-<div class="main">
-<?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 
 
 <div class="row">
@@ -29,7 +29,7 @@
 </div>
 
 <div class="time-post">
-   <p> Written by <?php echo $data['user_id']->id; ?>  <?php echo convertTimeReadableFormat($data['post']->created_at); ?> </p>
+   <p> Written by <?php echo $data['post']->user_id; ?>  <?php echo convertTimeReadableFormat($data['post']->created_at); ?> </p>
 </div>
 
 
@@ -96,8 +96,8 @@
     </div>
 
     <br> <br> <br>
-</div>
     <script type="text/JavaScript" src="<?php echo URLROOT; ?>/js/jQuery.js"></script>
+    <script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
 
     <script type="text/javascript">
         var URLROOT = '<?php echo URLROOT; ?>';

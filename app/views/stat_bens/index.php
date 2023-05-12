@@ -23,9 +23,7 @@
                                 <canvas id="myPie"></canvas>
                                 <canvas id="myDon" ></canvas>
                             </div>
-<!--                            <div class="chart2"  >-->
-<!--                               -->
-<!--                            </div>-->
+<!--
                         </div>
                     </div>
                     </section>

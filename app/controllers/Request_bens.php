@@ -24,7 +24,7 @@ class Request_bens extends Controller{
             'pending' => $pending
         ];
 
-        
+
         $this->view('request_bens/index', $data);
     }
 
@@ -66,10 +66,10 @@ class Request_bens extends Controller{
             // Validate data
             if(empty($data['Donation_Description'])){
                 $data['Donation_Description_err'] = 'Please enter description';
-              
+
             }
             else{
-                
+
                 $data[ 'Donation_Description' ]= trim($_POST['Donation_Description']);
             }
             if(empty($data['Donation_Quantity'])){
@@ -144,40 +144,48 @@ class Request_bens extends Controller{
             ];
             $this->view('request_bens/add', $data);
         }
-      
+
     }
     public function show($id){
         if(!isLoggedIn()){
             redirect('users/login');
         }
-        
+
         $request = $this->requestModel->getRequestById($id);
         $user = $this->userModel->getBenDetailsById($request->B_Id);
 
         if($this->requestModel->partialDonorId($id)!=null) {
             $partialUser = $this->requestModel->partialDonorId($id);
             $partial = $this->requestModel->partialRequestsDetails($partialUser->Req_Id);
+            $feedbackCheck = $this->requestModel->feedbackPartialCheck($partialUser->Id);
             $data = [
                 'request' => $request,
                 'user' => $user,
                 'partial' => $partial,
-                'partialUser' => $partialUser
+                'id' => $id,
+                'partialUser' => $partialUser,
+                'feedbackCheck' => $feedbackCheck
             ];
         }
         elseif($request->Accepted==1){
             $donor = $this->userModel->getDUserById($request->D_Id);
+            $feedbackCheck= $this->requestModel->feedbackFullCheck($id);
             $data = [
                 'request' => $request,
                 'user' => $user,
                 'partial' => null,
                 'partialUser' => null,
-                'donor' => $donor
+                'id' => $id,
+                'donor' => $donor,
+                'feedbackCheck' => $feedbackCheck
+
             ];
         }else{
             $data = [
                 'request' => $request,
                 'user' => $user,
                 'partial' => null,
+                'id' => $id,
                 'partialUser' => null
             ];
         }
@@ -194,8 +202,8 @@ class Request_bens extends Controller{
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-           
-           
+
+
 
             $data = [
                 'Donation_ID' => $id,
@@ -212,7 +220,7 @@ class Request_bens extends Controller{
                 'Donation_Details_err'=>''
 
             ];
-        
+
             // Validate data
             if(empty($data['Donation_Description'])){
                 $data['Donation_Description_err'] = 'Please enter description';
@@ -243,8 +251,8 @@ class Request_bens extends Controller{
                 $this->view('request_bens/edit', $data);
             }
         } else {
-           
-            
+
+
             $request = $this->requestModel->getRequestById($id);
             // Check for owner
             if($request->B_Id != $y->B_Id){
@@ -332,5 +340,76 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
 
+    public function feedback($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $a= $_SESSION['user_id'];
+            $y =$this->requestModel-> getBenId($a);
+            // Sanitize POST array
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'Feedback' => trim($_POST['Feedback']),
+                'satisfaction' => trim($_POST['satisfaction']),
+                'user_id' => $y->B_Id,
+                'id' => $id,
+                'Feedback_err' => '',
+                'satisfaction_err' => ''
 
+            ];
+            // Validate data
+            if(empty($data['Feedback'])){
+                $data['Feedback_err'] = 'Please enter message';
+
+            }
+            else{
+
+                $data[ 'Feedback' ]= trim($_POST['Feedback']);
+            }
+            if(empty($data['satisfaction'])){
+                $data['satisfaction_err'] = 'Please enter rate';
+            }
+            else{
+                $data[ 'satisfaction' ]= trim($_POST['satisfaction']);
+            }
+
+            // Make sure no errors
+            if(empty($data['Feedback_err']) && empty($data['satisfaction_err'])) {
+
+                // Validated
+                if ($this->requestModel->partialDonorId($id) != null) {
+                    $data['partialId'] = $this->requestModel->partialDonorId($id)->Id;
+                    $this->requestModel->feedbackpartial($id, $data);
+                    echo "<script>alert('Thank you for your feedback' )</script>";
+                    redirect('request_bens');
+                } elseif ($this->requestModel->partialDonorId($id) == null) {
+                    $this->requestModel->feedbackfull($id, $data);
+                    $data['partialId'] = null;
+                    flash('request_message', 'Request Added');
+                    echo "<script>alert('Thank you for your feedback')</script>";
+                    redirect('request_bens');
+                }
+
+                    else{
+                         echo "<script>alert('You have already given feedback')</script>";
+                        redirect('request_bens');
+                    }
+
+
+            } else {
+                // Load view with errors
+                echo "<script>alert('Please enter all fields')</script>";
+                $this->view('request_bens/feedback', $data);
+            }
+        } else {
+            $data = [
+                'Feedback' => '',
+                'satisfaction' => '',
+                'id' => $id
+
+            ];
+            $this->view('request_bens/feedback', $data);
+        }
+
+
+
+      }
 }
