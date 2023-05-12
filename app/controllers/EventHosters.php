@@ -54,10 +54,16 @@
         public function view_profile($id){
             // Get profile details
         $eventHoster = $this->eventHosterModel->getEventHosterById($id);
+        $pending_event_count = $this->eventHosterModel->getPendingEventCount($id);
+        $completed_event_count = $this->eventHosterModel->getCompletedEventCount($id);
         
         $data = [
             'eventHoster' => $eventHoster,
+            'pending_event_count' => $pending_event_count,
+            'completed_event_count' => $completed_event_count
        ];
         $this->view('admin/eh_view_profile',$data);
     }
+
+   
     }
