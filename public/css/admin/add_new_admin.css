@@ -21,7 +21,8 @@
   position: absolute;
   width: calc(100% - 300px);
   left: 300px;
-  min-height: 100vh;
+  top:80px;
+  min-height: 90vh;
   background: var(--white);
   transition: 0.5s;
 }

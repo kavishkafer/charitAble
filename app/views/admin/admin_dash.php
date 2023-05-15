@@ -1,12 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
-
+<?php require APPROOT . '/views/inc/topbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/dashboard.css">
 
 <!-- ========================= Main ==================== -->
 <div class="main">
-    <?php require APPROOT . '/views/inc/topbar.php'; ?>
-
     <!-- ======================= Cards ================== -->
     <div class="cardBox">
         <a href="<?php echo URLROOT; ?>/donors/list_of_donors">
@@ -70,8 +68,8 @@
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Recent Donations</h2>
-                <a href="<?php echo URLROOT; ?>/donations/list_of_donations" class="btn">View All</a>
+                <h2>Recent Pending Donations</h2>
+                <a href="<?php echo URLROOT; ?>/donations/list_of_pending_donations" class="btn">View All</a>
             </div>
 
             <table>
@@ -82,19 +80,19 @@
                         <td>Beneficiary Name</td>
                         <td>Donation Type</td>
                         <td>Donation Date</td>
-                        <td>Status</td>
+                        <!-- <td>Status</td> -->
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <?php foreach($data['donation_details'] as $donation_details): ?>
+                        <?php foreach($data['pending_donation_details'] as $donation_details): ?>
                         <td><?php echo $donation_details->Donation_ID; ?></td>
                         <td><?php echo $donation_details->D_Name; ?></td>
                         <td><?php echo $donation_details->B_Name; ?></td>
                         <td><?php echo $donation_details->Donation_Type; ?></td>
                         <td><?php echo $donation_details->Donation_Time; ?></td>
-                        <td><?php echo $donation_details->Accepted; ?></td>
+                        <!-- <td><?php echo $donation_details->Accepted; ?></td> -->
                     </tr>
                     <?php endforeach; ?>
 
@@ -105,8 +103,8 @@
         <!-- ================= New Customers ================ -->
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Recent Events</h2>
-                <a href="<?php echo URLROOT; ?>/events/list_of_events" class="btn">View All</a>
+                <h2>Recent Pending Events</h2>
+                <a href="<?php echo URLROOT; ?>/events/list_of_pending_events" class="btn">View All</a>
             </div>
 
             <table>
@@ -123,9 +121,9 @@
 
                 <tbody>
                     <tr>
-                        <?php foreach($data['event_details'] as $event_details): ?>
+                        <?php foreach($data['pending_event_details'] as $event_details): ?>
                         <td><?php echo $event_details->Event_ID; ?></td>
-                        <td><?php echo $event_details->Event_Name; ?></td>
+                        <td><?php echo $event_details->E_Name; ?></td>
                         <td><?php echo $event_details->E_Name; ?></td>
                         <td><?php echo $event_details->B_Name; ?></td>
                         <td><?php echo $event_details->Event_Date; ?></td>

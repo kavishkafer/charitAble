@@ -15,6 +15,7 @@ try{
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/topbar.css">
 
 <!-- ========================= Main ==================== -->
 <div class="main">
@@ -22,16 +23,21 @@ try{
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Pending Events</h2>
-                <!-- <a href="#" class="btn">View All</a> -->
+                <h2>All Completed Donations</h2>
             </div>
 
             <div class="chartCard">
                 <div class="chartBox">
-                    <input type="date" onchange="startDateFilter(this)" value="
+                    <div class="datebox">
+                        <div class="datebox-det">
+                            <input type="date" onchange="startDateFilter(this)" value="
          2023-01-01" min="2023-01-01" max="2023-12-31">
-                    <input type="date" onchange="endDateFilter(this)" value="
+                        </div>
+                        <div class="datebox-det">
+                            <input type="date" onchange="endDateFilter(this)" value="
          2023-12-31" min="2023-01-01" max="2023-12-31">
+                        </div>
+                    </div>
                     <canvas id="myChart"></canvas>
                     <button onclick="generatePDF()">Generate PDF</button>
                 </div>
@@ -41,7 +47,7 @@ try{
     try{
         
         $sql = "SELECT DATE(Donation_Time) AS donation_date, COUNT(*) AS row_count 
-        FROM charitable.donation_table 
+        FROM charitable.donation_table WHERE accepted = 1 AND completed = 0 
         GROUP BY donation_date";
         
         $result = $pdo->query($sql);
@@ -66,7 +72,6 @@ try{
                 src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js">
             </script>
             <script>
-   
             const dateArrayJS = <?php echo json_encode($dateArray); ?>;
             //console.log(dateArrayJS)
 
@@ -78,7 +83,7 @@ try{
             const data = {
                 labels: dateChartJS,
                 datasets: [{
-                    label: 'Weekly Sales',
+                    label: 'Donations',
                     data: <?php echo json_encode($donationArray); ?>,
                     backgroundColor: [
                         'rgba(255, 26, 104, 0.2)',
@@ -91,18 +96,18 @@ try{
             };
 
             const bgColor = {
-                            id: 'bgColor',
-                            beforeDraw: (chart, options) => {
-                                const {
-                                    ctx,
-                                    width,
-                                    height
-                                } = chart;
-                                ctx.fillStyle = 'white'
-                                ctx.fillRect(0, 0, width, height)
-                                ctx.restore()
-                            }
-                        };
+                id: 'bgColor',
+                beforeDraw: (chart, options) => {
+                    const {
+                        ctx,
+                        width,
+                        height
+                    } = chart;
+                    ctx.fillStyle = 'white'
+                    ctx.fillRect(0, 0, width, height)
+                    ctx.restore()
+                }
+            };
 
             // config 
             const config = {
@@ -119,11 +124,14 @@ try{
                             }
                         },
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 },
-                plugins:[bgColor]
+                plugins: [bgColor]
             };
 
             // render init block
@@ -145,18 +153,16 @@ try{
                 myChart.config.options.scales.x.max = endDate.setHours(0, 0, 0, 0);
                 myChart.update();
             }
+
             function generatePDF() {
                 const canvas = document.getElementById('myChart')
-                const canvasImage = canvas.toDataURL('image/jpeg',1.0)
+                const canvasImage = canvas.toDataURL('image/jpeg', 1.0)
                 let pdf = new jsPDF()
                 pdf.setFontSize(20)
                 pdf.addImage(canvasImage, 'JPEG', 15, 50, 185, 150)
                 pdf.save("myChart.pdf")
             }
             </script>
-            
-        
-
             </body>
 
             </html>

@@ -9,9 +9,9 @@
     <div class="btnBox">
         <a href="<?php echo URLROOT; ?>/donations/list_of_pending_donations"><button class="btn">Pending
                 Donation Requests</button></a>
-        <a href="<?php echo URLROOT; ?>/donations/list_of_accepted_donations"><button class="btn">Accepted
+        <a href="<?php echo URLROOT; ?>/donations/list_of_accepted_donations"><button class="btn active">Accepted
                 Donations</button></a>
-        <a href="<?php echo URLROOT; ?>/donations/list_of_completed_donations"><button class="btn active">Completed
+        <a href="<?php echo URLROOT; ?>/donations/list_of_completed_donations"><button class="btn">Completed
                 Donations</button></a>
     </div>
 
@@ -19,10 +19,10 @@
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Completed Donations</h2>
+                <h2>Accepted Donations</h2>
             </div>
             <form id="filter-form-1" method="get"
-                action="<?php echo URLROOT; ?>/donations/completed_donations_filter_by_btype">
+                action="<?php echo URLROOT; ?>/donations/accepted_donations_filter_by_btype">
                 <label for="b_type">Filter by beneficiary type:</label>
                 <select name="b_type" id="b_type">
                     <option value="" <?php echo empty($_GET['b_type']) ? 'selected' : ''; ?>>All</option>
@@ -46,7 +46,7 @@
             </form>
 
             <form id="filter-form-2" method="get"
-                action="<?php echo URLROOT; ?>/donations/completed_donations_filter_by_dtype">
+                action="<?php echo URLROOT; ?>/donations/accepted_donations_filter_by_dtype">
                 <label for="b_type">Filter by donation type:</label>
                 <select name="d_type" id="d_type">
                     <option value="" <?php echo empty($_GET['d_type']) ? 'selected' : ''; ?>>All</option>

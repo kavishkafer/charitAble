@@ -8,15 +8,15 @@
             <!-- ======================= Buttons ================== -->
     <div class="btnBox">
                 <a href="<?php echo URLROOT; ?>/events/list_of_pending_events"><button class="btn">Pending Event Requests</button></a>
-                <a href="<?php echo URLROOT; ?>/events/list_of_accepted_events"><button class="btn">Accepted Events</button></a>
-                <a href="<?php echo URLROOT; ?>/events/list_of_completed_events"><button class="btn active">Completed Events</button></a>
+                <a href="<?php echo URLROOT; ?>/events/list_of_accepted_events"><button class="btn active">Accepted Events</button></a>
+                <a href="<?php echo URLROOT; ?>/events/list_of_completed_events"><button class="btn">Completed Events</button></a>
             </div>
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
             <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Completed Events</h2>
+                        <h2>Accepted Events</h2>
                     </div>
                     <form id="filter-form-1" method="get"
                 action="<?php echo URLROOT; ?>/donations/completed_events_filter_by_btype">
@@ -72,8 +72,7 @@
             </div>
         </div>
     </div>
-
-    <script>
+<script>
     document.getElementById('b_type').addEventListener('change', function() {
     document.getElementById('hidden-d-type').value = document.getElementById('d_type').value;
     document.getElementById('filter-form-1').submit();
@@ -84,7 +83,6 @@ document.getElementById('d_type').addEventListener('change', function() {
     document.getElementById('filter-form-2').submit();
 });
     </script>
-    
 </body>
 
 </html>

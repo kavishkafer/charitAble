@@ -1,12 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+<?php require APPROOT . '/views/inc/topbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/list_of_admins.css">
 
         
 <!-- ========================= Main ==================== -->
         <div class="main">
-            <?php require APPROOT . '/views/inc/topbar.php'; ?>
-
             <!-- ======================= Buttons ================== -->
             <div class="btnBox">
                 <a href="<?php echo URLROOT; ?>/settings/add_new_admin"><button class="btn">Add new admin</button></a>
