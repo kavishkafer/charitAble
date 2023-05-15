@@ -467,10 +467,34 @@ label{
 
 
 /* ===================== schedulereq_dons ===================== */
+/*
+livesearch
+*/
+
+.searchwrapper{
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+}
+
+#live_search{
+    background-color: lightgrey; /* Green */
+    border: #2C3333;
+    color: #2C3333;
+    padding: 16px 32px;
+    width: 25%;
+    left: 10%;
+    text-align: center;
+    color: #2C3333;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
 .calender-container{
     position: absolute;
     display: block;
-
     height:calc(100% - 210px);
     width: 50%;
     top: 100px;
@@ -490,7 +514,6 @@ label{
     /*
     background-color: rgb(107, 105, 105);
     */
-
     justify-content: center;
 }
 
@@ -793,7 +816,6 @@ td, th{
     padding: 10px;
 }
 .details .recentOrders table tr td:last-child {
-
     text-align: left;
 }
 .details .recentOrders table tr td:nth-child(2) {
@@ -801,7 +823,6 @@ td, th{
 }
 .details .recentOrders table tr td:nth-child(3) {
     text-align: left;
-
 }
 .status.delivered {
     padding: 2px 4px;

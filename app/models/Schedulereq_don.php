@@ -18,13 +18,27 @@ class Schedulereq_don {
         return $results;
     }
 
+    public function getScheduleReq(){
+
+        $this->db->query('SELECT s.*, d.*, b.B_Name
+                  FROM shedule_request_table s
+                  INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
+                  INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
+                  WHERE s.accepted = true AND s.completed = false Order by s.D_Date ASC');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+
     public function getRecentScheduleReq(){
 
         $this->db->query('SELECT s.*, d.*, b.B_Name
                   FROM shedule_request_table s
                   INNER JOIN donor_details d ON s.D_Id = d.D_Id AND ' . $_SESSION['user_id'] . ' = d.User_Id
                   INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id
-                  WHERE s.accepted = true AND s.completed = false /*s.D_Date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 20 DAY)*/ Order by s.D_Date ASC');
+                  WHERE s.accepted = true AND s.completed = false AND s.D_Date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 20 DAY) Order by s.D_Date ASC');
 
         $results = $this->db->resultSet();
 
@@ -81,7 +95,7 @@ class Schedulereq_don {
 
     public function getDRequestByID($id)
     {
-        $this->db->query('SELECT s.*, b.* FROM shedule_request_table s INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id WHERE B_Req_ID = :B_Req_ID');
+        $this->db->query('SELECT s.*, b.*, d.* FROM shedule_request_table s INNER JOIN beneficiary_details b ON s.B_Id = b.B_Id INNER JOIN donor_details d ON s.D_Id = d.D_Id WHERE B_Req_ID = :B_Req_ID');
         $this->db->bind(':B_Req_ID', $id);
         $row = $this->db->single();
         return $row;
@@ -273,6 +287,14 @@ class Schedulereq_don {
         $count=$this->db->resultset();
         return $this->db->rowCount();
     }
+
+    public function acceptedBenreqDon($id){
+        $this->db->query('Select * from donation_table Where D_Id = :D_Id AND accepted = true AND completed = false');
+        $this->db->bind(':D_Id', $id);
+        $count=$this->db->resultset();
+        return $this->db->rowCount();
+    }
+
 
 //update review req
 
