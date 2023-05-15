@@ -1,9 +1,4 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
-        
-    
-
-
     <body>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
         <div class="fullContainer banner" id="homeSection">
@@ -77,7 +72,7 @@
 
             <div class="container">
                 <h1>Together We Can <span>Help Them</span></h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
+                <p>Together, you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
                 <button>Start with a little</button>
             </div>
 
@@ -88,25 +83,25 @@
 
             <div class="container">
                 <h2 class="sectionTitle">About Us </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure molestias commodi dolor necessitatibus nisi nesciunt velit, ipsam animi accusantium, vero fugiat in iusto ipsa facere inventore culpa sed. Dignissimos, enim.</p>
+                <p>Here are ways that you can give your hand to those who are in need. </p>
                 <div class="cards">
                     <div class="donationBox">
                         <div class="title">Become a Donor</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, vitae quidem. Laudantium, animi cum saepe hic id in? Quisquam corrupti odit commodi dolor ipsam architecto vitae iusto amet explicabo illo.</p>
+                    <p>As a donor you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
                     <button>  <a href="<?php echo URLROOT; ?>/users/login">Donate Now</a></button>
                     </div>
                     <!--donation box ends here-->
 
             <div class="beneficiaryBox">
                 <div class="title">Become a Beneficiary</div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis officiis nemo quod sed mollitia maxime aliquam dolore voluptas. Dolor commodi voluptates aliquid, earum minima accusantium eos aspernatur ullam aperiam tempora.</p>
+                <p>As a beneficiary you can make a meaningful difference in the lives of innocent lives under your care by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
             <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
             </div>
                     <!--donation box ends here-->
 
             <div class="eventHosterBox">
-                <div class="title">Become an Event Hoster</div>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga neque expedita itaque alias aliquid cum qui voluptatem tenetur? Expedita enim fuga deserunt molestiae, tenetur molestias eveniet fugit non commodi pariatur!</p>
+                <div class="title">Become an Event Host</div>
+                <p>As an event host you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
                 <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
             </div>
                     <!--donation box ends here-->
@@ -119,7 +114,7 @@
     <section class="donorsContainer cover" id="donorsSection">
         <div class="container">
             <h1>Together you can <span>Help Them</span></h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
+            <p>Together, you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
             <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
         </div>
     </section>
@@ -128,7 +123,7 @@
      <section class="beneficiaryContainer cover1" id="beneficiarySection">
         <div class="container">
             <h1>Together you can <span>Help Them</span></h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
+            <p>Together, you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
             <button>Start with a little</button>
         </div>
     </section>
@@ -136,7 +131,7 @@
     <section class="beventHostersContainer cover2" id="eventHostersSection">
         <div class="container">
             <h1>Together you can <span>Help Them</span></h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
+            <p>Together, you can make a meaningful difference in the lives of individuals by providing assistance, support, and resources to those in need, fostering a more compassionate and inclusive society for all. Let's join forces to create a positive impact and ensure that nobody is left behind.</p>
             <button>Start with a little</button>
          </div>
     </section>

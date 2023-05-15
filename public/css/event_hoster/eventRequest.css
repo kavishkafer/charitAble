@@ -14,6 +14,21 @@
     --black2: rgb(107, 105, 105);
 }
 
+.green-box {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-color: green;
+}
+
+.red-box {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-color: red;
+}
 body {
     min-height: 100vh;
     overflow-x: hidden;

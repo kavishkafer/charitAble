@@ -20,6 +20,7 @@
                     <div class="cardHeader">
                         <h2>Beneficiaries</h2>
                     </div>
+                    <!--
                     <label for="b_type">Filter by beneficiary type:</label>
 
                     <div>
@@ -43,11 +44,12 @@
                     </div>
 
                     <input type="text" id="search-input" placeholder="Search by name...">
+                    -->
                      <table>
                         <thead>
                             <tr>
-                                <td>Beneficiary ID</td>
-                                <td>Benificiary Name</td>
+                                <td style="display: none">Beneficiary ID</td>
+                                <td>Beneficiary Name</td>
                                 <td>Email</td>
                                 <td>TP</td>
                                 <td>Address</td>
@@ -59,7 +61,7 @@
                          <tbody> 
                             <tr>
                                 <?php foreach($data['beneficiaries'] as $beneficiary_details): ?>
-                                <td><?php echo $beneficiary_details->B_Id; ?></td>
+                                <td style="display: none"><?php echo $beneficiary_details->B_Id; ?></td>
                                 <td class=".ben-name"><?php echo $beneficiary_details->B_Name; ?></td>
                                 <td><?php echo $beneficiary_details->B_Email; ?></td>
                                 <td><?php echo $beneficiary_details->B_Tpno; ?></td>
@@ -74,7 +76,7 @@
 
     <!-- =========== Scripts =========  -->
 <script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
-
+<!--
 <script>
     document.getElementById('B_Type').addEventListener('change', function() {
         document.getElementById('filter-form').submit();
@@ -101,7 +103,7 @@
 
     document.getElementById('search-input').addEventListener('keyup', filterBeneficiaries);
 </script>
-
+-->
     <?php require APPROOT . '/views/inc/footer.php'; ?>
 
     
