@@ -28,7 +28,8 @@
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
-    min-height: 100vh;
+    top: 80px;
+    min-height: 90vh;
     background: var(--white);
     transition: 0.5s;
   }
@@ -43,7 +44,7 @@
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 30px;
     /* margin-top: 10px; */
   }
@@ -56,42 +57,199 @@
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
   }
-  .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+  .container {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    }
+    
+  
+   .report-title{
+    font-size: 35px;
+      font-weight: 700;
+  margin-top:10px;
+  margin-left: 50px;
+  
+  }
+  
+  font.header-font-2 {
+    font-size: 30px;
+      font-family: 'Amatic SC';
+      font-weight: bold;
+  }
+  
+  .title-set{
+    display:flex;
+    width:100%;
+    height: 250px;
+  }
+  .t1{
+  width: 30%;
+  background-image: url(./donation1.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  padding: 60px;
+  font-weight: bold;
+  font-size: medium;
+  color:black;
+  border-radius: 20px;
+  cursor: pointer;
+  border:#fff solid;
+  }
+  .t1:hover{
+    transform:scale(1.1);
+  opacity:0.9;
+  
+  }
+  .title-set p{
+    padding: 5px;
+    background-color:rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+  
+  }
+  
+  .t2{
+    width: 30%;
+    background-image: url(../images/r2.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  padding: 60px;
+  font-weight: bold;
+  font-size: medium;
+  color:black;
+  border-radius: 20px;
+  cursor: pointer;
+  border:#fff solid;
+    }
+    .t2:hover{
+      transform:scale(1.1);
+    opacity:0.9;
+    
+    }
+    .t3{
+      width: 30%;
+    background-image: url(.../images/r3.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  padding: 60px;
+  font-weight: bold;
+  font-size: medium;
+  color:black;
+  border-radius: 20px;
+  cursor: pointer;
+  border:#fff solid;
+      
+      }
+      .t3:hover{
+        transform:scale(1.1);
+      opacity:0.9;
+      
+      }
+      .t4{
+        width: 30%;
+        background-image: url(../images/r4.jpeg);
+      background-size: cover;
+      background-position: center;
+      padding: 60px;
+      
+      margin-left: 2%;
+      margin-right: 2%;
+      text-align: center;
+      margin-top: 25px;
+      font-weight: bold;
+  font-size: medium;
+  color:black;
+  border-radius: 20px;
+  cursor: pointer;
+  border:#fff solid;
+        }
+        .t4:hover{
+          transform:scale(1.1);
+        opacity:0.9;
+        
+        }
+        .t5{
+          width: 30%;
+          background-image: url(../images/r5.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 60px;
+        
+        margin-left: 2%;
+        margin-right: 2%;
+        text-align: center;
+        margin-top: 25px;
+        font-weight: bold;
+    font-size: medium;
+    color:black;
+    border-radius: 20px;
     cursor: pointer;
-  }
+    border:#fff solid;
+        }
+        .t5:hover{
+          transform:scale(1.1);
+        opacity:0.9;
+        
+        }
   
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-  }
+        .t6{
+          width: 30%;
+          background-image: url(../images/r6.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 60px;
+        
+        margin-left: 2%;
+        margin-right: 2%;
+        text-align: center;
+        margin-top: 25px;
+        font-weight: bold;
+    font-size: medium;
+    color:black;
+    border-radius: 20px;
+    cursor: pointer;
+    border:#fff solid;
   
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+        }
+        .t6:hover{
+          transform:scale(1.1);
+        opacity:0.9;
+        
+        }
+        
+        .title-set div {
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .title-set p {
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .title set a {
+          text-decoration: none;
+        }
+        .title-set a:hover {
+          text-decoration: none;
+        }
+        
+        .report-title {
+          padding-bottom: 10px;
+        }
+        
+        .title-set div {
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
   
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
   
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown a:hover {background-color: #ddd;}
   
   .show {display: block;}
   .title{

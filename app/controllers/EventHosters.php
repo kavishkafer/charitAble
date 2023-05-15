@@ -54,12 +54,31 @@
         public function view_profile($id){
             // Get profile details
         $eventHoster = $this->eventHosterModel->getEventHosterById($id);
+        $pending_event_count = $this->eventHosterModel->getPendingEventCount($id);
+        $completed_event_count = $this->eventHosterModel->getCompletedEventCount($id);
         
         $data = [
             'eventHoster' => $eventHoster,
+            'pending_event_count' => $pending_event_count,
+            'pending' => 'Pending Events',
+            'completed' => 'Completed Events',
+            'completed_event_count' => $completed_event_count
        ];
         $this->view('admin/eh_view_profile',$data);
     }
+    // public function eventStatus($id){
+    //     $pending=$this->eventHosterModel->getPendingEventCount($id);
+    //     $completed=$this->eventHosterModel->getCompletedEventCount($id);
+    //     $data = [
+    //         'eventHoster'=>$eventHoster,
+    //         'pending' => 'pending Requests',
+    //         'completed' => 'completed Requests',
+    //         'pendingCount' => $pending,
+    //         'completedCount' => $completed,
+    //     ];
+    //     header('Content-Type: application/json');
+    //     echo json_encode($data);
+    }
 
    
-    }
+    

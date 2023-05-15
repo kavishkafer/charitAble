@@ -15,15 +15,15 @@
             $don_count = $this->adminDashModel->getDonCount();
             $eh_count = $this->adminDashModel->getEhCount();
             $post_count = $this->adminDashModel->getPostCount();
-            $donation_details = $this->donationModel->getDonationDetails();
-            $event_details = $this->eventModel->getEventDetails();
+            $pending_donation_details = $this->donationModel->getPendingDonationDetails();
+            $pending_event_details = $this->eventModel->getPendingEventDetails();
             $data = [
                 'ben_count' => $ben_count,
                 'don_count' => $don_count,
                 'eh_count' => $eh_count,
                 'post_count' => $post_count,
-                'donation_details' => $donation_details,
-                'event_details' => $event_details
+                'pending_donation_details' => $pending_donation_details,
+                'pending_event_details' => $pending_event_details
             ];
             $this->view('admin/admin_dash',$data);
         }
