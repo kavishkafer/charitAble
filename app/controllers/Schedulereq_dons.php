@@ -1,6 +1,8 @@
 <?php
-class Schedulereq_dons extends Controller {
-    public function __construct(){
+class Schedulereq_dons extends Controller
+{
+    public function __construct()
+    {
 
         /*if(!isLoggedIn()){
             redirect('users/login');
@@ -8,17 +10,87 @@ class Schedulereq_dons extends Controller {
         $this->userModel = $this->model('User');
         $this->requestModel = $this->model('Schedulereq_don');
         $this->requestbenModel = $this->model('Request_ben');
+        $this->benModel = $this->model('BenSearch');
 
     }
-    public function index(){
+
+    public function index()
+    {
         //get requests
-        $names = $this->requestModel->getNames();
+        if (isset($_POST['input'])) {
+            $search = $this->benModel->getBen($_POST['input']);
+            $data = [
+                'search' => $search
+            ];
 
-        $data =[
-            'names' =>$names
-        ];
+            //header('Content-Type: application/json');
+//            echo json_encode($data);
+            $this->view('schedulereq_dons/index', $data);
+        } else {
+            $search = $this->requestModel->getNames();
 
+
+            $data = [
+                'search' => $search
+            ];
+
+            $this->view('schedulereq_dons/index', $data);
+        }
+    }
+
+    public function searchBen()
+    {
+
+        if(isset($_POST['input'])){
+            $search = $_POST['input'];
+            $search_res = $this->benModel->getBen($search);
+        }
+        else{
+            $search_res = $this->requestModel->getNames();
+        }
+
+        if ($search_res) {
+            $output = '<table class="tableBen" id="tableBen">
+                <thead>
+                <tr>
+              
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Telephone Number</th>
+                    <th>E-Mail</th>
+                    <th>Members</th>
+
+
+                    
+                </tr>
+                </thead>
+                <tbody>';
+
+            foreach ($search_res as $res) {
+
+                $output .= '<tr>
+                    
+                        <td data-label="Name">' . $res->B_Name . '</td>
+                        <td data-label="Address">' . $res->B_Address . '</td>
+                        <td data-label="Telephone">' . $res->B_Tpno . '</td>
+                        <td data-label="E-Mail">'.$res->B_Email . '</td>
+                        <td data-label="members">'.$res->B_Members.'</td>
+                        
+                       
+                        
+                    </tr>';
+            };
+            $output .= '</tbody>';
+        } else {
+            $output = '<h3>No Beneficiary  Found</h3>';
+        }
+        echo $output;
+
+    }
+    public function fetch(){
+        $data=$this->benModel->getBen($_POST['input']);
         $this->view('schedulereq_dons/index', $data);
+
     }
 
     public function add($ben_id){
@@ -32,7 +104,7 @@ class Schedulereq_dons extends Controller {
             /*$data = [
                 'requests' => $requests,
                 /*            'user' => $user*/
-            
+
 
             /*if($data['requests']!=null){
                 $this->view('schedulereq_dons/add', $data);
@@ -314,7 +386,7 @@ public function reviewreq(){
     public function ongoingschreq(){
 
         //get requests
-        $requests = $this->requestModel->getRecentScheduleReq();
+        $requests = $this->requestModel->getScheduleReq();
         $requestsben = $this->requestModel->getRecentBeneficiaryReq();
 
         //$user = $this->userModel->getUserById($id);

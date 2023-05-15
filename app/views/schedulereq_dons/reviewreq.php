@@ -12,7 +12,6 @@
 <table>
 <thead>
     <tr>
-
 <!--        <td>Id</td>
 -->        <td>Beneficiary Name</td>
         <td>Date</td>

@@ -75,8 +75,8 @@
                 <td><?php echo $requestsben->Donation_Type; ?></td>
                 <td><?php echo $requestsben->Donation_Description; ?></td>
                 <td><?php echo $requestsben->Donation_Quantity; ?></td>
-                <td style="text-align: right"><a href="<?php echo URLROOT; ?>/profilebens/index/<?php echo $requests->B_Id; ?>" >View Profile</a></td>
-                <td style="text-align: right"><a href="<?php echo URLROOT; ?>/schedulereq_dons/showbenreq/<?php echo $requests->B_Id; ?>" >View More</a></td>
+                <td style="text-align: right"><a href="<?php echo URLROOT; ?>/profilebens/index/<?php echo $requestsben->B_Id; ?>" >View Profile</a></td>
+                <td style="text-align: right"><a href="<?php echo URLROOT; ?>/schedulereq_dons/showbenreq/<?php echo $requestsben->B_Id; ?>" >View More</a></td>
 
             </tr>
             <?php endforeach; ?>

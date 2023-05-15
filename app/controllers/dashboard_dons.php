@@ -19,6 +19,7 @@ class dashboard_dons extends Controller{
         $row=$this->requestModel->getDonId($_SESSION['user_id']);
         $count=$this->requestModel->completedBenReqDon($row->D_Id);
         $accept=$this->requestModel->acceptedRequestsDon($row->D_Id);
+        $acceptben=$this->requestModel->acceptedBenreqDon($row->D_Id);
         $complete=$this->requestModel->completedRequestsDon($row->D_Id);
         $pending=$this->requestModel->pendingRequestsDon($row->D_Id);
         $data=[
@@ -28,6 +29,7 @@ class dashboard_dons extends Controller{
             'requestscomben' => $requestscomben,*/
             'count' => $count,
             'accept' => $accept,
+            'acceptben' => $acceptben,
             'complete' => $complete,
             'pending' => $pending
 
