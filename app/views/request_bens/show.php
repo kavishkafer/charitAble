@@ -19,7 +19,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add request</a>
                     </div>
 
 
@@ -251,7 +251,7 @@
                                       <td><?php echo $data['donor']->D_Name; ?></td>
                                       <td> <?php echo $data['donor']->D_Tel_No; ?></td>
                                       <td><?php echo $data['request']->Donation_Quantity; ?></td>
-                                     <td> <input type="submit" class="button button1" id="Complete" onclick="checkFormSubmission(event)" value="complete"></td>
+                                     <td> <input type="submit" class="button button1" id="Complete"  value="complete"></td>
                                     <?php if($data['feedbackCheck']<=0){?> <td><a href="<?php echo URLROOT?>/request_bens/feedback/<?php echo $data['id']?>" onclick=feedback(event)>Feedback</a></td><?php } ?>
                                  </tr>
                                  </tbody>
@@ -281,7 +281,7 @@
     </div>
 
     
-
- <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <script src="<?php echo URLROOT; ?>/js/beneficiary/alertben.js"></script>
+ <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

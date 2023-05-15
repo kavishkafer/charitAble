@@ -39,9 +39,9 @@
             <li>
                 <a href="<?php echo URLROOT; ?>/stat_bens">
                         <span class="icon">
-                            <i class="fas fa-comment"></i>
+                          <i class="fas fa-file"></i>
                         </span>
-                    <span class="title">Stats</span>
+                    <span class="title">Statistics</span>
                 </a>
             </li>
 
@@ -63,8 +63,14 @@
                 </a>
             </li>
             <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+                <li style="margin-top: 200px;">
                     <a href="<?php echo URLROOT;?>/users/logout" onclick="logout(event)">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
