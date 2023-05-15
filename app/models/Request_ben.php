@@ -234,7 +234,20 @@ WHERE partial_donations.Req_Id = :Req_Id ');
             return false;
         }
     }
-
+    public function getRequest($input){
+        $this->db->query('SELECT * FROM donation_table WHERE Donation_Description LIKE :input OR Donation_Type LIKE :input OR Donation_Details LIKE :input OR Donation_Priority LIKE :input');
+        $this->db->bind(':input', '%'.$input.'%');
+        $this->db->execute();
+        $result = $this->db->resultSet();
+        return $result;
+    }
+    public function getAllRequest()
+    {
+        $this->db->query('SELECT * FROM donation_table');
+        $this->db->execute();
+        $result = $this->db->resultSet();
+        return $result;
+    }
 
 
 

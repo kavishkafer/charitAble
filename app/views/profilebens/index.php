@@ -89,7 +89,7 @@
                         </div>
                         <div class="data">
                             <button onclick="openGoogleMapsNavigation()">Open Navigation</button>
-                            <div id="map" style="width:100%;height:400px;">
+                            <div id="map" style="width:80%;height:500px; border-radius: 10px;">
 
 
 

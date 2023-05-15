@@ -178,7 +178,8 @@ display: none;
 .search {
   position: relative;
   width: 400px;
-  margin: 0 10px;
+  margin-left: 300px;
+
 }
 
 .search label {
@@ -761,7 +762,22 @@ display: table;
       color: #2C3333;
 
 }
-
+.btn-dark{
+  position: relative;
+  padding: 5px 10px;
+  background: #395B64;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  width:150px;
+  height:40px;
+  text-align:-webkit-center;
+}
+.btn-dark:hover{
+  background: #34495E;
+  color: var(--white);
+  transition: 0.6s;
+}
 
 
 

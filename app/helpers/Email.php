@@ -96,7 +96,7 @@ class Email{
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
-    public function sendHighPriorityEmail(){
+    public function sendHighPriorityEmail($receiverName){
         $this->template = URLROOT . "/templates/email.php";
 
         try{
@@ -105,11 +105,11 @@ class Email{
             $this->mail->addReplyTo($this->sender);
 
             $this->mail->isHTML(true);
-            $this->mail->Subject = "charitAble Account Verification";
+            $this->mail->Subject = "charitAble High Priority Request";
 
             if(file_exists($this->template)){
                 $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello ,</h1>" .file_get_contents($this->template).
-                    "<br><h4 style='text-align: center;'>The verification code is : <b><b></h4>";
+                    "<br><h4 style='text-align: center;'> : <b><b></h4>";
             }
             else{
                 $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello ,</h1>
@@ -121,6 +121,26 @@ class Email{
             $this->mail->send();
         }
         catch(Exception $e){
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+    public function sendReqAcceptanceEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'CharitAble');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Donation Request Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To CharitAble</h2>
+                    <h4>Your donation request has been accepted. You can view more details at ongoing request tab.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }

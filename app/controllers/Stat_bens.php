@@ -13,8 +13,8 @@ class Stat_bens extends Controller
 
     public function index()
     {
-        $userId= $_SESSION['user_id'];
-        $id=$this->requestModel->getBenId($userId)->B_Id;
+        $userId = $_SESSION['user_id'];
+        $id = $this->requestModel->getBenId($userId)->B_Id;
         $No_of_requests = $this->statModel->No_of_requests($id);
 //        $data = [
 //            'title' => 'No_of_requests',
@@ -24,6 +24,38 @@ class Stat_bens extends Controller
 //     echo json_encode($data);
         $this->view('stat_bens/index');
 
+    }
+
+    public function monthlyReport($month)
+    {
+        $userId = $_SESSION['user_id'];
+        $user = $this->requestModel->getBenId($userId);
+        $id = $user->B_Id;
+
+        $this->statModel->donationViaMonths($month, $id);
+        $this->statModel->scheduledDonationsViaMonths($month, $id);
+       $donationsMonth= $this->statModel->TotalDonationMonth($month, $id);
+       $completedDonationsMonth=$this->statModel->TotalCompletedDonationMonth($month, $id);
+       $breakfast=$this->statModel->breakfastQuantityMonth($month, $id);
+       $lunch=$this->statModel->lunchQuantityMonth($month, $id);
+       $dinner=$this->statModel->dinnerQuantityMonth($month, $id);
+       $donations=$this->statModel->completedDonationViaMonths($month, $id);
+
+        //$monthlyReport = $this->statModel->monthlyReport($id);
+        $data = [
+            'title' => 'monthlyReport',
+            'user' => $user,
+            'donationsMonth'=>$donationsMonth,
+            'completedDonationsMonth'=>$completedDonationsMonth,
+            'breakfast'=>$breakfast,
+            'lunch'=>$lunch,
+            'dinner'=>$dinner,
+            'donations'=>$donations,
+            'month'=>$month
+            //'monthlyReport' => $monthlyReport,
+
+        ];
+        $this->view('stat_bens/monthlyReport', $data);
     }
 
     public function No_of_requests()
@@ -41,11 +73,12 @@ class Stat_bens extends Controller
         echo json_encode($data);
     }
 
-    public function requestStatus(){
-        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
-        $pending=$this->requestModel->pendingRequestsBen($id);
-        $accepted=$this->requestModel->acceptedRequestsBen($id);
-        $completed=$this->requestModel->completedRequestsBen($id);
+    public function requestStatus()
+    {
+        $id = $this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $pending = $this->requestModel->pendingRequestsBen($id);
+        $accepted = $this->requestModel->acceptedRequestsBen($id);
+        $completed = $this->requestModel->completedRequestsBen($id);
         $data = [
             'pending' => 'pending Requests',
             'accepted' => 'accepted Requests',
@@ -59,20 +92,22 @@ class Stat_bens extends Controller
 
 
     }
-    public function donationViaMonths(){
-        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
-        $jan=$this->statModel->donationViaMonths($id,1);
-        $feb=$this->statModel->donationViaMonths($id,2);
-        $mar=$this->statModel->donationViaMonths($id,3);
-        $apr=$this->statModel->donationViaMonths($id,4);
-        $may=$this->statModel->donationViaMonths($id,5);
-        $jun=$this->statModel->donationViaMonths($id,6);
-        $jul=$this->statModel->donationViaMonths($id,7);
-        $aug=$this->statModel->donationViaMonths($id,8);
-        $sep=$this->statModel->donationViaMonths($id,9);
-        $oct=$this->statModel->donationViaMonths($id,10);
-        $nov=$this->statModel->donationViaMonths($id,11);
-        $dec=$this->statModel->donationViaMonths($id,12);
+
+    public function donationViaMonths()
+    {
+        $id = $this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $jan = $this->statModel->donationViaMonths($id, 1);
+        $feb = $this->statModel->donationViaMonths($id, 2);
+        $mar = $this->statModel->donationViaMonths($id, 3);
+        $apr = $this->statModel->donationViaMonths($id, 4);
+        $may = $this->statModel->donationViaMonths($id, 5);
+        $jun = $this->statModel->donationViaMonths($id, 6);
+        $jul = $this->statModel->donationViaMonths($id, 7);
+        $aug = $this->statModel->donationViaMonths($id, 8);
+        $sep = $this->statModel->donationViaMonths($id, 9);
+        $oct = $this->statModel->donationViaMonths($id, 10);
+        $nov = $this->statModel->donationViaMonths($id, 11);
+        $dec = $this->statModel->donationViaMonths($id, 12);
         $data = [
             'jan' => 'jan',
             'feb' => 'feb',
@@ -103,9 +138,13 @@ class Stat_bens extends Controller
         echo json_encode($data);
 
     }
-    public function scheduledDonationsViaMonthsValue($id){
+
+    public function scheduledDonationsViaMonthsValue()
+    {
         $id = $this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
         $monthCounts = $this->statModel->scheduledDonationsViaMonths($id);
+        $maxMembers= $this->requestModel->getBenId($_SESSION['user_id'])->B_Members;
+        $maxQuantity=$maxMembers*3*30;
 
         $counts = [
             '1' => 0,
@@ -122,7 +161,7 @@ class Stat_bens extends Controller
             '12' => 0,
         ];
 
-        foreach ($monthCounts as $month){
+        foreach ($monthCounts as $month) {
             $counts[$month->Month] = $month->Total_Donation_Quantity;
         }
 
@@ -150,20 +189,22 @@ class Stat_bens extends Controller
             'sepCount' => $counts[9],
             'octCount' => $counts[10],
             'novCount' => $counts[11],
-            'decCount' => $counts[12]
+            'decCount' => $counts[12],
+            'maxQuantity'=>$maxQuantity,
 
 //
 //
-      ];
+        ];
         header('Content-Type: application/json');
         echo json_encode($data);
 
     }
 
-    public function priorityCount(){
-        $id=$this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
-        $high=$this->statModel->highPriorityCount($id);
-        $normal=$this->statModel->normalPriorityCount($id);
+    public function priorityCount()
+    {
+        $id = $this->requestModel->getBenId($_SESSION['user_id'])->B_Id;
+        $high = $this->statModel->highPriorityCount($id);
+        $normal = $this->statModel->normalPriorityCount($id);
 
         $data = [
             'high' => 'high',
@@ -177,9 +218,6 @@ class Stat_bens extends Controller
         echo json_encode($data);
 
     }
-
-
-
 
 
     public function donationQuantity()
@@ -199,4 +237,5 @@ class Stat_bens extends Controller
         $this->view('stat_bens/index', $quantity);
 
     }
+
 }
