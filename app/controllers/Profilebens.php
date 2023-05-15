@@ -15,10 +15,12 @@ class Profilebens extends Controller
     {
         $requests = $this->profileModel->profile($id);
         $user = $this->userModel->getBenDetailsById($requests->B_Id);
+        $donor = $this->profileModel->getDonorDetailsById($_SESSION['user_id']);
 
         $data = [
             'requests' => $requests,
-            'user' => $user
+            'user' => $user,
+            'donor' => $donor
         ];
 
         if ($data['requests'] != null) {

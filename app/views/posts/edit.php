@@ -1,17 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/lists.css" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_edit.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-<div class="row">
-<div class="col-head">
-    
-<div class="header">
-  <a href="#default" class="logo"><img src="img/img_dons/logo.svg" alt="logo"></a>
-  <div class="header-right">
-    <a href="#about">Hi James!</a>
-  </div>
 
-</div>
-</div>
+
 
 <br>
 <a href="<?php echo URLROOT; ?>/posts" class="btn">Back</a>
@@ -59,5 +53,7 @@
 <input type="submit" value="Submit" class="addPbtn">
 </form>
 </div>
+
+    <script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
     <script type="text/javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

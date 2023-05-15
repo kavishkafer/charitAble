@@ -8,17 +8,17 @@
             <?php require APPROOT . '/views/inc/topbar.php'; ?>
 
             <!-- ======================= Buttons ================== -->
-            <div class="btnBox">
+            <!-- <div class="btnBox">
                 
                 <a href="<?php echo URLROOT; ?>/beneficiaries/registration_requests"><button class="btn" >Registration_Requests</button></a>
                 <a href="<?php echo URLROOT; ?>/beneficiaries/list_of_beneficiaries"><button class="btn active" >Beneficiaries' List</button></a>
-            </div>
+            </div> -->
       
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Beneficiaries</h2>
+                        <h2>Beneficiaries' List</h2>
                     </div>
                         
                      <table>

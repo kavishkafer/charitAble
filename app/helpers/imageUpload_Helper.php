@@ -15,6 +15,13 @@ function updateImage($old, $img, $img_name, $location) {
     return move_uploaded_file($img, $target);
 }
 
+function uploadDocument($document, $document_name, $location) {
+    $target = PUBROOT.$location.$document_name;
+    $target = str_replace('\\', '/', $target); // Replace backslash with forward slash
+
+    return move_uploaded_file($document, $target);
+}
+
 /*function uploadImage($img, $img_name, $location) {
     $target = PUBROOT.$location.$img_name;
 

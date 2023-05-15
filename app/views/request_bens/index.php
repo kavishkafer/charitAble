@@ -61,7 +61,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>Request_Id</td>
+
                                 <td>Description</td>
                                 <td>Type</td>
                                 <td>Quantity</td>
@@ -76,12 +76,12 @@
                             <tr>
                               
                             <?php foreach($data['requests'] as $requests): ?>
-                                <td> <?php echo $requests->Donation_ID; ?></td> 
+
                                 <td><?php echo $requests->Donation_Description; ?></td>
                                 <td><?php echo $requests->Donation_Type; ?></td>
                                 <td><?php echo $requests->Donation_Quantity; ?></td>
                                 <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
+                                <td><a  class=btn-dark href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->Donation_ID; ?>">view more</a></td>
                             </tr>
                             <?php endforeach; ?>
                             

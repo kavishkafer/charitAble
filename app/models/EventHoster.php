@@ -6,7 +6,6 @@ class EventHoster {
         $this->db = new Database;
     }
 
-
     public function getEventHosterDetails(){
         $this->db->query('SELECT * FROM event_hoster_details WHERE status_2 = "approved" ORDER BY E_ID ASC');
         $results = $this->db->resultSet();
@@ -40,5 +39,18 @@ class EventHoster {
         $row = $this->db->single();
 
         return $row;
+    }
+
+    public function getPendingEventCount($id){
+        $results = $this->db->query('SELECT * FROM event_request_table WHERE E_ID = :E_ID AND Accepted = 1 AND Completed = 0 ');
+        $this->db->bind(':E_ID', $id);
+        $count = $this->db->resultSet();
+        return $this->db->rowCount();
+    }
+    public function getCompletedEventCount($id){
+        $results = $this->db->query('SELECT * FROM event_request_table WHERE E_ID = :E_ID AND Accepted = 1 AND Completed = 1 ');
+        $this->db->bind(':E_ID', $id);
+        $count = $this->db->resultSet();
+        return $this->db->rowCount();
     }
 }
