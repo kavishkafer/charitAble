@@ -1,5 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+
+   <?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+
+
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/post/post_view.css">
@@ -10,7 +13,7 @@
 
 <div class="row">
 <div class="col">
-    <h1>Posts</h1>
+    <h1 id="welcome">Welcome! Your act of good heart never fades</h1>
 </div>
 <br> <br>
    <?php if (isLoggedIn()) : ?>
@@ -27,13 +30,27 @@
 <?php foreach($data['posts'] as $post) : ?>
 
     <div class="card">
+
+        <div class="comment-container">
+
+            <div class="comment-left">
+                <img src="<?php echo URLROOT?>/img/comments/avatar.png" alt="">
+            </div>
+
+            <div class="comment-user-name"><!--<?php echo $post->user_id?>-->Ishini Avindya
+                <div class="comment-user-name" style="color: #aaaaaa"><?php echo convertTimeReadableFormat($post->postCreated); ?></div>
+
+            </div>
+
+        </div>
+
             <h1 class="title"><?php echo $post->title; ?></h1>
 <hr>
 <br>
 
             <div class="post-image">
                 <?php if($post->image != null) : ?>
-                    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="300px">
+                    <img src="<?php echo URLROOT;?>/img/postsImgs/<?php echo $post->image;?>" alt="" width="100%vw">
                     <?php else: ?>
               <!--<img src="" alt="" width="300px"> -->
               <?php endif; ?>
@@ -44,9 +61,7 @@
 
 
 
-            <div class="time-post">
-                <p>Written by Ishini <?php echo convertTimeReadableFormat($post->postCreated); ?> </p>
-                </div>
+
 
 
                 <div class="post-footer">
@@ -63,7 +78,7 @@
 
                 </div>
 
-       
+
         <!--for testing purposes only-->
         <!--  <div id="msg"> </div> -->
 

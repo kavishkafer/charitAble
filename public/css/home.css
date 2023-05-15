@@ -120,7 +120,7 @@ header nav ul li a:hover {
 .banner {
     min-height: 100vh;
     width: 100%;
-    background-image: url("http://localhost/charitAble/img/home/homepage-main.png");
+    background-image: url("http://localhost/charitAble/public/img/home/12345.png");
     background-size: cover;
     background-attachment: fixed;
 }

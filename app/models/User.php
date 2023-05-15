@@ -154,6 +154,14 @@ class User {
         return $row;
     }
 
+    public function getEhUserById($id){
+        $this->db->query('SELECT * FROM event_hoster_details WHERE E_ID = :E_ID');
+        $this->db->bind(':E_ID', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
+
     public function getBenUserId($email){
         $this->db->query('SELECT * FROM registered_users WHERE User_Email = :email');
         $this->db->bind(':email', $email);
@@ -227,9 +235,10 @@ class User {
 
     //register event hoster
 
-    public function signup_eh($data,$x){
+    //register event host
 
-        $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id,document, profile_image) VALUES(:name, :email,:address,:telephone, :password, :user_Id, :profile_image, :document,:profile_image)');
+    public function signup_eh($data,$x){
+        $this->db->query('INSERT INTO event_hoster_details (E_Name,E_Email,E_Address,E_Tpno,E_Password,User_Id, document, profile_image) VALUES(:name, :email,:address,:telephone, :password, :user_Id, :document,:profile_image)');
         // Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -238,15 +247,16 @@ class User {
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':user_Id', $x);
         $this->db->bind(':document', $data['document_name']);
-        $this->db->bind(':profile_image', $data['profile_image_name']);  
-          // Execute
-          if($this->db->execute()){
-              return true;
-          } else {
-              return false;
-          }
-  
-  }
+        $this->db->bind(':profile_image', $data['profile_image_name']);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     
 

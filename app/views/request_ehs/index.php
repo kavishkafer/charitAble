@@ -1,260 +1,108 @@
-
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="<?php echo URLROOT; ?>/requests_ehs_v">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
-
-               
-
-                <li>
-                    <a href="<?php echo URLROOT; ?>/posts">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Forum</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-                <?php endif; ?>
+        
+<!-- ========================= Main ==================== -->
+<div class="heading">
+<h1>Start requesting an event</h1>
+</div>
+<!-- ======================= Buttons ================== -->
+            <div class="btnBox">
                 
-            </ul>
-        </div>
-
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-               
-                <!-- <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div> -->
+                <h2>Choose a Beneficiary</h2>
             </div>
-
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Total Requests</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Pending Requests</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Accepted request</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">10</div>
-                        <div class="cardName">Completed Requests</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-
+      
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Requests</h2>
-                        <a href="<?php echo URLROOT; ?>/request_ehs/add" class="btn">Add requests</a>
+                        <h2>Beneficiaries</h2>
+                    </div>
+                    <label for="b_type">Filter by beneficiary type:</label>
+
+                    <div>
+                        <form id="filter-form" method="get" action="<?php echo URLROOT; ?>/Requests_ehs/filter_by_type">
+                    <select name="B_Type" id="B_Type">
+                        <option value="" <?php echo empty($_GET['B_Type']) ? 'selected' : ''; ?>>All</option>
+                        <option value="Children Homes"
+                            <?php echo isset($_GET['B_Type']) && $_GET['B_Type'] == 'Children Homes' ? 'selected' : ''; ?>>
+                            Chidren Homes</option>
+                        <option value="Elder Homes"
+                            <?php echo isset($_GET['B_Type']) && $_GET['B_Type'] == 'Elder Homes' ? 'selected' : ''; ?>>Elder
+                            Homes</option>
+                        <option value="Disabled Institutes"
+                            <?php echo isset($_GET['B_Type']) && $_GET['B_Type'] == 'Disabled Institutes' ? 'selected' : ''; ?>>
+                            Disabled Institutes</option>
+                        <option value="Other"
+                            <?php echo isset($_GET['B_Type']) && $_GET['B_Type'] == 'Other' ? 'selected' : ''; ?>>Other
+                        </option>
+                    </select>
+                        </form>
                     </div>
 
-                    <table>
+                    <input type="text" id="search-input" placeholder="Search by name...">
+                     <table>
                         <thead>
                             <tr>
-                                <td>Request_Id</td>
-                                <td>Description</td>
-                                <td>Documents Required</td>
-                               <!-- <td>Type</td>-->
-                               <!-- <td>Quantity</td> -->
-                               <!-- <td>Priority</td> -->
-                                <td>View</td>
-                                
+                                <td>Beneficiary ID</td>
+                                <td>Benificiary Name</td>
+                                <td>Email</td>
+                                <td>TP</td>
+                                <td>Address</td>
+                                <td></td>
                             </tr>
                         </thead>
-
-                        <tbody>
-                            
+                        
+                       
+                         <tbody> 
                             <tr>
-                              
-                            <?php foreach($data['requests'] as $requests): ?>
-                                <td> <?php echo $requests->Donation_ID; ?></td> 
-                                <td><?php echo $requests->Donation_Description; ?></td>
-                                <td><?php echo $requests->Donation_Type; ?></td>
-                                <td><?php echo $requests->Donation_Quantity; ?></td>
-                                <td style="justify-content: center;"><?php echo $requests->Donation_Priority; ?></td>
-                                <td><a href="<?php echo URLROOT; ?>/request_ehs/show/<?php echo $requests->Donation_ID; ?>"?>view more</a></td>
+                                <?php foreach($data['beneficiaries'] as $beneficiary_details): ?>
+                                <td><?php echo $beneficiary_details->B_Id; ?></td>
+                                <td class=".ben-name"><?php echo $beneficiary_details->B_Name; ?></td>
+                                <td><?php echo $beneficiary_details->B_Email; ?></td>
+                                <td><?php echo $beneficiary_details->B_Tpno; ?></td>
+                                <td><?php echo $beneficiary_details->B_Address; ?></td>
+                                <td><a href="<?php echo URLROOT; ?>/request_ehs/requestEvents/<?php echo $beneficiary_details->B_Id; ?>"><button class="btn_1">Select</button></td></a></td>
                             </tr>
                             <?php endforeach; ?>
-                            
-                          
                         </tbody>
-                    </table>
-                </div>
-
-                <!-- ================= New Customers ================ -->
-                <!-- <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                    </table> -->
+                    </table> 
                 </div>
             </div>
-        </div>
-    </div>
+
+    <!-- =========== Scripts =========  -->
+<script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
+
+<script>
+    document.getElementById('B_Type').addEventListener('change', function() {
+        document.getElementById('filter-form').submit();
+    });
+
+    function filterBeneficiaries() {
+        const input = document.getElementById('search-input');
+        const filter = input.value.toUpperCase();
+        const table = document.querySelector('table');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const nameCell = rows[i].getElementsByClassName('.ben-name')[0];
+            if (nameCell) {
+                const name = nameCell.textContent || nameCell.innerText;
+                if (name.toUpperCase().indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    }
+
+    document.getElementById('search-input').addEventListener('keyup', filterBeneficiaries);
+</script>
+
+    <?php require APPROOT . '/views/inc/footer.php'; ?>
 
     
 
- <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
-<?php require APPROOT . '/views/inc/footer.php'; ?>

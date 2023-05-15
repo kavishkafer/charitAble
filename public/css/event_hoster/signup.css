@@ -67,8 +67,8 @@ align-items: center;
 
 .logo img{
 	position: absolute;
-	height: 400px;
-	width: 400px;
+	height: 200px;
+	width: 200px;
 	bottom: 64%;
 	left: 4%;
 }
@@ -76,7 +76,7 @@ align-items: center;
 .form-container{
 display: flex;
 position: absolute;
-height:100%;
+height:auto;
 width: 55%;
 top: 0;
 left: 45%;
@@ -358,6 +358,7 @@ label{
 .form1-validation > div.img{
 	opacity: 1;
 }
+
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
