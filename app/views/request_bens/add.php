@@ -1,104 +1,17 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
+<?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/form.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
 
-                <li id="#" >
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Calender</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                
-            </ul>
-        </div>
-
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-               
-                <div class="user">
-                   <i class="fas fa-user"></i>
-                </div>
-            </div>
-
-            <!-- ======================= Cards ================== -->
-            
-
-               
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Add Request</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
-                    </div>
+
                 
                 <!-- <div class="input-div one ">
                     <div class="i">
@@ -152,17 +65,17 @@
             </form> -->
             <form action="<?php echo URLROOT; ?>/request_bens/add" method="POST">
                     <div class="container">
-                        <h1>Add</h1>
-                        <p>Please fill this to add a request</p>
+
+                        <h2><p>Complete Request Adding Form</p></h2>
                         <hr>
                 <div class="content-sidebar">
                     <div class="content">
                         <div class="des">
-                        <h3> <label for="Donation Description"><b>Donation Description</b></label></h3>
+                            <label for="Donation Description"> <h3><b>Donation Description</b></h3>(please enter keywords)</label>
                     </div>
                     </div>
                     <div class="data">
-                        <textarea id="subject" name="Donation_Description" value="<?php echo $data['Donation_Description']; ?>" ></textarea>
+                        <textarea id="subject" name="Donation_Description" value="<?php echo $data['Donation_Description'];  ?>" ></textarea>
                         <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div> 
                                  
                     </div>
@@ -187,8 +100,11 @@
                             <option value="Medicine">Medicine</option>
                             <option value="Sanitary items">Sanitary items</option>
                             <option value="Others">Others</option>
-                            </select>
+                        </select>
                     </div>
+
+                        
+
                     <div class="content">
                         <h3><label for="Donation Priority"><b>Donation Priority</b></label></h3>
                     </div>
@@ -203,10 +119,15 @@
                     </div>
                     <div class="data">
                       <input type="text" name="Donation_Quantity" placeholder="Donation Quantity" value="<?php echo $data['Donation_Quantity']; ?>">
+                        <div class=warn> <?php if(isset($data['Donation_Quantity_err'])) echo $data['Donation_Quantity_err']; ?></div>
                     </div>
 
                 </div>
-                <input type="submit" class="button button1" value="submit">
+                        <div class="button-center">
+                <input type="submit" class="button" value="submit" onclick="checkAddFormSubmission(event)">
+                            </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,5 +137,31 @@
         
 
     </div>
+    <script>
+        function checkAddFormSubmission(event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            const form = event.target.closest('form'); // Find the closest form element
+
+            swal.fire({
+                title: " you sure want to add request?",
+                text: "You have to edit the request if you want to change it later, before someone accept it.",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#395B64",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+            })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        // Continue with the form submission
+                        form.submit();
+                    } else {
+                        // Stop the form submission
+                        swal.fire("Cancelled", "Form submission cancelled.", "error");
+                    }
+                });
+        }
+    </script>
     <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

@@ -3,7 +3,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
-<body>
 <!-- =============== Navigation ================ -->
 <div class="container">
     <div class="navigation">
@@ -92,7 +91,9 @@
         <div class="details">
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Orders</h2>
+                    <h2><?php echo $data['requests']->D_Name; ?></h2>
+                </div>
+                <div class="cardHeader">
                 </div>
 
                 <div class="content-sidebar">
@@ -102,17 +103,24 @@
                     <div class="data">
                         <?php echo $data['requests']->B_Req_ID; ?>
                     </div>
-                    <div class="content">
-                        <h3>Donor</h3>
-                    </div>
-                    <div class="data">
-                        <?php echo $data['requests']->D_Name; ?>
-                    </div>
+
                     <div class="content">
                         <h3>Address</h3>
                     </div>
                     <div class="data">
                         <?php echo $data['requests']->D_Address; ?>
+                    </div>
+                    <div class="content">
+                        <h3>Telephone Number</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['requests']->D_Tel_No; ?>
+                    </div>
+                    <div class="content">
+                        <h3>E-Mail</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['requests']->D_Email; ?>
                     </div>
                     <div class="content">
                         <h3>D_Date</h3>
@@ -159,12 +167,12 @@
                     </div>
 
                 </div>
-                </tbody>
-                </table>
+
             </div>
 
 
         </div>
+
     </div>
 </div>
 

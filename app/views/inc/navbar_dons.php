@@ -46,14 +46,14 @@
                     </a>
                 </li>
 
-                <li>
+                <!--<li>
                     <a href="#">
                         <span class="icon">
                             <i class="fas fa-signal"></i>
                         </span>
                         <span class="title">Stats</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li>
                     <a href="<?php echo URLROOT; ?>/posts/index">
@@ -73,7 +73,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li style="margin-top: 200px">
                     <a href="<?php echo URLROOT; ?>/users/logout">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>

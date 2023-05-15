@@ -8,28 +8,28 @@
             <?php require APPROOT . '/views/inc/topbar.php'; ?>
 
             <!-- ======================= Buttons ================== -->
-            <div class="btnBox">
+            <!-- <div class="btnBox">
                 
                 <a href="<?php echo URLROOT; ?>/eventHosters/registration_requests"><button class="btn">Registration Requests</button></a>
                 <a href="<?php echo URLROOT; ?>/eventHosters/list_of_eventHosters"><button class="btn active">Event Hosters' List</button></a>
-            </div>
+            </div> -->
       
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Event Hosters</h2>
+                        <h2>Event Hosters' List</h2>
                     </div>
-                        
+
                      <table>
                         <thead>
                             <tr>
-                                <td>Event Hoster ID</td>
+                                <td>Event Hoster ID</th>
                                 <td>Event Hoster Name</td>
                                 <td>Email</td>
                                 <td>TP</td>
                                 <td>Address</td>
-                                <td></th>
+                                <td></td>
                             </tr>
                         </thead>
                         
@@ -49,13 +49,14 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table> 
+                    </div>
                 </div>
             </div>
         </div>
 
     <!-- =========== Scripts =========  -->
     <script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
-
+    <script src='<?php echo URLROOT; ?>/public/admin/js/searchEventHosters.js'></script>
     
 </body>
 

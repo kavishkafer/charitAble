@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_dons.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/schedulereq.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/dashboard.css">
 
     <div class="details">
         <div class="cardHeader">
@@ -12,8 +12,9 @@
 <table>
 <thead>
     <tr>
-        <td>Id</td>
-        <td>Beneficiary Name</td>
+
+<!--        <td>Id</td>
+-->        <td>Beneficiary Name</td>
         <td>Date</td>
         <td>Time</th>
         <td>Food Type</td>
@@ -30,8 +31,8 @@
     <tr>
                               
     <?php foreach($data['requests'] as $requests): ?>
-        <td> <?php echo $requests->B_Req_ID; ?></td> 
-        <td><?php echo $requests->B_Name; ?></td>
+<!--        <td> <?php /*echo $requests->B_Req_ID; */?></td>
+-->        <td><?php echo $requests->B_Name; ?></td>
         <td><?php echo $requests->D_Date; ?></td>
         <td><?php echo $requests->Time; ?></td>
         <td><?php echo $requests->Food_Type; ?></td>

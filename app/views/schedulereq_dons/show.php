@@ -6,15 +6,17 @@
 <div class="details">
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Recent Orders</h2>
+
+            <h2>Recently Requested Donation</h2>
+
         </div>
                     <div class="content-sidebar">
-                        <div class="content">
+                        <!--<div class="content">
                             <h3>ID</h3>
                         </div>
                         <div class="data">
-                        <?php echo $data['requests']->B_Req_ID; ?>
-                        </div>
+                        <?php /*echo $data['requests']->B_Req_ID; */?>
+                        </div>-->
                         <div class="content">
                             <h3>D_Date</h3>
                         </div>

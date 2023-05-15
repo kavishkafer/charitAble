@@ -19,7 +19,9 @@ class User {
     }
 
     public function register($data,$x){
-        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude,document,profile_image) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude,:document,:profile_image)');
+
+        $this->db->query('INSERT INTO beneficiary_details (B_Name,B_Email,B_Tpno,B_Address,B_Password,otp,User_Id,latitude,longitude,document,profile_image,B_Type) VALUES(:name, :email,:telephone_number,:address, :password,:otp,:User_Id,:latitude,:longitude,:document,:profile_image,:B_Type)');
+
         //bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
@@ -32,8 +34,7 @@ class User {
         $this->db->bind(':longitude', $data['longitude']);
         $this->db->bind(':document', $data['document_name']);
         $this->db->bind(':profile_image', $data['profile_image_name']);
-
-
+        $this->db->bind(':B_Type', $data['B_Type']);
 
 
 

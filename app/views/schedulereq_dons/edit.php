@@ -9,6 +9,11 @@
 <div class="calender-container">
   <div class="calendar">
     <div id="calendar"></div>
+      <br>
+      <h4>Fully or partialy requested but Not Accepted yet Blue</h4>
+      <h4>Fully or partialy requested and Fully or Partialy Accepted yet Green</h4>
+      <h4>Fully or partialy requested and Fully Accepted. You can't request for this. Red</h4>
+
   </div>
 </div>
 <div class="form-container-req">
@@ -18,24 +23,6 @@
 <h2>UPDATE RESERVATION</h2>
 </div>
 
- <div class="form">
-<div class="input">
-<input type="text" name="D_Name" id="D_Name" minlength="4" class="input-field-req" value = "<?php echo $data['D_Name']; ?>" autocomplete="off"/>
-<label>Name</label>
-<!-- <div class="warn"><?php echo $data['D_Name_err']; ?></div>
- --></div> 
-
-<div class="input">
-<input type="text" name="D_Tel_No" id="D_Tel_No" minlength="4" class="input-field-req" value = "<?php echo $data['D_Tel_No']; ?>" autocomplete="off"/>
-<label>Telephone Number</label>
-<!-- <div class="warn"><?php echo $data['D_Tel_No_err']; ?></div>
- --></div>
-
-<div class="input">
-<input type="text" name="D_Address" id="D_Address" minlength="4" class="input-field-req" value = "<?php echo $data['D_Address']; ?>" autocomplete="off"/>
-<label>Address</label>
-<!-- <div class="warn"><?php echo $data['D_Address_err']; ?></div>
- --></div> 
 
 <div class="input">
 <input type="text" name="Food_Type" id="Food_Type" minlength="4" class="input-field-req" value = "<?php echo $data['Food_Type']; ?>" autocomplete="off"/>

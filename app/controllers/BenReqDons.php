@@ -57,12 +57,14 @@ class BenReqDons extends Controller
             $data = [
                 'requests' => $request,
                 'user' => $user,
+/*                'B_Name' => $user->B_Name;*/
                 'Donation_Quantity' => $request->Donation_Quantity,
                 'Donation_ID' => $request->Donation_ID,
                 'Donation_Description' => $request->Donation_Description,
                 'Donation_Type' => $request->Donation_Type,
                 'Donation_Priority' => $request->Donation_Priority,
                 'Donation_Details' => $request->Donation_Details,
+/*                'B_Name_err' =>'',*/
                 'Donation_Description_err' => '',
                 'Donation_Quantity_err' => '',
                 'Donation_Type_err' => '',

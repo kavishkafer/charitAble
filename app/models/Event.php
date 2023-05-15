@@ -6,9 +6,16 @@ class Event {
         $this->db = new Database;
     }
 
-    public function getEventDetails(){
+    public function getPendingEventDetails(){
         $this->db->query('SELECT * FROM event_request_table INNER JOIN beneficiary_details ON event_request_table.B_Id = beneficiary_details.B_Id 
-        INNER JOIN event_hoster_details ON event_request_table.E_ID = event_hoster_details.E_ID');
+        INNER JOIN event_hoster_details ON event_request_table.E_ID = event_hoster_details.E_ID WHERE accepted = 1 AND completed = 0 ORDER BY Event_ID DESC');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function getCompletedEventDetails(){
+        $this->db->query('SELECT * FROM event_request_table INNER JOIN beneficiary_details ON event_request_table.B_Id = beneficiary_details.B_Id 
+        INNER JOIN event_hoster_details ON event_request_table.E_ID = event_hoster_details.E_ID WHERE accepted = 1 AND completed = 1 ORDER BY Event_ID DESC');
         $results = $this->db->resultSet();
         return $results;
     }
