@@ -4,11 +4,18 @@
 
 
 <div class="container" >
-<!--    <div class="recentOrders" style="background-color: #0A2558">
--->
+
     <div class="calender-container">
-  <div class="calendar">
-    <div id="calendar"></div>
+<!--        <h1><?php /*echo $data['requests']->B_Name; */?></h1>
+-->  <div class="calendar">
+      <div id="calendar"></div>
+      <div id="event-details" class="popup"></div>
+
+      <br>
+      <h4><span class="blue-box"></span>   Fully or partialy requested but Not Accepted yet.</h4>
+      <h4><span class="green-box"></span>   Fully or partialy requested and Fully or Partialy Accepted.</h4>
+      <h4><span class="red-box"></span>   Fully or partialy requested and Fully Accepted. You can't request for this.</h4>
+
   </div>
 </div>
 <div class="form-container-req">
@@ -19,39 +26,22 @@
 </div>
 
 <div class="form">
-<div class="input">
-<input type="text" name="D_Name" id="D_Name" minlength="4" class="input-field-req" value = "<?php echo $data['D_Name']; ?>" autocomplete="off"/>
-<label>Name</label>
-<div class="warn"><?php echo $data['D_Name_err']; ?></div>
-</div>
 
 <div class="input">
-<input type="text" name="D_Tel_No" id="D_Tel_No" minlength="4" class="input-field-req" value = "<?php echo $data['D_Tel_No']; ?>" autocomplete="off"/>
-<label>Telephone Number</label>
-<div class="warn"><?php echo $data['D_Tel_No_err']; ?></div>
-</div>
-
-<div class="input">
-<input type="text" name="D_Address" id="D_Address" minlength="4" class="input-field-req" value = "<?php echo $data['D_Address']; ?>" autocomplete="off"/>
-<label>Address</label>
-<div class="warn"><?php echo $data['D_Address_err']; ?></div>
-</div>
-
-<div class="input">
-<input type="text" name="Food_Type" id="Food_Type" minlength="4" class="input-field-req" value = "<?php echo $data['Food_Type']; ?>" autocomplete="off"/>
+<input type="text" name="Food_Type" id="Food_Type"  class="input-field-req" value = "<?php echo $data['Food_Type']; ?>" autocomplete="off"/>
 <label>Food Type</label>
 <div class="warn"><?php echo $data['Food_Type_err']; ?></div>
 </div>
 
 <div class="input">
-<input type="text" name="Donation_Quantity" id="Donation_Quantity" minlength="4" class="input-field-req" value = "<?php echo $data['Donation_Quantity']; ?>" autocomplete="off"/>
+<input type="text" name="Donation_Quantity" id="Donation_Quantity"  class="input-field-req" value = "<?php echo $data['Donation_Quantity']; ?>" autocomplete="off"/>
 <label>Donation Quantity</label>
 <div class="warn"><?php echo $data['Donation_Quantity_err']; ?></div>
 </div>
 
 <div class="input">
 <label>Date</label>
-<input type="date" name="D_Date" id="D_Date" minlength="4" class="input-field-req" value = "<?php echo $data['D_Date']; ?>" autocomplete="off" />
+<input type="date" name="D_Date" id="D_Date"  class="input-field-req" value = "<?php echo $data['D_Date']; ?>" autocomplete="off" />
 <div class="warn"><?php echo $data['D_Date_err']; ?></div>
 </div>
 

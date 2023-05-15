@@ -5,95 +5,12 @@
 
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/donor_accept.css">
-    <!-- =============== Navigation ================ -->
-    <!--<div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php /*echo URLROOT; */?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-comment"></i>
-                        </span>
-                        <span class="title">Stats</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Calender</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="<?php /*echo URLROOT;*/?>/users/logout">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-            
-                
-            </ul>
-        </div>-->
-
-        <!-- ========================= Main ==================== -->
-        <!--<div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
--->
-               
-                <!-- <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div> -->
-<!--            </div>
--->
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Requests</h2>
+                        <h2>Recent Beneficiary Requests for Donations</h2>
 
                     </div>
                     <?php if ($data['requests']!=0){ ?>
@@ -105,8 +22,10 @@
                                 <td>Description</td>
                                 <td>Priority</td>
                                 <td>Quantity</td>
-                                <td>Accept</td>
-                                
+                                <td></td>
+                                <td></td>
+
+
                             </tr>
                         </thead>
 
@@ -124,8 +43,9 @@
 
                                 <td><?php echo $request->Remaining_Quantity; ?></td>
 
+                                <td style="text-align: right"><a href="<?php echo URLROOT; ?>/profilebens/index/<?php echo $request->B_Id; ?>" >View Profile</a></td>
+                                <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $request->Donation_ID; ?>">View More</a></td>
 
-                                <td><a href="<?php echo URLROOT;?>/BenReqDons/show/<?= $request->Donation_ID; ?>">View</a></td>
 
 
                             </tr>

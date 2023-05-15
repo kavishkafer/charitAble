@@ -5,31 +5,12 @@
 
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/dashboard.css">
-    <!-- =============== Navigation ================ -->
-
-        <!-- ========================= Main ==================== -->
-        <!--<div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-               
-                <div class="user">
-                   <i class="fas fa-user"></i>
-                </div>
-            </div>-->
-
-            <!-- ======================= Cards ================== -->
-            
-
-               
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Accept Request</h2>
+                        <h1><?php echo $data['user']->B_Name; ?></h1>
 <!--                         <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
  -->                    </div>
 
@@ -97,6 +78,18 @@
                         <div class="data">
                         <?php echo $data['requests']->Donation_Type; ?>
                         </div>
+                    <div class="content">
+                        <h3>Donation Details</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['requests']->Donation_Details; ?>
+                    </div>
+                    <div class="content">
+                        <h3>Requested Date</h3>
+                    </div>
+                    <div class="data">
+                        <?php echo $data['requests']->Donation_Time; ?>
+                    </div>
                         <div class="content">
                             <h3>Donation Quantity</h3>
                         </div>
@@ -104,6 +97,7 @@
                             <input type="text" name="Donation_Quantity" placeholder="quantity" value="<?php echo $data['requests']->Remaining_Quantity; ?>">
                             <div class="warn"> <?php if(isset($data['Quantity_err'])) echo $data['Quantity_err']; ?></div>
                         </div>
+
                     </div>
 
 

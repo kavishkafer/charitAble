@@ -152,19 +152,13 @@
                 <div class="content-sidebar">
                     <div class="content">
                         <form
-                            action="<?php echo URLROOT; ?>/Schedulereqbens/acceptRequest/<?php echo $data['requests']->B_Req_ID; ?>"
+                            action="<?php echo URLROOT; ?>/Schedulereqbens/comRequest/<?php echo $data['requests']->B_Req_ID; ?>"
                             method="post">
-                            <input type="submit" class="button button1" id="Edit" value="Accept">
+                            <input type="submit" class="button button1" id="Edit" value="Complete">
                         </form>
 
                     </div>
-                    <div class="data">
-                        <form
-                                action="<?php echo URLROOT; ?>/Schedulereqbens/delete/<?php echo $data['requests']->B_Req_ID; ?>"
-                                method="post">
-                            <input type="submit" class="button button2" id="Delete" value="Delete">
-                        </form>
-                    </div>
+
 
                 </div>
 
