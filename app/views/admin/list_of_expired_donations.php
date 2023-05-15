@@ -1,11 +1,15 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 
+
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
 
 <!-- ========================= Main ==================== -->
 <div class="main">
+
     <?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 
     <!-- ================ Order Details List ================= -->
     <div class="details">

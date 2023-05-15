@@ -18,8 +18,10 @@
 .main {
   position: absolute;
   width: calc(100% - 300px);
+  top: 80px;
   left: 300px;
-  min-height: 100vh;
+  min-height: 90vh;
+
   background: var(--white);
   transition: 0.5s;
 }
@@ -70,6 +72,16 @@
     justify-content: space-between;
     margin: 20px 0 12px 0;
 }
+
+.details .recentOrders .profile-picture {
+  text-align: center;
+}
+
+.details .recentOrders .profile-picture img {
+  border-radius: 50%;
+}
+
+
 .details .recentOrders .details-card {
     margin-bottom: 15px;
     /* width: calc(100% / 2 - 20px); */
@@ -93,6 +105,22 @@
     padding: 5px;
     border-radius: 10px;
 }
+
+
+.details .recentOrders .details-input-des {
+  display: flex;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: gray;
+  margin-top: 7px;
+  background-color: var(--white);
+  width: 100%;
+  min-height: 100px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .details .recentOrders .details-btn {
     display: flex;
     position: relative;

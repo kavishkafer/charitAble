@@ -28,7 +28,8 @@
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
-    min-height: 100vh;
+    top: 80px;
+    min-height: 90vh;
     background: var(--white);
     transition: 0.5s;
   }
@@ -41,23 +42,24 @@
 .btnBox {
   position: relative;
   width: 100%;
-  padding: 10px;
+  padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
-  margin-left: 100px;
+  margin-left: 70px;
 }
 
 .btnBox .btn {
   position: relative;
   background: var(--gray);
-  padding: 25px;
+  padding:  20px;
   font-size: 1.1rem;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   width: 250px;
   display: flex;
-  justify-content: space-between;
+  display: inherit;
+  justify-content: center;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
@@ -93,7 +95,7 @@
     grid-template-columns: 1fr;
     grid-gap: 30px;
     margin-left: 50px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
   }
   
   .details .recentOrders {
@@ -103,11 +105,12 @@
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    margin-top: 0px;
   }
   
   .details .cardHeader {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
   }
   .cardHeader h2 {
@@ -138,7 +141,6 @@
     background-color: var(--black2);
     padding: 8px;
     border-radius: 10px;
-
     border: none;
     color: #f2f2f2;
     cursor: pointer;
@@ -160,8 +162,9 @@
   } */
   .details .recentOrders table tr td {
     padding: 20px;
+    text-align: center;
   }
-  .details .recentOrders table tr td:last-child {
+  /* .details .recentOrders table tr td:last-child {
     text-align: center;
   }
   .details .recentOrders table tr td:nth-child(2) {
@@ -169,7 +172,7 @@
   }
   .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
-  }
+  } */
   
   .status.delivered {
     padding: 2px 4px;
