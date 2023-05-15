@@ -3,6 +3,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 
         <!-- ========================= Main ==================== -->
 
@@ -17,7 +19,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add request</a>
                     </div>
 
 
@@ -65,6 +67,7 @@
                             var progressValue = document.querySelector('.progress-value');
 
                             var percent = <?php echo ($data['request']->Donation_Quantity-$data['request']->Remaining_Quantity)/($data['request']->Donation_Quantity)*100;?> // replace with a value from your database
+                                var percent=Math.round(percent);
 
                                 progressBar.style.width = percent + '%';
                             progressValue.innerHTML = percent + '%';
@@ -88,7 +91,7 @@
                         <form
                                 action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['request']->Donation_ID; ?>"
                                 method="post">
-                                <input type="submit" class="button button1" id="Edit" value="Edit">
+                                <input type="submit" class="button button1" id="Edit" value="Edit"  >
                             </form>
                            
                         </div>
@@ -96,8 +99,33 @@
                             <form
                                 action="<?php echo URLROOT; ?>/request_bens/delete/<?php echo $data['request']->Donation_ID; ?>"
                                 method="post">
-                                <input type="submit" class="button button2" id="Delete" value="Delete">
+
+                                <input  type="submit" class="button button2"  id="Delete" value="Delete" onclick="checkDeleteConfirmation(event)">
                             </form>
+                            <script>
+                                function checkDeleteConfirmation(event) {
+                                    event.preventDefault(); // Prevent the form from being submitted
+                                    const form = event.target.closest('form');
+
+                                    swal.fire({
+                                        title: "Are you sure?",
+                                        text: "This action cannot be undone.",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Delete",
+                                        cancelButtonText: "Cancel",
+                                    })
+                                        .then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Continue with the form submission
+                                                form.submit();
+                                            } else {
+                                                // Stop the form submission
+                                                swal.fire("Cancelled", "Delete action cancelled.", "error");
+                                            }
+                                        });
+                            </script>
                         </div>
                     </div>
                     <?php  } ?>
@@ -112,6 +140,8 @@
                                    <td>Donor name</td>
                                    <td>Telephone number</td>
                                    <td>Donation Quantity</td>
+                                   <td>Mark as complete </td>
+
 
 
 
@@ -136,9 +166,56 @@
                                    <td><?php echo $request->D_Name; ?></td>
                                    <td> <?php echo $request->D_Tel_No; ?></td>
                                    <td><?php echo $request->Donation_Quantity; ?></td>
-                                   <td><input type="submit" class="button button1" id="Complete" value="complete"> </td>
-                                   </form>
+                                   <td><input type="submit" class="button button1" id="Complete" value="complete" onclick="checkFormSubmission(event)"> </td>
 
+                                 <?php if ($data['feedbackCheck']<=0){?>  <td><a href="<?php echo URLROOT?>/request_bens/feedback/<?php echo $data['id'] ?>" onclick="feedback(event)">Feedback</a></td><?php } ?>
+
+                                   </form>
+                                  <script>
+                                      function checkFormSubmission(event) {
+                                          event.preventDefault(); // Prevent the form from being submitted
+
+                                          const form = event.target.closest('form'); // Find the closest form element
+
+                                          swal.fire({
+                                              title: "Are you sure?",
+                                              text: "This action cannot be undone.",
+                                              icon: "warning",
+                                              showCancelButton: true,
+                                              confirmButtonColor: "#395B64",
+                                              confirmButtonText: "Yes",
+                                              cancelButtonText: "No",
+                                          })
+                                              .then((result) => {
+                                                  if (result.isConfirmed) {
+                                                      // Continue with the form submission
+                                                      form.submit();
+                                                  } else {
+                                                      // Stop the form submission
+                                                      swal.fire("Cancelled", "Form submission cancelled.", "error");
+                                                  }
+                                              });
+                                          function feedback(ev) {
+                                              ev.preventDefault();
+                                              var urlToRedirect = ev.currentTarget.getAttribute('href');
+                                              console.log(urlToRedirect);
+                                              swal.fire({
+                                                  title: "Are you want to give feedback",
+                                                  text: "Its a one time feedback",
+                                                  icon: "info",
+                                                  showCancelButton: true,
+                                                  confirmButtonColor: "#395B64",
+                                                  confirmButtonText: "Yes",
+                                                  cancelButtonText: "Cancel",
+                                                  dangerMode: true,
+                                              })
+                                                  .then((result) => {
+                                                      if (result.isConfirmed) {
+                                                          window.location.href = urlToRedirect;
+                                                      }
+                                                  });
+                                          }
+                                  </script>
 <!--                                   <td>--><?php //echo $request->Donation_Type; ?><!--</td>-->
 <!--                                   <td>--><?php //echo $request->Remaining_Quantity; ?><!--</td>-->
 <!--                                   <td style="justify-content: center;">--><?php //echo $request->Donation_Priority; ?><!--</td>-->
@@ -174,7 +251,8 @@
                                       <td><?php echo $data['donor']->D_Name; ?></td>
                                       <td> <?php echo $data['donor']->D_Tel_No; ?></td>
                                       <td><?php echo $data['request']->Donation_Quantity; ?></td>
-                                     <td> <input type="submit" class="button button1" id="Complete" value="complete"></td>
+                                     <td> <input type="submit" class="button button1" id="Complete"  value="complete"></td>
+                                    <?php if($data['feedbackCheck']<=0){?> <td><a href="<?php echo URLROOT?>/request_bens/feedback/<?php echo $data['id']?>" onclick=feedback(event)>Feedback</a></td><?php } ?>
                                  </tr>
                                  </tbody>
                             </table>
@@ -183,7 +261,7 @@
 
 
 
-                               <?php   }
+                       <?php   }
                        else{ ?>
 
                            <div class="nodata"> <img src="<?php echo URLROOT; ?>/img/nodata.svg" alt="empty" class="empty">
@@ -203,6 +281,7 @@
     </div>
 
     
-
+<script src="<?php echo URLROOT; ?>/js/beneficiary/alertben.js"></script>
  <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

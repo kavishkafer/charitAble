@@ -26,6 +26,7 @@ p{
 }
 .fullContainer {
   width: 100%;
+  align-content: center;
   
 }
 
@@ -91,7 +92,9 @@ font-size: 18px;
 margin-left: 15px;
 cursor: pointer;
 text-align: center;
-} 
+}
+
+
 
 
 .card .title{
@@ -100,6 +103,7 @@ margin-bottom: 0px;
 color: black;
 font-size: 30px;
 align-content: center;
+  text-align: center;
 
 }
 
@@ -110,12 +114,13 @@ align-content: center;
 display: flex;
 justify-content: center;
 align-items: center;
+  align-content: center;
 }
 .card{
 
 background-color: whitesmoke;
 width: auto;
-margin: 15px 50px 15px 50px;
+margin: 15px 80px 15px 80px;
 padding: 20px 20px 20px 20px;
 border-radius: 20px;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -136,7 +141,7 @@ border-radius: 20px;
 
 .card .post-footer{
 display: flex;
-align-items: center;
+align-content: center;
 }
 
 
@@ -146,6 +151,8 @@ top: 5px;
 width: 20px;
 height: 20px;
 margin-right: 3px;
+  align-content: center;
+  align-items: center;
 
 }
 
@@ -154,6 +161,7 @@ padding: 10px;
 color: #395B64;
 cursor: pointer;
 transition: 0.2s all;
+  align-content: center;
 }
 
 .card .post-footer .post-likes.active{
@@ -187,9 +195,161 @@ float: none;
 
 .text p{
 font-size: 30px;
+  text-align: center;
+  align-content: center;
 }
 
 
 .time-post p{
 color: rgb(163, 163, 163);
 }
+
+
+/*here is the css for the comments section*/
+.comment-section-container{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 800px;
+  transition: .2s all;
+  padding: 20px;
+  border-radius: 20px;
+
+}
+
+
+/*comments*/
+
+.comment-container{
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  border-radius: 20px;
+
+}
+
+.comment-container .comment-left{
+  padding:0 20px 0 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-container .comment-left img{
+  height: 40px;
+  width: 40px;
+  border-radius:50%
+}
+
+.comment-container .comment-right .comment-user-name{
+  font-weight: 600;
+  display: flex;
+
+}
+
+hr {
+  color: #ffffff;
+}
+
+.title{
+  padding-bottom: 10px;
+}
+
+
+.post-card{
+  background-color: rgb(236, 236, 236);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.navbar{
+  display: none;
+}
+
+input[type=text]{
+  border: none;
+  outline: none;
+  height: 55px;
+  padding: 0 2rem;
+  border-radius: 100px;
+  width: 60%;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+input::placeholder {
+  font: 18px Readex Pro;
+  opacity: 0.5;
+  font-weight:300;
+}
+
+.post-footer-commentbtn{
+  padding-left: 10px;
+  border-radius: 20px;
+  padding-right: 10px;
+
+}
+
+.comment-input-field{
+  display: flex;
+  flex-direction: row;
+}
+
+.post-footer-commentbtn:hover{
+  background-color: beige;
+
+
+}
+
+#welcome{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.body p{
+  font-size: 15px;
+  font-style: normal;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.time-post p{
+  color: rgb(163, 163, 163);
+  text-align: center;
+}
+
+
+.post-option{
+  display: flex;
+  flex-direction: row;
+}
+
+.comments-delete-btn img{
+  height: 28px;
+  width: 28px;
+  padding-left: 10px;
+
+  cursor: pointer;
+  transition: .2s all;
+}
+
+.comments-delete-btn{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.comments-delete-btn:hover{
+  background-color: #ffc5c5;
+}
+
+/*comments*/
+

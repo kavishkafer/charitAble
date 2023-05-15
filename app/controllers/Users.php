@@ -375,7 +375,11 @@ public function signup_dons(){
           'tel_no_err' => '',
           'address_err' => '',
           'password_err' => '',
-          'confirm_password_err' => ''
+
+          'confirm_password_err' => '',
+          'document_err' =>'',
+          'profile_image_err' => ''
+
       ];
       //Validate Email
       if(empty($data['email'])){
@@ -468,134 +472,157 @@ public function signup_dons(){
   }
 }
 
-public function signup_eh(){
-  // Check for POST
-  
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-      // Process form
+
+    public function signup_eh(){
+        // Check for POST
 
 
-      //sanitize POST data
-      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      $user_role = 3;
-   
-      // Init data
-      $data = [
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
-          'name' => trim($_POST['name']),
-        'email' => trim($_POST['email']),
-        'address' => trim($_POST['address']),
-        'tel_no' => trim($_POST['tel_no']),
-        'password' => trim($_POST['password']),
-        'confirm_password' => trim($_POST['confirm_password']),
-        'user_role' => $user_role,
-          'profile_image_err' => '',
-        'name_err' => '',
-        'email_err' => '',
-        'address_err' => '',
-        'tel_no_err' => '',
-        'password_err' => '',
-        'confirm_password_err' => '',
-
-      ];
-
-      //validate profile_image and upload
-      if(uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-          //done
-      }
-      else {
-          $data['profile_image_err'] = 'Error uploading image';
-      }
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
 
 
-      //Validate Email
-      if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email';
-      }else{
-        //check email
-        if($this->userModel->findUserByEmail($data['email'])){
-            $data['email_err'] = 'Email is already taken';  
+
+            //sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $user_role = 3;
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'email' => trim($_POST['email']),
+                'address' => trim($_POST['address']),
+                'tel_no' => trim($_POST['tel_no']),
+                'password' => trim($_POST['password']),
+                'confirm_password' => trim($_POST['confirm_password']),
+                'user_role' => $user_role,
+                'document' => $_FILES['document'],
+                'document_name' => time().'_'.$_FILES['document']['name'],
+                'profile_image' => $_FILES['profile_image'],
+                'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
+                'name_err' => '',
+                'email_err' => '',
+                'address_err' => '',
+                'tel_no_err' => '',
+                'password_err' => '',
+                'confirm_password_err' => '',
+                'document_err' => '',
+                'profile_image_err' => ''
+
+            ];
+
+
+
+            //Validate Email
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter email';
+            }else{
+                //check email
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'Email is already taken';
+                }
+            }
+            //Validate Name
+            if(empty($data['name'])){
+                $data['name_err'] = 'Please enter name';
+            }
+            //Validate Telephone Number
+            if(empty($data['tel_no'])){
+                $data['tel_no_err'] = 'Please enter telephone number';
+            }
+            //Validate Address
+            if(empty($data['address'])){
+                $data['address_err'] = 'Please enter address';
+            }
+            //Validate Password
+            if(empty($data['password'])){
+                $data['password_err'] = 'Please enter password';
+            } elseif(strlen($data['password']) < 6){
+                $data['password_err'] = 'Password must be at least 6 characters';
+            }
+            //Validate Confirm Password
+            if(empty($data['confirm_password'])){
+                $data['confirm_password_err'] = 'Please confirm password';
+            } else {
+                if($data['password'] != $data['confirm_password']){
+                    $data['confirm_password_err'] = 'Passwords do not match';
+                }
+            }
+
+            if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
+                //done
+            }
+            else {
+                $data['document_err'] = 'Error uploading image';
+            }
+
+            //validate profile_image and upload
+            if ($data['profile_image']['size'] > 0) {
+                if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
+                    //done
+                } else {
+                    $data['profile_image_err'] = 'unsuccessful image uploading';
+
+                }
+            } else {
+                $data['profile_image_name'] = null;
+            }
+
+            // Make sure errors are empty
+            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])) {
+                // Validatede
+
+
+                //Hash
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                //Register User
+                if($this->userModel->regcom($data)){
+                    $x=$this->userModel->getEhUserId($data['email']);
+                    $this->userModel->signup_eh($data, $x);
+                    flash('register_success', 'You are registered and can log in');
+                    redirect('users/login');
+                } else {
+                    die('Something went wrong');
+                }
+
+
+
+            } else {
+                // Load view with errors
+                $this->view('users/signup_eh', $data);
+            }
+
+
+
+
+            // Load view
+            $this->view('users/signup_eh', $data);
+        }
+        else{
+            // Init data
+            $data = [
+                'name' => '',
+                'email' => '',
+                'address' => '',
+                'tel_no' => '',
+                'password' => '',
+                'confirm_password' => '',
+                'document' => '',
+                'profile_image' => '',
+                'name_err' => '',
+                'email_err' => '',
+                'tel_no_err' => '',
+                'address_err' => '',
+                'password_err' => '',
+                'confirm_password_err' => '',
+                'document_err' => '',
+                'profile_image_err' => ''
+            ];
+            // Load view
+            $this->view('users/signup_eh', $data);
         }
     }
 
 
-
-      //Validate Name
-      if(empty($data['name'])){
-          $data['name_err'] = 'Please enter name';
-      }
-      //Validate Telephone Number
-      if(empty($data['tel_no'])){
-          $data['tel_no_err'] = 'Please enter telephone number';
-      }
-      //Validate Address
-      if(empty($data['address'])){
-          $data['address_err'] = 'Please enter address';
-      }
-      //Validate Password
-      if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password';
-      } elseif(strlen($data['password']) < 6){
-          $data['password_err'] = 'Password must be at least 6 characters';
-      }
-      //Validate Confirm Password
-      if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Please confirm password';
-      } else {
-          if($data['password'] != $data['confirm_password']){
-              $data['confirm_password_err'] = 'Passwords do not match';
-          }
-      }
-      // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_Image_err'])) {
-          // Validatede
-        
-          //Hash
-          $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-          //Register User
-          if($this->userModel->regcom($data)){
-            $x=$this->userModel->getEhUserId($data['email']);
-            $this->userModel->signup_eh($data, $x);
-              flash('register_success', 'You are registered and can log in');
-              redirect('users/login');
-          } else {
-              die('Something went wrong');
-          }
-
-          
-      } else {
-          // Load view with errors
-          $this->view('users/signup_eh', $data);
-      }
-
-      
-
-      // Load view
-      $this->view('users/signup_eh', $data);
-  }
-  else{
-      // Init data
-      $data = [
-          'profile_image' => '',
-        'name' => '',
-        'email' => '',
-                  'address' => '',
-                  'tel_no' => '',
-                  'password' => '',
-                  'confirm_password' => '',
-          'profile_image_err' => '',
-                  'name_err' => '',
-                  'email_err' => '',
-                  'tel_no_err' => '',
-                  'address_err' => '',
-                  'password_err' => '',
-                  'confirm_password_err' => ''
-      ];
-      // Load view
-      $this->view('users/signup_eh', $data);
-  }
-}
 
    
         

@@ -17,25 +17,25 @@ const ctd = document.getElementById('myDon');
 
 
 
-new Chart(ctr, {
-    type: 'line',
-    data: {
-        labels: [count, 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-            label: 'No. of Donations',
-            data: [req, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
-            borderWidth: 1
-        }]
-    },
-
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
+// new Chart(ctr, {
+//     type: 'line',
+//     data: {
+//         labels: [count, 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//         datasets: [{
+//             label: 'No. of Donations',
+//             data: [req, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+//             borderWidth: 1
+//         }]
+//     },
+//
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         }
+//     }
+// });
 function No_of_requests() {
 
     $.ajax({
@@ -169,6 +169,66 @@ function donutChart(){
 
 }
 donutChart();
+
+function lineChart() {
+
+    $.ajax({
+        url: "http://localhost/charitAble/Stat_bens/scheduledDonationsViaMonthsValue",
+        method: 'GET',
+        dataType: 'JSON',
+        success: function (response3) {
+
+            console.log(response3);
+
+
+
+            const data = {
+                labels: [response3.jan, response3.feb, response3.mar, response3.apr, response3.may, response3.jun, response3.jul, response3.aug, response3.sep, response3.oct, response3.nov, response3.dec],
+                datasets: [
+                    {
+                        label: 'No of Donations',
+                        data: [response3.janCount, response3.febCount, response3.marCount, response3.aprCount, response3.mayCount, response3.junCount, response3.julCount, response3.augCount, response3.sepCount, response3.octCount, response3.novCount, response3.decCount],
+                        borderWidth: 2,
+                        borderColor: 'rgb(54, 162, 235)'
+                    },
+                    {
+                        type: 'line',
+                        label: 'Maximum Quantity',
+                        data: [response3.maxQuantity, response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity,response3.maxQuantity],
+                        borderColor: 'rgb(255, 0, 0)',
+                        borderWidth: 0.5,
+
+
+                        fill: false
+                    }
+                ]
+            };
+
+            //config block
+            const config = {
+                type: 'line',
+                data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+            //Render block
+            const myChart = new Chart(
+                document.getElementById('myLine'),
+                config
+            );
+
+
+        }
+    })
+
+
+}
+lineChart();
 
 
 

@@ -102,7 +102,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
+
                     </div>
                     <!-- <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['Donation_ID'];?>" method="GET">
              
@@ -216,7 +216,7 @@
                     </div>
 
                 </div>
-                <input type="submit" class="button button1" value="submit">
+                <input type="submit" class="button button1" value="submit" onclick="checkAddFormSubmission(event)">
                 </div>
             </div>
         </div>
@@ -225,6 +225,6 @@
                   
 
     
-
+<script src="<?php echo URLROOT; ?>/js/beneficiary/alertben.js"></script>
  <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

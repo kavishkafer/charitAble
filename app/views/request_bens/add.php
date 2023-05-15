@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/form.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 <body>
     <!-- =============== Navigation ================ -->
 
@@ -89,6 +90,18 @@
                         <div class=warn> <?php if(isset($data['Donation_Details_err'])) echo $data['Donation_Details_err']; ?></div>
 
                     </div>
+                    <div class="content">
+                        <h3><label for="Donation Type"><b>Donation type</b></label></h3>
+                    </div>
+                    <div class="data">
+                        <select  name="Donation_Type">
+                            <option value="Dry Rations">Dry rations</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Sanitary items">Sanitary items</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
 
                         
 
@@ -111,8 +124,9 @@
 
                 </div>
                         <div class="button-center">
-                <input type="submit" class="button" value="submit">
+                <input type="submit" class="button" value="submit" onclick="checkAddFormSubmission(event)">
                             </div>
+
                     </div>
                 </div>
             </div>
@@ -123,5 +137,31 @@
         
 
     </div>
+    <script>
+        function checkAddFormSubmission(event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            const form = event.target.closest('form'); // Find the closest form element
+
+            swal.fire({
+                title: " you sure want to add request?",
+                text: "You have to edit the request if you want to change it later, before someone accept it.",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#395B64",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+            })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        // Continue with the form submission
+                        form.submit();
+                    } else {
+                        // Stop the form submission
+                        swal.fire("Cancelled", "Form submission cancelled.", "error");
+                    }
+                });
+        }
+    </script>
     <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

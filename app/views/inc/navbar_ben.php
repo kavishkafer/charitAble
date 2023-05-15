@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_dashboard.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 <body>
 <!-- =============== Navigation ================ -->
 <div class="container">
@@ -37,9 +39,9 @@
             <li>
                 <a href="<?php echo URLROOT; ?>/stat_bens">
                         <span class="icon">
-                            <i class="fas fa-comment"></i>
+                          <i class="fas fa-file"></i>
                         </span>
-                    <span class="title">Stats</span>
+                    <span class="title">Statistics</span>
                 </a>
             </li>
 
@@ -61,9 +63,15 @@
                 </a>
             </li>
             <?php if(isset($_SESSION['user_id'])) : ?>
-
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <br>-->
+                <li style="margin-top: 200px;">
+                    <a href="<?php echo URLROOT;?>/users/logout" onclick="logout(event)">
                         <span class="icon">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
@@ -74,7 +82,27 @@
 
         </ul>
     </div>
-
+<script>
+    function logout(ev) {
+        ev.preventDefault();
+        var urlToRedirect = ev.currentTarget.getAttribute('href');
+        console.log(urlToRedirect);
+        swal.fire({
+            title: "Confirm Logout",
+            text: "Are you sure you want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#395B64",
+            confirmButtonText: "Logout",
+            cancelButtonText: "Cancel",
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = urlToRedirect;
+                }
+            });
+    }
+</script>
     <!-- ========================= Main ==================== -->
     <div class="main">
         <div class="topbar">

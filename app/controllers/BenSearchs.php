@@ -18,7 +18,7 @@ class BenSearchs extends Controller
                 'search' => $search
             ];
 
-           //header('Content-Type: application/json');
+            //header('Content-Type: application/json');
 //            echo json_encode($data);
             $this->view('benSearch/index', $data);
         } else {
@@ -66,8 +66,7 @@ class BenSearchs extends Controller
                     
                         <td data-label="Name">' . $res->B_Name . '</td>
                         <td data-label="Address">' . $res->B_Address . '</td>
-                        <td data-label="Telephone">' . $res->B_Tpno . '</td>
-                        <td data-label="members">'.$res->B_Members.'</td>
+                        <td data-label="">' . $res->B_Tpno . '</td>
                        
                         
                     </tr>';
