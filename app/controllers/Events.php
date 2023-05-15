@@ -7,19 +7,11 @@
                 $this->eventModel = $this->model('Event');
         }
 
-        public function list_of_pending_events(){
-            $event_details = $this->eventModel->getPendingEventDetails();
+        public function list_of_events(){
+            $event_details = $this->eventModel->getEventDetails();
         $data = [
              'event_details' => $event_details
         ];
-        $this->view('admin/list_of_pending_events',$data);
-        }
-
-        public function list_of_completed_events(){
-            $event_details = $this->eventModel->getCompletedEventDetails();
-        $data = [
-             'event_details' => $event_details
-        ];
-        $this->view('admin/list_of_completed_events',$data);
+        $this->view('admin/list_of_events',$data);
         }
     }

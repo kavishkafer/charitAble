@@ -6,22 +6,9 @@ class Donation {
         $this->db = new Database;
     }
 
-    public function getPendingDonationDetails(){
+    public function getDonationDetails(){
         $this->db->query('SELECT * FROM donation_table INNER JOIN beneficiary_details ON donation_table.B_Id = beneficiary_details.B_Id 
-        INNER JOIN donor_details ON donation_table.D_Id = donor_details.D_Id WHERE Accepted = 1 AND completed = 0 AND expiry = 0 ORDER BY Donation_ID DESC');
-        $results = $this->db->resultSet();
-        return $results;
-    }
-    public function getCompletedDonationDetails(){
-        $this->db->query('SELECT * FROM donation_table INNER JOIN beneficiary_details ON donation_table.B_Id = beneficiary_details.B_Id 
-        INNER JOIN donor_details ON donation_table.D_Id = donor_details.D_Id WHERE Accepted = 1 AND completed = 1 ORDER BY Donation_ID DESC' );
-        $results = $this->db->resultSet();
-        return $results;
-    }
-
-    public function getExpiredDonationDetails(){
-        $this->db->query('SELECT * FROM donation_table INNER JOIN beneficiary_details ON donation_table.B_Id = beneficiary_details.B_Id 
-        INNER JOIN donor_details ON donation_table.D_Id = donor_details.D_Id WHERE Accepted = 1 AND expiry = 1 ORDER BY Donation_ID DESC' );
+        INNER JOIN donor_details ON donation_table.D_Id = donor_details.D_Id');
         $results = $this->db->resultSet();
         return $results;
     }
@@ -31,7 +18,6 @@ class Donation {
         $results = $this->db->resultSet();
         return $results;
     }
-    
 
     public function approveRequest($id) {
         $this->db->query('UPDATE beneficiary_details SET status_2 = "approved" WHERE B_id = :B_id');

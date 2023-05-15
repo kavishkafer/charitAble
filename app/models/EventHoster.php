@@ -40,17 +40,4 @@ class EventHoster {
 
         return $row;
     }
-
-    public function getPendingEventCount($id){
-        $results = $this->db->query('SELECT * FROM event_request_table WHERE E_ID = :E_ID AND Accepted = 1 AND Completed = 0 ');
-        $this->db->bind(':E_ID', $id);
-        $count = $this->db->resultSet();
-        return $this->db->rowCount();
-    }
-    public function getCompletedEventCount($id){
-        $results = $this->db->query('SELECT * FROM event_request_table WHERE E_ID = :E_ID AND Accepted = 1 AND Completed = 1 ');
-        $this->db->bind(':E_ID', $id);
-        $count = $this->db->resultSet();
-        return $this->db->rowCount();
-    }
 }

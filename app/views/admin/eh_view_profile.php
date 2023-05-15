@@ -19,7 +19,7 @@
         <div class="recentOrders">
             <h2><?php echo $data['eventHoster']->E_Name; ?></h2>
 
-            <!-- <div class="details-card">
+            <div class="details-card">
                 <div class="details-head">Event Hoster ID :-</div>
                 <div class="details-input"><?php echo $data['eventHoster']->E_ID; ?></div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="details-head">Event Hoster Name :-</div>
                 <div class="details-input"><?php echo $data['eventHoster']->E_Name; ?></div>
             </div>
-            <br /> -->
+            <br />
 
             <div class="details-card">
                 <div class="details-head">Event Hoster Email :-</div>
@@ -60,16 +60,7 @@
 
         <div class="recentOrders">
             <h2>More details...</h2>
-            <div class="details-card">
-                <div class="details-head">Pending Events :-</div>
-                <div class="details-input"><?php echo $data['pending_event_count']; ?></div>
-            </div>
-            <div class="details-card">
-                <div class="details-head">Completed Events :-</div>
-                <div class="details-input"><?php echo $data['completed_event_count']; ?></div>
-            </div>
         </div>
-        
     </div>
 </div>
 

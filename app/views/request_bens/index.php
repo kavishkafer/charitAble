@@ -1,5 +1,4 @@
 
-
 <?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
 
 

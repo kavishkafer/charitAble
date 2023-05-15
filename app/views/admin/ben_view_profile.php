@@ -19,7 +19,7 @@
         <div class="recentOrders">
             <h2><?php echo $data['beneficiary']->B_Name; ?></h2>
 
-            <!-- <div class="details-card">
+            <div class="details-card">
                 <div class="details-head">Beneficiary ID:-</div>
                 <div class="details-input"><?php echo $data['beneficiary']->B_Id; ?></div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="details-head">Beneficiary Name :- </div>
                 <div class="details-input"><?php echo $data['beneficiary']->B_Name; ?></div>
             </div>
-            <br /> -->
+            <br />
 
             <div class="details-card">
                 <div class="details-head">Beneficiary Email :-</div>
@@ -57,10 +57,6 @@
         </div>
         <div class="recentOrders">
             <h2>More details...</h2> 
-            <div class="details-card">
-                <div class="details-head">Beneficiary TP :-</div>
-                <div class="details-input"><?php echo $data['beneficiary']->B_Members; ?></div>
-            </div>
         </div>
     </div>
 </div>

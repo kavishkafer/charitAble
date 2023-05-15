@@ -44,21 +44,12 @@ class Users extends Controller
                 'otp'=>$otp_code,
                 'latitude' => trim($_POST['latitude']),
                 'longitude' => trim($_POST['longitude']),
-                'B_Type' => trim($_POST['B_Type']),
-                'document' => $_FILES['document'],
-                'document_name' => time().'_'.$_FILES['document']['name'],
-                'profile_image' => $_FILES['profile_image'],
-                'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
                 'address_err' => '',
                 'password_err' => '',
-                'confirm_password_err' => '',
-                'document_err' => '',
-
-                'profile_image_err' => '',
-                'B_Type_err' => ''
+                'confirm_password_err' => ''
             ];
             //Validate Email
             if(empty($data['email'])){
@@ -90,40 +81,13 @@ class Users extends Controller
                     $data['confirm_password_err'] = 'Passwords do not match';
                 }
             }
-
-            //validate document upload
-            if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
-              //done
-          }
-          else {
-              $data['document_err'] = 'Error uploading image';
-          }
-
-            //validate profile_image and upload
-            if ($data['profile_image']['size'] > 0) {
-                if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-                    //done
-                } else {
-                    $data['profile_image_err'] = 'unsuccessful image uploading';
-
-                }
-            } else {
-                $data['profile_image_name'] = null;
-            }
-
-            if(empty($data['B_Type'])){
-                $data['B_Type_err'] = 'Please enter Beneficiary Type';
-            }
-
-
             // Make sure errors are empty
-            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['document_err']) && empty($data['profile_image_err']&& empty($data['B_Type_err'])) ){
-
+            if(empty($data['email_err']) && empty($data['name_err']) && empty($data['telephone number_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
                 // Validated
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 //Register User
-
+                
 
                 if($this->userModel->regcom($data) ){
 
@@ -132,7 +96,7 @@ class Users extends Controller
                     $this->userModel->register($data,$x);
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
-
+                    
 
                     redirect('Users/verify');
                 } else {
@@ -161,23 +125,16 @@ class Users extends Controller
                 'otp'=>'',
                 'status_2' => '',
                 'role'=>'',
-                'B_Type' => '',
                 'latitude' => '',
                 'longitude' => '',
+
                 'confirm_password' => '',
-                'document' => '',
-                'profile_image' => '',
                 'name_err' => '',
                 'email_err' => '',
                 'telephone_number_err' => '',
                 'address_err' => '',
                 'password_err' => '',
-                'confirm_password_err' => '',
-                'document_err' => '',
-
-                'profile_image_err' => '',
-                'B_Type_err' => ''
-
+                'confirm_password_err' => ''
             ];
             // Load view
             $this->view('users/signup_ben', $data);
@@ -413,24 +370,17 @@ public function signup_dons(){
           'otp'=>$otp_code,
           'latitude' => trim($_POST['latitude']),
           'longitude' => trim($_POST['longitude']),
-
-          'document' => $_FILES['document'],
-          'document_name' => time().'_'.$_FILES['document']['name'],
-
-          'profile_image' => $_FILES['profile_image'],
-          'profile_image_name' => time().'_'.$_FILES['profile_image']['name'],
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
           'address_err' => '',
           'password_err' => '',
+
           'confirm_password_err' => '',
           'document_err' =>'',
           'profile_image_err' => ''
+
       ];
-
-      
-
       //Validate Email
       if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
@@ -467,28 +417,8 @@ public function signup_dons(){
               $data['confirm_password_err'] = 'Passwords do not match';
           }
       }
-
-      //doc and profile img
-      if(uploadDocument($data['document']['tmp_name'], $data['document_name'], '/img/documents/')) {
-        //done
-      }
-      else {
-        $data['document_err'] = 'Error uploading image';
-      }
-      
-            if ($data['profile_image']['size'] > 0) {
-                if (uploadImage($data['profile_image']['tmp_name'], $data['profile_image_name'], '/img/profileImgs/')) {
-                    //done
-                } else {
-                    $data['profile_image_err'] = 'unsuccessful image uploading';
-      
-                }
-            } else {
-                $data['profile_image_name'] = null;
-            }
-
       // Make sure errors are empty
-      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['document_err']) && empty($data['profile_image_err'])){
+      if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
           // Validated
           //Hash
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -529,28 +459,27 @@ public function signup_dons(){
           'user_role' => '',
           'latitude' => '',
           'longitude' => '',
-          'document' => '',
-          'profile_image' => '',
+
           'name_err' => '',
           'email_err' => '',
           'tel_no_err' => '',
           'address_err' => '',
           'password_err' => '',
-          'confirm_password_err' => '',
-          'document_err' => '',
-          'profile_image_err' => ''
-
+          'confirm_password_err' => ''
       ];
       // Load view
       $this->view('users/signup_dons', $data);
   }
 }
 
+
     public function signup_eh(){
         // Check for POST
 
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Process form
+
 
 
             //sanitize POST data
@@ -642,6 +571,7 @@ public function signup_dons(){
             if(empty($data['email_err']) && empty($data['name_err']) && empty($data['tel_no_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']) && empty($data['document_err'])) {
                 // Validatede
 
+
                 //Hash
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 //Register User
@@ -653,6 +583,7 @@ public function signup_dons(){
                 } else {
                     die('Something went wrong');
                 }
+
 
 
             } else {
@@ -690,6 +621,7 @@ public function signup_dons(){
             $this->view('users/signup_eh', $data);
         }
     }
+
 
 
    

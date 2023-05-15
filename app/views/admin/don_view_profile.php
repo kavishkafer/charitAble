@@ -19,7 +19,7 @@
         <div class="recentOrders">
             <h2><?php echo $data['donor']->D_Name; ?></h2>
 
-            <!-- <div class="details-card">
+            <div class="details-card">
                 <div class="details-head">Donor ID :-</div>
                 <div class="details-input"><?php echo $data['donor']->D_Id; ?></div>
 
@@ -30,7 +30,7 @@
                 <div class="details-head">Donor Name :-</div>
                 <div class="details-input"><?php echo $data['donor']->D_Name; ?></div>
             </div>
-            <br /> -->
+            <br />
 
             <div class="details-card">
                 <div class="details-head">Donor Name :-</div>
@@ -47,21 +47,7 @@
 
         <div class="recentOrders">
             <h2>More details...</h2>
-
-            <div class="details-card">
-                <div class="details-head">Pending Donations :-</div>
-                <div class="details-input"><?php echo $data['pending_donation_count']; ?></div>
-            </div>
-            <div class="details-card">
-                <div class="details-head">Completed Donations :-</div>
-                <div class="details-input"><?php echo $data['completed_donation_count']; ?></div>
-            </div>
-            <div class="details-card">
-                <div class="details-head">Expired Donations :-</div>
-                <div class="details-input"><?php echo $data['expired_donation_count']; ?></div>
-            </div>
         </div>
-
     </div>
 </div>
 
