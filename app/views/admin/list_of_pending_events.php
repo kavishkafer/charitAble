@@ -7,21 +7,22 @@
 <div class="main">
     <!-- ======================= Buttons ================== -->
     <div class="btnBox">
-
-        <a href="<?php echo URLROOT; ?>/beneficiaries/registration_requests"><button class="btn active">Registration
+        <a href="<?php echo URLROOT; ?>/events/list_of_pending_events"><button class="btn active">Pending Event
                 Requests</button></a>
-        <a href="<?php echo URLROOT; ?>/beneficiaries/list_of_beneficiaries"><button class="btn">Beneficiaries'
-                List</button></a>
+        <a href="<?php echo URLROOT; ?>/events/list_of_accepted_events"><button class="btn">Accepted
+                Events</button></a>
+        <a href="<?php echo URLROOT; ?>/events/list_of_completed_events"><button class="btn">Completed
+                Events</button></a>
     </div>
 
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Beneficiary - Registration Requests</h2>
+                <h2>Pending Events</h2>
             </div>
-            <form id="filter-form" method="get"
-                action="<?php echo URLROOT; ?>/beneficiaries/registration_requests_filter_by_type">
+            <form id="filter-form-1" method="get"
+                action="<?php echo URLROOT; ?>/donations/pending_events_filter_by_btype">
                 <label for="b_type">Filter by beneficiary type:</label>
                 <select name="b_type" id="b_type">
                     <option value="" <?php echo empty($_GET['b_type']) ? 'selected' : ''; ?>>All</option>
@@ -38,41 +39,52 @@
                         <?php echo isset($_GET['b_type']) && $_GET['b_type'] == 'Other' ? 'selected' : ''; ?>>Other
                     </option>
                 </select>
+                <input type="hidden" name="d_type" id="hidden-d-type"
+                    value="<?php echo isset($_GET['d_type']) ? $_GET['d_type'] : ''; ?>">
             </form>
+
             <table>
                 <thead>
                     <tr>
-                        <td>Beneficiary ID</td>
-                        <td>Profile Picture</td>
+                        <td>Event ID</td>
+                        <td>Event Name</td>
+                        <td>Organization Name</td>
                         <td>Beneficiary Name</td>
-                        <td>Beneficiary Type</td>
-                        <td>Action</td>
+                        <td>Beneficiary Type</tp>
+                        <td>Date</td>
+                        <td>Time</td>
                     </tr>
+                </thead>
+
                 <tbody>
                     <tr>
-                        <?php foreach($data['reg_bens'] as $reg_bens): ?>
-                        <td><?php echo $reg_bens->B_Id; ?></td>
-                        <td><img src="<?php echo URLROOT; ?>/img/admin/<?php echo $reg_bens->profile_image; ?>"
-                                style="hight:50px; width:50px; border-radius:50%;" alt="Profile Picture"></td>
-                        <td><?php echo $reg_bens->B_Name; ?></td>
-                        <td><?php echo $reg_bens->B_Type; ?></td>
-                        <td><a href="<?php echo URLROOT; ?>/beneficiaries/view_request/<?php echo $reg_bens->B_Id; ?>"><button
-                                    class="btn_1">View Request</button></td>
+                        <?php foreach($data['event_details'] as $event_details): ?>
+                        <td><?php echo $event_details->Event_ID; ?></td>
+                        <td><?php echo $event_details->E_Name; ?></td>
+                        <td><?php echo $event_details->E_Name; ?></td>
+                        <td><?php echo $event_details->B_Name; ?></td>
+                        <td><?php echo $event_details->B_Type; ?></td>
+                        <td><?php echo $event_details->Event_Date; ?></td>
+                        <td><?php echo $event_details->Event_Time; ?></td>
                     </tr>
                     <?php endforeach; ?>
-
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>
-
-<!-- =========== Scripts =========  -->
-<script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
+</div>
 
 <script>
 document.getElementById('b_type').addEventListener('change', function() {
-    document.getElementById('filter-form').submit();
+    document.getElementById('hidden-d-type').value = document.getElementById('d_type').value;
+    document.getElementById('filter-form-1').submit();
+});
+
+document.getElementById('d_type').addEventListener('change', function() {
+    document.getElementById('hidden-b-type').value = document.getElementById('b_type').value;
+    document.getElementById('filter-form-2').submit();
 });
 </script>
 </body>
