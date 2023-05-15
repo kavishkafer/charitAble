@@ -9,7 +9,7 @@
         <div class="cardHeader">
             <a href="<?php echo URLROOT; ?>/settingsehs/viewProfile" class="btn">Back</a>
         </div>
-        <form class="forms" action="<?php echo URLROOT; ?>/settingsehs/index" method="POST">
+        <form class="forms" action="<?php echo URLROOT; ?>/settingsehs/index" method="POST" enctype="multipart/form-data">
             <div class="container-nav" >
                 <h1>Update Profile</h1>
                 <hr>
@@ -52,6 +52,10 @@
                         <div class=warn> <?php if (isset($data['E_Address_err'])) echo $data['E_Address_err']; ?></div>
 
                     </div>
+
+
+                   
+
                 </div>
 
 

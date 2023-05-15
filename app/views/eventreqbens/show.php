@@ -135,10 +135,18 @@
                     <div class="content">
                         <h3>Event Letter for consideration</h3>
                     </div>
+
+<div class="data">
+    <?php if($data['requests']->document != null) : ?>
+        <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['requests']->document;?>" alt="" width="300px"download>
+    <?php else: ?>
+        <!--<img src="" alt="" width="300px"> -->
+    <?php endif; ?></div>
                    <!-- <div class="data">
                         <?php echo $data['requests']->Donation_Quantity; ?>
                     </div>
                 </div> -->
+                </div>
 
 
                 <div class="content-sidebar">
@@ -146,17 +154,51 @@
                         <form
                             action="<?php echo URLROOT; ?>/eventreqbens/acceptRequest/<?php echo $data['requests']->Event_ID; ?>"
                             method="post">
+                            <?php if ($data['requests']->accepted != 1 && $data['requests']->completed != 1) :?>
+
                             <input type="submit" class="button button1" id="Edit" value="Accept">
+
+                        <?php endif; ?>
                         </form>
 
                     </div>
                     <div class="data">
                         <form
-                            action="<?php echo URLROOT; ?>/Eventreqbens/delete/<?php echo $data['requests']->Event_ID; ?>"
+                            action="<?php echo URLROOT; ?>/eventreqbens/delete/<?php echo $data['requests']->Event_ID; ?>"
                             method="post">
+
+                            <?php if ($data['requests']->accepted != 1 && $data['requests']->completed != 1) :?>
+
                             <input type="submit" class="button button2" id="Delete" value="Delete">
+                            <?php endif; ?>
                         </form>
                     </div>
+
+
+                    <div class="data">
+                        <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequestReview/<?php echo $data['requests']->Event_ID; ?>"
+                              method="post">
+
+                            <?php if ($data['requests']->accepted == 1 && $data['requests']->completed == 0) :?>
+                                <h3>Leave you feedback</h3>
+
+                                <input type="text" class="feedback" id="feedbacl">
+                            <?php endif; ?>
+                        </form>
+                    </div>
+
+                    <div class="data">
+                        <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequest/<?php echo $data['requests']->Event_ID; ?>"
+                                method="post">
+
+                            <?php if ($data['requests']->accepted == 1 && $data['requests']->completed == 0) :?>
+                                <input type="submit" class="button button2" id="Complete" value="Complete">
+                            <?php endif; ?>
+                        </form>
+                    </div>
+
+
+
 
                 </div>
                 </tbody>

@@ -56,6 +56,14 @@
                                 <a href="<?php echo URLROOT; ?>/users/login">login</a>
 
                             </li>
+
+                            <li>
+
+                                <a href="<?php echo URLROOT; ?>/postsOut/index">CharitAble Forum</a>
+
+                            </li>
+
+
                         </ul>
 
 
@@ -112,7 +120,7 @@
         <div class="container">
             <h1>Together you can <span>Help Them</span></h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam voluptatum beatae, est praesentium iure illum, nesciunt ab esse nihil consectetur dicta explicabo voluptas soluta eveniet eos eaque, vitae cumque?</p>
-            <button>  <a href="<?php echo URLROOT; ?>/users/login>login</a></button>
+            <button>  <a href="<?php echo URLROOT; ?>/users/login">login</a></button>
         </div>
     </section>
                     <!--donors section ends here-->

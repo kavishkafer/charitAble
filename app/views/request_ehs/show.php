@@ -8,7 +8,7 @@
 
     <!-- ================ Order Details List ================= -->
     <div class="details">
-        <div class="recentOrders">
+        <div class="recentOrders" style="width: 70vw; background-color:#d1e1e1 ; align: center">
             <h2><?php echo $data['requests']->Event_Name; ?></h2>
 
 
@@ -42,29 +42,36 @@
                 <div class="details-head">Event Letter</div>
 
                 <?php if($data['requests']->document != null) : ?>
-                    <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['requests']->document;?>" alt="" width="300px"download>
+                    <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['requests']->document;?>" alt="" style="width: 67vw;">
                 <?php else: ?>
                     <!--<img src="" alt="" width="300px"> -->
                 <?php endif; ?>
 
             </div>
             <br />
-
             <div class="content-sidebar">
                         <div class="content">
 
                             <form
                                 action="<?php echo URLROOT; ?>/request_ehs/edit/<?php echo $data['requests']->Event_ID; ?>"
                                 method="post">
+                                <?php if ($data['requests']->accepted != 1 && $data['requests']->completed != 1) :?>
+
                                 <input type="submit" class="btn4" id="Edit" value="Edit">
+                                <?php endif?>
+
                             </form>
-                           
+
                         </div>
                         <div class="data">
                             <form
                                 action="<?php echo URLROOT; ?>/request_ehs/delete/<?php echo $data['requests']->Event_ID; ?>"
                                 method="post">
+                                <?php if ($data['requests']->accepted != 1 && $data['requests']->completed != 1) :?>
+
                                 <input type="submit" class="btn3" id="Delete" value="Delete">
+                                <?php endif?>
+
                             </form>
                         </div>
                     </div>

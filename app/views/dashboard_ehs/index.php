@@ -111,45 +111,7 @@
     </div>
 </div>
 
-<div class="details">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Ongoing Beneficiary Requests</h2>
-            <!--                <a href="<?php /*echo URLROOT; */?>/request_bens/add" class="btn">Add requests</a>
--->            </div>
-        <table>
-            <thead>
-            <tr>
-                <td>Id</td>
-                <td>Beneficiary</td>
-                <td>Donation Type</td>
-                <td>Donation Discription</td>
-                <td>Quantity</td>
-                <td>View</td>
 
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <tr>
-
-                <?php foreach($data['requestsben'] as $requestsben): ?>
-                <td> <?php echo $requestsben->Donation_ID; ?></td>
-                <td><?php echo $requestsben->B_Name; ?></td>
-                <td><?php echo $requestsben->Donation_Type; ?></td>
-                <td><?php echo $requestsben->Donation_Description; ?></td>
-                <td><?php echo $requestsben->Donation_Quantity; ?></td>
-                <td><a href="<?php echo URLROOT; ?>/request_bens/show/<?php echo $requests->B_Req_ID; ?>"?>view more</a></td>
-            </tr>
-            <?php endforeach; ?>
-
-
-            </tbody>
-        </table>
-
-    </div>
-</div>
 
 <div class="details" >
     <div class="recentOrders" >
@@ -197,6 +159,10 @@
                 </tbody>
             </table>
         </div>
+
+
+
+
 
 
     </div>

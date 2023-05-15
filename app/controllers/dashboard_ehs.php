@@ -37,4 +37,7 @@ class dashboard_ehs extends Controller{
         $this->view('dashboard_ehs/index', $data);
     }
 
+
+
+
 }

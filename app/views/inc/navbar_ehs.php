@@ -1,3 +1,5 @@
+<?php require APPROOT . '/views/inc/header.php'; ?>
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
 <body>
@@ -42,9 +44,9 @@
                 </a>
             </li>
 
-            <li>
+            <!-- <li>
 
-                <a href="#">
+                <a href="<?php echo URLROOT; ?>/stat_ehs/index">
 
                         <span class="icon">
                             <i class="fas fa-home"></i>
@@ -52,7 +54,7 @@
                     <span class="title">Stats</span>
                 </a>
             </li>
-
+-->
             <li>
                 <a href="<?php echo URLROOT; ?>/SettingsEhs/viewProfile">
                         <span class="icon">

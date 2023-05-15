@@ -175,7 +175,7 @@
 </div>
 </div>
 
-
+</body>
 
 <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

@@ -14,12 +14,17 @@ class Eventreqbens extends Controller
     public function index()
     {
         $requests = $this->eventreqbenModel->getAllRequests();
+        $requestsOnGoing = $this->eventreqbenModel->getAllRequestsOnGoing();
+        $requestsCom = $this->eventreqbenModel->getAllRequestsCompleted();
         $data = [
-            'requests' => $requests
+            'requests' => $requests,
+            'requestsOnGoing' => $requestsOnGoing,
+            'requestsCom' => $requestsCom
         ];
 
         $this->view('eventreqbens/index', $data);
     }
+
 
 
     public function acceptRequest($Id)
@@ -36,13 +41,32 @@ class Eventreqbens extends Controller
         }
     }
 
+    public function completeRequest($Id)
+    {
+        /*$c= $_SESSION['user_id'];
+        $d =$this->schedulereqbenModel-> getDonId($c);*/
+        $this->eventreqbenModel->getAllRequests($Id);
+        if ($this->eventreqbenModel->completeRequest($Id)) {
+            flash('request_message', 'Request Accepted');
+            redirect('eventreqbens/index');
+
+        } else {
+            die('Something went wrong');
+        }
+    }
+
+
     public function show($id){
         $requests = $this->requestModel->getEventRequestById($id);
         $user = $this->userModel->getUserById($requests->E_ID);
+        $requestsOnGoing = $this->eventreqbenModel->getAllRequestsOnGoing($requests->Event_ID);
+        $requestsCom = $this->eventreqbenModel->getAllRequestsCompleted($requests->Event_ID);
 
         $data = [
             'requests' => $requests,
-            'user' => $user
+            'user' => $user,
+            'requestsOnGoing' => $requestsOnGoing,
+            'requestsCom' => $requestsCom
         ];
 
         if($data['requests']!=null){
@@ -72,11 +96,14 @@ class Eventreqbens extends Controller
     }
 
 
-    public function get_events(){
+
+
+
+   /* public function get_events(){
         $requests = $this->ehRequestModel->getAllRequests();
         $data = [
             'requests' => $requests,
         ];
         echo json_encode($data);
-    }
+    } */
 }

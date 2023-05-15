@@ -18,6 +18,7 @@
 
             <h1>Update Profile</h1>
             <hr>
+
             <div class="content-sidebar">
                 <div class="content">
                     <!--                            <div class="des" style="background-color: red">
@@ -48,6 +49,28 @@
 
                 </div>
 
+
+                <div class="content">
+                    <label for="profile_image"><h3>Profile Image</h3></label>
+                </div>
+
+                <div class="data">
+                    <?php if($data['profile_image'] != null) : ?>
+                        <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['profile_image']; ?>" alt="" width="300px"download>
+                    <?php else: ?>
+                        <!--<img src="" alt="" width="300px"> -->
+                    <?php endif; ?></div>
+
+
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+
+
+
+
+
+            </div>
             </div>
         </div>
         <div class="button-alignment">
@@ -59,6 +82,9 @@
 </div>
 </div>
 
+<script src="<?php echo URLROOT ?>/js/eventHost/main.js"></script>
+<script type="text/javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
+<script type="text/javascript" src="<?php echo URLROOT; ?>/js/posts/posts.js"></script>
 
 <script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
 

@@ -101,11 +101,19 @@ function get_events(calendar) {
         success: function (response) {
             console.log(response.requests);
             response.requests.forEach(function (item) {
+                var accepted = item.accepted;
+                let backgroundColor;
+                if (accepted == 0) {
+                    backgroundColor = 'red';
+                } else {
+                    backgroundColor = 'green';
+                }
                 events.push(
                     {
                         reqID: item.Event_ID,
                         title: item.Event_Name,
-                        date: item.Event_Date
+                        date: item.Event_Date,
+                        backgroundColor: backgroundColor
                     }
                 );
             });

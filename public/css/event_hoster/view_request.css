@@ -40,11 +40,18 @@
     /* margin-left: 180px; */
 }
 
+
+img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+}
 .details .recentOrders {
     position: relative;
     display: block;
     min-height: 200px;
-    background: var(--gray);
+    background-color:#D6E4E5;
     padding: 20px;
     border-radius: 10px;
     width: 100%;
@@ -222,4 +229,21 @@
         margin-bottom: 10px;
         padding-bottom: 30px;
     }
+}
+
+
+.btn4{
+    background-color: #395B64;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+    outline: none;
+}
+
+
+.btn3{
+    background-color: indianred;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+    outline-offset: none;
+
 }

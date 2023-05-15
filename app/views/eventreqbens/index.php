@@ -2,8 +2,8 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar_ben.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/donor/eventRequest.css">
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/ben_accept.css">
 <!-- =============== Navigation ================ -->
 <!--<div class="container">
     <div class="navigation">
@@ -141,16 +141,16 @@
         <div id="calendar"></div>
     </div>
 </div>
+
 <div class="details">
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Requests</h2>
+            <h2>Request Under Review</h2>
         </div>
 
         <table>
             <thead>
             <tr>
-                <td>Request_Id</td>
                 <td>Event Host Name</td>
                 <td>Date</td>
                 <td>Time</td>
@@ -163,7 +163,6 @@
             <tbody>
             <tr>
                 <?php foreach($data['requests'] as $requests): ?>
-                <td> <?php echo $requests->Event_ID; ?></td>
                 <td><?php echo $requests->Event_Name; ?></td>
                 <td><?php echo $requests->Event_Date; ?></td>
                 <td><?php echo $requests->Event_Time; ?></td>
@@ -175,11 +174,82 @@
         </table>
     </div>
 </div>
+
+
+
+
+
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Ongoing Event Requests</h2>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Event Host Name</td>
+                <td>Date</td>
+                <td>Time</td>
+                <td>Details</td>
+                <td></td>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <?php foreach($data['requestsOnGoing'] as $requestsOnGoing): ?>
+                <td><?php echo $requestsOnGoing->Event_Name; ?></td>
+                <td><?php echo $requestsOnGoing->Event_Date; ?></td>
+                <td><?php echo $requestsOnGoing->Event_Time; ?></td>
+                <td><?php echo $requestsOnGoing->Event_Description; ?></td>
+                <td ><a href="<?php echo URLROOT; ?>/eventreqbens/show/<?php echo $requestsOnGoing->Event_ID;?>">View More</a></td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Completed Event Requests</h2>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Event Host Name</td>
+                <td>Date</td>
+                <td>Time</td>
+                <td>Details</td>
+                <td></td>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <?php foreach($data['requestsCom'] as $requestsCom): ?>
+                <td><?php echo $requestsCom->Event_Name; ?></td>
+                <td><?php echo $requestsCom->Event_Date; ?></td>
+                <td><?php echo $requestsCom->Event_Time; ?></td>
+                <td><?php echo $requestsCom->Event_Description; ?></td>
+                <td ><a href="<?php echo URLROOT; ?>/eventreqbens/show/<?php echo $requestsCom->Event_ID;?>">View More</a></td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 </div>
 
 
 
-<script src="<?php echo URLROOT; ?>/js/donor/main.js"></script>
+
+<script src="<?php echo URLROOT; ?>/js/eventHost/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

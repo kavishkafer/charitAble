@@ -41,7 +41,7 @@ class Request_eh {
         return $results;
     }
 
-    public function getEventRequestByID($id)
+    public function getEventRequestById($id)
     {
         $this->db->query('SELECT * FROM event_request_table WHERE Event_ID = :Event_ID');
         $this->db->bind(':Event_ID', $id);
@@ -74,15 +74,18 @@ class Request_eh {
         }
     }
 
+
+
     public function updateEventRequests($data){
-        $this->db->query('UPDATE event_request_table SET Event_Name = :Event_Name, Event_Date = :Event_Date, Event_Time = :Event_Time, Event_Description = :Event_Description WHERE Event_ID = :Event_ID');
+        $this->db->query('UPDATE event_request_table SET document = :document, Event_Name = :Event_Name, Event_Date = :Event_Date, Event_Time = :Event_Time, Event_Description = :Event_Description WHERE Event_ID = :Event_ID');
         //Bind values
-        if (isset($data['Event_Name'])) {
-            $this->db->bind(':Event_Name', $data['event_name']);
-            $this->db->bind(':Event_Date', $data['event_date']);
-            $this->db->bind(':Event_Time', $data['event_time']);
-            $this->db->bind(':Event_Description', $data['event_description']);
-            $this->db->bind(':Event_ID', $data['event_id']);
+       if (isset($data['document_name'])) {
+         $this->db->bind(':document', $data['document_name']);
+            $this->db->bind(':Event_Name', $data['Event_Name']);
+            $this->db->bind(':Event_Date', $data['Event_Date']);
+            $this->db->bind(':Event_Time', $data['Event_Time']);
+            $this->db->bind(':Event_Description', $data['Event_Description']);
+            $this->db->bind(':Event_ID', $data['Event_ID']);
         }
         //Execute
         if($this->db->execute()){
@@ -106,10 +109,17 @@ class Request_eh {
     }
 
     public function getBeneficiaries(){
-        $this->db->query('SELECT * FROM beneficiary_details');
+        $this->db->query('SELECT * FROM beneficiary_details WHERE status_2 = "approved" ORDER BY B_Id DESC');
 
         $results = $this->db->resultSet();
 
+        return $results;
+    }
+
+    public function getBeneficiaryDetailsByType($B_Type) {
+        $this->db->query('SELECT * FROM beneficiary_details WHERE status_2 = "approved" AND B_Type = :B_Type ORDER BY B_Id DESC');
+        $this->db->bind(':B_Type', $B_Type);
+        $results = $this->db->resultSet();
         return $results;
     }
 
@@ -161,8 +171,17 @@ class Request_eh {
         return $results;
     }
 
+
+
     public function AcceptedRequestsEhDetails($id){
-        $this->db->query('Select * from donation_table Where B_Id = :B_Id AND Accepted = true AND Completed = false');
+        $this->db->query('Select * from event_request_table Where E_ID = :E_ID AND accepted = true AND completed = false');
+        $this->db->bind(':E_ID', $id);
+        $array=$this->db->resultset();
+        return $array;
+    }
+
+    public function pendingRequestsEhDetails($id){
+        $this->db->query('Select * from event_request_table Where E_ID = :E_ID AND accepted = false AND completed = false');
         $this->db->bind(':E_ID', $id);
         $array=$this->db->resultset();
         return $array;

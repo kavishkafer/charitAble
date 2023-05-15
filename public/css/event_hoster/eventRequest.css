@@ -71,8 +71,8 @@ body {
 }
 
 
-input[type="text"], [type="date"], [type="time"], [type="textfield"], select, textarea{
-    width: 100%;
+input[type="text"], [type="date"], [type="time"], [type="textfield"], [type="file"] select, textarea{
+    width: 80%;
     padding: 10px;
     border-radius: 5px;
     border: none;

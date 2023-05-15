@@ -11,7 +11,7 @@ class Post {
                          posts.id as postId,
                          registered_users.User_Id as userId,
                          posts.created_at as postCreated,
-                            posts.image as postImage                
+                        posts.image as postImage                
           
                         FROM posts
                         INNER JOIN registered_users

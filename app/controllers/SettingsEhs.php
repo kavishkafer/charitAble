@@ -19,19 +19,28 @@ class SettingsEhs extends Controller
                 'user_id' => $c,
                 'E_ID' => $d->E_ID,
                 'E_Name' => $d->E_Name,
-                //'D_Email' => $d->D_Email,
                 'E_Tpno' => $d->E_Tpno,
                 'E_Address' => $d->E_Address,
+                'profile_image' => '',
+            'profile_image_name' => $d->profile_image,
                 //'D_Password' => $d->D_Password,
                 //'latitude' => $d->latitude,
                // 'longitude' => $d->longitude,
                 'E_Name_err' => '',
                 //'D_Email_err' => '',
                 'E_Tpno_err' => '',
-                'E_Address_err' => ''
+                'E_Address_err' => '',
+                'profile_image',
+            'profile_image_err'=>''
                 //'D_Password_err' => '',
 
             ];
+
+            // Set the profile_image value if it exists
+            if (!empty($d->profile_image)) {
+                $data['profile_image'] = URLROOT . '/public/img/profileImgs/' . $d->profile_image; // Update the URL path accordingly
+            }
+
             $this->view('settingsehs/index', $data);
         } else {
 //              $user = $this->requestModel->getBenId($_SESSION['user_id']);
@@ -47,6 +56,7 @@ class SettingsEhs extends Controller
 //                  'B_Email' => trim($_POST['B_Email']),
                 'E_Tpno' => trim($_POST['E_Tpno']),
                 'E_Address' => trim($_POST['E_Address']),
+
 //                  'B_Password' => trim($_GET['B_Password']),
                 'E_Name_err' => '',
                 //'D_Email_err' => '',
@@ -97,16 +107,26 @@ class SettingsEhs extends Controller
             //'D_Email' => $d->D_Email,
             'E_Tpno' => $d->E_Tpno,
             'E_Address' => $d->E_Address,
+            'profile_image' => '', // Initialize the profile_image variable
+            'profile_image_name' => $d->profile_image,
             //'D_Password' => $d->D_Password,
             //'latitude' => $d->latitude,
             //'longitude' => $d->longitude,
             'E_Name_err' => '',
             //'D_Email_err' => '',
             'E_Tpno_err' => '',
-            'E_Address_err' => ''
+            'E_Address_err' => '',
+            'profile_image_err',
             //'D_Password_err' => '',
 
         ];
+
+
+        // Set the profile_image value if it exists
+        if (!empty($d->profile_image)) {
+            $data['profile_image'] = URLROOT . '/public/img/profileImgs/' . $d->profile_image; // Update the URL path accordingly
+        }
+
         $this->view('settingsehs/view', $data);
 
 

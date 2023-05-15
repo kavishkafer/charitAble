@@ -34,8 +34,6 @@
                   'image_err' => '',
                   'title_err' => '',
                   'body_err' => ''
-      
-      
                 ];
 
 
@@ -124,7 +122,7 @@
       
       
                 //post updated
-                //user havent changed the existing image
+                //user haven't changed the existing image
                 if($_POST['intentially_removed'] == 'removed') {
                     deleteImage($oldImage);
                       $data['image_name'] = '';

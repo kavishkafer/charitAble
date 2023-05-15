@@ -14,6 +14,21 @@ class Request_ehs extends Controller {
         $data =[
             'beneficiaries' =>$beneficiaries
         ];
+
+
+        $this->view('request_ehs/index', $data);
+    }
+
+    public function filter_by_type() {
+        $B_Type = $_GET['B_Type'];
+        if (empty($B_Type)) {
+            $filtered_beneficiaries = $this->ehRequestModel->getBeneficiaries();
+        } else {
+            $filtered_beneficiaries = $this->ehRequestModel->getBeneficiaryDetailsByType($B_Type);
+        }
+        $data = [
+            'beneficiaries' => $filtered_beneficiaries
+        ];
         $this->view('request_ehs/index', $data);
     }
 
@@ -112,43 +127,68 @@ class Request_ehs extends Controller {
         $d =$this->ehRequestModel-> getEhId($c);
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+
             $data = [
-
-                'event_id'=> $id,
-                'event_name' => trim($_GET['event_name']),
-                'event_date' => trim($_GET['event_date']),
-                'event_time' => trim($_GET['event_time']),
-                'event_description' => trim($_GET['event_description']),
+               'document' => $_FILES['document'],
+                'document_name' => time().'_'.$_FILES['document']['name'],
+                'Event_ID'=> $id,
+                'Event_Name' => trim($_GET['Event_Name']),
+                'Event_Date' => trim($_GET['Event_Date']),
+                'Event_Time' => trim($_GET['Event_Time']),
+                'Event_Description' => trim($_GET['Event_Description']),
                 'user_id' => $d->E_ID,
-
-                'event_name_err' =>'',
-                'event_date_err' => '',
-                'event_time_err' => '',
-                'event_description_err' => ''
+               'document_err' => '',
+                'Event_Name_err' =>'',
+                'Event_Date_err' => '',
+                'Event_Time_err' => '',
+                'Event_Description_err' => ''
             ];
 
+            //validate req data
+           $requests = $this->ehRequestModel->getEventRequestById($id);
+            $oldDocument = PUBROOT.'/img/documents/'.$requests->document;
+
+
+            //post updated
+            //user haven't changed the existing image
+            if($_POST['intentially_removed'] == 'removed') {
+                deleteDocument($oldDocument);
+                $data['document_name'] = '';
+            }
+            else {
+                if ($_FILES['document']['name'] == '') {
+                    $data['document_name'] = $requests->document;
+                } else {
+                    updateDocument($oldDocument, $data['document']['tmp_name'], $data['document_name'], '/img/documents/');
+                }
+            }
+
+
+            //photo remove intentionally
+
             //Validate Name
-            if(empty($data['event_name'])){
-                $data['event_name_err'] = 'Please enter event name';
+            if(empty($data['Event_Name'])){
+                $data['Event_Name_err'] = 'Please enter event name';
             }
 
             //Validate Telephone Number
-            if(empty($data['event_date'])){
-                $data['event_date_err'] = 'Please enter event date';
+            if(empty($data['Event_Date'])){
+                $data['Event_Date_err'] = 'Please enter event date';
             }
 
             //Validate food type
-            if(empty($data['event_time'])){
-                $data['event_time_err'] = 'Please enter event time';
+            if(empty($data['Event_Time'])){
+                $data['Event_Time_err'] = 'Please enter event time';
             }
 
             //Validate food type
-            if(empty($data['event_description'])){
-                $data['event_description_err'] = 'Please enter event description';
+            if(empty($data['Event_Description'])){
+                $data['Event_Description_err'] = 'Please enter event description';
             }
 
             //Make sure errors are empty
-            if(empty($data['event_name_err']) && empty($data['event_date_err']) && empty($data['event_time_err']) && empty($data['event_description_err'])){
+            if(empty($data['Event_Name_err']) && empty($data['Event_Date_err']) && empty($data['Event_Time_err']) && empty($data['Event_Description_err'])){
                 // Validated
                 if($this->ehRequestModel->updateEventRequests($data)){
                     flash('request_message', 'Request Updated');
@@ -170,15 +210,18 @@ class Request_ehs extends Controller {
             }
 
             $data = [
-                'event_id'=>$id,
-                'event_name' => $requests->Event_Name,
-                'event_date' => $requests->Event_Date,
-                'event_time' => $requests->Event_Time,
-                'event_description' =>$requests->Event_Description,
-                'event_name_err' => '',
-                'event_date_err' => '',
-                'event_time_err' => '',
-                'event_description_err' => ''
+               'document' => '',
+                'document_name' => $requests->document,
+                'Event_ID'=>$id,
+                'Event_Name' => $requests->Event_Name,
+                'Event_Date' => $requests->Event_Date,
+                'Event_Time' => $requests->Event_Time,
+                'Event_Description' =>$requests->Event_Description,
+             'document_err' => '',
+                'Event_Name_err' => '',
+                'Event_Date_err' => '',
+                'Event_Time_err' => '',
+                'Event_Description_err' => ''
             ];
 
             $this->view('request_ehs/edit', $data);
@@ -216,6 +259,10 @@ class Request_ehs extends Controller {
             redirect('request_ehs/reviewreq');
         }
     }
+
+
+
+
 
     public function delete($id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
