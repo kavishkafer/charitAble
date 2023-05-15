@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
 
@@ -87,6 +88,7 @@ document.getElementById('d_type').addEventListener('change', function() {
     document.getElementById('filter-form-2').submit();
 });
 </script>
+
 </body>
 
 </html>

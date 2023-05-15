@@ -7,6 +7,7 @@
                 $this->donationModel = $this->model('Donation');
         }
 
+
         // Pending Donations
         public function list_of_pending_donations(){
             $donation_details = $this->donationModel->getPendingDonationDetails();
@@ -113,5 +114,6 @@
             ];
             $this->view('admin/list_of_completed_donations', $data);
         }
+
 
     }

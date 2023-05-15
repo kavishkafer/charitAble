@@ -161,8 +161,8 @@
                             <label for="Registration Letter"><h3>Registration letter</h3></label>
                         </div>
                         <div class="data">
-                            <input type="text" name="B_RegistrationLetter" placeholder="Registration Letter" value="<?php echo $data['B_RegistrationLetter']; ?>" disabled>
-                            <div class=warn> <?php if(isset($data['B_RegistrationLetter_err'])) echo $data['B_RegistrationLetter_err']; ?></div>
+                            <input type="text" name="B_RegistrationLetter" placeholder="Document" value="<?php echo $data['document']; ?>" disabled>
+                            <div class=warn> <?php if(isset($data['document_err'])) echo $data['document_err']; ?></div>
                         </div>
 
 

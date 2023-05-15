@@ -12,11 +12,13 @@
                 <a href="<?php echo URLROOT; ?>/eventHosters/list_of_eventHosters"><button class="btn active">Event Hosters' List</button></a>
             </div>
 
+
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Event Hosters' List</h2>
+
             </div>
             <table>
                 <thead>
@@ -29,23 +31,11 @@
                 </thead>
 
 
-                <tbody>
-                    <tr>
-                        <?php foreach($data['eventHoster_details'] as $event_hoster_details): ?>
-                        <td><?php echo $event_hoster_details->E_ID; ?></td>
-                        <td> <img src="<?php echo URLROOT; ?>/public/img/admin/customer01.jpg"
-                                style="hight:50px; width:50px; border-radius:50%;" alt="Profile Picture"></td>
-                        <td><?php echo $event_hoster_details->E_Name; ?></td>
-                        <td><a
-                                href="<?php echo URLROOT; ?>/eventHosters/view_profile/<?php echo $event_hoster_details->E_ID; ?>"><button
-                                    class="btn_1">View Profile</button></td></a></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
+    <script src='<?php echo URLROOT; ?>/public/admin/js/searchEventHosters.js'></script>
+    
 
 </body>
 

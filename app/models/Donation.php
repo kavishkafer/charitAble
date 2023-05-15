@@ -39,4 +39,12 @@ class Donation {
         $row = $this->db->single();
         return $row;
     }
+
+    // Load table data from file
+    public function LoadData() {
+        $this->db->query('SELECT * FROM donation_table INNER JOIN beneficiary_details ON donation_table.B_Id = beneficiary_details.B_Id 
+        INNER JOIN donor_details ON donation_table.D_Id = donor_details.D_Id');
+        $results = $this->db->resultSet();
+        return $results; 
+    }
 }

@@ -1,10 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/reports.css">
 
 <!-- ========================= Main ==================== -->
 <div class="main">
+
     <div class="details">
         <div class="container">
             <div class="recentOrders">
@@ -38,10 +41,12 @@
                             <p>Events<br> Comparison
                         </a></p>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- =========== Scripts =========  -->
     <script src="<?php echo URLROOT ?>/public/js/admin/reports.js"></script>
@@ -49,3 +54,4 @@
     </body>
 
     </html>
+

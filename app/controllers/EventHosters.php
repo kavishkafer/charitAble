@@ -60,4 +60,6 @@
        ];
         $this->view('admin/eh_view_profile',$data);
     }
+
+   
     }

@@ -6,7 +6,6 @@ class EventHoster {
         $this->db = new Database;
     }
 
-
     public function getEventHosterDetails(){
         $this->db->query('SELECT * FROM event_hoster_details WHERE status_2 = "approved" ORDER BY E_ID ASC');
         $results = $this->db->resultSet();

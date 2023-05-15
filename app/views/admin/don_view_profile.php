@@ -1,15 +1,19 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/view_profile.css">
 
 
 <!-- ========================= Main ==================== -->
 <div class="main">
+
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <h2><?php echo $data['donor']->D_Name; ?></h2>
+
 
             <div class="profile-picture">
                 <img src="<?php echo URLROOT; ?>/public/img/admin/customer02.jpg" style="hight:150px; width:150px;"
@@ -26,10 +30,12 @@
             <div class="details-card">
                 <div class="details-head">Donor Address</div>
                 <div class="details-input"><?php echo $data['donor']->D_Address; ?></div>
+
             </div>
             <br />
 
             <div class="details-card">
+
                 <div class="details-head">Donor TP</div>
                 <div class="details-input"><?php echo $data['donor']->D_Tel_No; ?></div>
             </div>
@@ -60,8 +66,11 @@
                 <div class="chart2" style="width: 100%; display: flex; flex-direction: column">
                 <canvas id="pieChart"></canvas>
                 </div>
+
             </div>
+            <br />
         </div>
+
 
     </div>
 </div>
@@ -108,6 +117,7 @@
     });
   });
 </script>
+
 
 </body>
 

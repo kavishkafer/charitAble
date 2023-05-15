@@ -1,10 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
 
 <!-- ========================= Main ==================== -->
 <div class="main">
+
     <!-- ======================= Buttons ================== -->
     <div class="btnBox">
         <a href="<?php echo URLROOT; ?>/donations/list_of_pending_donations"><button class="btn">Pending
@@ -15,11 +18,13 @@
                 Donations</button></a>
     </div>
 
+
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Completed Donations</h2>
+
             </div>
             <form id="filter-form-1" method="get"
                 action="<?php echo URLROOT; ?>/donations/completed_donations_filter_by_btype">
@@ -77,17 +82,20 @@
             </form>
 
 
+
             <table>
                 <thead>
                     <tr>
                         <td>Donation ID</td>
                         <td>Donor Name</td>
                         <td>Beneficiary Name</td>
+
                         <td>Beneficiary Type</td>
                         <td>Donation Type</td>
                         <td>Donation Priority</td>
                         <td>Donation Details</td>
                         <td>Donation Date & Time</td>
+
                         <!-- <td>Status</td> -->
                     </tr>
                 </thead>
@@ -98,10 +106,12 @@
                         <td><?php echo $donation_details->Donation_ID; ?></td>
                         <td><?php echo $donation_details->D_Name; ?></td>
                         <td><?php echo $donation_details->B_Name; ?></td>
+
                         <td><?php echo $donation_details->B_Type; ?></td>
                         <td><?php echo $donation_details->Donation_Type; ?></td>
                         <td><?php echo $donation_details->Donation_Priority; ?></td>
                         <td><?php echo $donation_details->Donation_Details; ?></td>
+
                         <td><?php echo $donation_details->Donation_Time; ?></td>
                         <!-- <td><?php echo $donation_details->Accepted; ?></td> -->
                     </tr>
@@ -109,12 +119,14 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
 </div>
 
 <!-- =========== Scripts =========  -->
+
 <script>
 document.getElementById('b_type').addEventListener('change', function() {
     document.getElementById('hidden-d-type').value = document.getElementById('d_type').value;
@@ -126,6 +138,7 @@ document.getElementById('d_type').addEventListener('change', function() {
     document.getElementById('filter-form-2').submit();
 });
 </script>
+
 </body>
 
 </html>

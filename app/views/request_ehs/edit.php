@@ -1,212 +1,104 @@
-
-           
-            
-      
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/benificiary/form.css">
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <img src="<?php echo URLROOT; ?>/img/logo_white.png">
-                        </span>
-                         <span class="title"></span> 
-                    </a>
-                </li>
-
-                <li id="#" >
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="title">Requests</span>
-                    </a>
-                </li>
+<?php require APPROOT . '/views/inc/navbar_ehs.php'; ?>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/event_hoster/eventRequest.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donor/style.css">
 
 
-                <li>
-                    <a href="<?php echo URLROOT; ?>/posts">
-                        <span class="icon">
-                            <i class="fas fa-calendar"></i>
-                        </span>
-                        <span class="title">Forum</span>
-                    </a>
-                </li>
+<!-- ========================= Main ==================== -->
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-cog"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
+    <!-- ======================= Buttons ================== -->
+    <div class="button-box">
 
-                <li>
-                    <a href="<?php echo URLROOT;?>/users/logout">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                
-            </ul>
-        </div>
+        <h2></h2>
+    </div>
 
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+    <!-- ================ Order Details List ================= -->
+    <div class="details">
 
-               
-                <div class="user">
-                   <i class="fas fa-user"></i>
-                </div>
-            </div>
+      <!--  <?php print_r($data); ?>-->
 
-            <!-- ======================= Cards ================== -->
-            
-
-               
-
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="<?php echo URLROOT; ?>/request_bens/add" class="btn">Add posts</a>
-                    </div>
-                    <!-- <form action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['Donation_ID'];?>" method="GET">
-             
-                
-                <h2>Edit posts</h2>
-                
-                <div class="input-div one ">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Description</h5>
-                        <input name="Donation_Description" type="text" class="input" value="<?php echo $data['Donation_Description']; ?>" >
-                        <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div>  
-                       </div>
-                </div>
-                <div class="input-div two">
-                    <div class="i">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Donation quantity</h5>
-                        <input type="text" name="Donation_Quantity" class="input" value="<?php echo $data['Donation_Quantity']; ?>">
-                        
-                        <div class=warn><?php if (isset($data['Donation_Quantity_err'])) echo $data['Donation_Quantity_err']; ?></div> 
-                    </div>
-                    
-                </div>
-                
-                    
-                    <div class="input-div one ">
-                        <div class="i">
-                            <i class="fas fa-address-book"></i>
+        <div class="recentOrders" style="width: 80vw;">
+            <div class="form-container-req">
+                <div class="form-inner" id="meal-entry">
+                    <form action="<?php echo URLROOT; ?>/request_ehs/edit/<?php echo $data['Event_ID']; ?>" method="get" enctype="multipart/form-data">
+                        <div class="heading-req">
+                            <h2>Update Event Request</h2>
                         </div>
-                        <div class="div">
-                            <h5>Donation type</h5>
-                            <input type="text" name="Donation_Type" class="input"  value="<?php echo $data['Donation_Type'];?>">
-                           <div class=warn> <?php if (isset($data['Donation_Type_err'])) echo $data['Donation_Type_err']; ?></div> 
-                        </div>
-                        </div>
-                        <div class="input-div one ">
-                            <div class="i">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div class="div">
-                                <h5>Donation priority</h5>
-                                <input type="text" name="Donation_Priority" class="input" value="<?php echo $data['Donation_Priority'];?>" >
-                                 <div class=warn><?php if (isset($data['Donation_Priority_err'])) echo $data['Donation_Priority_err']; ?></div> 
-                            </div>
-                            </div>
-                           
-                
-               
-                <input type="submit" class="btn" value="submit">
-                
-            </form> -->
-          
-              
-                <form class="forms" action="<?php echo URLROOT; ?>/request_bens/edit/<?php echo $data['Donation_ID'];?>" method="GET">
-                    <div class="container">
-                        <h1>Edit</h1>
-                        <p>Please fill this to add a request</p>
-                        <hr>
-                <div class="content-sidebar">
-                    <div class="content">
-                        <div class="des">
-                        <h3> <label for="Donation Description"><b>Donation Description</b></label></h3>
-                    </div>
-                    </div>
-                    <div class="data">
-                        <textarea id="subject" name="Donation_Description" value="<?php echo $data['Donation_Description']; ?>" ><?php echo $data['Donation_Description']; ?></textarea>
-                        <div class=warn> <?php if(isset($data['Donation_Description_err'])) echo $data['Donation_Description_err']; ?></div> 
-                                 
-                    </div>
-                    <div class="content">
-                        <h3><label for="Donation Type"><b>Donation type</b></label></h3>
-                    </div>
-                    <div class="data">
-                        <select  name="Donation_Type">
-                            <option value="Dry Rations">Dry rations</option>
-                            <option value="Clothes">Clothes</option>
-                            <option value="Medicine">Medicine</option>
-                            <option value="Sanitary items">Sanitary items</option>
-                            <option value="Others">Others</option>
-                            </select>
-                    </div>
-                    <div class="content">
-                        <h3><label for="Donation Priority"><b>Donation Priority</b></label></h3>
-                    </div>
-                    <div class="data">
-                        <select  name="Donation_Priority">
-                            <option value="High">High</option>
-                            <option value="Normal">Normal</option>
-                            </select>
-                    </div>
-                    <div class="content">
-                        <label for="Donation Quantity"><h3>Donation Quantity</h3></label>
-                    </div>
-                    <div class="data">
-                      <input type="text" name="Donation_Quantity" placeholder="Donation Quantity" value="<?php echo $data['Donation_Quantity']; ?>">
-                    </div>
 
-                </div>
-                <input type="submit" class="button button1" value="submit">
+
+                        <div class="document">
+                            <?php if($data['document_name'] != null): ?>
+                                <img src="<?php echo URLROOT;?>/img/documents/<?php echo $data['document_name']; ?>" alt="" id="document_placeholder" style="width: 60vw; align-self: center">
+                            <?php else:?>
+                                <img src="" alt="" id="document_placeholder" style="display: none;">
+                            <?php endif; ?>
+                        </div>
+
+
+                        <div class="form">
+                            <div class="input">
+                                <label>Event Name</label>
+                                <input type="text" name="Event_Name" id="Event_Name" minlength="4"
+                                    class="input-field-req" value="<?php echo $data['Event_Name']; ?>"
+                                    autocomplete="off" />
+                                <div class="warn"><?php echo $data['Event_Name_err']; ?></div>
+                            </div>
+
+                            <div class="input">
+                                <label>Event Date</label>
+                                <input type="date" name="Event_Date" id="Event_Date" minlength="4"
+                                    class="input-field-req" value="<?php echo $data['Event_Date']; ?>"
+                                    autocomplete="off" />
+                                <div class="warn"><?php echo $data['Event_Date_err']; ?></div>
+                            </div>
+
+                            <div class="input">
+                                <label>Event Time</label>
+                                <input type="time" name="Event_Time" id="Event_Time" minlength="4"
+                                    class="input-field-req" value="<?php echo $data['Event_Time']; ?>"
+                                    autocomplete="off" />
+                                <div class="warn"><?php echo $data['Event_Time_err']; ?></div>
+                            </div>
+
+                            <div class="input">
+                                <label>Event Description</label>
+                                <input type="textfield" name="Event_Description" id="Event_Description" minlength="4"
+                                    class="input-field-req" value="<?php echo $data['Event_Description']; ?>"
+                                    autocomplete="off" />
+                                <div class="warn"><?php echo $data['Event_Description_err']; ?></div>
+                            </div>
+
+                         <div class="document">
+                                <div class="imgBrowse">
+                                    <img src="<?php echo URLROOT; ?>/img/components/docUpload/addDoc.png" alt="" id="addDocbtn" onclick="toggleBrowse()">
+                                    <img src="<?php echo URLROOT; ?>/img/components/docUpload/removeDoc.png" alt="" id="removeDocbtn" style="display: none;" onclick="removeDoc()">
+                                    <input type="text" name="intentially_removed" id="intentially_removed" style="display: none;" readonly>
+                                    <input type="file" name="document" id="document" style="display: none;">
+                                </div>
+
+                            </div>
+
+                            <input type="submit" value="Submit" class="btn">
+
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-                  
 
-    
+        <div class="recentOrders">
+            <div class="calender-container">
+                <div class="calendar">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+</div>
 
- <script src="<?php echo URLROOT; ?>/js/beneficiary/main.js"></script>
+    <!-- =========== Scripts =========  -->
+   <script src="<?php echo URLROOT ?>/public/js/eventHost/docEditEh.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/eventHost/main.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

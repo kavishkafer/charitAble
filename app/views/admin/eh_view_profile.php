@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/view_profile.css">
@@ -7,10 +8,12 @@
 
 <!-- ========================= Main ==================== -->
 <div class="main">
+
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <h2><?php echo $data['eventHoster']->E_Name; ?></h2>
+
             <div class="profile-picture">
                 <img src="<?php echo URLROOT; ?>/public/img/admin/customer01.jpg" style="hight:150px; width:150px;"
                     alt="Profile Picture">
@@ -20,16 +23,20 @@
             <div class="details-card">
                 <div class="details-head">Event Hoster Email</div>
                 <div class="details-input"><?php echo $data['eventHoster']->E_Email; ?></div>
+
             </div>
             <br />
 
             <div class="details-card">
+
                 <div class="details-head">Event Hoster Address</div>
                 <div class="details-input"><?php echo $data['eventHoster']->E_Address; ?></div>
+
             </div>
             <br />
 
             <div class="details-card">
+
                 <div class="details-head">Event Hoster TP</div>
 
                 <div class="details-input"><?php echo $data['eventHoster']->E_Tpno; ?></div>
@@ -59,8 +66,34 @@
                 <div class="chart2" style="width: 100%; display: flex; flex-direction: column">
                 <canvas id="pieChart"></canvas>
                 </div>
+
             </div>
+            <br />
+
+            <div class="details-card">
+                <div class="details-head">Event Hoster TP :-</div>
+
+                <div class="details-input"><?php echo $data['eventHoster']->E_Tpno; ?></div>
+
+            </div>
+            <br />
+
+            <div class="details-card">
+                <div class="details-head">Event Hoster Description :-</div>
+                <div class="details-input"><?php echo $data['eventHoster']->E_Description; ?></div>
+            </div>
+            <br />
         </div>
+
+        <div class="recentOrders">
+            <h2>More details...</h2>
+        </div>
+    </div>
+</div>
+
+<!-- =========== Scripts =========  -->
+<script src="<?php echo URLROOT ?>/public/js/toggle.js"></script>
+
 
     </div>
 </div>
@@ -107,6 +140,7 @@
     });
   });
 </script>
+
 
 </body>
 

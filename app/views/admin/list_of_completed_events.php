@@ -1,22 +1,26 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <?php require APPROOT . '/views/inc/topbar.php'; ?>
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/admin/lists.css">
 
         <!-- ========================= Main ==================== -->
         <div class="main">
+
             <!-- ======================= Buttons ================== -->
     <div class="btnBox">
                 <a href="<?php echo URLROOT; ?>/events/list_of_pending_events"><button class="btn">Pending Event Requests</button></a>
                 <a href="<?php echo URLROOT; ?>/events/list_of_accepted_events"><button class="btn">Accepted Events</button></a>
                 <a href="<?php echo URLROOT; ?>/events/list_of_completed_events"><button class="btn active">Completed Events</button></a>
             </div>
+n
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
             <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Completed Events</h2>
+
                     </div>
                     <form id="filter-form-1" method="get"
                 action="<?php echo URLROOT; ?>/donations/completed_events_filter_by_btype">
@@ -40,6 +44,7 @@
                     value="<?php echo isset($_GET['d_type']) ? $_GET['d_type'] : ''; ?>">
             </form>
 
+
                     <table>
                         <thead>
                             <tr>
@@ -47,7 +52,9 @@
                                 <td>Event Name</td>
                                 <td>Organization Name</td>
                                 <td>Beneficiary Name</td>
+
                                 <td>Beneficiary Type</td>
+
                                 <td>Date</td>
                                 <td>Time</td>
                             </tr>
@@ -60,7 +67,9 @@
                                 <td><?php echo $event_details->E_Name; ?></td>
                                 <td><?php echo $event_details->E_Name; ?></td>
                                 <td><?php echo $event_details->B_Name; ?></td>
+
                                 <td><?php echo $event_details->B_Type; ?></td>
+
                                 <td><?php echo $event_details->Event_Date; ?></td>
                                 <td><?php echo $event_details->Event_Time; ?></td>
                             </tr>
@@ -73,6 +82,7 @@
         </div>
     </div>
 
+
     <script>
     document.getElementById('b_type').addEventListener('change', function() {
     document.getElementById('hidden-d-type').value = document.getElementById('d_type').value;
@@ -84,6 +94,7 @@ document.getElementById('d_type').addEventListener('change', function() {
     document.getElementById('filter-form-2').submit();
 });
     </script>
+
     
 </body>
 

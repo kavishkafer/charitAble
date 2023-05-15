@@ -4,6 +4,7 @@
             // if(!isLoggedIn()){
             //     redirect('users/login');
             // }
+
                 $this->EventModel = $this->model('Event');
         }
 
@@ -73,5 +74,6 @@
                 'event_details' => $filtered_events
             ];
             $this->view('admin/list_of_completed_events', $data);
+
         }
     }

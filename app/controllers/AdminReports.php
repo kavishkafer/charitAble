@@ -5,13 +5,16 @@
             //     redirect('users/login');
             // }
 
+
             $this->reportModel = $this->model('report');
+
         }
 
         public function index(){
         
             $this->view('admin/admin_reports');
         }
+
 
         public function pendingDonations(){
             $this->view('admin/pending_donations');
@@ -39,5 +42,6 @@
         
 
         
+
 
     }

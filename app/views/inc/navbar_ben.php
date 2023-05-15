@@ -36,6 +36,15 @@
                 </a>
             </li>
 
+<li>
+                <a href="<?php echo URLROOT; ?>/eventreqbens/index">
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    <span class="title">Events</span>
+                </a>
+            </li>
+
             <li>
                 <a href="<?php echo URLROOT; ?>/stat_bens">
                         <span class="icon">
