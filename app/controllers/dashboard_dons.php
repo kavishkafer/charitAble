@@ -14,18 +14,18 @@ class dashboard_dons extends Controller{
 
         $requests = $this->requestModel->getRecentScheduleReq();
         $requestsben = $this->requestModel->getRecentBeneficiaryReq();
-        $requestscom = $this->requestModel->getCompletedScheduleReq();
-        $requestscomben = $this->requestModel->getCompletedBeneficiaryReq();
+        /*$requestscom = $this->requestModel->getCompletedScheduleReq();
+        $requestscomben = $this->requestModel->getCompletedBeneficiaryReq();*/
         $row=$this->requestModel->getDonId($_SESSION['user_id']);
-        $count=$this->requestModel->totalRequestsByDon($row->D_Id);
+        $count=$this->requestModel->completedBenReqDon($row->D_Id);
         $accept=$this->requestModel->acceptedRequestsDon($row->D_Id);
         $complete=$this->requestModel->completedRequestsDon($row->D_Id);
         $pending=$this->requestModel->pendingRequestsDon($row->D_Id);
         $data=[
             'requests' => $requests,
             'requestsben' => $requestsben,
-            'requestscom' => $requestscom,
-            'requestscomben' => $requestscomben,
+            /*'requestscom' => $requestscom,
+            'requestscomben' => $requestscomben,*/
             'count' => $count,
             'accept' => $accept,
             'complete' => $complete,

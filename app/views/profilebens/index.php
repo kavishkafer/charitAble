@@ -77,12 +77,14 @@
                         </div>
 
 
-<!--                        <div class="content">-->
-<!--                            <label for="Registration Letter"><h3>Registration letter</h3></label>-->
-<!--                        </div>-->
-<!--                        <div class="data" >-->
-<!--                            --><?php //echo $data['requests']->B_RegistrationLetter; ?>
-<!--                        </div>-->
+
+                        <div class="content">
+                            <label for="Registration Letter"><h3>Registration letter</h3></label>
+                        </div>
+                        <div class="data" >
+                            <?php echo $data['requests']->document; ?>
+                        </div>
+
 
                         <div class="content">
                             <label for="address"><h3>Directions</h3></label>
