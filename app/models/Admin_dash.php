@@ -17,7 +17,7 @@ class Admin_dash {
         $results = $this->db->query('SELECT * FROM donor_details');
         $count = $this->db->resultset();
         return $this->db->rowCount();
-    } 
+    }
 
     public function getEhCount(){
         $results = $this->db->query('SELECT * FROM event_hoster_details');

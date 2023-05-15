@@ -19,81 +19,25 @@
                         <thead>
                             <tr>
                                 <td>Event ID</td>
+                                <td>Event Name</td>
                                 <td>Organization Name</td>
                                 <td>Beneficiary Name</td>
-                                <td>Event Name</td>
-                                <td>Date & Time</td>
+                                <td>Date</td>
+                                <td>Time</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                                
+                        <tr>
+                            <?php foreach($data['event_details'] as $event_details): ?>
+                                <td><?php echo $event_details->Event_ID; ?></td>
+                                <td><?php echo $event_details->Event_Name; ?></td>
+                                <td><?php echo $event_details->E_Name; ?></td>
+                                <td><?php echo $event_details->B_Name; ?></td>
+                                <td><?php echo $event_details->Event_Date; ?></td>
+                                <td><?php echo $event_details->Event_Time; ?></td>
                             </tr>
-
-                            <tr>
-                                <td>002</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-                            <tr>
-                                <td>003</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-                            <tr>
-                                <td>004</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-                            <tr>
-                                <td>001</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                                
-                            </tr>
-
-                            <tr>
-                                <td>002</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-                            <tr>
-                                <td>003</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-                            <tr>
-                                <td>004</td>
-                                <td>ABC Holdings</td>
-                                <td>Suwa Sahana</td>
-                                <td>Pehesara</td>
-                                <td>13/12/2022 10:00<td>
-                            </tr>
-
-
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
