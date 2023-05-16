@@ -175,7 +175,7 @@
                     </div>
 
 
-                    <div class="data">
+                  <!--  <div class="data">
                         <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequestReview/<?php echo $data['requests']->Event_ID; ?>"
                               method="post">
 
@@ -186,6 +186,7 @@
                             <?php endif; ?>
                         </form>
                     </div>
+                    -->
 
                     <div class="data">
                         <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequest/<?php echo $data['requests']->Event_ID; ?>"
