@@ -96,10 +96,10 @@
                 </div>
 
                 <div class="content-sidebar">
-                    <div class="content">
+                    <div style="display: none" class="content">
                         <h3>Event ID</h3>
                     </div>
-                    <div class="data">
+                    <div class="data" style="display: none">
                         <?php echo $data['requests']->Event_ID; ?>
                     </div>
                     <div class="content">
