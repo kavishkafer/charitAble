@@ -13,8 +13,8 @@
 
       <br>
       <h4><span class="blue-box"></span>   Fully or partialy requested but Not Accepted yet.</h4>
-      <h4><span class="green-box"></span>   Fully or partialy requested and Fully or Partialy Accepted.</h4>
-      <h4><span class="red-box"></span>   Fully or partialy requested and Fully Accepted.</h4>
+      <h4><span class="green-box"></span>   Fully or partialy requested and Partialy Accepted.</h4>
+      <h4><span class="red-box"></span>   Fully or partialy requested and Fully Reserved.</h4>
 
   </div>
 </div>

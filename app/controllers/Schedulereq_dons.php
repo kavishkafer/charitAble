@@ -43,6 +43,10 @@ class Schedulereq_dons extends Controller
 
         if(isset($_POST['input'])){
             $search = $_POST['input'];
+            // Define the regex pattern to match unwanted characters
+            $pattern = '/[^a-zA-Z0-9\s]/';
+            // Remove any unwanted characters from the search string
+            $search = preg_replace($pattern, '', $search);
             $search_res = $this->benModel->getBen($search);
         }
         else{
@@ -56,6 +60,7 @@ class Schedulereq_dons extends Controller
               
                     <th>Name</th>
                     <th>Address</th>
+                    <th>Type</th>
                     <th>Telephone Number</th>
                     <th>E-Mail</th>
                     <th>Members</th>
@@ -72,9 +77,15 @@ class Schedulereq_dons extends Controller
                     
                         <td data-label="Name">' . $res->B_Name . '</td>
                         <td data-label="Address">' . $res->B_Address . '</td>
+                        <td data-label="Address">' . $res->B_Type . '</td>
                         <td data-label="Telephone">' . $res->B_Tpno . '</td>
                         <td data-label="E-Mail">'.$res->B_Email . '</td>
                         <td data-label="members">'.$res->B_Members.'</td>
+                        <td ><a href="<?php echo URLROOT; ?>/schedulereq_dons/add/<?php echo $search->B_Id; ?>"
+>Select</a></td>
+                        <td><a href="<?php echo URLROOT; ?>/profilebens/index/<?php echo $search->B_Id; ?>" >View
+                        Profile</a></td>
+
                         
                        
                         
@@ -162,20 +173,21 @@ class Schedulereq_dons extends Controller
 
 
             $existing_request = $this->requestModel->checkExRequests($ben_id, $time, $date);
-
             if($existing_request){
 
                 // Update comschedule table
                 $b_members = $this->requestModel->getBMembers($ben_id)->B_Members; /*- ($total_quantity)->Total_Quantity*/;
                 $total_quantity = $this->requestModel->getTotalQuantity($ben_id, $time, $date)->Total_Quantity;
-                $remaining_quantity = $b_members - $total_quantity-$quantity;
-
-                if ( $remaining_quantity<0) {
+                $remaining_quantity =  $b_members - $total_quantity ;
+                var_dump($remaining_quantity,$total_quantity);
+                if ( $remaining_quantity<$quantity) {
                     $data['Donation_Quantity_err'] = 'Donation quantity cannot be greater than remaining quantity';
                 } else {
                     $this->requestModel->updateComSchedule($existing_request->S_ID, $data['Donation_Quantity']);
-                    $sid=$this->requestModel->checkExRequests($ben_id,$date,$time);
-                    $data["S_Id"]=$sid->S_ID;                }
+                    $this->requestModel->checkExRequests($ben_id,$date,$time);
+                    $data["S_Id"]=$existing_request->S_ID;
+/*                    var_dump($existing_request->S_ID);*/
+                }
             } else {
                 // Add new row to comschedule table
                 $b_members = $this->requestModel->getBMembers($ben_id)->B_Members;
@@ -193,10 +205,11 @@ class Schedulereq_dons extends Controller
                 ];
                 $this->requestModel->addcomschedule($com_data);
                $sid=$this->requestModel->checkExRequests($ben_id,$time,$date);
-               $data["S_Id"]=$sid->S_ID;
+               var_dump($sid->S_ID);
+
+                    $data["S_Id"]=$sid->S_ID;
                 }
             }
-
 
             if($this->requestModel->addRequests($data)){
 
@@ -239,13 +252,11 @@ public function edit($id){
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     $data = [
         'B_Req_ID'=> $id,
-
         'Food_Type' => trim($_GET['Food_Type']),
         'Donation_Quantity' => trim($_GET['Donation_Quantity']),
         'D_Date' => trim($_GET['D_Date']),
         'Time' => trim($_GET['Time']),
         'user_id' => $d->D_Id,
-
 
         'Food_Type_err' => '',
         'Donation_Quantity_err' => '',
@@ -288,13 +299,15 @@ public function edit($id){
 
         $comDetails = $this->requestModel->getComDetails($S_Id);
         $total_quantity = $comDetails -> Total_Quantity;
-        $existing_req = $this->requestModel->checkSchReqDandT($id, $time, $date, $ben_id);
+        $existing_req = $this->requestModel->checkSchReqDandT($ben_id, $time, $date, $id);
         $existing_request = $this->requestModel->checkExRequests($ben_id, $time, $date);
-
+/*var_dump($ExDonation_Quantity, $S_Id, $total_quantity, $existing_req, $existing_request);*/
         if($existing_req){
 
              if($this->requestModel->updateRequests($data/*$existing_req->S_Id, $data['Donation_Quantity']*/)){
-                 flash('request_message', 'Request Updated');
+/*                 $data["S_Id"]=$S_Id;*/
+
+            flash('request_message', 'Request Updated');
                  redirect('schedulereq_dons/reviewreq');
              } else {
                  die('Something went wrong');
@@ -308,7 +321,9 @@ public function edit($id){
                  $this->requestModel->upDelComSchtable($existing_req->S_Id, $data['Donation_Quantity']);
              }
          }else{
-             if($total_quantity>$ExDonation_Quantity){
+            var_dump($ExDonation_Quantity->S_Id,$existing_request->S_Id, $existing_req->S_ID, $data);
+
+            if($total_quantity>$ExDonation_Quantity){
                  $this->requestModel->upDelComSchedule($S_Id, $ExDonation_Quantity);
                  if($existing_request){
                      $this->requestModel->updateComSchedule($existing_request->S_ID, $data['Donation_Quantity']);
@@ -321,6 +336,7 @@ public function edit($id){
                      ];
                      $this->requestModel->addcomschedule($com_data);
                  }
+                 //S_Id eka update wenne na
                  if($this->requestModel->updateRequests($data)){
                      flash('request_message', 'Request Updated');
                      redirect('schedulereq_dons/reviewreq');
@@ -328,11 +344,14 @@ public function edit($id){
                      die('Something went wrong');
                  }
              }else{
-                 $this->requestModel->updateDelComSch($data, $existing_req->S_Id, $data['Donation_Quantity']);
-
-                 if($this->requestModel->updateRequests($data)){
+/*                 var_dump($ExDonation_Quantity->S_Id,$existing_request->S_Id, $existing_req->S_ID, $data);*/
+                 $this->requestModel->updateDelComSch( $data,$ExDonation_Quantity->S_Id, $data['Donation_Quantity']);
+                 if($this->requestModel->updateNewRequests($data)){
+                     $existing = $this->requestModel->checkExRequests($ben_id, $time, $date);
+                     var_dump($existing);
+                     $data[$S_Id] = $existing->S_ID;
                      flash('request_message', 'Request Updated');
-                     redirect('schedulereq_dons/reviewreq');
+/*                     redirect('schedulereq_dons/reviewreq');*/
                  } else {
                      die('Something went wrong');
                  }
@@ -350,7 +369,7 @@ public function edit($id){
     $requests = $this->requestModel->getDRequestById($id);
     // Check for owner
     if($requests->D_Id != $d->D_Id){
-        redirect('schedulereq_dons/reviewreq');
+/*        redirect('schedulereq_dons/reviewreq');*/
     }
 
     $data = [
@@ -478,12 +497,13 @@ if($data['requests']!=null){
         }
     }
 
-public function delete($Id){
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+public function delete($Id)
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Get existing post from model
         $request = $this->requestModel->getRequests();
         // Check for owner
-        if($request->D_Id != $_SESSION['user_id']){
+        if ($request->D_Id != $_SESSION['user_id']) {
             redirect('schedulereq_dons/reviewreq');
         }
 
@@ -492,29 +512,29 @@ public function delete($Id){
         $Donation_Quantity = $reqDetails->Donation_Quantity;
 
         $comDetails = $this->requestModel->getComDetails($S_Id);
-        $total_quantity = $comDetails -> Total_Quantity;
+        $total_quantity = $comDetails->Total_Quantity;
 
-        if($this->requestModel->deleteRequest($Id)){
-            if($total_quantity>$Donation_Quantity)
-            {
-                if($this->requestModel->upDelComSchedule($S_Id,$Donation_Quantity))
-                {
+        if ($this->requestModel->deleteRequest($Id)) {
+            if ($total_quantity > $Donation_Quantity) {
+                if ($this->requestModel->upDelComSchedule($S_Id, $Donation_Quantity)) {
                     flash('request_message', 'Request Removed');
                     redirect('schedulereq_dons/reviewreq');
-                }else{
-                    if($this->requestModel->deleteReqCom($S_Id)){
-                        flash('request_message', 'Request Removed');
-                        redirect('schedulereq_dons/reviewreq');
-                    }
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                if ($this->requestModel->deleteReqCom($S_Id)) {
+                    flash('request_message', 'Request Removed');
+                    redirect('schedulereq_dons/reviewreq');
+                } else {
+                    die('Something went wrong');
+
                 }
             }
-            flash('request_message', 'Request Removed');
-            redirect('schedulereq_dons/reviewreq');
+
         } else {
-            die('Something went wrong');
+            redirect('schedulereq_dons/reviewreq');
         }
-    } else {
-        redirect('schedulereq_dons/reviewreq');
     }
 }
 

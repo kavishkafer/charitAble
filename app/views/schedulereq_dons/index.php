@@ -36,6 +36,7 @@
                 <?php foreach ($data['search'] as $search): ?>
                 <td><?php echo $search->B_Name; ?></td>
                 <td><?php echo $search->B_Address; ?></td>
+                <td><?php echo $search->B_Type; ?></td>
                 <td><?php echo $search->B_Tpno; ?></td>
                 <td><?php echo $search->B_Email; ?></td>
                 <td><?php echo $search->B_Members; ?></td>
@@ -63,7 +64,7 @@
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(function() {
                     $.ajax({
-                        url: "<?php echo URLROOT; ?>/BenSearchs/searchBen",
+                        url: "<?php echo URLROOT; ?>/Schedulereq_dons/searchBen",
                         method: "POST",
                         data: { input: input },
                         success: function(data) {

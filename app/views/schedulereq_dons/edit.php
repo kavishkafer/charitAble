@@ -31,7 +31,7 @@
  --></div>
 
 <div class="input">
-<input type="text" name="Donation_Quantity" id="Donation_Quantity" minlength="4" class="input-field-req" value = "<?php echo $data['Donation_Quantity']; ?>" autocomplete="off"/>
+<input type="text" name="Donation_Quantity" id="Donation_Quantity"  class="input-field-req" value = "<?php echo $data['Donation_Quantity']; ?>" autocomplete="off"/>
 <label>Donation Quantity</label>
 <!-- <div class="warn"><?php echo $data['Donation_Quantity_err']; ?></div>
  --></div>

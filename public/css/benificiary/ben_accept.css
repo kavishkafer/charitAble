@@ -18,11 +18,13 @@
 body {
     min-height: 100vh;
     overflow-x: hidden;
+
 }
 
 .container {
     position: relative;
     width: 100%;
+
 }
 
 /* =============== Navigation ================ */
@@ -141,10 +143,13 @@ body {
     min-height: 100vh;
     background: var(--white);
     transition: 0.5s;
+
 }
+
 .main.active {
     width: calc(100% - 80px);
     left: 80px;
+
 }
 
 .topbar {
@@ -190,11 +195,74 @@ body {
 .calender-container{
     position: absolute;
     display: block;
-    height:calc(100% - 60px);
-    width: 50%;
-    top: 60px;
-    background-color: #B7C4CF;
+    height:calc(100% - 210px);
+    width: 45%;
+    top: 100px;
+    left: 5%;
+    background-color: white ;
     justify-content: center;
+
+}
+
+.calendar{
+    position: absolute;
+    display: block;
+    height:calc(100% - 60px);
+    width: 90%;
+    top: 60px;
+    left: 0%;
+    /*
+    background-color: rgb(107, 105, 105);
+    */
+    justify-content: center;
+}
+
+.blue-box {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-color: blue;
+}
+
+.green-box {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-color: green;
+}
+
+.red-box {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-color: red;
+}
+
+.popup {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    height: 40%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: none;
+    z-index: 9999;
+    padding: 5%;
+    text-align: left;
+    line-height: 30px;
+    padding-left: 10%;
+    font-size: 15px;
+}
+
+#close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background-color: red/*#0A2558*/;
 }
 
 .details {
@@ -204,6 +272,7 @@ body {
     padding: 20px;
     display: grid;
     left: 50%;
+
 }
 
 .details .recentOrders {
@@ -214,6 +283,7 @@ body {
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+
 }
 
 .details .cardHeader {
