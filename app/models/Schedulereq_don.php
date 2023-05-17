@@ -85,7 +85,8 @@ class Schedulereq_don {
     }
 
      public function getAllRequests(){
-        $this->db->query('SELECT c.* , b.B_Members, b.B_Name FROM comschedule_table c INNER JOIN beneficiary_details b ON c.B_Id = b.B_Id /*WHERE B_Id = :B_Id*/');
+        $this->db->query('SELECT c.* , b.B_Members, b.B_Name FROM comschedule_table c INNER JOIN beneficiary_details b ON c.B_Id = b.B_Id  
+      /*WHERE B_Id = :B_Id*/');
         //$this->db->bind(':B_Id', $id);
 
          $results = $this->db->resultSet();
@@ -144,9 +145,7 @@ class Schedulereq_don {
     public function addRequests($data){
         $this->db->query('INSERT INTO shedule_request_table (/*D_Name, D_Tel_No, D_Address, */Food_Type, D_Date, Time, Donation_Quantity, D_Id, B_Id, S_Id) VALUES(/*:D_Name, :D_Tel_No, :D_Address,*/ :Food_Type, :D_Date, :Time, :Donation_Quantity, :D_Id, :B_Id, :S_Id)');
         //Bind values
-        /*$this->db->bind(':D_Name', $data['D_Name']);
-        $this->db->bind(':D_Tel_No', $data['D_Tel_No']);
-        $this->db->bind(':D_Address', $data['D_Address']);*/
+
         $this->db->bind(':Food_Type', $data['Food_Type']);
         $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
         $this->db->bind(':D_Date', $data['D_Date']);
@@ -171,6 +170,18 @@ class Schedulereq_don {
         $this->db->bind(':B_Id', $ben_id);
         $this->db->bind(':Time', $time);
         $this->db->bind(':D_Date', $date);
+        $row = $this->db->single();
+        return $row;
+    }
+
+    public function checkSchReqDandT($ben_id,$time,$date, $id)
+    {
+        $this->db->query('SELECT * FROM shedule_request_table WHERE B_Id = :B_Id AND Time = :Time AND D_Date = :D_Date AND B_Req_ID = :B_Req_ID');
+        $this->db->bind(':B_Id', $ben_id);
+        $this->db->bind(':Time', $time);
+        $this->db->bind(':D_Date', $date);
+        $this->db->bind(':B_Req_ID', $id);
+
         $row = $this->db->single();
         return $row;
     }
@@ -299,17 +310,38 @@ class Schedulereq_don {
 //update review req
 
     public function updateRequests($data){
-        $this->db->query('UPDATE shedule_request_table SET /*D_Name = :D_Name, D_Tel_No = :D_Tel_No, D_Address = :D_Address,*/ Food_Type = :Food_Type, D_Date = :D_Date, Time = :Time, Donation_Quantity = :Donation_Quantity WHERE B_Req_ID = :B_Req_ID');
+        $this->db->query('UPDATE shedule_request_table SET  Food_Type = :Food_Type, D_Date = :D_Date, Time = :Time, Donation_Quantity = :Donation_Quantity WHERE B_Req_ID = :B_Req_ID');
         //Bind values
-        if (isset($data['D_Name'])) {
-            /*$this->db->bind(':D_Name', $data['D_Name']);
-            $this->db->bind(':D_Tel_No', $data['D_Tel_No']);
-            $this->db->bind(':D_Address', $data['D_Address']);*/
+        if (isset($data['Food_Type'])) {
+
             $this->db->bind(':Food_Type', $data['Food_Type']);
             $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
             $this->db->bind(':D_Date', $data['D_Date']);
             $this->db->bind(':Time', $data['Time']);
             $this->db->bind(':B_Req_ID', $data['B_Req_ID']);
+/*            $this->db->bind(':S_Id', $data['S_Id']);*/
+
+        }
+        //Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateNewRequests($data){
+        $this->db->query('UPDATE shedule_request_table SET  Food_Type = :Food_Type, D_Date = :D_Date, Time = :Time, Donation_Quantity = :Donation_Quantity WHERE B_Req_ID = :B_Req_ID');
+        //Bind values
+        if (isset($data['Food_Type'])) {
+
+            $this->db->bind(':Food_Type', $data['Food_Type']);
+            $this->db->bind(':Donation_Quantity', $data['Donation_Quantity']);
+            $this->db->bind(':D_Date', $data['D_Date']);
+            $this->db->bind(':Time', $data['Time']);
+            $this->db->bind(':B_Req_ID', $data['B_Req_ID']);
+            $this->db->bind(':S_Id', $data['S_Id']);
+
         }
         //Execute
         if($this->db->execute()){
@@ -353,17 +385,7 @@ return true;
 else{
     return false;
 }*/
-    public function checkSchReqDandT($ben_id,$time,$date, $id)
-    {
-        $this->db->query('SELECT * FROM shedule_request_table WHERE B_Id = :B_Id AND Time = :Time AND D_Date = :D_Date AND B_Req_ID = :B_Req_ID');
-        $this->db->bind(':B_Id', $ben_id);
-        $this->db->bind(':Time', $time);
-        $this->db->bind(':D_Date', $date);
-        $this->db->bind(':B_Req_ID', $id);
 
-        $row = $this->db->single();
-        return $row;
-    }
 
 
      /* public function get_meals(){
