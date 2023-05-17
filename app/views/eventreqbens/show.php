@@ -96,10 +96,10 @@
                 </div>
 
                 <div class="content-sidebar">
-                    <div class="content">
+                    <div style="display: none" class="content">
                         <h3>Event ID</h3>
                     </div>
-                    <div class="data">
+                    <div class="data" style="display: none">
                         <?php echo $data['requests']->Event_ID; ?>
                     </div>
                     <div class="content">
@@ -175,7 +175,7 @@
                     </div>
 
 
-                    <div class="data">
+                  <!--  <div class="data">
                         <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequestReview/<?php echo $data['requests']->Event_ID; ?>"
                               method="post">
 
@@ -186,6 +186,7 @@
                             <?php endif; ?>
                         </form>
                     </div>
+                    -->
 
                     <div class="data">
                         <form action="<?php echo URLROOT; ?>/eventreqbens/completeRequest/<?php echo $data['requests']->Event_ID; ?>"

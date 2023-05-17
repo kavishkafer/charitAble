@@ -96,7 +96,17 @@
                     <div id="calendar"></div>
                 </div>
             </div>
+            <br>
+            <h4><span class="green-box"></span> Accepted and ongoing requests</h4>
+            <h4><span class="red-box"></span> Not accepted requests</h4>
+
         </div>
+
+
+
+
+
+
     </div>
 </div>
 
